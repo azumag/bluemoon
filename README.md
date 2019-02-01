@@ -2,6 +2,11 @@
 
 > My kickass Nuxt.js project
 
+## Run with docker-compose
+```
+docker compose up bluemoon
+```
+
 ## Build Setup
 
 ``` bash
