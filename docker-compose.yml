@@ -1,0 +1,16 @@
+version: '3.2'
+
+services:
+  bluemoon:
+    build: .
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        set -xe
+        yarn install || yarn upgrade
+        yarn run dev
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app/bluemoon
