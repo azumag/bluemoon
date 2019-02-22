@@ -69,7 +69,8 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    // TODO: anyを使わずに書く
+    extend(config: any, ctx: any) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
@@ -80,5 +81,8 @@ module.exports = {
         })
       }
     }
+  },
+  server: {
+    host: '0.0.0.0',
   }
 }
