@@ -11,11 +11,18 @@ v-layout
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import firebase from '@/plugins/firebase'
+
+const db = firebase.firestore()
 
 @Component
 export default class AddSong extends Vue {
   songName: string = ''
 
-  addSong() {}
+  addSong() {
+    db.collection('songs').add({
+      name: this.songName
+    })
+  }
 }
 </script>
