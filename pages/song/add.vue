@@ -4,7 +4,7 @@ v-layout
     v-card
       v-card-title.headline 楽曲を追加
       v-card-text
-        v-text-field(label='曲名')
+        v-text-field(v-model='songName' label='曲名')
       v-card-actions
         v-spacer
         v-btn(@click='addSong') 登録
@@ -14,6 +14,8 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class AddSong extends Vue {
+  songName: string = ''
+
   addSong() {}
 }
 </script>
