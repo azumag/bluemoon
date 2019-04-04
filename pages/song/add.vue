@@ -7,11 +7,13 @@ v-layout
         v-text-field(label='曲名')
       v-card-actions
         v-spacer
-        v-btn 登録
+        v-btn(@click='addSong') 登録
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class AddSong extends Vue {}
+export default class AddSong extends Vue {
+  addSong() {}
+}
 </script>
