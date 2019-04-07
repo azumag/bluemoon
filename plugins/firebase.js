@@ -10,5 +10,7 @@ const config = {
   storageBucket: 'bluemoon-82c0b.appspot.com',
   messagingSenderId: '520365310779'
 }
-firebase.initializeApp(config)
+if (!firebase.apps.length) {
+  firebase.initializeApp(config)
+}
 export default firebase
