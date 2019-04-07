@@ -1,7 +1,8 @@
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const pkg = require('./package')
+import NuxtConfiguration from '@nuxt/config'
 
-module.exports = {
+const nuxtConfig: NuxtConfiguration = {
   mode: 'spa',
 
   /*
