@@ -4,6 +4,7 @@
     "types": [
       "@types/node",
       "@nuxt/vue-app"
-    ]
+    ],
+    "experimentalDecorators": true,
   }
 }
