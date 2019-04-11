@@ -3,12 +3,14 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 const config = {
-  apiKey: 'AIzaSyBe0ZGYl-6DnkvhKbRv1xmXqihPmzHiAzk',
-  authDomain: 'bluemoon-212514.firebaseapp.com',
-  databaseURL: 'https://bluemoon-212514.firebaseio.com',
-  projectId: 'bluemoon-212514',
-  storageBucket: 'bluemoon-212514.appspot.com',
-  messagingSenderId: '529898517803'
+  apiKey: 'AIzaSyBbd3JR0KiWOiCIeh1TFVFRVv0gRzBPtC8',
+  authDomain: 'bluemoon-82c0b.firebaseapp.com',
+  databaseURL: 'https://bluemoon-82c0b.firebaseio.com',
+  projectId: 'bluemoon-82c0b',
+  storageBucket: 'bluemoon-82c0b.appspot.com',
+  messagingSenderId: '520365310779'
 }
-firebase.initializeApp(config)
+if (!firebase.apps.length) {
+  firebase.initializeApp(config)
+}
 export default firebase
