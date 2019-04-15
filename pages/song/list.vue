@@ -12,5 +12,28 @@ const db = firebase.firestore()
 
 @Component
 export default class SongList extends Vue {
+  songs: any[] = []
+
+  getSongs() {
+    return db
+      .collection('songs')
+      .get()
+      .then(
+        (querySnapshot: any): void => {
+          querySnapshot.forEach(
+            (doc: any): void => {
+              this.songs.push({
+                name: doc.data().name
+              })
+              console.log(doc.data())
+            }
+          )
+        }
+      )
+  }
+
+  created() {
+    this.getSongs()
+  }
 }
 </script>
