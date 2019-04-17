@@ -2,6 +2,13 @@
 v-layout
   v-flex(text-xs-center)
     v-card
+      v-toolbar(color="deep-purple" dark)
+        v-toolbar-side-icon
+        v-toolbar-title 楽曲一覧
+      v-list
+        v-list-tile(v-for="(song, index) in songs" :key="index" :to="{path:`/song/${song.id}`}" ripple)
+          v-list-tile-content
+            v-list-tile-title {{song.name}}
 
 </template>
 <script lang="ts">
