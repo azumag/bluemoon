@@ -23,9 +23,9 @@ export default class SongList extends Vue {
           querySnapshot.forEach(
             (doc: any): void => {
               this.songs.push({
+                id: doc.id,
                 name: doc.data().name
               })
-              console.log(doc.data())
             }
           )
         }
