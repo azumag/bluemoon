@@ -6,7 +6,7 @@ v-layout
         v-toolbar-side-icon
         v-toolbar-title 楽曲一覧
       v-list
-        v-list-tile(v-for="(song, index) in songs" :key="index" :to="{path:`/song/${song.id}`}" ripple)
+        v-list-tile(v-for="(song, index) in songs" :key="index" :to="{path:`/song/detail/${song.id}`}" ripple)
           v-list-tile-content
             v-list-tile-title {{song.name}}
 
