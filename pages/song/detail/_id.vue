@@ -3,6 +3,7 @@
 v-layout
   v-flex(text-xs-center)
     v-card
+      v-card-title {{song.name}}
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
