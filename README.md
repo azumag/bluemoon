@@ -4,7 +4,7 @@
 
 ## Run with docker-compose
 ```
-docker compose up bluemoon
+docker-compose up bluemoon
 ```
 
 ## Build Setup
