@@ -4,5 +4,5 @@
 
 ## Run with docker-compose
 ```
-docker-compose up myproject
+docker-compose up bluemoon
 ```

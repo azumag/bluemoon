@@ -1,7 +1,7 @@
 version: '3.2'
 
 services:
-  myproject:
+  bluemoon:
     build: .
     entrypoint:
       - /bin/sh
@@ -13,4 +13,4 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - .:/app/myproject
+      - .:/app/bluemoon

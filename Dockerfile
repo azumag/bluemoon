@@ -2,7 +2,7 @@ FROM node:10.16.2-alpine
 ENV LANG C.UTF-8
 ENV EDITOR vim
 
-WORKDIR /app/myproject
+WORKDIR /app/bluemoon
 
 RUN npm install -g npx
 RUN yarn global add nuxt
