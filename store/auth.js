@@ -20,6 +20,9 @@ export const actions = {
   googleLogin({ commit }) {
     const provider = new this.$firebase.auth.GoogleAuthProvider()
     this.$auth.signInWithRedirect(provider)
+  },
+  mailLogin({ commit }) {
+    console.log('st')
   }
 }
 

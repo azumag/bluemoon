@@ -2,6 +2,8 @@
 v-container
   v-layout(wrap)
     v-flex(xs12)
+      v-btn.outlined(to='/login/mail-login')
+        | Sign in with E-Mail
       v-layout.logo-wrapper(@click='twitterLogin')
         img.logo(:src='twitterLogo')
         v-sheet.logo-text(color='white')
