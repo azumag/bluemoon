@@ -4,6 +4,7 @@ v-layout(column, justify-center, align-center)
     v-card
       v-card-title.headline
         | Welcome to the Vuetify + Nuxt.js template
+        | {{ $store.state.auth.user.displayName }}
       v-card-text
         p
           | Vuetify is a progressive Material Design component framework for

@@ -12,17 +12,6 @@ export const actions = {
       })
     })
     commit('setUser', user)
-  },
-  twitterLogin({ commit }) {
-    const provider = new this.$firebase.auth.TwitterAuthProvider()
-    this.$auth.signInWithRedirect(provider)
-  },
-  googleLogin({ commit }) {
-    const provider = new this.$firebase.auth.GoogleAuthProvider()
-    this.$auth.signInWithRedirect(provider)
-  },
-  mailLogin({ commit }) {
-    console.log('st')
   }
 }
 
