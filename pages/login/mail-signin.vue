@@ -24,14 +24,16 @@ export default {
   methods: {
     submit() {
       this.loading = true
-      // TODO: validation error with form
       this.$auth
         .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
-          console.log('sign in done')
+          this.$store.commit('info/setSnackbar', 'Signed in')
+          this.$router.push('/')
         })
         .catch((e) => {
           console.log(e)
+          // TODO: handling error msg
+          this.$store.commit('info/setSnackbar', e)
         })
         .finally(() => {
           this.loading = false

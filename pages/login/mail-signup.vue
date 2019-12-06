@@ -30,11 +30,12 @@ export default {
       this.$auth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {
-          // console.log(this.$auth.currentUser)
-          console.log('sign up done')
+          this.$store.commit('info/setSnackbar', 'Signed in')
+          this.$router.push('/')
         })
         .catch((e) => {
           console.log(e)
+          this.$store.commit('info/setSnackbar', e)
         })
         .finally(() => {
           this.loading = false
