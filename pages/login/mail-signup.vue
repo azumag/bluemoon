@@ -25,7 +25,7 @@ export default {
     submit() {
       // TODO: validation error with form
       this.$auth
-        .createUserWithEmailAndPassword(this.$data.email, this.$data.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           // console.log(this.$auth.currentUser)
           console.log('sign up done')
@@ -37,7 +37,3 @@ export default {
   }
 }
 </script>
-<style lang="sass" scoped>
-$logo-height: 120px
-$sm: 600px
-</style>

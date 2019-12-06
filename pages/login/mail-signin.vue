@@ -23,7 +23,7 @@ export default {
     submit() {
       // TODO: validation error with form
       this.$auth
-        .signInWithEmailAndPassword(this.$data.email, this.$data.password)
+        .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           console.log('sign in done')
         })
@@ -34,7 +34,3 @@ export default {
   }
 }
 </script>
-<style lang="sass" scoped>
-$logo-height: 120px
-$sm: 600px
-</style>
