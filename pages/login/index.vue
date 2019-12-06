@@ -10,9 +10,12 @@ v-container
         img.logo(:src='googleLogo')
         v-sheet.logo-text(color='#4285F4')
           | Sign in with Google
+      v-btn.outlined(to='/login/mail-signin')
+        | Sign in with E-mail
+      v-btn.outlined(to='/login/mail-signup')
+        | Sign up with E-Mail
 </template>
 <script>
-import { mapActions } from 'vuex'
 import twitterLogo from '@/assets/img/logo/twitterLogo.svg'
 import googleLogo from '@/assets/img/logo/googleLogo.svg'
 
@@ -23,25 +26,15 @@ export default {
       googleLogo
     }
   },
-  computed: {
-    isLoggedIn() {
-      return this.$store.state.auth.user.displayName
-    }
-  },
-  watch: {
-    isLoggedIn(v) {
-      if (v) {
-        this.$router.push('/')
-      }
-    }
-  },
-  created() {
-    if (this.isLoggedIn) {
-      this.$router.push('/')
-    }
-  },
   methods: {
-    ...mapActions('auth', ['twitterLogin', 'googleLogin'])
+    twitterLogin() {
+      const provider = new this.$firebase.auth.TwitterAuthProvider()
+      this.$auth.signInWithRedirect(provider)
+    },
+    googleLogin() {
+      const provider = new this.$firebase.auth.GoogleAuthProvider()
+      this.$auth.signInWithRedirect(provider)
+    }
   }
 }
 </script>
