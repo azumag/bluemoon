@@ -22,6 +22,8 @@ v-app
   v-content
     v-container
       nuxt
+      v-snackbar(v-model="snackbar" :top="true", :right="true", :timeout="3000")
+        | {{ snackbarText }}
   v-navigation-drawer(v-model='rightDrawer', :right='right', temporary, fixed)
     v-list
       v-list-item(@click.native='right = !right')
@@ -57,12 +59,13 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Vuetify.js',
+      snackbar: false
     }
   },
   computed: {
-    isLoggedIn() {
-      return this.$store.state.auth.user.displayName
+    user() {
+      return this.$auth.currentUser
     },
     menuItems() {
       const items = clonedeep(this.items)
@@ -80,20 +83,19 @@ export default {
         })
       }
       return items
+    },
+    snackbarText() {
+      return this.$store.state.info.snackbarText
     }
   },
-  async mounted() {
-    const user = await this.auth()
-    this.$store.commit('auth/setUser', user)
-  },
-  methods: {
-    auth() {
-      return new Promise((resolve, reject) => {
-        this.$auth.onAuthStateChanged((user) => {
-          resolve(user || false)
-        })
-      })
+  watch: {
+    snackbarText(v) {
+      if (v !== '') {
+        this.snackbar = true
+      }
     }
-  }
+  },
+  async mounted() {},
+  methods: {}
 }
 </script>
