@@ -3,10 +3,11 @@ div
 </template>
 <script>
 export default {
-  async created() {
-    await this.$auth.signOut()
-    this.$store.commit('auth/setUser', {})
-    this.$router.push('/')
+  created() {
+    this.$auth.signOut().then(() => {
+      this.$store.commit('info/setSnackbar', 'Logout')
+      this.$router.push('/')
+    })
   }
 }
 </script>

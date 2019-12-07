@@ -26,6 +26,14 @@ export default {
       googleLogo
     }
   },
+  mounted() {
+    this.$auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.commit('info/setSnackbar', 'Signed in')
+        this.$router.push('/')
+      }
+    })
+  },
   methods: {
     twitterLogin() {
       const provider = new this.$firebase.auth.TwitterAuthProvider()

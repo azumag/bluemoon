@@ -56,20 +56,38 @@ export default {
           to: '/inspire'
         }
       ],
+      menuItems: [],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js',
-      snackbar: false
+      snackbar: false,
+      user: null
     }
   },
   computed: {
-    user() {
-      return this.$auth.currentUser
-    },
-    menuItems() {
+    snackbarText() {
+      return this.$store.state.info.snackbarText
+    }
+  },
+  watch: {
+    snackbarText(v) {
+      if (v !== '') {
+        this.snackbar = true
+      }
+    }
+  },
+  mounted() {
+    this.menuItems = this.items
+    this.$auth.onAuthStateChanged((user) => {
+      this.setAuthMenu(user)
+      this.user = user
+    })
+  },
+  methods: {
+    setAuthMenu(user) {
       const items = clonedeep(this.items)
-      if (this.isLoggedIn) {
+      if (user) {
         items.push({
           icon: 'person',
           title: 'Logout',
@@ -82,20 +100,11 @@ export default {
           to: '/login'
         })
       }
-      return items
+      this.menuItems = items
     },
-    snackbarText() {
-      return this.$store.state.info.snackbarText
+    test() {
+      console.log(this.user)
     }
-  },
-  watch: {
-    snackbarText(v) {
-      if (v !== '') {
-        this.snackbar = true
-      }
-    }
-  },
-  async mounted() {},
-  methods: {}
+  }
 }
 </script>
