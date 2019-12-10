@@ -6,6 +6,9 @@ v-container
         img.logo(:src='twitterLogo')
         v-sheet.logo-text(color='white')
           | Sign in with Twitter
+      v-layout.logo-wrapper(@click='facebookLogin')
+        v-sheet.logo-text(color='white')
+          | Sign in with Facebook
       v-layout.google-logo.logo-wrapper(@click='googleLogin')
         img.logo(:src='googleLogo')
         v-sheet.logo-text(color='#4285F4')
@@ -41,6 +44,10 @@ export default {
     },
     googleLogin() {
       const provider = new this.$firebase.auth.GoogleAuthProvider()
+      this.$auth.signInWithRedirect(provider)
+    },
+    facebookLogin() {
+      const provider = new this.$firebase.auth.FacebookAuthProvider()
       this.$auth.signInWithRedirect(provider)
     }
   }
