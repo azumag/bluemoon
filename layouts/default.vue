@@ -102,9 +102,6 @@ export default {
         })
       }
       this.menuItems = items
-    },
-    test() {
-      console.log(this.user)
     }
   }
 }
