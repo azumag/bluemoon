@@ -82,7 +82,6 @@ export default {
     this.$auth.onAuthStateChanged((user) => {
       this.setAuthMenu(user)
       this.user = user
-      console.log(user)
     })
   },
   methods: {
