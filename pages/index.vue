@@ -1,45 +1,32 @@
 <template lang="pug">
 v-layout(column, justify-center, align-center)
   v-flex(xs12, sm8, md6)
-    v-card
+    v-card(color='rgb(100, 100, 100, 0.4)')
       v-card-title.headline
-        | Welcome to the Vuetify + Nuxt.js template
+        | Welcome to the BlueMoon
       v-card-text
         p
-          | Vuetify is a progressive Material Design component framework for
-          | Vue.js. It was designed to empower developers to create amazing
-          | applications.
+          | 自分のレパートリーを登録し，他の人と共通のレパートリーを検索できます．
+          | 嘘です．今はログインしか出来ません.
         p
-          | For more information on Vuetify, check out the
-          a(href='https://vuetifyjs.com', target='_blank')  documentation
-          | .
-        p
-          | If you have questions, please join the official
-          a(href='https://chat.vuetifyjs.com/', target='_blank', title='chat')
-            | discord
-        p
-          | Find a bug? Report it on the github
-          a(href='https://github.com/vuetifyjs/vuetify/issues', target='_blank', title='contribute')
-            | issue board
-        p
-          | Thank you for developing with Vuetify and I look forward to bringing
-          | more exciting features in the future.
-        .text-xs-right
-          em
-            small — John Leider
-        hr.my-3
-        a(href='https://nuxtjs.org/', target='_blank')
-          | Nuxt Documentation
-        br
-        a(href='https://github.com/nuxt/nuxt.js', target='_blank')
-          | Nuxt GitHub
-      v-card-actions
-        v-spacer
-          v-btn(color='primary', text, nuxt, to='/inspire')
-            | Continue
-
+          | 使い方のガイドとかがここに入る予定
+        hr
+        span(v-if='$firebase.currentUser')
+          | Welcome! {{ $firebase.currentUser.displayName }}
+        span(v-else)
+          v-card-actions
+            v-btn(color='white', outlined=true, block=true, text, nuxt, to='/login')
+              | ログイン / 新規登録
 </template>
 
 <script>
 export default {}
 </script>
+
+<style>
+.transparent {
+  background-color: white !important;
+  opacity: 0.85;
+  border-color: transparent !important;
+}
+</style>

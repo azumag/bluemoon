@@ -8,7 +8,7 @@ v-container
         v-label Password
         v-text-field(v-model="password", required)
         v-btn(@click='submit' v-show="!loading")
-          | Sign Up
+          | Sign In
         v-progress-circular(v-show="loading" indeterminate color="primary")
 </template>
 <script>
@@ -24,7 +24,8 @@ export default {
   methods: {
     submit() {
       this.loading = true
-      this.$auth
+      this.$firebase
+        .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           this.$store.commit('info/setSnackbar', 'Signed in')
