@@ -19,11 +19,12 @@ v-app
       v-spacer
         v-btn(icon, @click.stop='rightDrawer = !rightDrawer')
           v-icon menu
-  v-content
-    v-container
-      nuxt
-      v-snackbar(v-model="snackbar" :top="true", :right="true", :timeout="3000")
-        | {{ snackbarText }}
+  v-content.bg
+    v-parallax(dark :src='bgImage')
+      v-container
+        nuxt
+    v-snackbar(v-model="snackbar" color='info' :bottom="true", :right="true", :timeout="3000")
+      | {{ snackbarText }}
   v-navigation-drawer(v-model='rightDrawer', :right='right', temporary, fixed)
     v-list
       v-list-item(@click.native='right = !right')
@@ -37,10 +38,12 @@ v-app
 
 <script>
 import clonedeep from 'lodash.clonedeep'
+import bgImage from '@/assets/img/bluemoon_bg4.png'
 
 export default {
   data() {
     return {
+      bgImage,
       clipped: false,
       drawer: false,
       fixed: false,
@@ -56,11 +59,10 @@ export default {
           to: '/inspire'
         }
       ],
-      menuItems: [],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js',
+      title: 'BlueMoon (Ver 0.0.0.1)',
       snackbar: false,
       user: null
     }
@@ -68,26 +70,10 @@ export default {
   computed: {
     snackbarText() {
       return this.$store.state.info.snackbarText
-    }
-  },
-  watch: {
-    snackbarText(v) {
-      if (v !== '') {
-        this.snackbar = true
-      }
-    }
-  },
-  mounted() {
-    this.menuItems = this.items
-    this.$auth.onAuthStateChanged((user) => {
-      this.setAuthMenu(user)
-      this.user = user
-    })
-  },
-  methods: {
-    setAuthMenu(user) {
+    },
+    menuItems() {
       const items = clonedeep(this.items)
-      if (user) {
+      if (this.$firebase.currentUser) {
         items.push({
           icon: 'person',
           title: 'Logout',
@@ -100,8 +86,21 @@ export default {
           to: '/login'
         })
       }
-      this.menuItems = items
+      return items
+    }
+  },
+  watch: {
+    snackbarText(v) {
+      if (v !== '') {
+        this.snackbar = true
+      }
     }
   }
 }
 </script>
+
+<style scoped>
+.bg {
+  background-color: #000 !important;
+}
+</style>

@@ -2,53 +2,62 @@
 v-container
   v-layout(wrap)
     v-flex(xs12)
-      v-layout.logo-wrapper(@click='twitterLogin')
-        img.logo(:src='twitterLogo')
-        v-sheet.logo-text(color='white')
-          | Sign in with Twitter
-      v-layout.logo-wrapper(@click='facebookLogin')
-        v-sheet.logo-text(color='white')
-          | Sign in with Facebook
-      v-layout.google-logo.logo-wrapper(@click='googleLogin')
-        img.logo(:src='googleLogo')
-        v-sheet.logo-text(color='#4285F4')
-          | Sign in with Google
-      v-btn.outlined(to='/login/mail-signin')
-        | Sign in with E-mail
-      v-btn.outlined(to='/login/mail-signup')
-        | Sign up with E-Mail
+      v-row(v-for='loginMethod in loginMethods' :key="loginMethod.title")
+        v-col
+          v-card(color='rgb(100, 100, 100, 0.4)' raised=true)
+            span(v-if='loginMethod.action')
+              v-btn(block=true outlined=true @click='loginMethod.action')
+                | {{ loginMethod.title }}
+            span(v-else)
+              v-btn(block=true outlined=true :to='loginMethod.to')
+                | {{ loginMethod.title }}
 </template>
 <script>
-import twitterLogo from '@/assets/img/logo/twitterLogo.svg'
-import googleLogo from '@/assets/img/logo/googleLogo.svg'
-
 export default {
   data() {
     return {
-      twitterLogo,
-      googleLogo
+      loginMethods: [
+        {
+          title: 'Twitter',
+          action: this.twitterLogin
+        },
+        {
+          title: 'Facebook',
+          action: this.facebookLogin
+        },
+        {
+          title: 'Google',
+          action: this.googleLogin
+        },
+        {
+          title: 'Email Signup',
+          to: '/login/mail-signup'
+        },
+        {
+          title: 'Email Login',
+          to: '/login/mail-signin'
+        }
+      ]
     }
   },
   mounted() {
-    this.$auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.$store.commit('info/setSnackbar', 'Signed in')
-        this.$router.push('/')
-      }
-    })
+    if (this.$firebase.currentUser) {
+      this.$store.commit('info/setSnackbar', 'Signed in')
+      this.$router.push('/')
+    }
   },
   methods: {
-    twitterLogin() {
+    async twitterLogin() {
       const provider = new this.$firebase.auth.TwitterAuthProvider()
-      this.$auth.signInWithRedirect(provider)
+      await this.$firebase.auth().signInWithRedirect(provider)
     },
-    googleLogin() {
+    async googleLogin() {
       const provider = new this.$firebase.auth.GoogleAuthProvider()
-      this.$auth.signInWithRedirect(provider)
+      await this.$firebase.auth().signInWithRedirect(provider)
     },
-    facebookLogin() {
+    async facebookLogin() {
       const provider = new this.$firebase.auth.FacebookAuthProvider()
-      this.$auth.signInWithRedirect(provider)
+      await this.$firebase.auth().signInWithRedirect(provider)
     }
   }
 }

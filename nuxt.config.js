@@ -37,7 +37,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/firebase', '@/plugins/nuxt-client-init.js'],
+  plugins: [
+    '@/plugins/firebase',
+    '@/plugins/firebase-auth',
+    '@/plugins/nuxt-client-init.js'
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -57,6 +61,7 @@ export default {
    */
   vuetify: {
     theme: {
+      dark: true,
       primary: colors.blue.darken2,
       accent: colors.grey.darken3,
       secondary: colors.amber.darken3,

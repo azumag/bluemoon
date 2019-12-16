@@ -27,7 +27,8 @@ export default {
     submit() {
       this.loading = true
       // TODO: validation error with form
-      this.$auth
+      this.$firebase
+        .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           this.$store.commit('info/setSnackbar', 'Signed in')
