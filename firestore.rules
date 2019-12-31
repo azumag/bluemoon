@@ -6,11 +6,18 @@ service cloud.firestore {
     match /tunes/{id} {
       allow read, write: if request.auth.uid != null;
     }
+    match /groups/{id} {
+      allow read, write: if request.auth.uid != null;
+    }
+    match /groupMembers/{id} {
+      allow read, write: if request.auth.uid != null;
+    }
     match /repertories/{id} {
       allow read, write: if request.auth.uid != null;
     }
     match /users/{id} {
-      allow read, write: if false;
+      allow read: if request.auth.uid != null;
+      allow write: if false;
     }
   }
 }

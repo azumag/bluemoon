@@ -18,16 +18,16 @@ export default {
     return {
       loginMethods: [
         {
-          title: 'Twitter',
-          action: this.twitterLogin
-        },
-        {
           title: 'Facebook',
           action: this.facebookLogin
         },
         {
           title: 'Google',
           action: this.googleLogin
+        },
+        {
+          title: 'Twitter',
+          action: this.twitterLogin
         },
         {
           title: 'Email Signup',

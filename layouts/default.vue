@@ -79,6 +79,11 @@ export default {
           to: '/repertories'
         })
         items.push({
+          icon: 'bubble_chart',
+          title: 'グループ',
+          to: '/groups'
+        })
+        items.push({
           icon: 'person',
           title: 'Logout',
           to: '/logout'
