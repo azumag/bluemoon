@@ -17,26 +17,26 @@ export default {
   data() {
     return {
       loginMethods: [
-        {
-          title: 'Facebook',
-          action: this.facebookLogin
-        },
-        {
-          title: 'Google',
-          action: this.googleLogin
-        },
+        // {
+        //   title: 'Facebook',
+        //   action: this.facebookLogin
+        // },
+        // {
+        //   title: 'Google',
+        //   action: this.googleLogin
+        // },
         {
           title: 'Twitter',
           action: this.twitterLogin
-        },
-        {
-          title: 'Email Signup',
-          to: '/login/mail-signup'
-        },
-        {
-          title: 'Email Login',
-          to: '/login/mail-signin'
         }
+        // {
+        //   title: 'Email Signup',
+        //   to: '/login/mail-signup'
+        // },
+        // {
+        //   title: 'Email Login',
+        //   to: '/login/mail-signin'
+        // }
       ]
     }
   },

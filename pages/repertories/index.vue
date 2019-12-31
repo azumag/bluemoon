@@ -97,6 +97,7 @@ export default {
 
     this.$firestore
       .collection('repertories')
+      .where('userRef', '==', this.$firebase.currentUser.uid)
       .get()
       .then((res) => {
         res.forEach((doc) => {

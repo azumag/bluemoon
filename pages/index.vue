@@ -8,12 +8,16 @@ v-parallax(dark :src='bgImage')
         v-card-text
           p
             | 自分のレパートリーを登録し，他の人と共通のレパートリーを検索できます．
-            | 嘘です．今はログインしか出来ません.
           p
-            | 使い方のガイドとかがここに入る予定
+            | STEP 1. レパートリーを登録
+          p
+            | STEP 2. グループを作成しメンバーを登録
+          p
+            | STEP 3. 共通曲を検索
           hr
           span(v-if='$firebase.currentUser')
-            | Welcome! {{ $firebase.currentUser.displayName }}
+            | Welcome...
+            | {{ $firebase.currentUser.displayName }}
           span(v-else)
             v-card-actions
               v-btn(color='white', outlined=true, block=true, text, nuxt, to='/login')

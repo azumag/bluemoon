@@ -32,13 +32,7 @@ v-app
             | compare_arrows
         v-list-item-title Switch drawer (click me)
   v-footer(:fixed='fixed', app)
-    span Bluemoon Ver. {{ version }} |
-      a(href='https://twitter.com/azumag')
-        | @azumag
-      span
-        | &amp;
-      a(href='https://twitter.com/tempakyousuke')
-        | @tempakyousuke
+    span Bluemoon Ver. {{ version }}
 </template>
 
 <script>

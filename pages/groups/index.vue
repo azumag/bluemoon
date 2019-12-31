@@ -32,6 +32,21 @@ v-layout(column, justify-center, align-center)
           v-btn(color="blue darken-1" text @click="addGroup")
             | 追加
 
+    v-dialog(v-model="openCommonTunes" persistent max-width="600px")
+      v-card
+        v-card-title
+        v-card-text
+          v-list-item(v-for="(item, i) in commonTunes" :key="i")
+            v-list-item-icon
+              v-icon
+                | mdi-music
+            v-list-item-content
+              v-list-item-title(v-html="item.title")
+        v-card-actions
+          v-spacer
+          v-btn(color="blue darken-1" text @click="commonTunes = []")
+            | とじる
+
     v-dialog(v-model="editGroupDialog" persistent max-width="600px")
       v-card(v-if="editGroup")
         v-card-title
@@ -81,7 +96,8 @@ export default {
       groupName: 'Untitled',
       search: null,
       memberModel: null,
-      editGroupMembers: []
+      editGroupMembers: [],
+      commonTunes: []
     }
   },
   computed: {
@@ -92,11 +108,15 @@ export default {
           value: x.uid
         }
       })
+    },
+    openCommonTunes() {
+      return this.commonTunes.length > 0
     }
   },
   mounted() {
     this.$firestore
       .collection('groups')
+      .where('authorRef', '==', this.$firebase.currentUser.uid)
       .get()
       .then((res) => {
         res.forEach((doc) => {
@@ -122,24 +142,25 @@ export default {
       })
   },
   methods: {
-    matching(group) {
-      const members = await getMembers(group)
-      memberRe
-      members.forEach((member) => {
-        await this.$firestore
-          .collection('repertories')
-          .where('userRef', '==', member.memberRef)
-          .get()
-          .then((res) => {
-            res.forEach((doc) => {
-              members.push({ ...doc.data(), id: doc.id })
-            })
-          })
-          .catch((err) => {
-            console.log('Error getting documents', err)
-          })
-      })
-      
+    getTuneData(commonTunes) {
+      // TODO: fix later
+      const _commonTunes = commonTunes
+      // const _commonTunes = commonTunes[0]
+      if (_commonTunes === undefined) {
+        return []
+      }
+      if (_commonTunes.length <= 0) {
+        return []
+      }
+      // console.log('ctunes', _commonTunes)
+      return Promise.all(
+        _commonTunes.map((ct) => {
+          return this.$firestore
+            .collection('tunes')
+            .doc(ct)
+            .get()
+        })
+      )
     },
     async getMembers(item) {
       const members = []
@@ -157,12 +178,101 @@ export default {
         })
       return members
     },
+    async matching(group) {
+      const members = await this.getMembers(group)
+      // console.log(members)
+      if (members.length <= 0) {
+        this.$store.commit(
+          'info/setSnackbar',
+          'メンバーがいません: ' + new Date()
+        )
+        return
+      }
+      const memberRepertories = {}
+      // TODO: sohisticate
+
+      const mrefs = await Promise.all(
+        members.map(async (member) => {
+          const ref = await this.$firestore
+            .collection('repertories')
+            .where('userRef', '==', member.memberRef)
+            .get()
+          const aref = ref.docs.map((doc) => {
+            return doc.data().tuneRef
+          })
+          return {
+            memberRef: member.memberRef,
+            aref
+          }
+        })
+      )
+
+      mrefs.forEach((mr) => {
+        if (memberRepertories[mr.memberRef] === undefined) {
+          memberRepertories[mr.memberRef] = []
+        }
+        memberRepertories[mr.memberRef].push(mr.aref)
+      })
+
+      // console.log(memberRepertories)
+
+      // TODO: 3-nest loop (hideously)
+      const commonTunes = []
+      for (const keyi in memberRepertories) {
+        const tuneRefs = memberRepertories[keyi][0]
+        // console.log('tunerefs', tuneRefs)
+        // console.log('keiy', keyi)
+        tuneRefs.forEach((tuneRef) => {
+          // console.log('tuneref', tuneRef)
+          let isCommonTune = true
+          for (const keyj in memberRepertories) {
+            // console.log('keij', keyj)
+            if (keyi === keyj) {
+              continue
+            }
+            const targetRef = memberRepertories[keyj][0]
+            // console.log('targetref', targetRef)
+            if (targetRef.includes(tuneRef)) {
+              // console.log('true')
+              continue
+            } else {
+              // console.log('false', tuneRef)
+              isCommonTune = false
+              break
+            }
+          }
+          if (isCommonTune) {
+            commonTunes.push(tuneRef)
+          }
+        })
+      }
+      // TODO: fixme
+      const _commonTunes = await this.getTuneData(
+        commonTunes.filter((elem, index, self) => self.indexOf(elem) === index)
+      )
+      // uniq
+      this.commonTunes = _commonTunes.map((ct) => {
+        // console.log(ct)
+        return ct.data()
+      })
+
+      // console.log(this.commonTunes)
+
+      if (this.commonTunes.length <= 0) {
+        this.$store.commit(
+          'info/setSnackbar',
+          '共通曲がありません: ' + new Date()
+        )
+      }
+
+      // console.log(this.commonTunes)
+    },
     openAddGroupDialog() {
       this.addGroupDialog = true
     },
-    openEditGroupDialog(item) {
+    async openEditGroupDialog(item) {
       // TODO: FIX
-      this.editGroupMembers = await getMembers(item)
+      this.editGroupMembers = await this.getMembers(item)
       this.editGroupDialog = true
       this.editGroup = item
     },
