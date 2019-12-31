@@ -48,6 +48,7 @@ export default {
   modules: [
     '@nuxtjs/vuetify',
     '@nuxtjs/eslint-module',
+    '@nuxtjs/pwa',
     [
       '@nuxtjs/dotenv',
       {

@@ -32,7 +32,7 @@ v-app
             | compare_arrows
         v-list-item-title Switch drawer (click me)
   v-footer(:fixed='fixed', app)
-    span Bluemoon Ver. {{ version }}
+    span Bluemoon Ver. {{ version }} 2020.
 </template>
 
 <script>
