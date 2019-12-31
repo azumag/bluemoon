@@ -3,11 +3,14 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false;
     }
-    match /songs/{id} {
-      allow read, write: if true;
+    match /tunes/{id} {
+      allow read, write: if request.auth.uid != null;
+    }
+    match /repertories/{id} {
+      allow read, write: if request.auth.uid != null;
     }
     match /users/{id} {
-      allow read, write: if true;
+      allow read, write: if false;
     }
   }
 }

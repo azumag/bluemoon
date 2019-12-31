@@ -9,20 +9,19 @@ v-app
           v-list-item-title(v-text='item.title')
   v-app-bar(:clipped-left='clipped', app)
     v-app-bar-nav-icon(@click='drawer=!drawer')
-    v-btn(icon, @click.stop='miniVariant = !miniVariant')
-      v-icon {{ `chevron_${miniVariant ? 'right' : 'left'}` }}
-    v-btn(icon, @click.stop='clipped = !clipped')
-      v-icon web
-    v-btn(icon, @click.stop='fixed = !fixed')
-      v-icon remove
+    // v-btn(icon, @click.stop='miniVariant = !miniVariant')
+    //   v-icon {{ `chevron_${miniVariant ? 'right' : 'left'}` }}
+    // v-btn(icon, @click.stop='clipped = !clipped')
+    //   v-icon web
+    // v-btn(icon, @click.stop='fixed = !fixed')
+    //   v-icon remove
     v-toolbar-title(v-text='title')
       v-spacer
         v-btn(icon, @click.stop='rightDrawer = !rightDrawer')
           v-icon menu
   v-content.bg
-    v-parallax(dark :src='bgImage')
-      v-container
-        nuxt
+    v-container
+      nuxt
     v-snackbar(v-model="snackbar" color='info' :bottom="true", :right="true", :timeout="3000")
       | {{ snackbarText }}
   v-navigation-drawer(v-model='rightDrawer', :right='right', temporary, fixed)
@@ -33,17 +32,22 @@ v-app
             | compare_arrows
         v-list-item-title Switch drawer (click me)
   v-footer(:fixed='fixed', app)
-    span © 2019
+    span Bluemoon Ver. {{ version }} |
+      a(href='https://twitter.com/azumag')
+        | @azumag
+      span
+        | &amp;
+      a(href='https://twitter.com/tempakyousuke')
+        | @tempakyousuke
 </template>
 
 <script>
 import clonedeep from 'lodash.clonedeep'
-import bgImage from '@/assets/img/bluemoon_bg4.png'
 
 export default {
   data() {
     return {
-      bgImage,
+      version: '0.1',
       clipped: false,
       drawer: false,
       fixed: false,
@@ -52,17 +56,12 @@ export default {
           icon: 'apps',
           title: 'Welcome',
           to: '/'
-        },
-        {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'BlueMoon (Ver 0.0.0.1)',
+      title: 'Bluemoon',
       snackbar: false,
       user: null
     }
@@ -74,6 +73,11 @@ export default {
     menuItems() {
       const items = clonedeep(this.items)
       if (this.$firebase.currentUser) {
+        items.push({
+          icon: 'bubble_chart',
+          title: 'レパートリー登録',
+          to: '/repertories'
+        })
         items.push({
           icon: 'person',
           title: 'Logout',
@@ -102,5 +106,10 @@ export default {
 <style scoped>
 .bg {
   background-color: #000 !important;
+}
+.transparent {
+  background-color: white !important;
+  opacity: 0.85;
+  border-color: transparent !important;
 }
 </style>
