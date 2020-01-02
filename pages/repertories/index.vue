@@ -9,41 +9,33 @@ v-layout(column, justify-center, align-center)
           | 楽曲を検索し、自分のレパートリーとして登録できます
         p
           | 見つからない場合は楽曲名を追加できます
+        v-progress-circular(v-if="loading" )
         v-autocomplete(
+          v-if="!loading"
           label="Search" :items="itemSearch" clearable=true
-          no-data-text="楽曲名の登録がありません"
           :search-input.sync="search"
           v-model="model"
           return-object
         )
           template(v-slot:no-data)
             v-list-item
-              v-list-item-title(v-if="search")
+              v-list-item-title
                 | {{ search }} が見つかりません。
-                v-btn(@click="openDialog")
-                  | 追加する
+            p
+              v-btn(@click="addTuneAndRepertory" block=true color='info')
+                | 追加 &amp; レパートリー登録
+            p
+              v-btn(@click="addTune" block=true outlined=false color='info')
+                | 楽曲データベースに追加
         v-btn(v-if="model" outlined=true block=true dark @click="addRepertory")
-          | {{ model.text }} を自分のレパートリーとして登録
-
-    v-dialog(v-model="dialog" persistent max-width="600px")
-      v-card
-        v-card-title
-          span.headline 楽曲名を追加
-        v-card-text
-          v-text-field(label="楽曲名" required v-model="search")
-        v-card-actions
-          v-spacer
-          v-btn(color="blue darken-1" text @click="dialog = false")
-            | やめる
-          v-btn(color="blue darken-1" text @click="addTune")
-            | 追加
+          | レパートリー登録
 
     v-card(color='rgb(100, 100, 100, 0.4)')
       v-card-title
         span.headline 持ち曲
       v-card-text
         v-list
-          v-list-item(v-for="(item, i) in repertories" :key="item.id")
+          v-list-item(v-for="(item, i) in repertoryDisplay" :key="item.id")
             v-list-item-content
               v-list-item-title(v-html="item.title")
             v-list-item-icon
@@ -58,6 +50,7 @@ export default {
   data() {
     return {
       // bgImage,
+      loading: false,
       title: '',
       dialog: false,
       items: [],
@@ -68,12 +61,37 @@ export default {
   },
   computed: {
     itemSearch() {
-      return this.items.map((x) => {
-        return {
-          text: x.title,
-          value: x.id
-        }
-      })
+      return this.items
+        .map((x) => {
+          return {
+            text: x.title,
+            value: x.id
+          }
+        })
+        .sort(function(a, b) {
+          if (a.title < b.title) {
+            return -1
+          }
+          if (b.title < a.title) {
+            return 1
+          }
+          return 0
+        })
+    },
+    repertoryDisplay() {
+      return this.repertories
+        .map((x) => {
+          return x
+        })
+        .sort(function(a, b) {
+          if (a.title < b.title) {
+            return -1
+          }
+          if (b.title < a.title) {
+            return 1
+          }
+          return 0
+        })
     }
   },
   // watch: {
@@ -121,6 +139,14 @@ export default {
       const index = this.repertories.indexOf(item)
       this.repertories.splice(index, 1)
     },
+    async addTuneAndRepertory() {
+      const tune = await this.addTune()
+      this.model = {
+        text: tune.title,
+        value: tune.id
+      }
+      await this.addRepertory()
+    },
     async addTune() {
       if (
         this.items
@@ -132,6 +158,7 @@ export default {
         this.$store.commit('info/setSnackbar', 'すでに登録されています')
         return
       }
+      this.loading = true
       const value = {
         title: this.search,
         authorRef: this.$firebase.currentUser.uid
@@ -140,8 +167,12 @@ export default {
       // console.log(item)
       this.$store.commit('info/setSnackbar', '登録しました')
 
-      this.items.push({ ...value, id: item.id })
+      const tune = { ...value, id: item.id }
+      this.items.push(tune)
       this.dialog = false
+      this.model = null
+      this.loading = false
+      return tune
     },
     async addRepertory() {
       if (
