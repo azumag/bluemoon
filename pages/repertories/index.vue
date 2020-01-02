@@ -69,10 +69,10 @@ export default {
           }
         })
         .sort(function(a, b) {
-          if (a.title < b.title) {
+          if (a.text < b.text) {
             return -1
           }
-          if (b.title < a.title) {
+          if (b.text < a.text) {
             return 1
           }
           return 0
