@@ -40,6 +40,16 @@ export default {
       ]
     }
   },
+  computed: {
+    isLoggedIn() {
+      return this.$firebase.currentUser
+    }
+  },
+  watch: {
+    isLoggedIn() {
+      this.$router.push('/')
+    }
+  },
   mounted() {
     if (this.$firebase.currentUser) {
       this.$store.commit('info/setSnackbar', 'Signed in')
@@ -49,7 +59,8 @@ export default {
   methods: {
     async twitterLogin() {
       const provider = new this.$firebase.auth.TwitterAuthProvider()
-      await this.$firebase.auth().signInWithRedirect(provider)
+      // await this.$firebase.auth().signInWithRedirect(provider)
+      await this.$firebase.auth().signInWithPopup(provider)
     },
     async googleLogin() {
       const provider = new this.$firebase.auth.GoogleAuthProvider()

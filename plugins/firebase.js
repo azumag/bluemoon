@@ -11,11 +11,11 @@ if (!firebase.apps.length) {
     storageBucket: process.env.STORAGEBUCKET,
     messagingSenderId: process.env.MESSAGINGSENDERID
   })
-  if (process.env.LOCAL) {
+  if (process.env.DEV) {
     firebase.firestore().settings({
-      host: location.hostname + ":8000",
+      host: 'localhost:8000',
       ssl: false
-    });
+    })
   }
 }
 

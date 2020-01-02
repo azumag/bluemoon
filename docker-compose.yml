@@ -1,14 +1,13 @@
 version: '3.2'
 
 services:
-  web:
-    build: 'docker/web'
+  dev:
+    build: .
     entrypoint: 
       - /bin/sh
       - -c
       - |
         yarn
-        yarn upgrade
         yarn dev
     depends_on:
       - firebase-emulator
@@ -17,8 +16,15 @@ services:
     volumes:
       - .:/app/bluemoon
 
+  yarn:
+    image: bluemoon_dev
+    command: "yarn lint --fix"
+    working_dir: /app
+    volumes:
+      - .:/app
+
   firebase-emulator:
-    build: 'docker/firebase'
+    image: bluemoon_dev
     command:
       - /bin/sh
       - -c
@@ -27,10 +33,21 @@ services:
         npm install
         npm run build
         cd ..
-        firebase emulators:start
+        firebase emulators:start --only functions,firestore
     ports:
       - 8000:8080
-      - 5000:5000
     volumes:
-      - .:/app/firebase
-    
+      - .:/app/bluemoon
+
+  editor:
+    image: codercom/code-server
+    entrypoint:
+      - /bin/sh
+      - -c
+      - dumb-init code-server --auth none
+    ports:
+      - "283:8080"
+    volumes:
+      - "${PWD}:/home/coder/project"
+      - "${HOME}/.local/share/code-server:/home/coder/.local/share/code-server" 
+ 

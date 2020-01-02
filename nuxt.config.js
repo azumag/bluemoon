@@ -52,7 +52,10 @@ export default {
     [
       '@nuxtjs/dotenv',
       {
-        filename: process.env.NODE_ENV !== 'production' ? "./config/.env.dev" : "./config/.env.prod"
+        filename:
+          process.env.NODE_ENV !== 'production'
+            ? './config/.env.dev'
+            : './config/.env.prod'
       }
     ]
   ],
