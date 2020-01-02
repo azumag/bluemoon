@@ -24,13 +24,13 @@ v-app
       nuxt
     v-snackbar(v-model="snackbar" color='info' :bottom="true", :right="true", :timeout="3000")
       | {{ snackbarText }}
-  v-navigation-drawer(v-model='rightDrawer', :right='right', temporary, fixed)
-    v-list
-      v-list-item(@click.native='right = !right')
-        v-list-item-action
-          v-icon(light)
-            | compare_arrows
-        v-list-item-title Switch drawer (click me)
+  //- v-navigation-drawer(v-model='rightDrawer', :right='right', temporary, fixed)
+  //-   v-list
+  //-     v-list-item(@click.native='right = !right')
+  //-       v-list-item-action
+  //-         v-icon(light)
+  //-           | compare_arrows
+  //-       v-list-item-title Switch drawer (click me)
   v-footer(:fixed='fixed', app)
     span Bluemoon Ver. {{ version }} 2020.
 </template>

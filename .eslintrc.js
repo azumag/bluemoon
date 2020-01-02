@@ -18,6 +18,7 @@ module.exports = {
     'prettier'
   ],
   // add your custom rules here
+  "ignorePatterns": ["functions/**"],
   rules: {
     "no-console": "off",
     "space-before-function-paren": ["error", {
