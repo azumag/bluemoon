@@ -16,7 +16,10 @@
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.0-beta.19",
     "@nuxtjs/vuetify": "1.8.3",
+    "eventsource-polyfill": "^0.9.6",
     "firebase": "^6.6.0",
+    "firebase-admin": "^8.9.0",
+    "firebase-functions": "^3.3.0",
     "firebase-tools": "^7.3.1",
     "lodash.clonedeep": "^4.5.0",
     "nuxt": "^2.9.2"

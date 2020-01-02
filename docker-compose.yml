@@ -1,16 +1,36 @@
 version: '3.2'
 
 services:
-  bluemoon:
-    build: .
-    entrypoint:
+  web:
+    build: 'docker/web'
+    entrypoint: 
       - /bin/sh
       - -c
       - |
-        set -xe
-        yarn install || yarn upgrade
-        yarn run dev
+        yarn
+        yarn upgrade
+        yarn dev
+    depends_on:
+      - firebase-emulator
     ports:
       - 3000:3000
     volumes:
       - .:/app/bluemoon
+
+  firebase-emulator:
+    build: 'docker/firebase'
+    command:
+      - /bin/sh
+      - -c
+      - |
+        cd functions
+        npm install
+        npm run build
+        cd ..
+        firebase emulators:start
+    ports:
+      - 8000:8080
+      - 5000:5000
+    volumes:
+      - .:/app/firebase
+    
