@@ -50,4 +50,3 @@ services:
     volumes:
       - "${PWD}:/home/coder/project"
       - "${HOME}/.local/share/code-server:/home/coder/.local/share/code-server" 
- 

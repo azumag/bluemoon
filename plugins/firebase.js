@@ -13,7 +13,7 @@ if (!firebase.apps.length) {
   })
   if (process.env.DEV) {
     firebase.firestore().settings({
-      host: 'localhost:8000',
+      host: location.hostname + ':8000',
       ssl: false
     })
   }
