@@ -41,7 +41,7 @@ import clonedeep from 'lodash.clonedeep'
 export default {
   data() {
     return {
-      version: '1.0.0',
+      version: '0.0.2',
       clipped: false,
       drawer: false,
       fixed: false,
