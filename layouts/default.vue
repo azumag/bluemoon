@@ -32,7 +32,7 @@ v-app
   //-           | compare_arrows
   //-       v-list-item-title Switch drawer (click me)
   v-footer(:fixed='fixed', app)
-    span Bluemoon Ver. {{ version }} 2020.
+    span Bluemoon Ver. {{ version }} - 2020.
 </template>
 
 <script>
@@ -41,7 +41,7 @@ import clonedeep from 'lodash.clonedeep'
 export default {
   data() {
     return {
-      version: '0.1',
+      version: '1.0.0',
       clipped: false,
       drawer: false,
       fixed: false,
