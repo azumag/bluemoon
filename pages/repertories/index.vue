@@ -69,10 +69,12 @@ export default {
           }
         })
         .sort(function(a, b) {
-          if (a.text < b.text) {
+          const _a = a.text.toUpperCase()
+          const _b = b.text.toUpperCase()
+          if (_a < _b) {
             return -1
           }
-          if (b.text < a.text) {
+          if (_b < _a) {
             return 1
           }
           return 0
