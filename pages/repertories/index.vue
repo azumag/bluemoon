@@ -96,11 +96,6 @@ export default {
         })
     }
   },
-  // watch: {
-  //   search(val) {
-  //     console.log(val)
-  //   }
-  // },
   mounted() {
     this.$firestore
       .collection('tunes')
