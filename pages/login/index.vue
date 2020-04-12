@@ -17,10 +17,10 @@ export default {
   data() {
     return {
       loginMethods: [
-        // {
-        //   title: 'Facebook',
-        //   action: this.facebookLogin
-        // },
+        {
+          title: 'Facebook',
+          action: this.facebookLogin
+        },
         // {
         //   title: 'Google',
         //   action: this.googleLogin
@@ -28,15 +28,15 @@ export default {
         {
           title: 'Twitter',
           action: this.twitterLogin
+        },
+        {
+          title: 'Email Signup',
+          to: '/login/mail-signup'
+        },
+        {
+          title: 'Email Login',
+          to: '/login/mail-signin'
         }
-        // {
-        //   title: 'Email Signup',
-        //   to: '/login/mail-signup'
-        // },
-        // {
-        //   title: 'Email Login',
-        //   to: '/login/mail-signin'
-        // }
       ]
     }
   },
@@ -60,7 +60,7 @@ export default {
     async twitterLogin() {
       const provider = new this.$firebase.auth.TwitterAuthProvider()
       // await this.$firebase.auth().signInWithRedirect(provider)
-      await this.$firebase.auth().signInWithPopup(provider)
+      await this.$firebase.auth().signInWithRedirect(provider)
     },
     async googleLogin() {
       const provider = new this.$firebase.auth.GoogleAuthProvider()

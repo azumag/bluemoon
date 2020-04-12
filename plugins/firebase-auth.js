@@ -12,10 +12,11 @@ export default (context, inject) =>
     inject('firebase', observable)
 
     firebase.auth().onAuthStateChanged(() => {
-      observable.currentUser = firebase.auth().currentUsers
+      observable.currentUser = firebase.auth().currentUser
       if (process.env.DEV && observable.currentUser) {
         // Make user entry for local development
         // since emulator does not trigger onAuth event of firebase functions
+        console.log(observable.currentUser.uid)
         firebase
           .firestore()
           .collection('users')
@@ -31,10 +32,15 @@ export default (context, inject) =>
                   name: observable.currentUser.displayName,
                   uid: observable.currentUser.uid
                 })
+            } else {
+              console.log('user exists')
             }
           })
           .then((res) => {
             console.log(res)
+          })
+          .catch((e) => {
+            console.log(e)
           })
       }
       resolve()
