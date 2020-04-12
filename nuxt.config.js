@@ -14,7 +14,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: '今最もクールな ウェブとして 注目されているのが Bluemoon だ'
       }
     ],
     link: [
