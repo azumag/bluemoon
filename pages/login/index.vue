@@ -30,13 +30,13 @@ export default {
           action: this.twitterLogin
         },
         {
-          title: 'Email Signup',
-          to: '/login/mail-signup'
-        },
-        {
-          title: 'Email Login',
-          to: '/login/mail-signin'
+          title: 'Email で新規登録/ログイン',
+          to: '/login/mail-signupin'
         }
+        // {
+        //   title: 'Email Login',
+        //   to: '/login/mail-signin'
+        // }
       ]
     }
   },

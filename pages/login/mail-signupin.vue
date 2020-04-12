@@ -1,0 +1,89 @@
+<template lang="pug">
+v-container
+  v-layout(wrap)
+    v-flex(xs12)
+      v-form(ref="form", v-model="valid", lazy-validation)
+        v-label メールアドレス
+        v-text-field(
+          v-model="email",
+          required,
+          type='mail'
+        )
+        v-label パスワード
+        v-text-field(
+          v-model="password",
+          required,
+          hint='6文字以上必須です'
+          type='password'
+        )
+        //- v-label ニックネーム
+        //- v-text-field(
+        //-   v-model="nickname",
+        //-   required
+        //- )
+        v-btn(@click='submit' v-show="!loading")
+          | 新規登録 / ログイン
+
+        v-progress-circular(v-show="loading" indeterminate color="primary")
+</template>
+<script>
+// import { mapActions } from 'vuex'
+
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      nickname: '',
+      valid: true,
+      loading: false
+    }
+  },
+  methods: {
+    signin() {
+      return this.$firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then((result) => {
+          this.$store.commit('info/setSnackbar', 'サインインしました')
+          this.$router.push('/')
+        })
+        .catch((e) => {
+          this.$store.commit('info/setSnackbar', e)
+        })
+    },
+    submit() {
+      // if (this.nickname === '') {
+      //   // TODO: use validator
+      //   this.$store.commit('info/setSnackbar', 'ニックネームを設定して下さい')
+      //   return
+      // }
+      this.loading = true
+      // TODO: validation error with form
+      this.$firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        // .then((result) => {
+        //   return result.user.updateProfile({
+        //     displayName: this.nickname
+        //   })
+        // })
+        .then((result) => {
+          return this.signin()
+        })
+        .catch((e) => {
+          // console.log(e)
+          // console.log(e.code)
+          if (e.code === 'auth/email-already-in-use') {
+            return this.signin()
+          } else {
+            this.$store.commit('info/setSnackbar', e)
+          }
+        })
+        .finally(() => {
+          this.loading = false
+        })
+    }
+  }
+}
+</script>
