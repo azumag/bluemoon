@@ -31,7 +31,7 @@ v-layout(column, justify-center, align-center)
               v-textarea(v-model="form.fileURLs", required,
                 placeholder="例）\nhttps://www.youtube.com/watch?v=xxxxxxx\nhttps://www.youtube.com/watch?v=yyyyyyyy\nhttps://www.youtube.com/watch?v=zzzzzzz"
               )
-              v-file-input(accept="video/*" label="直接アップロードする(複数選択可)"
+              v-file-input(v-show="!loading" accept="video/*" label="直接アップロードする(複数選択可)"
                 show-size
                 counter
                 chips
@@ -41,13 +41,9 @@ v-layout(column, justify-center, align-center)
               v-btn(@click='submit' v-show="!loading" block=true outlined=true)
                 | エントリーする
               v-progress-circular(v-show="loading" indeterminate color="primary")
-              div(v-show="true")
-                v-progress-linear(
-                  color="light-blue"
-                  height="10"
-                  :value="this.uploadStatuses[0]"
-                  striped
-                )
+              div(v-show="loading" v-for="(file, i) in files" :key="file.id")
+                v-progress-circular(indeterminate color='amber')
+                | Uploading {{ file.name }}
 
 </template>
 
@@ -61,8 +57,7 @@ export default {
       files: null,
       errors: [],
       entryId: null,
-      uploadStatuses: 0,
-      progress: 0,
+      uploadStatuses: {},
       uploadedFileNum: null,
       form: {
         eventId: '',
@@ -81,16 +76,6 @@ export default {
       loading: false
     }
   },
-  watch: {
-    uploadedFileNum(v) {
-      console.log('v', v)
-      console.log('l', this.files.length)
-      console.log(this.uploadStatuses)
-      if (this.loading && v >= this.files.length) {
-        this.uploadFinish()
-      }
-    }
-  },
   mounted() {
     if (this.$firebase.currentUser) {
       if (this.$firebase.currentUser.email) {
@@ -106,35 +91,16 @@ export default {
         .collection('entries')
         .doc(entryId)
         .delete()
-      this.$store.commit(
-        'info/setSnackbar',
-        'ファイルアップロード時にエラーが起こりました'
-      )
-      this.errors = []
-      this.entryId = null
-      this.loading = false
-    },
-    uploadFinish() {
-      console.log('errors', this.errors)
-      if (this.errors.length > 0) {
-        // console.log('entryId', this.entryId)
-        this.deleteEntry(this.entryId)
-        // TODO: to be transactional process
-      } else {
-        this.$store.commit('info/setSnackbar', 'エントリーを登録しました')
-        this.$router.push('/entries/')
-      }
     },
     submit() {
       if (!this.valid) {
         return
       }
-      this.loading = true
       if (this.files || this.form.fileURLs) {
+        this.loading = true
         this.form.userId = this.$firebase.currentUser.uid
         this.form.eventId = this.$route.params.id
         if (this.files) {
-          this.uploadedFileNum = 0
           this.form.fileNames = this.files.map((file) => {
             return file.name
           })
@@ -156,54 +122,64 @@ export default {
                     '/' +
                     file.name
                 )
-                return filesRef.put(file)
-              })
-              const firestorage = this.$firestorage
-              const _this = this
-              // todo new Promise
-              uploadTasks.forEach((uploadTask) => {
+                const uploadTask = filesRef.put(file)
+
                 uploadTask.on(
-                  'state_changed',
-                  function(snapshot) {
+                  this.$firestorage.TaskEvent.STATE_CHANGED,
+                  (snapshot) => {
                     const progress =
                       (snapshot.bytesTransferred / snapshot.totalBytes) * 100
                     console.log('Upload is ' + progress + '% done')
-                    _this.uploadStatuses[0] = progress
+                    this.uploadStatuses[file] = progress
                     switch (snapshot.state) {
-                      case firestorage.TaskState.PAUSED: // or 'paused'
+                      case this.$firestorage.TaskState.PAUSED: // or 'paused'
                         console.log('Upload is paused')
                         break
-                      case firestorage.TaskState.RUNNING: // or 'running'
+                      case this.$firestorage.TaskState.RUNNING: // or 'running'
                         console.log('Upload is running')
                         break
                     }
                   },
-                  function(error) {
+                  (error) => {
                     console.log('taskprogresserror', error)
-                    _this.errors.push(error)
-                    _this.entryId = result.id
-                    _this.uploadedFileNum += 1
+                    this.errors.push(error)
+                    this.entryId = result.id
                     // console.log(result.id)
                   },
-                  function() {
-                    _this.uploadedFileNum += 1
+                  () => {
                     console.log('upload finish')
                   }
                 )
+
+                return uploadTask
               })
-            } else {
-              this.$store.commit('info/setSnackbar', 'エントリーを登録しました')
-              this.$router.push('/entries/')
+
+              return Promise.all(uploadTasks)
             }
+          })
+          .then((result) => {
+            this.$store.commit('info/setSnackbar', 'エントリーを登録しました')
+            this.$router.push('/entries/')
           })
           .catch((e) => {
             console.log('Error getting documents', e)
+            this.$store.commit(
+              'info/setSnackbar',
+              'ファイルアップロード時にエラーが起こりました'
+            )
+            if (this.entryId) {
+              this.deleteEntry(this.entryId)
+            }
+          })
+          .finally(() => {
             this.loading = false
+            this.errors = []
+            this.entryId = null
+            this.uploadStatuses = {}
+            this.files = null
           })
       } else {
         this.$store.commit('info/setSnackbar', '動画が登録されていません')
-        this.loading = false
-        // return
       }
     }
   }

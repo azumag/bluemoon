@@ -49,8 +49,8 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
           v-card-text(v-if="this.$firebase.currentUser")
-            v-btn(@click="gotoEntryForm(event)")
-              | エントリーフォーム
+            v-btn(@click="gotoEntryForm(event)" block=true outlined=true)
+              | エントリーフォームへ
           v-card-text(v-else)
             | エントリーするにはログインして下さい🙇‍♂️
             | エントリー管理のためログイン必須になっています，お手数ですがご協力下さい
