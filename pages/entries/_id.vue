@@ -22,11 +22,15 @@ v-layout(column, justify-center, align-center)
           v-label エントリー動画（15分程度，合計15分程度ならば複数可）
           div
           v-textarea(v-model="entry.addresses", required,
-            :rules="requiredRule"
+            disable=true
             placeholder="動画へのアドレス\n例）\nhttps://www.youtube.com/watch?v=xxxxxxx\nhttps://www.youtube.com/watch?v=yyyyyyyy\nhttps://www.youtube.com/watch?v=zzzzzzz"
           )
-          v-file-input(accept="video/*" label="直接アップロードする" show-size)
-
+          v-file-input(accept="video/*" label="直接アップロードする"
+            show-size
+            counter
+            chips
+            multiple
+          )
           v-btn(@click='submit' v-show="!loading" block=true outlined=true)
             | 更新する
           v-progress-circular(v-show="loading" indeterminate color="primary")

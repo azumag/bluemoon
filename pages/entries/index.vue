@@ -12,7 +12,7 @@ v-layout(column, justify-center, align-center)
           v-card-title.headline
             | {{ entry.name }}
           v-card-text
-            v-btn(@click='gotoDetail(entry)' v-show="!loading" block=true outlined=true)
+            v-btn(@click='gotoDetail(entry)' block=true outlined=true)
               | エントリー確認・編集
 </template>
 

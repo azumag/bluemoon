@@ -28,14 +28,27 @@ v-layout(column, justify-center, align-center)
               )
               v-label エントリー動画アドレス（15分程度，合計15分程度ならば複数可）
               div
-                | 直接アップロードする場合は，エントリー後，「自分のエントリー」ページからこの「オンラインフェス」エントリー編集画面からアップロードして下さい
-              v-textarea(v-model="form.addresses", required,
-                :rules="requiredRule"
+              v-textarea(v-model="form.fileURLs", required,
                 placeholder="例）\nhttps://www.youtube.com/watch?v=xxxxxxx\nhttps://www.youtube.com/watch?v=yyyyyyyy\nhttps://www.youtube.com/watch?v=zzzzzzz"
+              )
+              v-file-input(accept="video/*" label="直接アップロードする(複数選択可)"
+                show-size
+                counter
+                chips
+                multiple
+                v-model="files"
               )
               v-btn(@click='submit' v-show="!loading" block=true outlined=true)
                 | エントリーする
               v-progress-circular(v-show="loading" indeterminate color="primary")
+              div(v-show="true")
+                v-progress-linear(
+                  color="light-blue"
+                  height="10"
+                  :value="this.uploadStatuses[0]"
+                  striped
+                )
+
 </template>
 
 <script>
@@ -45,13 +58,20 @@ export default {
   data() {
     return {
       valid: false,
+      files: null,
+      errors: [],
+      entryId: null,
+      uploadStatuses: 0,
+      progress: 0,
+      uploadedFileNum: null,
       form: {
-        entryId: '',
+        eventId: '',
         name: '',
         description: '',
-        addresses: '',
+        fileURLs: '',
         email: '',
-        userId: ''
+        userId: '',
+        fileNames: []
       },
       requiredRule: [
         (v) => {
@@ -59,6 +79,16 @@ export default {
         }
       ],
       loading: false
+    }
+  },
+  watch: {
+    uploadedFileNum(v) {
+      console.log('v', v)
+      console.log('l', this.files.length)
+      console.log(this.uploadStatuses)
+      if (this.loading && v >= this.files.length) {
+        this.uploadFinish()
+      }
     }
   },
   mounted() {
@@ -71,22 +101,110 @@ export default {
     }
   },
   methods: {
+    async deleteEntry(entryId) {
+      await this.$firestore
+        .collection('entries')
+        .doc(entryId)
+        .delete()
+      this.$store.commit(
+        'info/setSnackbar',
+        'ファイルアップロード時にエラーが起こりました'
+      )
+      this.errors = []
+      this.entryId = null
+      this.loading = false
+    },
+    uploadFinish() {
+      console.log('errors', this.errors)
+      if (this.errors.length > 0) {
+        // console.log('entryId', this.entryId)
+        this.deleteEntry(this.entryId)
+        // TODO: to be transactional process
+      } else {
+        this.$store.commit('info/setSnackbar', 'エントリーを登録しました')
+        this.$router.push('/entries/')
+      }
+    },
     submit() {
       if (!this.valid) {
         return
       }
-      this.form.userId = this.$firebase.currentUser.uid
-      this.form.entryId = this.$route.params.id
-      this.$firestore
-        .collection('entries')
-        .add(this.form)
-        .then((result) => {
-          this.$store.commit('info/setSnackbar', 'エントリーを登録しました')
-          this.$router.push('/entries/')
-        })
-        .catch((e) => {
-          console.log('Error getting documents', e)
-        })
+      this.loading = true
+      if (this.files || this.form.fileURLs) {
+        this.form.userId = this.$firebase.currentUser.uid
+        this.form.eventId = this.$route.params.id
+        if (this.files) {
+          this.uploadedFileNum = 0
+          this.form.fileNames = this.files.map((file) => {
+            return file.name
+          })
+        }
+        this.$firestore
+          .collection('entries')
+          .add(this.form)
+          .then((result) => {
+            if (this.files) {
+              const storageRef = this.$firestorage().ref()
+              const uploadTasks = this.files.map((file) => {
+                const filesRef = storageRef.child(
+                  'users/' +
+                    this.form.userId +
+                    '/events/' +
+                    this.form.eventId +
+                    '/entries/' +
+                    result.id +
+                    '/' +
+                    file.name
+                )
+                return filesRef.put(file)
+              })
+              const firestorage = this.$firestorage
+              const _this = this
+              // todo new Promise
+              uploadTasks.forEach((uploadTask) => {
+                uploadTask.on(
+                  'state_changed',
+                  function(snapshot) {
+                    const progress =
+                      (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                    console.log('Upload is ' + progress + '% done')
+                    _this.uploadStatuses[0] = progress
+                    switch (snapshot.state) {
+                      case firestorage.TaskState.PAUSED: // or 'paused'
+                        console.log('Upload is paused')
+                        break
+                      case firestorage.TaskState.RUNNING: // or 'running'
+                        console.log('Upload is running')
+                        break
+                    }
+                  },
+                  function(error) {
+                    console.log('taskprogresserror', error)
+                    _this.errors.push(error)
+                    _this.entryId = result.id
+                    _this.uploadedFileNum += 1
+                    // console.log(result.id)
+                  },
+                  function() {
+                    _this.uploadedFileNum += 1
+                    console.log('upload finish')
+                  }
+                )
+              })
+            } else {
+              this.$store.commit('info/setSnackbar', 'エントリーを登録しました')
+              this.$router.push('/entries/')
+            }
+          })
+          .catch((e) => {
+            console.log('Error getting documents', e)
+            this.loading = false
+          })
+      } else {
+        this.$store.commit('info/setSnackbar', '動画が登録されていません')
+        this.loading = false
+        // return
+      }
     }
   }
 }

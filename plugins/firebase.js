@@ -22,5 +22,5 @@ if (!firebase.apps.length) {
 
 export default (context, inject) => {
   inject('firestore', firebase.firestore())
-  inject('storage', firebase.storage())
+  inject('firestorage', firebase.storage)
 }
