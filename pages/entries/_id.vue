@@ -6,9 +6,9 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)' tile)
           v-card-title.headline
             v-row
-              v-col(cols="9")
+              v-col(cols="8")
                 | エントリー編集
-              v-col(cols="2")
+              v-col(cols="4")
                 v-btn(@click.stop="deleteEntry()" color='red')
                   | 取り消す
           v-card-text
@@ -179,34 +179,15 @@ export default {
         .doc(this.$route.params.id)
         .set(this.form)
     },
-    async update() {
-      this.loading = true
-      await this.updateForm()
-        .then((res) => {
-          this.$store.commit('info/setSnackbar', 'エントリーを更新しました')
-        })
-        .then((res) => {
-          if (this.files) {
-            this.files.forEach((file) => {
-              this.form.fileNames.push(file.name)
-            })
-          }
-        })
-        .finally(() => {
-          this.loading = false
-        })
-    },
-    submit() {
-      if (!this.valid) {
-        return
-      }
+    update() {
       if (this.files || this.form.fileURLs) {
         this.loading = true
-        this.form.userId = this.$firebase.currentUser.uid
-        this.form.eventId = this.$route.params.id
         if (this.files) {
-          this.form.fileNames = this.files.map((file) => {
-            return file.name
+          this.files.forEach((file) => {
+            const index = this.form.fileNames.indexOf(file.name)
+            if (index === -1) {
+              this.form.fileNames.push(file.name)
+            }
           })
         }
         this.$firestore
@@ -216,18 +197,8 @@ export default {
             if (this.files) {
               const storageRef = this.$firestorage().ref()
               const uploadTasks = this.files.map((file) => {
-                const filesRef = storageRef.child(
-                  'users/' +
-                    this.form.userId +
-                    '/events/' +
-                    this.form.eventId +
-                    '/entries/' +
-                    result.id +
-                    '/' +
-                    file.name
-                )
+                const filesRef = storageRef.child(this.filePath + file.name)
                 const uploadTask = filesRef.put(file)
-
                 uploadTask.on(
                   this.$firestorage.TaskEvent.STATE_CHANGED,
                   (snapshot) => {
@@ -247,23 +218,18 @@ export default {
                   (error) => {
                     console.log('taskprogresserror', error)
                     this.errors.push(error)
-                    this.entryId = result.id
-                    // console.log(result.id)
                   },
                   () => {
                     console.log('upload finish')
                   }
                 )
-
                 return uploadTask
               })
-
               return Promise.all(uploadTasks)
             }
           })
           .then((result) => {
-            this.$store.commit('info/setSnackbar', 'エントリーを登録しました')
-            this.$router.push('/entries/')
+            this.$store.commit('info/setSnackbar', 'エントリーを更新しました')
           })
           .catch((e) => {
             console.log('Error getting documents', e)
@@ -271,9 +237,15 @@ export default {
               'info/setSnackbar',
               'ファイルアップロード時にエラーが起こりました'
             )
-            if (this.entryId) {
-              this.deleteEntry(this.entryId)
-            }
+            const storageRef = this.$firestorage().ref()
+            storageRef
+              .child(this.filePath)
+              .listAll()
+              .then((dir) => {
+                this.form.fileNames = dir.items.map((fileRef) => {
+                  return fileRef.name
+                })
+              })
           })
           .finally(() => {
             this.loading = false
