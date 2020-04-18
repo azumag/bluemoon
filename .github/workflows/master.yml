@@ -17,6 +17,10 @@ jobs:
     - run: yarn
     - run: yarn global add nuxt
     - run: yarn generate
+    - run: cd functions &&
+        npm install &&
+        npm run build &&
+        cd ..
     - uses: w9jds/firebase-action@master
       with:
         args: deploy
