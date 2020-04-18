@@ -1,4 +1,5 @@
 # Bluemoon
+今最もクールな ブルーグラスサイトとして 注目されているのが Bluemoon だ
 
 ## Run with docker-compose
 ### for local development

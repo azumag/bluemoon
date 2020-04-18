@@ -190,9 +190,7 @@ export default {
             }
           })
         }
-        this.$firestore
-          .collection('entries')
-          .add(this.form)
+        this.updateForm()
           .then((result) => {
             if (this.files) {
               const storageRef = this.$firestorage().ref()
