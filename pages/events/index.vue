@@ -62,7 +62,7 @@ export default {
       this.events = [
         {
           id: '2pbLysWMNdNXnSvgBNr2',
-          title: 'オンラインフェス'
+          title: 'Bluegrass Lockdown Music Festival'
         }
       ]
     }

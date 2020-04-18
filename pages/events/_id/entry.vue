@@ -172,7 +172,7 @@ export default {
             }
           })
           .then((result) => {
-            this.$store.commit('info/setSnackbar', 'エントリーを登録しました')
+            this.$store.commit('info/setSnackbar', '参加登録しました')
             this.$router.push('/entries/')
           })
           .catch((e) => {
