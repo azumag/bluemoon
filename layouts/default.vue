@@ -89,12 +89,12 @@ export default {
       if (this.$firebase.currentUser) {
         items.push({
           icon: 'bubble_chart',
-          title: '行事',
+          title: '開催行事',
           to: '/events'
         })
         items.push({
           icon: 'bubble_chart',
-          title: 'エントリー一覧',
+          title: 'エントリーリスト',
           to: '/entries'
         })
         items.push({
