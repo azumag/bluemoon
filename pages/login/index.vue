@@ -18,6 +18,10 @@ export default {
     return {
       loginMethods: [
         {
+          title: 'Email で新規登録/ログイン',
+          to: '/login/mail-signupin'
+        },
+        {
           title: 'Facebook',
           action: this.facebookLogin
         },
@@ -28,10 +32,6 @@ export default {
         {
           title: 'Twitter',
           action: this.twitterLogin
-        },
-        {
-          title: 'Email で新規登録/ログイン',
-          to: '/login/mail-signupin'
         }
         // {
         //   title: 'Email Login',

@@ -39,9 +39,29 @@ v-app
 import clonedeep from 'lodash.clonedeep'
 
 export default {
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.meta.description
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.meta.description
+        }
+      ]
+    }
+  },
   data() {
     return {
-      version: '0.0.2',
+      meta: {
+        description:
+          '今最もクールな ウェブとして 注目されているのが Bluemoon だ'
+      },
+      version: '0.0.3',
       clipped: false,
       drawer: false,
       fixed: false,
@@ -67,6 +87,11 @@ export default {
     menuItems() {
       const items = clonedeep(this.items)
       if (this.$firebase.currentUser) {
+        items.push({
+          icon: 'bubble_chart',
+          title: '行事',
+          to: '/events'
+        })
         items.push({
           icon: 'bubble_chart',
           title: 'レパートリー登録',

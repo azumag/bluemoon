@@ -36,6 +36,7 @@ services:
         firebase emulators:start --only functions,firestore
     ports:
       - 8000:8080
+      - 4400:4400
     volumes:
       - .:/app/bluemoon
 
