@@ -94,6 +94,11 @@ export default {
         })
         items.push({
           icon: 'bubble_chart',
+          title: 'エントリー一覧',
+          to: '/entries'
+        })
+        items.push({
+          icon: 'bubble_chart',
           title: 'レパートリー登録',
           to: '/repertories'
         })
