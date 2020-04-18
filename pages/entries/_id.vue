@@ -19,16 +19,15 @@ v-layout(column, justify-center, align-center)
             :rules="requiredRule"
             placeholder="例）\n2010年に結成されたブルーグラスバンド. リーダーの無二のリズム感から生まれるギター＆ボーカルを中心に、個性あふれるストリングスが絡み合って紡ぎ出される、思わず身体を動かさずにはいられなくなるアグレッシブでバウンシーなサウンドが特徴。"
           )
-          v-label エントリー動画アドレス（15分程度，合計15分程度ならば複数可）
+          v-label エントリー動画（15分程度，合計15分程度ならば複数可）
           div
-            | 直接アップロードする場合は，エントリー後，「自分のエントリー」ページからこの「オンラインフェス」エントリー編集画面からアップロードして下さい
           v-textarea(v-model="entry.addresses", required,
             :rules="requiredRule"
-            placeholder="例）\nhttps://www.youtube.com/watch?v=xxxxxxx\nhttps://www.youtube.com/watch?v=yyyyyyyy\nhttps://www.youtube.com/watch?v=zzzzzzz"
+            placeholder="動画へのアドレス\n例）\nhttps://www.youtube.com/watch?v=xxxxxxx\nhttps://www.youtube.com/watch?v=yyyyyyyy\nhttps://www.youtube.com/watch?v=zzzzzzz"
           )
-          //- v-btn(@click='submit' v-show="!loading" block=true outlined=true)
-          //-   | エントリーする
-          //- v-progress-circular(v-show="loading" indeterminate color="primary")
+          v-btn(@click='submit' v-show="!loading" block=true outlined=true)
+            | 更新する
+          v-progress-circular(v-show="loading" indeterminate color="primary")
 </template>
 
 <script>
@@ -54,16 +53,28 @@ export default {
       .get()
       .then((entry) => {
         if (entry.exists) {
-          console.log('a', entry)
-          this.entry = entry
+          this.entry = entry.data()
         } else {
-          console.log('b', entry)
+          console.log('error:', entry)
         }
       })
   },
   methods: {
     gotoDetail(entry) {
       this.$router.push('/entries/' + entry.id)
+    },
+    async submit() {
+      this.loading = true
+      await this.$firestore
+        .collection('entries')
+        .doc(this.$route.params.id)
+        .set(this.entry)
+        .then((res) => {
+          this.$store.commit('info/setSnackbar', 'エントリーを更新しました')
+        })
+        .finally(() => {
+          this.loading = false
+        })
     }
   }
 }

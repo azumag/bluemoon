@@ -52,8 +52,11 @@ v-layout(column, justify-center, align-center)
             v-btn(@click="gotoEntryForm(event)")
               | エントリーフォーム
           v-card-text(v-else)
-            | エントリーするにはログインして下さい
-            | エントリー管理のため，ログイン必須になっています，お手数ですがご協力下さい
+            | エントリーするにはログインして下さい🙇‍♂️
+            | エントリー管理のためログイン必須になっています，お手数ですがご協力下さい
+            div
+              v-btn(@click="gotoLogin()")
+                | ログイン
 
 </template>
 
@@ -84,6 +87,9 @@ export default {
   methods: {
     gotoEntryForm(event) {
       this.$router.push('/events/' + event.id + '/entry/')
+    },
+    gotoLogin() {
+      this.$router.push('/login/')
     }
   }
 }
