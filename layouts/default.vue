@@ -42,6 +42,12 @@ export default {
   head() {
     return {
       meta: [
+        { hid: 'twitter:card', name: 'twitter:card', content: 'app' },
+        {
+          hid: 'twitter:site',
+          name: 'twitter:site',
+          content: '@bluegrass_moon'
+        },
         {
           hid: 'description',
           name: 'description',
@@ -51,6 +57,11 @@ export default {
           hid: 'og:description',
           property: 'og:description',
           content: this.meta.description
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: 'https://www.bluemoon.works/bluemoon_icon.png'
         }
       ]
     }
