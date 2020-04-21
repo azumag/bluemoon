@@ -1,11 +1,20 @@
 <template lang="pug">
   v-layout
     v-flex.text-xs-center
-      video(
-        width='100px'
-        src='~/assets/video/test.mp4'
-        @loadeddata='onloadeddata'
-      )
+      div
+        video(
+          width='300px'
+          src='~/assets/video/test.mp4'
+          @loadeddata='onloadeddata'
+        )
+        video(
+          width='300px'
+          src='~/assets/video/test.mp4'
+          @loadeddata='onloadeddata'
+        )
+      div
+        v-btn(@click="start")
+          | Start
       footer
         small
           em
@@ -19,16 +28,20 @@ import a from '~/assets/lib/timingsrc/v2/timingsrc.js'
 export default {
   data() {
     return {
-      b: ''
-      // to: new TIMINGSRC.TimingObject({range:[0,100]})
+      b: '',
+      to: new a.TimingObject({ range: [0, 100] })
     }
   },
   mounted() {
     console.log(a)
   },
   methods: {
+    start() {
+      this.to.query()
+      this.to.update({ velocity: 1.0 })
+    },
     onloadeddata(ev) {
-      // a.mediaSync(ev, a.TimingObject)
+      a.MediaSync.mediaSync(ev.target, this.to)
     }
   }
 }

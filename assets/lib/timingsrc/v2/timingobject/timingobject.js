@@ -21,8 +21,8 @@ along with Timingsrc.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import eventify from '../util/eventify';
-require('../util/motionutils')
-require('../util/masterclock')
+import motionutils from '../util/motionutils';
+import MasterClock from '../util/masterclock';
 
 // Utility inheritance function.
 var inherit = function (Child, Parent) {

@@ -6,6 +6,8 @@ import timingobject from './timingobject/main';
 // require('./sequencing/main');
 import mediasync from './mediasync/mediasync';
 
+console.log(mediasync)
+
 export default {
 	version : "v2",
 
@@ -32,6 +34,5 @@ export default {
 	// ActiveCue : sequencing.ActiveCue,
 
 	// MediaSync
-	MediaSync: mediasync.MediaSync,
-	mediaNeedKick : mediasync.needKick
+	MediaSync : mediasync
 };

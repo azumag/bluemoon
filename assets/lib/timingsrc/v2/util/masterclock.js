@@ -52,7 +52,7 @@ implying that master clock is equal to local clock.
 */
 
 import eventify from './eventify';
-require('./timeoututils');
+import timeoututils from './timeoututils';
 
 // Need a polyfill for performance,now as Safari on ios doesn't have it...
 (function(){
