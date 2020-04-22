@@ -25,7 +25,7 @@ var mediascape = function(_MS_) {
     }
     var vol = elem.volume;
     // If muted, we won't detect MEI on Chrome but we want to be quiet
-    elem.volume = 0.01;  
+    elem.volume = 0.01;
     var p;
     try {
       p = elem.play();

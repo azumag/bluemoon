@@ -15,108 +15,110 @@
         //- )
         video(
           width='300px'
-          ref="recording" id="recording"
-          autoplay
-          muted
-        )
-        video(
-          width='300px'
           ref="recordedVideo" id="recordedVideo"
           @loadeddata='onloadeddata'
         )
       div
+        video(
+          width='300px'
+          ref="recording" id="recording"
+          autoplay
+          muted
+        )
+      div
         | {{ position }}
+        v-progress-linear(:value='position')
       div
         v-btn(@click="start")
           | Start
         v-btn(@click="stop")
           | Stop
+      div
         v-btn(@click="startRec")
           | StartRec
         v-btn(@click="stopRec")
           | StopRec
-      div
-        v-btn(@click="playRec")
-          | StartAll
       footer
         small
           em
-            | &mdash;John Johnson
+            | &mdash;DEBUG VERSION
 </template>
 
 <script>
-// import mediascape from '~/assets/lib/mediasync.js'
-import a from '~/assets/lib/timingsrc/v2/timingsrc.js'
+import Timingsrc from '~/assets/lib/timingsrc/v2/timingsrc.js'
 
 export default {
   data() {
     return {
       recording: '',
+      recordingState: false,
       position: 0,
-      to: new a.TimingObject({ range: [0, 100] }),
+      to: new Timingsrc.TimingObject(),
       mediaRecorder: null,
-      recordedBlobs: null,
+      recordedBlobs: [],
       recordStarted: false
     }
   },
   watch: {
-    position(v) {
-      console.log(v)
-      if (
-        v > 0 &&
-        this.mediaRecorder &&
-        this.mediaRecorder.state === 'inactive'
-      ) {
-        this.startRec()
-        console.log('startrec')
-      }
-    }
+    // position(v) {
+    //   if (
+    //     v > 0.1 &&
+    //     this.mediaRecorder &&
+    //     this.mediaRecorder.state === 'inactive' &&
+    //     this.recordingState
+    //   ) {
+    //     this.mediaRecorder.start(10)
+    //   }
+    // }
   },
   mounted() {
     this.recording = this.$refs.recording
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices
-        .getUserMedia({
-          video: { width: 128, height: 72 },
-          audio: true
-        })
-        .then((stream) => {
-          this.recording.srcObject = stream
-          this.recording.play()
-          this.mediaRecorder = new MediaRecorder(stream, {})
-        })
-    }
+    this.setRecord()
     this.to.query()
     this.to.on('timeupdate', () => {
       this.position = this.to.query().position.toFixed(2)
     })
   },
   methods: {
-    startRec() {
-      this.recording = true
-      this.recordedBlobs = []
-      this.mediaRecorder.ondataavailable = (event) => {
-        if (event.data && event.data.size > 0) {
-          this.recordedBlobs.push(event.data)
-        }
+    setRecord() {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        return navigator.mediaDevices
+          .getUserMedia({
+            video: true,
+            audio: true
+          })
+          .then((stream) => {
+            this.recording.srcObject = stream
+            this.recording.play()
+            this.mediaRecorder = new MediaRecorder(stream, {})
+            this.recordedBlobs = []
+            this.mediaRecorder.ondataavailable = (event) => {
+              if (event.data && event.data.size > 0) {
+                this.recordedBlobs.push(event.data)
+              }
+            }
+          })
       }
+    },
+    startRec() {
+      this.$refs.recordedVideo.src = null
+      this.$refs.recordedVideo.srcObject = null
+      this.recordedBlobs = []
       this.mediaRecorder.start(10)
+      this.start()
     },
     stopRec() {
-      this.recording = false
       this.mediaRecorder.stop()
       this.stop()
     },
-    playRec() {
-      const superBuffer = new Blob(this.recordedBlobs, { type: 'video/webm' })
-      this.$refs.recordedVideo.src = null
-      this.$refs.recordedVideo.srcObject = null
-      this.$refs.recordedVideo.src = window.URL.createObjectURL(superBuffer)
-      this.$refs.recordedVideo.controls = true
-      this.$refs.recordedVideo.play()
-      this.start()
-    },
     start() {
+      if (this.recordedBlobs.length > 0) {
+        const superBuffer = new Blob(this.recordedBlobs, { type: 'video/webm' })
+        this.$refs.recordedVideo.src = null
+        this.$refs.recordedVideo.srcObject = null
+        this.$refs.recordedVideo.src = window.URL.createObjectURL(superBuffer)
+        this.$refs.recordedVideo.controls = true
+      }
       this.to.update({ position: 0.0 })
       this.to.update({ velocity: 1.0 })
     },
@@ -125,7 +127,11 @@ export default {
       this.to.update({ position: 0.0 })
     },
     onloadeddata(ev) {
-      a.MediaSync.mediaSync(ev.target, this.to)
+      ev.target.volume = 0.2
+      Timingsrc.MediaScape.mediaSync(ev.target, this.to, {
+        skew: 0.2,
+        debug: true
+      })
     }
   }
 }

@@ -34,5 +34,5 @@ export default {
 	// ActiveCue : sequencing.ActiveCue,
 
 	// MediaSync
-	MediaSync : mediasync
+	MediaScape : mediasync
 };
