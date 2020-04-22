@@ -6,6 +6,7 @@
           width='300px'
           src='~/assets/video/test.mp4'
           @loadeddata='onloadeddata'
+          controls
         )
         //- video(
         //-   width='300px'
@@ -59,10 +60,15 @@ export default {
     }
   },
   watch: {
-    'mediaRecorder.state'(v) {
+    position(v) {
       console.log(v)
-      if (v === 'recording') {
-        this.start()
+      if (
+        v > 0 &&
+        this.mediaRecorder &&
+        this.mediaRecorder.state === 'inactive'
+      ) {
+        this.startRec()
+        console.log('startrec')
       }
     }
   },
@@ -77,6 +83,7 @@ export default {
         .then((stream) => {
           this.recording.srcObject = stream
           this.recording.play()
+          this.mediaRecorder = new MediaRecorder(stream, {})
         })
     }
     this.to.query()
@@ -86,8 +93,8 @@ export default {
   },
   methods: {
     startRec() {
+      this.recording = true
       this.recordedBlobs = []
-      this.mediaRecorder = new MediaRecorder(this.recording.srcObject, {})
       this.mediaRecorder.ondataavailable = (event) => {
         if (event.data && event.data.size > 0) {
           this.recordedBlobs.push(event.data)
@@ -96,6 +103,7 @@ export default {
       this.mediaRecorder.start(10)
     },
     stopRec() {
+      this.recording = false
       this.mediaRecorder.stop()
       this.stop()
     },
