@@ -7,7 +7,7 @@ v-layout(column, justify-center, align-center)
           v-img(
             class="white--text align-end"
             height="200px"
-            src="/fes2.jpg"
+            src="/fes2-sm.jpg"
           )
             v-card-title.headline
               | {{ event.title }}

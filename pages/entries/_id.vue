@@ -5,7 +5,7 @@ v-layout(column, justify-center, align-center)
       v-img(
         class="white--text align-end"
         height="150px"
-        src="/entryedit.jpg"
+        src="/entryedit-sm.jpg"
       )
       v-card-title.headline
         div.pa-2.ma-2

@@ -5,7 +5,7 @@ v-layout(column, justify-center, align-center)
       v-img(
         class="white--text align-end"
         height="200px"
-        src="/events2.jpg"
+        src="/events2-sm.jpg"
       )
         v-card-title.headline
           | 開催行事
