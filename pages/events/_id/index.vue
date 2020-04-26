@@ -51,6 +51,11 @@ v-layout(column, justify-center, align-center)
           v-card-text
             | {{ event.contest }}
       v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+          v-card-title.headline
+            nuxt-link(to='/events/2pbLysWMNdNXnSvgBNr2/qa')
+              | Q and A
+      v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
           v-card-text(v-if="this.$firebase.currentUser")

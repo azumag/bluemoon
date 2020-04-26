@@ -37,7 +37,7 @@ v-layout(column, justify-center, align-center)
             | 過去の動画でもよい？
           v-card-text
             | 是非お願いします
-      v-col(cols=6)
+      v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)' shaped)
           v-card-title.headline
             | エントリーできる動画がない
@@ -47,24 +47,6 @@ v-layout(column, justify-center, align-center)
             nuxt-link.blue--text(to='/howto/multi-recording')
               | 多重録画アプリの紹介
             |」を参考にぜひ。
-      v-col(cols=6)
-        v-card(color='rgb(100, 100, 100, 0.4)')
-          v-card-title.headline
-          v-card-text(v-if="this.$firebase.currentUser")
-            v-btn(@click="gotoEntryForm(event)"
-              outlined
-              block
-            )
-              | エントリーフォームへ
-          v-card-text(v-else)
-            | エントリーするにはログインして下さい🙇‍♂️
-            | エントリー管理のためログイン必須になっています，お手数ですがご協力下さい
-            div
-              v-btn.mx-2(@click="gotoLogin()"
-                block
-                outlined
-              )
-                | ログイン
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)' shaped)
           v-card-title.headline
