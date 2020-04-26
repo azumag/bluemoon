@@ -66,6 +66,7 @@ export default {
         {
           hid: 'twitter:image',
           property: 'twitter:image',
+          name: 'twitter:image',
           content: 'https://www.bluemoon.works/bluemoon_icon.png'
         }
       ]
