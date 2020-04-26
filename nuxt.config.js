@@ -15,7 +15,29 @@ export default {
         hid: 'description',
         name: 'description',
         content: '今最もクールな ウェブとして 注目されているのが Bluemoon だ'
-      }
+      },
+      { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+      {
+        hid: 'twitter:site',
+        name: 'twitter:site',
+        content: '@bluegrass_moon'
+      },
+      {
+        hid: 'twitter:creator',
+        name: 'twitter:creator',
+        content: '@azumag'
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: 'https://www.bluemoon.works/bluemoon_icon.png'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://www.bluemoon.works/bluemoon_icon.png'
+      },
+
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
