@@ -42,11 +42,26 @@ export default {
   head() {
     return {
       meta: [
-        { hid: 'twitter:card', name: 'twitter:card', content: 'app' },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
         {
           hid: 'twitter:site',
           name: 'twitter:site',
           content: '@bluegrass_moon'
+        },
+        {
+          hid: 'twitter:creator',
+          name: 'twitter:creator',
+          content: '@azumag'
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: 'https://www.bluemoon.works/bluemoon_icon.png'
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: 'https://www.bluemoon.works/bluemoon_icon.png'
         },
         {
           hid: 'og:image',
@@ -54,8 +69,8 @@ export default {
           content: 'https://www.bluemoon.works/bluemoon_icon.png'
         },
         {
-          hid: 'twitter:image',
-          name: 'twitter:image',
+          hid: 'og:image',
+          property: 'og:image',
           content: 'https://www.bluemoon.works/bluemoon_icon.png'
         },
         {
