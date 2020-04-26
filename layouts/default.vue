@@ -49,6 +49,16 @@ export default {
           content: '@bluegrass_moon'
         },
         {
+          hid: 'og:image',
+          name: 'og:image',
+          content: 'https://www.bluemoon.works/bluemoon_icon.png'
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: 'https://www.bluemoon.works/bluemoon_icon.png'
+        },
+        {
           hid: 'description',
           name: 'description',
           content: this.meta.description
@@ -57,17 +67,6 @@ export default {
           hid: 'og:description',
           property: 'og:description',
           content: this.meta.description
-        },
-        {
-          hid: 'og:image',
-          property: 'og:image',
-          content: 'https://www.bluemoon.works/bluemoon_icon.png'
-        },
-        {
-          hid: 'twitter:image',
-          property: 'twitter:image',
-          name: 'twitter:image',
-          content: 'https://www.bluemoon.works/bluemoon_icon.png'
         }
       ]
     }
