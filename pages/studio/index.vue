@@ -6,7 +6,6 @@
           width='300px'
           src='~/assets/video/test.mp4'
           @loadeddata='onloadeddata'
-          controls
         )
         //- video(
         //-   width='300px'
@@ -50,6 +49,7 @@ import Timingsrc from '~/assets/lib/timingsrc/v2/timingsrc.js'
 export default {
   data() {
     return {
+      srcLoaded: false,
       recording: '',
       recordingState: false,
       position: 0,
