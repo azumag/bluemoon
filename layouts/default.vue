@@ -62,6 +62,11 @@ export default {
           hid: 'og:image',
           property: 'og:image',
           content: 'https://www.bluemoon.works/bluemoon_icon.png'
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: 'https://www.bluemoon.works/bluemoon_icon.png'
         }
       ]
     }
