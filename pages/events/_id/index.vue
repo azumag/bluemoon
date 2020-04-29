@@ -81,13 +81,13 @@ v-layout(column, justify-center, align-center)
                 | Iwashita Mandolins & Guitars
             |  さんにご協賛頂き，人気投票の景品として以下をご提供いただきました！
             div.subtitle-1.ma-2.font-weight-bold
-              div 1位 リペア券 リフレット
-              div 2位 リペア券 フレット擦り合わせ
-              div 3位 リペア券 ギター・ナット交換
+              div 1位 リペア券 (リフレット)
+              div 2位 リペア券 (フレット擦り合わせ)
+              div 3位 リペア券 (ギター・ナット交換)
               div.ml-8
                 | もしくは，特製アームレスト（Banjo, Mandolin用)
             div
-              | 3位までの入賞バンドには全員に
+              | 3位までの入賞作品には出演者全員に
               span.red--text フラットピック 2mm エボニー or ローズ
               | もついてしまいます！！！
             div.ma-1
