@@ -73,6 +73,33 @@ v-layout(column, justify-center, align-center)
                 outlined
               )
                 | ログイン
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | ご協賛
+          |  人気投票の賞品をご提供頂きました！
+          v-container(
+            style="background-image: url('/iwashita-mandolins.jpeg'); background-size: cover"
+            height="auto"
+          )
+            v-container(
+              style="background-color: rgba(80, 80, 80, 0.8);"
+            )
+              v-avatar.ma-2(size=64)
+                img(src="i-icon.jpg")
+              a.white--text(href="https://twitter.com/iwashita_md_gt")
+                | Iwashita Mandolins & Guitars
+              div.ma-4
+                div.white--text.body-1
+                  | 山梨県韮崎市の弦楽器工房
+                div.body-1
+                  | フラットマンドリン、アコースティックギターなどの製作や修理等
+                div.body-1
+                  | 営業時間 10:00～19:00 / 月曜定休
 
 </template>
 
