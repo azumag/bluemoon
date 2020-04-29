@@ -35,7 +35,7 @@ v-layout(column, justify-center, align-center)
               style="background-color: rgba(80, 80, 80, 0.8);"
             )
               v-avatar.ma-2(size=64)
-                img(src="i-icon.jpg")
+                img(src="/i-icon.jpg")
               a.white--text(href="https://twitter.com/iwashita_md_gt")
                 | Iwashita Mandolins & Guitars
               div.ma-4
