@@ -15,14 +15,14 @@ v-layout(column, justify-center, align-center)
           v-card-text
             | {{ event.abstract }}
       v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-chip(
             class="ma-2"
             color="red"
             text-color="white"
           )
             | ご協賛
-          |  人気投票の賞品をご提供頂きました！
+          span.body-1  人気投票賞品をご提供頂きました
           v-container(
             style="background-image: url('/iwashita-mandolins.jpeg'); background-size: cover"
             height="auto"
@@ -41,39 +41,62 @@ v-layout(column, justify-center, align-center)
                   | フラットマンドリン、アコースティックギターなどの製作や修理等
                 div.body-1
                   | 営業時間 10:00～19:00 / 月曜定休
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | ご協賛
+          span.body-1 司会時の BGM をご提供頂きました
+          v-container(
+            height="auto"
+          )
+            v-row
+              v-col(cols=3)
+                v-img.ma-2(
+                  src="/california_blue_sky.png"
+                  max-width="128"
+                )
+              v-col(cols=9)
+                a.white--text(href="https://docs.google.com/forms/d/e/1FAIpQLSfc6NUZ96XUlXwWPx6h-rV78QCI3vQ2zh1K8V5lwcFgo_WqqQ/viewform")
+                  | マサオカのCD購入フォーム
+                div.white--text.body-1
+                  | California Blue Sky 発売中です
     v-row
       v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             | 開催形式
           v-card-text
             | {{ event.performing_format }}
       v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             | 参加方法
           v-card-text
             | {{ event.howto }}
       v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline.red--text
             | 注意事項
           v-card-text
             | {{ event.notice }}
       v-col(cols=6)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             | 募集期間
           v-card-text
             | {{ event.registration_weeks }}
       v-col(cols=6)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             | 開催期間
           v-card-text.subtitle-1.font-weight-bold
             | {{ event.performing_weeks }}
       v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             | エントリー作品人気投票
           v-card-text
@@ -140,10 +163,41 @@ v-layout(column, justify-center, align-center)
               | 同票だった場合，申し訳ありませんが抽選させていただき，
               | 漏れたほうのエントリ作品の賞品は繰り下げとします
       v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
-            nuxt-link(to='/events/2pbLysWMNdNXnSvgBNr2/qa')
-              | Q and A
+            | Questions and Answers
+          v-card-text
+            v-expansion-panels
+              v-expansion-panel
+                v-expansion-panel-header
+                  | 動画を用意してからエントリーすべき？
+                v-expansion-panel-content
+                  div 先にエントリーを作成してもらい，（URL欄にはその旨を記載）あとから編集ページでアップロードしてもらっても構いません！
+              v-expansion-panel
+                v-expansion-panel-header
+                  | 動画が15分に満たないのですが
+                v-expansion-panel-content
+                  | 問題ありません！1曲でも1分でも，投稿いただけるだけで幸いです
+              v-expansion-panel
+                v-expansion-panel-header
+                  | オールドタイム系はOK？
+                v-expansion-panel-content
+                  | ブルーグラスの親戚のようなジャンルは歓迎します！（Dawg, Old Tyme, Irish, *Punk)
+                  | また，奏者が「これはブルーグラス」と言い張る場合も歓迎します。
+              v-expansion-panel
+                v-expansion-panel-header
+                  | 過去の動画でもよい？
+                v-expansion-panel-content
+                  | 是非お願いします
+              v-expansion-panel
+                v-expansion-panel-header
+                  | エントリーできる動画がない
+                v-expansion-panel-content
+                  | ぜひ多重録画アプリなどで作成してみてほしいです。
+                  | 別ページの「
+                  nuxt-link.blue--text(to='/howto/multi-recording')
+                    | 多重録画アプリの紹介
+                  |」を参考にぜひ。
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
@@ -178,12 +232,13 @@ export default {
         abstract:
           'ブルーグラス演奏動画を募集し，ライブストリーミング配信を行う。家でちょっと撮ってみた動画，遠隔多重録音でメンバーと作ってみた動画，過去うまく行ったライブの演奏動画や，バンドで練習したけどお蔵入りになっていた曲などを気軽に投稿してもらいたい。普段，地理的要因や時間的要因等でメンバーが集まりづらくライブやフェスティバルのステージに露出が低いようなバンドや，コアすぎて目立ちにくい演奏などにもスポットが当たるような，外出都合をつけず，かつイベント的一体感のある，即時性と非同期性を両立するインターネットの良さを生かした一つのライブイベントの形式として開催し，ブルーグラスの発展に寄与したい。',
         performing_format:
-          '【詳細検討・試行錯誤中】 エントリー動画をライブストリーミングで順次再生し放送する。バンドの紹介が下帯で流れる等や，参加者のリアルタイムコメント等できるだけ場の共有を意識した作りにしたい。 放送自体のアーカイブは期限付きで公開されるが，永続的には残さない。',
+          'エントリー動画をライブストリーミングで順次再生し放送する。バンドの紹介が下帯で流れる等や，参加者のリアルタイムコメント等できるだけ場の共有を意識した作りにしたい。 放送自体のアーカイブは期限付きで公開されるが，永続的には残さない。',
         howto:
           '1バンド（個人1人含む）15分以下の演奏動画を用意し，エントリーフォームにて登録する。動画はフォームのアップローダを利用するか， Youtube などにアップロード（限定公開推奨）した動画の URL をエントリフォームに記載する。動画容量が大きい場合は youtube を推奨する。',
         notice:
           '動画への出演者にはすべて了承を得ること。トラブルに対して開催者は責任はおいかねます',
-        registration_weeks: '2020年4月14日〜2020年5月3日',
+        registration_weeks:
+          '2020年4月14日〜2020年5月3日(グリニッジ標準時で日付が変わるまで。日本時間：5月4日午前9時)',
         performing_weeks: '2020年5月4日 19:00 - 2時間ほどを予定',
         contest: '検討中'
       }
