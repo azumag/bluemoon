@@ -189,7 +189,7 @@ export default {
         .set(this.form)
     },
     update() {
-      if (this.files || this.form.fileURLs) {
+      if (this.files || this.form.fileURLs || this.form.fileNames.length > 0) {
         this.loading = true
         if (this.files) {
           this.files.forEach((file) => {
