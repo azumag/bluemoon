@@ -24,7 +24,8 @@
     "lodash.clonedeep": "^4.5.0",
     "nuxt": "^2.9.2",
     "require-vuejs": "^1.1.3",
-    "vue-autolink": "^0.0.11"
+    "vue-autolink": "^0.0.11",
+    "vue-moment": "^4.1.0"
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.0",
