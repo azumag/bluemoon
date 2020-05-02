@@ -19,11 +19,12 @@ v-layout(column, justify-center, align-center)
               v-expansion-panel-header
                 | {{ entry.name }}
               v-expansion-panel-content.text--secondary
-                div.ma-2 {{ entry.description }}
+                div.ma-2 {{ linker(entry.description) }}
 </template>
 
 <script>
 // import bgImage from '@/assets/img/bluemoon_bg1.png'
+import Autolinker from 'autolinker'
 
 export default {
   data() {
@@ -49,6 +50,9 @@ export default {
   methods: {
     gotoDetail(entry) {
       this.$router.push('/entries/' + entry.id)
+    },
+    linker(txt) {
+      return Autolinker.link(txt)
     }
   }
 }
