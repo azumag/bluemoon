@@ -36,8 +36,7 @@ export default {
         hid: 'og:image',
         property: 'og:image',
         content: 'https://www.bluemoon.works/bluemoon_icon.png'
-      },
-
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -62,7 +61,8 @@ export default {
   plugins: [
     '@/plugins/firebase',
     '@/plugins/firebase-auth',
-    '@/plugins/nuxt-client-init.js'
+    '@/plugins/nuxt-client-init.js',
+    '@/plugins/autolink.js'
   ],
   /*
    ** Nuxt.js modules

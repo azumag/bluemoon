@@ -16,7 +16,6 @@
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.0-beta.19",
     "@nuxtjs/vuetify": "1.8.3",
-    "autolinker": "^3.14.1",
     "eventsource-polyfill": "^0.9.6",
     "firebase": "^6.6.0",
     "firebase-admin": "^8.9.0",
@@ -24,7 +23,8 @@
     "firebase-tools": "^7.3.1",
     "lodash.clonedeep": "^4.5.0",
     "nuxt": "^2.9.2",
-    "require-vuejs": "^1.1.3"
+    "require-vuejs": "^1.1.3",
+    "vue-autolink": "^0.0.11"
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.0",
