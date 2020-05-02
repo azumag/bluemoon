@@ -140,7 +140,10 @@ export default {
             } else {
               const data = doc.data()
               if (data.entryIds.length >= 3) {
-                this.$store.commit('info/setSnackbar', '投票数上限を超えています')
+                this.$store.commit(
+                  'info/setSnackbar',
+                  '投票数上限を超えています'
+                )
                 return
               }
               if (
