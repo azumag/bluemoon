@@ -21,6 +21,17 @@ v-layout(column, justify-center, align-center)
             color="red"
             text-color="white"
           )
+            | 放送URL
+          span.title
+            a(href="https://www.youtube.com/watch?v=vah8gAsdyNA")
+              | 当日（5月4日19時から）こちらで放送を行います
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
             | ご協賛
           span.body-1  人気投票賞品をご提供頂きました
           v-container(
