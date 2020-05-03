@@ -191,8 +191,9 @@ v-layout(column, justify-center, align-center)
                 v-expansion-panel-content.text--secondary
                   | 政府に代わり和牛券(4,980円相当)を提供いたします。
                   | 商品概要は本リンクを参照ください。
-                  a(href="https://www.sagae29.jp/red02/?v=2&gclid=Cj0KCQjwtLT1BRD9ARIsAMH3BtWE5p9lE2wqeJZhGqpvddmGGE4Z0ZVep_osCGKmQRxDwb6iHJhHe8AaAh1MEALw_wcB&utm_expid=.JEmgEF_ySvi0oE1EBI8Nvw.1&utm_referrer=https%3A%2F%2Fwww.google.com%2F")
                   | 冷凍で宅配され、送料は無料です。
+                  a(href="https://www.sagae29.jp/red02/?v=2&gclid=Cj0KCQjwtLT1BRD9ARIsAMH3BtWE5p9lE2wqeJZhGqpvddmGGE4Z0ZVep_osCGKmQRxDwb6iHJhHe8AaAh1MEALw_wcB&utm_expid=.JEmgEF_ySvi0oE1EBI8Nvw.1&utm_referrer=https%3A%2F%2Fwww.google.com%2F")
+                    | 山形牛 すきやき 上モモ
               v-expansion-panel
                 v-expansion-panel-header
                   | 注意事項1
