@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     availableVote() {
-      const base = moment('2020-05-01 23:00:00')
+      const base = moment('2020-05-04 23:00:00')
       const afterBroadcast = base.isBefore(moment())
       return afterBroadcast
     }
