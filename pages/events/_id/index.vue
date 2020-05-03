@@ -64,6 +64,30 @@ v-layout(column, justify-center, align-center)
                   | マサオカのCD購入フォーム
                 div.white--text.body-1
                   | California Blue Sky 発売中です
+    v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | ご協賛
+          span.body-1 和牛券をご提供いただきました
+          v-container(
+            height="auto"
+          )
+            v-row
+              v-col(cols=1)
+                v-chip(
+                  color="blue"
+                  text-color="white"
+                )
+                  | ザ
+              v-col(cols=11)
+                a.white--text(href="https://www.youtube.com/channel/UCZCCBbr93K5A92WU05wkWjg")
+                  | ザウルスさんの youtube チャネル
+                div.white--text.body-1
+                  | 音楽動画投稿やゲーム実況など！
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
@@ -153,6 +177,36 @@ v-layout(column, justify-center, align-center)
                 v-expansion-panel-content
                   div 原則として牛骨材での製作・交換となります。Martinのようなナット底面が斜めのものも対象とします。
               | 以上、不明な点がございましたらリペア券ご利用の際にご相談ください。
+            hr
+            div.title.mt-2 4位賞品和牛券
+            a.white--text(href="https://www.youtube.com/channel/UCZCCBbr93K5A92WU05wkWjg")
+              | ザウルス
+            |  さんにご協賛頂き，人気投票の4位景品として，和牛券をご提供いただきました！
+            div.subtitle-1.ma-2.font-weight-bold
+              div 4位 和牛券 (4,980円相当)
+            v-expansion-panels
+              v-expansion-panel
+                v-expansion-panel-header
+                  | 概要
+                v-expansion-panel-content.text--secondary
+                  | 政府に代わり和牛券(4,980円相当)を提供いたします。
+                  | 商品概要は本リンクを参照ください。
+                  a(href="https://www.sagae29.jp/red02/?v=2&gclid=Cj0KCQjwtLT1BRD9ARIsAMH3BtWE5p9lE2wqeJZhGqpvddmGGE4Z0ZVep_osCGKmQRxDwb6iHJhHe8AaAh1MEALw_wcB&utm_expid=.JEmgEF_ySvi0oE1EBI8Nvw.1&utm_referrer=https%3A%2F%2Fwww.google.com%2F")
+                  | 冷凍で宅配され、送料は無料です。
+              v-expansion-panel
+                v-expansion-panel-header
+                  | 注意事項1
+                v-expansion-panel-content.text--secondary
+                  div 4位となったバンドには連絡先をご連絡いただき、送付先を伝達いただく形になります。
+                  div 個人情報の悪用は致しません。
+                  div ご連絡ない場合は対象を5位→6位...と繰り下げ致します。
+              v-expansion-panel
+                v-expansion-panel-header
+                  | 注意事項2
+                v-expansion-panel-content.text--secondary
+                  | また、恐縮ではございますがバンドにつき1商品とさせていただきます。受取手をよく相談の上ご連絡願います。
+                  | メンバー間での争いの発生には責任を負いかねます。
+                  | 加えて、新型コロナ収束前にバンドメンバーで鍋を囲む行為は本フェスの趣旨がよく分からんくなるのでお控えください。
             div.title.mt-2 人気投票の方法について
             hr
             div.ma-2
