@@ -68,17 +68,19 @@ export default {
     }
   },
   async mounted() {
-    await this.$firestore
-      .collection('votes')
-      .doc(this.$firebase.currentUser.uid)
-      .get()
-      .then((res) => {
-        console.log(res.data())
-        this.votes = res.data().entryIds
-      })
-      .catch((err) => {
-        console.log('Error getting documents', err)
-      })
+    if (this.$firebase.currentUser) {
+      await this.$firestore
+        .collection('votes')
+        .doc(this.$firebase.currentUser.uid)
+        .get()
+        .then((res) => {
+          console.log(res.data())
+          this.votes = res.data().entryIds
+        })
+        .catch((err) => {
+          console.log('Error getting documents', err)
+        })
+    }
     await this.$firestore
       .collection('entries')
       // .where('eventId', '==', '2pbLysWMNdNXnSvgBNr2')
