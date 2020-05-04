@@ -102,6 +102,17 @@ v-layout(column, justify-center, align-center)
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | ご協賛
+          a(href="https://twitter.com/komeya88") 米屋さん
+          span.body-1 よりコロナビールをご提供いただきました
+    v-row
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             | 開催形式
           v-card-text
@@ -219,7 +230,14 @@ v-layout(column, justify-center, align-center)
                   | また、恐縮ではございますがバンドにつき1商品とさせていただきます。受取手をよく相談の上ご連絡願います。
                   | メンバー間での争いの発生には責任を負いかねます。
                   | 加えて、新型コロナ収束前にバンドメンバーで鍋を囲む行為は本フェスの趣旨がよく分からんくなるのでお控えください。
-            div.title.mt-2 人気投票の方法について
+            div.title.mt-2 5位賞品コロナビール1ダース
+            a.white--text(href="https://twitter.com/komeya88")
+              | 米屋
+            |  さんにご協賛頂き，人気投票の５位景品として今流行の最新鋭ビール，コロナビールをご提供いただきました！
+            v-img(
+              src="/corona.jpg"
+              width=200
+            )
             hr
             div.ma-2
               | フェス放送後に
