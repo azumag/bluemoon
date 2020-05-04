@@ -20,11 +20,24 @@ v-layout(column, justify-center, align-center)
                 outlined
               )
                 | ログイン
+    v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | 放送URL
+          span.title
+            a(href="https://www.youtube.com/watch?v=vah8gAsdyNA")
+              | 当日（5月4日19時から）こちらで放送を行います
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)' outlined)
           v-card-title.headline
             | エントリーリスト
+          v-card-text
+            | (順不同・放送順ではありません)
           v-expansion-panels
             v-expansion-panel(v-for="(entry, i) in entries" :key="entry.id")
               v-expansion-panel-header

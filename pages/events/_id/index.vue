@@ -268,6 +268,8 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             | エントリー締め切りました
+          v-btn(outlined block @click="gotoEntryList")
+            | エントリーリスト
           //- v-card-text(v-if="this.$firebase.currentUser")
           //-   v-btn(@click="gotoEntryForm(event)"
           //-     outlined
@@ -322,6 +324,9 @@ export default {
   methods: {
     gotoEntryForm(event) {
       this.$router.push('/events/' + event.id + '/entry/')
+    },
+    gotoEntryList(event) {
+      this.$router.push('/events/' + event.id + '/entries/')
     },
     gotoLogin() {
       this.$router.push('/login/')
