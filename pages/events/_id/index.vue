@@ -267,21 +267,22 @@ v-layout(column, justify-center, align-center)
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
-          v-card-text(v-if="this.$firebase.currentUser")
-            v-btn(@click="gotoEntryForm(event)"
-              outlined
-              block
-            )
-              | エントリーフォームへ
-          v-card-text(v-else)
-            | エントリーするにはログインして下さい🙇‍♂️
-            | エントリー管理のためログイン必須になっています，お手数ですがご協力下さい
-            div
-              v-btn.mx-2(@click="gotoLogin()"
-                block
-                outlined
-              )
-                | ログイン
+            | エントリー締め切りました
+          //- v-card-text(v-if="this.$firebase.currentUser")
+          //-   v-btn(@click="gotoEntryForm(event)"
+          //-     outlined
+          //-     block
+          //-   )
+          //-     | エントリーフォームへ
+          //- v-card-text(v-else)
+          //-   | エントリーするにはログインして下さい🙇‍♂️
+          //-   | エントリー管理のためログイン必須になっています，お手数ですがご協力下さい
+          //-   div
+          //-     v-btn.mx-2(@click="gotoLogin()"
+          //-       block
+          //-       outlined
+          //-     )
+          //-       | ログイン
 </template>
 
 <script>
