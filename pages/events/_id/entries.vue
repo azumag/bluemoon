@@ -62,9 +62,8 @@ export default {
   },
   computed: {
     availableVote() {
-      const base = moment('2020-05-04 23:00:00')
-      const afterBroadcast = base.isBefore(moment())
-      return afterBroadcast
+      const deadline = moment('2020-05-06 23:59:59')
+      return moment().isBefore(deadline)
     }
   },
   async mounted() {
