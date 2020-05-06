@@ -14,17 +14,17 @@ v-layout(column, justify-center, align-center)
             div.ma-2.text-lg-right -- Stay Home, Country Roads.
           v-card-text
             | {{ event.abstract }}
-      v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)')
-          v-chip(
-            class="ma-2"
-            color="red"
-            text-color="white"
-          )
-            | 放送URL
-          span.title
-            a(href="https://www.youtube.com/watch?v=vah8gAsdyNA")
-              | 当日（5月4日19時から）こちらで放送を行います
+      //- v-col(cols=12)
+      //-   v-card(color='rgb(100, 100, 100, 0.4)')
+      //-     v-chip(
+      //-       class="ma-2"
+      //-       color="red"
+      //-       text-color="white"
+      //-     )
+      //-       | 放送URL
+      //-     span.title
+      //-       a(href="https://www.youtube.com/watch?v=vah8gAsdyNA")
+      //-         | 当日（5月4日19時から）こちらで放送を行います
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-chip(

@@ -9,28 +9,28 @@ v-layout(column, justify-center, align-center)
             height="200px"
             src="/entryedit-sm.jpg"
           )
-    v-row(v-if="availableVote && !$firebase.currentUser")
-      v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)' outlined)
-          v-card-title.headline
-            | 人気投票する場合はログインをお願いいたします
-            div
-              v-btn.mx-2(@click="gotoLogin()"
-                block
-                outlined
-              )
-                | ログイン
-    v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)')
-          v-chip(
-            class="ma-2"
-            color="red"
-            text-color="white"
-          )
-            | 放送URL
-          span.title
-            a(href="https://www.youtube.com/watch?v=vah8gAsdyNA")
-              | 当日（5月4日19時から）こちらで放送を行います
+    //- v-row(v-if="availableVote && !$firebase.currentUser")
+    //-   v-col(cols=12)
+    //-     v-card(color='rgb(100, 100, 100, 0.4)' outlined)
+    //-       v-card-title.headline
+    //-         | 人気投票する場合はログインをお願いいたします
+    //-         div
+    //-           v-btn.mx-2(@click="gotoLogin()"
+    //-             block
+    //-             outlined
+    //-           )
+    //-             | ログイン
+    //- v-col(cols=12)
+    //-     v-card(color='rgb(100, 100, 100, 0.4)')
+    //-       v-chip(
+    //-         class="ma-2"
+    //-         color="red"
+    //-         text-color="white"
+    //-       )
+    //-         | 放送URL
+    //-       span.title
+    //-         a(href="https://www.youtube.com/watch?v=vah8gAsdyNA")
+    //-           | 当日（5月4日19時から）こちらで放送を行います
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)' outlined)

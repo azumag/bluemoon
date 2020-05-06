@@ -10,7 +10,7 @@ v-layout(column, justify-center, align-center)
         v-card-title.headline
           | 開催行事
       v-card-text
-        | 開催されている行事の情報・参加登録等
+        | 行事の情報・参加登録等
         hr
     v-row
       v-col(cols="12")
@@ -18,7 +18,7 @@ v-layout(column, justify-center, align-center)
           shaped
         )
           v-card-title
-            span.headline 募集中
+            span.headline 開催終了
           v-card-text
             v-list
               v-list-item(v-for="(event, i) in events" :key="event.id")
