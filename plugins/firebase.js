@@ -12,12 +12,12 @@ if (!firebase.apps.length) {
     storageBucket: process.env.STORAGEBUCKET,
     messagingSenderId: process.env.MESSAGINGSENDERID
   })
-  if (process.env.DEV) {
-    firebase.firestore().settings({
-      host: location.hostname + ':8000',
-      ssl: false
-    })
-  }
+  // if (process.env.DEV) {
+  //   firebase.firestore().settings({
+  //     host: location.hostname + ':8000',
+  //     ssl: false
+  //   })
+  // }
 }
 
 export default (context, inject) => {

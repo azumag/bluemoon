@@ -17,31 +17,31 @@ export default (context, inject) =>
         // Make user entry for local development
         // since emulator does not trigger onAuth event of firebase functions
         console.log(observable.currentUser.uid)
-        firebase
-          .firestore()
-          .collection('users')
-          .doc(observable.currentUser.uid)
-          .get()
-          .then((user) => {
-            if (!user.exists) {
-              console.log('create')
-              return firebase
-                .firestore()
-                .collection('users')
-                .add({
-                  name: observable.currentUser.displayName,
-                  uid: observable.currentUser.uid
-                })
-            } else {
-              console.log('user exists')
-            }
-          })
-          .then((res) => {
-            console.log(res)
-          })
-          .catch((e) => {
-            console.log(e)
-          })
+        // firebase
+        //   .firestore()
+        //   .collection('users')
+        //   .doc(observable.currentUser.uid)
+        //   .get()
+        //   .then((user) => {
+        //     if (!user.exists) {
+        //       console.log('create')
+        //       return firebase
+        //         .firestore()
+        //         .collection('users')
+        //         .add({
+        //           name: observable.currentUser.displayName,
+        //           uid: observable.currentUser.uid
+        //         })
+        //     } else {
+        //       console.log('user exists')
+        //     }
+        //   })
+        //   .then((res) => {
+        //     console.log(res)
+        //   })
+        //   .catch((e) => {
+        //     console.log(e)
+        //   })
       }
       resolve()
     })
