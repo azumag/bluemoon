@@ -92,7 +92,7 @@ export default {
 
     console.log(this.entries)
     this.entries.sort((a, b) => {
-      return b.votes.length - a.votes.length
+      return (b.votes ? b.votes.length : 0) - (a.votes ? a.votes.length : 0)
     })
   }
 }
