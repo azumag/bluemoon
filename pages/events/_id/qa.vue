@@ -72,7 +72,7 @@ export default {
       this.$firestore
         .collection('questions')
         .add({ question: this.question })
-        .then((result) => {
+        .then(() => {
           this.question = ''
           this.$store.commit('info/setSnackbar', '質問を送信しました')
         })
