@@ -106,6 +106,7 @@ export default {
      */
     extend(config, ctx) {}
   },
+  buildModules: ['@nuxt/typescript-build'],
   server: {
     host: '0.0.0.0'
   }
