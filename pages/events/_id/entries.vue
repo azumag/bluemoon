@@ -123,7 +123,7 @@ export default {
               .set({
                 entryIds: this.votes
               })
-              .then((result) => {
+              .then(() => {
                 this.$store.commit('info/setSnackbar', '取り消しました')
               })
           }
@@ -147,7 +147,7 @@ export default {
                 .set({
                   entryIds: [entry.id]
                 })
-                .then((result) => {
+                .then(() => {
                   this.votes = [entry.id]
                   this.$store.commit('info/setSnackbar', '投票しました')
                 })
@@ -174,7 +174,7 @@ export default {
                   .set({
                     entryIds: data.entryIds
                   })
-                  .then((result) => {
+                  .then(() => {
                     this.votes = data.entryIds
                     this.$store.commit('info/setSnackbar', '投票しました')
                   })

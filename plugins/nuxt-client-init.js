@@ -1,1 +1,1 @@
-export default async (context) => {}
+export default async (_context) => {}

@@ -171,7 +171,7 @@ export default {
               return Promise.all(uploadTasks)
             }
           })
-          .then((result) => {
+          .then(() => {
             this.$store.commit('info/setSnackbar', '参加登録しました')
             this.$router.push('/entries/')
           })

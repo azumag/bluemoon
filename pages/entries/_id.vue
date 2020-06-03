@@ -148,17 +148,17 @@ export default {
             })
           )
         })
-        .then((res) => {
+        .then(() => {
           return this.$firestore
             .collection('entries')
             .doc(this.$route.params.id)
             .delete()
         })
-        .then((res) => {
+        .then(() => {
           this.$store.commit('info/setSnackbar', '削除しました')
           this.$router.back()
         })
-        .catch((e) => {
+        .catch(() => {
           this.$store.commit('info/setSnackbar', '削除に失敗しました')
         })
     },
@@ -170,15 +170,15 @@ export default {
       storageRef
         .child(this.filePath + filename)
         .delete()
-        .then((res) => {
+        .then(() => {
           const index = this.form.fileNames.indexOf(filename)
           this.form.fileNames.splice(index, 1)
           return this.updateForm()
         })
-        .then((res) => {
+        .then(() => {
           this.$store.commit('info/setSnackbar', '削除しました')
         })
-        .catch((e) => {
+        .catch(() => {
           this.$store.commit('info/setSnackbar', '削除に失敗しました')
         })
     },
@@ -200,7 +200,7 @@ export default {
           })
         }
         this.updateForm()
-          .then((result) => {
+          .then(() => {
             if (this.files) {
               const storageRef = this.$firestorage().ref()
               const uploadTasks = this.files.map((file) => {
@@ -235,7 +235,7 @@ export default {
               return Promise.all(uploadTasks)
             }
           })
-          .then((result) => {
+          .then(() => {
             this.$store.commit('info/setSnackbar', 'エントリーを更新しました')
           })
           .catch((e) => {

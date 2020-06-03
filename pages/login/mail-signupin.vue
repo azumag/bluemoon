@@ -6,84 +6,77 @@ v-container
         v-label メールアドレス
         v-text-field(
           v-model="email",
-          required,
+          :rules="emailRules"
           type='mail'
         )
         v-label パスワード
         v-text-field(
           v-model="password",
-          required,
+          :rules="passwordRules"
           hint='6文字以上必須です'
           type='password'
         )
-        //- v-label ニックネーム
-        //- v-text-field(
-        //-   v-model="nickname",
-        //-   required
-        //- )
         v-btn(@click='submit' v-show="!loading")
           | 新規登録 / ログイン
 
         v-progress-circular(v-show="loading" indeterminate color="primary")
 </template>
-<script>
-// import { mapActions } from 'vuex'
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+import Validation from '@/lib/validation'
+type VForm = Vue & { validate: () => boolean }
 
-export default {
-  data() {
-    return {
-      email: '',
-      password: '',
-      nickname: '',
-      valid: true,
-      loading: false
+@Component
+export default class MailSignupin extends Vue {
+  email = ''
+  password = ''
+  nickname = ''
+  valid: boolean = true
+  loading = false
+  emailRules = [Validation.required(), Validation.email()]
+  passwordRules = [Validation.required(), Validation.password()]
+
+  signin() {
+    return this.$firebase
+      .auth()
+      .signInWithEmailAndPassword(this.email, this.password)
+      .then(() => {
+        this.$store.commit('info/setSnackbar', 'サインインしました')
+        this.$router.push('/')
+      })
+      .catch((e) => {
+        this.$store.commit('info/setSnackbar', e)
+      })
+  }
+
+  submit() {
+    if (!(this.$refs.form as VForm).validate()) {
+      return
     }
-  },
-  methods: {
-    signin() {
-      return this.$firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then((result) => {
-          this.$store.commit('info/setSnackbar', 'サインインしました')
-          this.$router.push('/')
-        })
-        .catch((e) => {
-          this.$store.commit('info/setSnackbar', e)
-        })
-    },
-    submit() {
-      // if (this.nickname === '') {
-      //   // TODO: use validator
-      //   this.$store.commit('info/setSnackbar', 'ニックネームを設定して下さい')
-      //   return
-      // }
-      this.loading = true
-      // TODO: validation error with form
-      this.$firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        // .then((result) => {
-        //   return result.user.updateProfile({
-        //     displayName: this.nickname
-        //   })
-        // })
-        .then((result) => {
+    this.loading = true
+    this.$firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.email, this.password)
+      // .then((result) => {
+      //   return result.user.updateProfile({
+      //     displayName: this.nickname
+      //   })
+      // })
+      .then(() => {
+        return this.signin()
+      })
+      .catch((e) => {
+        console.log(e)
+        // console.log(e.code)
+        if (e.code === 'auth/email-already-in-use') {
           return this.signin()
-        })
-        .catch((e) => {
-          // console.log(e)
-          // console.log(e.code)
-          if (e.code === 'auth/email-already-in-use') {
-            return this.signin()
-          } else {
-            this.$store.commit('info/setSnackbar', e)
-          }
-        })
-        .finally(() => {
-          this.loading = false
-        })
-    }
+        } else {
+          this.$store.commit('info/setSnackbar', e)
+        }
+      })
+      .finally(() => {
+        this.loading = false
+      })
   }
 }
 </script>
