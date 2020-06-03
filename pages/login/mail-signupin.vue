@@ -34,7 +34,7 @@ export default class MailSignupin extends Vue {
   valid: boolean = true
   loading = false
   emailRules = [Validation.required(), Validation.email()]
-  passwordRules = [Validation.required()]
+  passwordRules = [Validation.required(), Validation.password()]
 
   signin() {
     return this.$firebase

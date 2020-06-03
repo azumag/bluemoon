@@ -14,5 +14,13 @@ export default {
       }
       return true
     }
+  },
+  password(m: string = '6文字以上入力してください') {
+    return (v: string): string | boolean => {
+      if (v.length < 6) {
+        return m
+      }
+      return true
+    }
   }
 }
