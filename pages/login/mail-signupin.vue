@@ -24,6 +24,7 @@ v-container
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import Validation from '@/lib/validation'
+type VForm = Vue & { validate: () => boolean }
 
 @Component
 export default class MailSignupin extends Vue {
@@ -49,8 +50,10 @@ export default class MailSignupin extends Vue {
   }
 
   submit() {
+    if (!(this.$refs.form as VForm).validate()) {
+      return
+    }
     this.loading = true
-    // TODO: validation error with form
     this.$firebase
       .auth()
       .createUserWithEmailAndPassword(this.email, this.password)
