@@ -2,6 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 import 'firebase/storage'
+import Vue from 'vue'
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -20,7 +21,10 @@ if (!firebase.apps.length) {
   // }
 }
 
-export default (context, inject) => {
-  inject('firestore', firebase.firestore())
-  inject('firestorage', firebase.storage)
-}
+Vue.prototype.$firestore = firebase.firestore()
+Vue.prototype.$firestorage = firebase.storage
+
+// export default (_context: any, inject: any) => {
+//   inject('firestore')
+//   inject('firestorage', firebase.storage)
+// }
