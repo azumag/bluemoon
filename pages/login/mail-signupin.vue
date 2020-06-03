@@ -26,64 +26,61 @@ v-container
 
         v-progress-circular(v-show="loading" indeterminate color="primary")
 </template>
-<script>
-// import { mapActions } from 'vuex'
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
 
-export default {
-  data() {
-    return {
-      email: '',
-      password: '',
-      nickname: '',
-      valid: true,
-      loading: false
-    }
-  },
-  methods: {
-    signin() {
-      return this.$firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then((result) => {
-          this.$store.commit('info/setSnackbar', 'サインインしました')
-          this.$router.push('/')
-        })
-        .catch((e) => {
-          this.$store.commit('info/setSnackbar', e)
-        })
-    },
-    submit() {
-      // if (this.nickname === '') {
-      //   // TODO: use validator
-      //   this.$store.commit('info/setSnackbar', 'ニックネームを設定して下さい')
-      //   return
-      // }
-      this.loading = true
-      // TODO: validation error with form
-      this.$firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        // .then((result) => {
-        //   return result.user.updateProfile({
-        //     displayName: this.nickname
-        //   })
-        // })
-        .then((result) => {
+@Component
+export default class MailSignupin extends Vue {
+  email = ''
+  password = ''
+  nickname = ''
+  valid: boolean = true
+  loading = false
+
+  signin() {
+    return this.$firebase
+      .auth()
+      .signInWithEmailAndPassword(this.email, this.password)
+      .then(() => {
+        this.$store.commit('info/setSnackbar', 'サインインしました')
+        this.$router.push('/')
+      })
+      .catch((e) => {
+        this.$store.commit('info/setSnackbar', e)
+      })
+  }
+
+  submit() {
+    // if (this.nickname === '') {
+    //   // TODO: use validator
+    //   this.$store.commit('info/setSnackbar', 'ニックネームを設定して下さい')
+    //   return
+    // }
+    this.loading = true
+    // TODO: validation error with form
+    this.$firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.email, this.password)
+      // .then((result) => {
+      //   return result.user.updateProfile({
+      //     displayName: this.nickname
+      //   })
+      // })
+      .then(() => {
+        return this.signin()
+      })
+      .catch((e) => {
+        console.log(e)
+        // console.log(e.code)
+        if (e.code === 'auth/email-already-in-use') {
           return this.signin()
-        })
-        .catch((e) => {
-          // console.log(e)
-          // console.log(e.code)
-          if (e.code === 'auth/email-already-in-use') {
-            return this.signin()
-          } else {
-            this.$store.commit('info/setSnackbar', e)
-          }
-        })
-        .finally(() => {
-          this.loading = false
-        })
-    }
+        } else {
+          this.$store.commit('info/setSnackbar', e)
+        }
+      })
+      .finally(() => {
+        this.loading = false
+      })
   }
 }
 </script>
