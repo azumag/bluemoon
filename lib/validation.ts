@@ -6,5 +6,13 @@ export default {
       }
       return true
     }
+  },
+  email(m: string = 'メールアドレスの形式が正しくありません') {
+    return (v: string): string | boolean => {
+      if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v)) {
+        return m
+      }
+      return true
+    }
   }
 }

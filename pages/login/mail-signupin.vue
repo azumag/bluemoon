@@ -33,7 +33,7 @@ export default class MailSignupin extends Vue {
   nickname = ''
   valid: boolean = true
   loading = false
-  emailRules = [Validation.required()]
+  emailRules = [Validation.required(), Validation.email()]
   passwordRules = [Validation.required()]
 
   signin() {
