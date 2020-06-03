@@ -6,21 +6,16 @@ v-container
         v-label メールアドレス
         v-text-field(
           v-model="email",
-          required,
+          :rules="emailRules"
           type='mail'
         )
         v-label パスワード
         v-text-field(
           v-model="password",
-          required,
+          :rules="passwordRules"
           hint='6文字以上必須です'
           type='password'
         )
-        //- v-label ニックネーム
-        //- v-text-field(
-        //-   v-model="nickname",
-        //-   required
-        //- )
         v-btn(@click='submit' v-show="!loading")
           | 新規登録 / ログイン
 
@@ -28,6 +23,7 @@ v-container
 </template>
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import Validation from '@/lib/validation'
 
 @Component
 export default class MailSignupin extends Vue {
@@ -36,6 +32,8 @@ export default class MailSignupin extends Vue {
   nickname = ''
   valid: boolean = true
   loading = false
+  emailRules = [Validation.required()]
+  passwordRules = [Validation.required()]
 
   signin() {
     return this.$firebase
@@ -51,11 +49,6 @@ export default class MailSignupin extends Vue {
   }
 
   submit() {
-    // if (this.nickname === '') {
-    //   // TODO: use validator
-    //   this.$store.commit('info/setSnackbar', 'ニックネームを設定して下さい')
-    //   return
-    // }
     this.loading = true
     // TODO: validation error with form
     this.$firebase
