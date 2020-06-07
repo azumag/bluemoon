@@ -20,13 +20,5 @@ module.exports = {
   ignorePatterns: ['functions/**', 'assets/**'],
   rules: {
     'no-console': 'off',
-    'space-before-function-paren': [
-      'error',
-      {
-        anonymous: 'never',
-        named: 'never',
-        asyncArrow: 'always',
-      },
-    ],
   },
 }
