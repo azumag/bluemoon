@@ -97,7 +97,7 @@ export default {
       search: null,
       memberModel: null,
       editGroupMembers: [],
-      commonTunes: []
+      commonTunes: [],
     }
   },
   computed: {
@@ -105,13 +105,13 @@ export default {
       return this.users.map((x) => {
         return {
           text: x.name,
-          value: x.uid
+          value: x.uid,
         }
       })
     },
     openCommonTunes() {
       return this.commonTunes.length > 0
-    }
+    },
   },
   mounted() {
     this.$firestore
@@ -155,10 +155,7 @@ export default {
       // console.log('ctunes', _commonTunes)
       return Promise.all(
         _commonTunes.map((ct) => {
-          return this.$firestore
-            .collection('tunes')
-            .doc(ct)
-            .get()
+          return this.$firestore.collection('tunes').doc(ct).get()
         })
       )
     },
@@ -202,7 +199,7 @@ export default {
           })
           return {
             memberRef: member.memberRef,
-            aref
+            aref,
           }
         })
       )
@@ -280,20 +277,14 @@ export default {
       const item = this.editGroup
       // TODO: delete with ref
       if (confirm('グループを削除します。よろしいですか？')) {
-        await this.$firestore
-          .collection('groups')
-          .doc(item.id)
-          .delete()
+        await this.$firestore.collection('groups').doc(item.id).delete()
         const index = this.items.indexOf(item)
         this.items.splice(index, 1)
       }
       this.editGroup = null
     },
     async delGroupMembers(item) {
-      await this.$firestore
-        .collection('groupMembers')
-        .doc(item.id)
-        .delete()
+      await this.$firestore.collection('groupMembers').doc(item.id).delete()
       const index = this.editGroupMembers.indexOf(item)
       this.editGroupMembers.splice(index, 1)
     },
@@ -310,7 +301,7 @@ export default {
       }
       const value = {
         name: this.groupName,
-        authorRef: this.$firebase.currentUser.uid
+        authorRef: this.$firebase.currentUser.uid,
       }
       const item = await this.$firestore.collection('groups').add(value)
       // console.log(item)
@@ -346,7 +337,7 @@ export default {
         memberRef: this.memberModel.value,
         memberName: this.memberModel.text,
         groupName: this.editGroup.name,
-        authorRef: this.$firebase.currentUser.uid
+        authorRef: this.$firebase.currentUser.uid,
       }
       const item = await this.$firestore.collection('groupMembers').add(value)
       this.$store.commit(
@@ -356,7 +347,7 @@ export default {
       this.editGroupMembers.unshift({ ...value, id: item.id })
       this.memberModel = null
       this.search = null
-    }
-  }
+    },
+  },
 }
 </script>

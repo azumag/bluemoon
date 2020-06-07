@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       // bgImage,
-      events: []
+      events: [],
     }
   },
   mounted() {
@@ -62,10 +62,10 @@ export default {
       this.events = [
         {
           id: '2pbLysWMNdNXnSvgBNr2',
-          title: 'Bluegrass Lockdown Music Festival'
-        }
+          title: 'Bluegrass Lockdown Music Festival',
+        },
       ]
-    }
-  }
+    },
+  },
 }
 </script>

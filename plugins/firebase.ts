@@ -11,7 +11,7 @@ if (!firebase.apps.length) {
     databaseURL: process.env.DATABASEURL,
     projectId: process.env.PROJECTID,
     storageBucket: process.env.STORAGEBUCKET,
-    messagingSenderId: process.env.MESSAGINGSENDERID
+    messagingSenderId: process.env.MESSAGINGSENDERID,
   })
   // if (process.env.DEV) {
   //   firebase.firestore().settings({

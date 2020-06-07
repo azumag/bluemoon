@@ -56,7 +56,7 @@ export default {
       to: new Timingsrc.TimingObject(),
       mediaRecorder: null,
       recordedBlobs: [],
-      recordStarted: false
+      recordStarted: false,
     }
   },
   watch: {
@@ -85,7 +85,7 @@ export default {
         return navigator.mediaDevices
           .getUserMedia({
             video: true,
-            audio: true
+            audio: true,
           })
           .then((stream) => {
             this.recording.srcObject = stream
@@ -130,9 +130,9 @@ export default {
       ev.target.volume = 0.2
       Timingsrc.MediaScape.mediaSync(ev.target, this.to, {
         skew: 0.2,
-        debug: true
+        debug: true,
       })
-    }
-  }
+    },
+  },
 }
 </script>

@@ -61,7 +61,7 @@ v-layout(column, justify-center, align-center)
 export default {
   data() {
     return {
-      question: ''
+      question: '',
     }
   },
   methods: {
@@ -76,7 +76,7 @@ export default {
           this.question = ''
           this.$store.commit('info/setSnackbar', '質問を送信しました')
         })
-    }
-  }
+    },
+  },
 }
 </script>

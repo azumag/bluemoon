@@ -90,8 +90,8 @@ v-layout(column, justify-center, align-center)
 export default {
   data() {
     return {
-      bgImage: ''
+      bgImage: '',
     }
-  }
+  },
 }
 </script>

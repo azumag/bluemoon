@@ -1,11 +1,11 @@
 export const state = () => {
   return {
-    snackbarText: ''
+    snackbarText: '',
   }
 }
 
 export const mutations = {
   setSnackbar(state, text) {
     state.snackbarText = text
-  }
+  },
 }

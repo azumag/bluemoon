@@ -14,38 +14,38 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: '今最もクールな ウェブとして 注目されているのが Bluemoon だ'
+        content: '今最もクールな ウェブとして 注目されているのが Bluemoon だ',
       },
       { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
       {
         hid: 'twitter:site',
         name: 'twitter:site',
-        content: '@bluegrass_moon'
+        content: '@bluegrass_moon',
       },
       {
         hid: 'twitter:creator',
         name: 'twitter:creator',
-        content: '@azumag'
+        content: '@azumag',
       },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://www.bluemoon.works/bluemoon_icon.png'
+        content: 'https://www.bluemoon.works/bluemoon_icon.png',
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://www.bluemoon.works/bluemoon_icon.png'
-      }
+        content: 'https://www.bluemoon.works/bluemoon_icon.png',
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
-      }
-    ]
+          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons',
+      },
+    ],
   },
   /*
    ** Customize the progress-bar color
@@ -62,7 +62,7 @@ export default {
     '@/plugins/firebase',
     '@/plugins/firebase-auth',
     '@/plugins/nuxt-client-init.js',
-    '@/plugins/autolink.js'
+    '@/plugins/autolink.js',
   ],
   /*
    ** Nuxt.js modules
@@ -77,9 +77,9 @@ export default {
         filename:
           process.env.NODE_ENV !== 'production'
             ? './config/.env.dev'
-            : './config/.env.prod'
-      }
-    ]
+            : './config/.env.prod',
+      },
+    ],
   ],
   /*
    ** vuetify module configuration
@@ -94,8 +94,8 @@ export default {
       info: colors.teal.lighten1,
       warning: colors.amber.base,
       error: colors.deepOrange.accent4,
-      success: colors.green.accent3
-    }
+      success: colors.green.accent3,
+    },
   },
   /*
    ** Build configuration
@@ -104,10 +104,10 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(_config, _ctx) {},
   },
   buildModules: ['@nuxt/typescript-build'],
   server: {
-    host: '0.0.0.0'
-  }
+    host: '0.0.0.0',
+  },
 }

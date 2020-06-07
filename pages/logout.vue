@@ -15,7 +15,7 @@ export default {
           this.$store.commit('info/setSnackbar', 'Logout')
           this.$router.push('/')
         })
-    }
-  }
+    },
+  },
 }
 </script>
