@@ -6,7 +6,7 @@ export default (_context, inject) =>
   new Promise((resolve) => {
     const observable = Vue.observable({
       currentUser: firebase.auth().currentUser,
-      auth: firebase.auth
+      auth: firebase.auth,
     })
 
     inject('firebase', observable)

@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       a: '',
-      entries: []
+      entries: [],
     }
   },
   async mounted() {
@@ -48,7 +48,7 @@ export default {
   methods: {
     gotoDetail(entry) {
       this.$router.push('/entries/' + entry.id)
-    }
-  }
+    },
+  },
 }
 </script>

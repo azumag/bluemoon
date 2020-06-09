@@ -79,14 +79,14 @@ export default {
         fileURLs: '',
         email: '',
         userId: '',
-        fileNames: []
+        fileNames: [],
       },
       requiredRule: [
         (v) => {
           return !!v || '必須項目です'
-        }
+        },
       ],
-      loading: false
+      loading: false,
     }
   },
   mounted() {
@@ -100,10 +100,7 @@ export default {
   },
   methods: {
     async deleteEntry(entryId) {
-      await this.$firestore
-        .collection('entries')
-        .doc(entryId)
-        .delete()
+      await this.$firestore.collection('entries').doc(entryId).delete()
     },
     submit() {
       this.$refs.formValidate.validate()
@@ -195,7 +192,7 @@ export default {
       } else {
         this.$store.commit('info/setSnackbar', '動画が登録されていません')
       }
-    }
-  }
+    },
+  },
 }
 </script>

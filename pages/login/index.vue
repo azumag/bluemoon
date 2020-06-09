@@ -19,11 +19,11 @@ export default {
       loginMethods: [
         {
           title: 'Email で新規登録/ログイン',
-          to: '/login/mail-signupin'
+          to: '/login/mail-signupin',
         },
         {
           title: 'Facebook',
-          action: this.facebookLogin
+          action: this.facebookLogin,
         },
         // {
         //   title: 'Google',
@@ -31,24 +31,24 @@ export default {
         // },
         {
           title: 'Twitter',
-          action: this.twitterLogin
-        }
+          action: this.twitterLogin,
+        },
         // {
         //   title: 'Email Login',
         //   to: '/login/mail-signin'
         // }
-      ]
+      ],
     }
   },
   computed: {
     isLoggedIn() {
       return this.$firebase.currentUser
-    }
+    },
   },
   watch: {
     isLoggedIn() {
       this.$router.push('/')
-    }
+    },
   },
   mounted() {
     if (this.$firebase.currentUser) {
@@ -69,8 +69,8 @@ export default {
     async facebookLogin() {
       const provider = new this.$firebase.auth.FacebookAuthProvider()
       await this.$firebase.auth().signInWithRedirect(provider)
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="sass" scoped>

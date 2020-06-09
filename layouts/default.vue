@@ -43,7 +43,7 @@ export default {
     return {
       meta: {
         description:
-          '今最もクールな ウェブとして 注目されているのが Bluemoon だ'
+          '今最もクールな ウェブとして 注目されているのが Bluemoon だ',
       },
       version: '0.0.4',
       clipped: false,
@@ -53,15 +53,15 @@ export default {
         {
           icon: 'apps',
           title: 'Welcome',
-          to: '/'
-        }
+          to: '/',
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: 'Bluemoon',
       snackbar: false,
-      user: null
+      user: null,
     }
   },
   computed: {
@@ -74,45 +74,45 @@ export default {
         items.push({
           icon: 'bubble_chart',
           title: '開催行事',
-          to: '/events'
+          to: '/events',
         })
         items.push({
           icon: 'bubble_chart',
           title: 'エントリーリスト',
-          to: '/entries'
+          to: '/entries',
         })
         items.push({
           icon: 'bubble_chart',
           title: 'レパートリー登録',
-          to: '/repertories'
+          to: '/repertories',
         })
         items.push({
           icon: 'bubble_chart',
           title: 'グループ',
-          to: '/groups'
+          to: '/groups',
         })
         items.push({
           icon: 'person',
           title: 'Logout',
-          to: '/logout'
+          to: '/logout',
         })
       } else {
         items.push({
           icon: 'person',
           title: 'Login',
-          to: '/login'
+          to: '/login',
         })
       }
       return items
-    }
+    },
   },
   watch: {
     snackbarText(v) {
       if (v !== '') {
         this.snackbar = true
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

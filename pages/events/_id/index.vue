@@ -327,8 +327,8 @@ export default {
         registration_weeks:
           '2020年4月14日〜2020年5月3日(グリニッジ標準時で日付が変わるまで。日本時間：5月4日午前9時)',
         performing_weeks: '2020年5月4日 19:00 - 2時間ほどを予定',
-        contest: '検討中'
-      }
+        contest: '検討中',
+      },
     }
   },
   computed: {
@@ -337,7 +337,7 @@ export default {
     },
     expandMessage2() {
       return this.isExpand[1] ? '閉じる' : '開く'
-    }
+    },
   },
   methods: {
     gotoEntryForm(event) {
@@ -348,7 +348,7 @@ export default {
     },
     gotoLogin() {
       this.$router.push('/login/')
-    }
-  }
+    },
+  },
 }
 </script>

@@ -87,14 +87,14 @@ export default {
         fileURLs: '',
         email: '',
         userId: '',
-        fileNames: []
+        fileNames: [],
       },
       requiredRule: [
         (v) => {
           return !!v || '必須項目です'
-        }
+        },
       ],
-      loading: false
+      loading: false,
     }
   },
   computed: {
@@ -108,7 +108,7 @@ export default {
         this.$route.params.id +
         '/'
       )
-    }
+    },
   },
   mounted() {
     if (this.$firebase.currentUser) {
@@ -264,7 +264,7 @@ export default {
       } else {
         this.$store.commit('info/setSnackbar', '動画が登録されていません')
       }
-    }
-  }
+    },
+  },
 }
 </script>

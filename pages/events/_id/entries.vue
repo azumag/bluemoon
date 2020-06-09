@@ -57,14 +57,14 @@ export default {
     return {
       a: '',
       entries: [],
-      votes: []
+      votes: [],
     }
   },
   computed: {
     availableVote() {
       const deadline = moment('2020-05-06 23:59:59')
       return moment().isBefore(deadline)
-    }
+    },
   },
   async mounted() {
     if (this.$firebase.currentUser) {
@@ -121,7 +121,7 @@ export default {
               .collection('votes')
               .doc(this.$firebase.currentUser.uid)
               .set({
-                entryIds: this.votes
+                entryIds: this.votes,
               })
               .then(() => {
                 this.$store.commit('info/setSnackbar', '取り消しました')
@@ -145,7 +145,7 @@ export default {
                 .collection('votes')
                 .doc(this.$firebase.currentUser.uid)
                 .set({
-                  entryIds: [entry.id]
+                  entryIds: [entry.id],
                 })
                 .then(() => {
                   this.votes = [entry.id]
@@ -172,7 +172,7 @@ export default {
                   .collection('votes')
                   .doc(this.$firebase.currentUser.uid)
                   .set({
-                    entryIds: data.entryIds
+                    entryIds: data.entryIds,
                   })
                   .then(() => {
                     this.votes = data.entryIds
@@ -190,7 +190,7 @@ export default {
           '投票するためにログインをお願いいたします🙇‍♂'
         )
       }
-    }
-  }
+    },
+  },
 }
 </script>

@@ -56,7 +56,7 @@ export default {
       items: [],
       repertories: [],
       model: null,
-      search: null
+      search: null,
     }
   },
   computed: {
@@ -65,10 +65,10 @@ export default {
         .map((x) => {
           return {
             text: x.title,
-            value: x.id
+            value: x.id,
           }
         })
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           const _a = a.text.toUpperCase()
           const _b = b.text.toUpperCase()
           if (_a < _b) {
@@ -85,7 +85,7 @@ export default {
         .map((x) => {
           return x
         })
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           if (a.title < b.title) {
             return -1
           }
@@ -94,7 +94,7 @@ export default {
           }
           return 0
         })
-    }
+    },
   },
   mounted() {
     this.$firestore
@@ -129,10 +129,7 @@ export default {
       this.dialog = true
     },
     async delRepertory(item) {
-      await this.$firestore
-        .collection('repertories')
-        .doc(item.id)
-        .delete()
+      await this.$firestore.collection('repertories').doc(item.id).delete()
       const index = this.repertories.indexOf(item)
       this.repertories.splice(index, 1)
     },
@@ -140,7 +137,7 @@ export default {
       const tune = await this.addTune()
       this.model = {
         text: tune.title,
-        value: tune.id
+        value: tune.id,
       }
       await this.addRepertory()
     },
@@ -158,7 +155,7 @@ export default {
       this.loading = true
       const value = {
         title: this.search,
-        authorRef: this.$firebase.currentUser.uid
+        authorRef: this.$firebase.currentUser.uid,
       }
       const item = await this.$firestore.collection('tunes').add(value)
       // console.log(item)
@@ -185,7 +182,7 @@ export default {
       const value = {
         title: this.model.text,
         tuneRef: this.model.value,
-        userRef: this.$firebase.currentUser.uid
+        userRef: this.$firebase.currentUser.uid,
       }
       const repertory = await this.$firestore
         .collection('repertories')
@@ -197,7 +194,7 @@ export default {
       this.model = null
       this.search = null
       // this.dialog = false
-    }
-  }
+    },
+  },
 }
 </script>

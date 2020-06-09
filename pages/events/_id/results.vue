@@ -28,7 +28,7 @@ export default {
       a: '',
       entries: [],
       votes: [],
-      users: []
+      users: [],
     }
   },
   async mounted() {
@@ -94,6 +94,6 @@ export default {
     this.entries.sort((a, b) => {
       return (b.votes ? b.votes.length : 0) - (a.votes ? a.votes.length : 0)
     })
-  }
+  },
 }
 </script>
