@@ -22,7 +22,7 @@ v-app
   v-content.bg
     v-container
       nuxt
-    v-snackbar(v-model="$message.display" color='$message.color' :top='$message.top' :bottom="$message.bottom", :right="$message.right", :left='$message.left' :timeout="$message.timeout")
+    v-snackbar(v-model="$message.display" :color='$message.color' :top='$message.top' :bottom="$message.bottom", :right="$message.right", :left='$message.left' :timeout="$message.timeout")
       | {{ $message.text }}
   //- v-navigation-drawer(v-model='rightDrawer', :right='right', temporary, fixed)
   //-   v-list
