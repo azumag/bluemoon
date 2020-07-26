@@ -74,7 +74,7 @@ export default {
         .add({ question: this.question })
         .then(() => {
           this.question = ''
-          this.$store.commit('info/setSnackbar', '質問を送信しました')
+          this.$message.show('質問を送信しました')
         })
     },
   },

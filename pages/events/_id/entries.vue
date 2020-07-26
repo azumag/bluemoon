@@ -124,7 +124,7 @@ export default {
                 entryIds: this.votes,
               })
               .then(() => {
-                this.$store.commit('info/setSnackbar', '取り消しました')
+                this.$message.show('取り消しました')
               })
           }
         })
@@ -149,15 +149,12 @@ export default {
                 })
                 .then(() => {
                   this.votes = [entry.id]
-                  this.$store.commit('info/setSnackbar', '投票しました')
+                  this.$message.show('投票しました')
                 })
             } else {
               const data = doc.data()
               if (data.entryIds.length >= 3) {
-                this.$store.commit(
-                  'info/setSnackbar',
-                  '投票数上限を超えています'
-                )
+                this.$message.show('投票数上限を超えています')
                 return
               }
               if (
@@ -165,7 +162,7 @@ export default {
                   return e === entry.id
                 })
               ) {
-                this.$store.commit('info/setSnackbar', 'すでにあります')
+                this.$message.show('すでにあります')
               } else {
                 data.entryIds.push(entry.id)
                 return this.$firestore
@@ -176,7 +173,7 @@ export default {
                   })
                   .then(() => {
                     this.votes = data.entryIds
-                    this.$store.commit('info/setSnackbar', '投票しました')
+                    this.$message.show('投票しました')
                   })
               }
             }
@@ -185,10 +182,7 @@ export default {
             console.log('Error getting document', err)
           })
       } else {
-        this.$store.commit(
-          'info/setSnackbar',
-          '投票するためにログインをお願いいたします🙇‍♂'
-        )
+        this.$message.show('投票するためにログインをお願いいたします🙇‍♂')
       }
     },
   },

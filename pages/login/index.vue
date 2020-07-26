@@ -52,7 +52,7 @@ export default {
   },
   mounted() {
     if (this.$firebase.currentUser) {
-      this.$store.commit('info/setSnackbar', 'Signed in')
+      this.$message.show('Signed in')
       this.$router.push('/')
     }
   },

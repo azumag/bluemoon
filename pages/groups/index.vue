@@ -179,10 +179,7 @@ export default {
       const members = await this.getMembers(group)
       // console.log(members)
       if (members.length <= 0) {
-        this.$store.commit(
-          'info/setSnackbar',
-          'メンバーがいません: ' + new Date()
-        )
+        this.$message.show('メンバーがいません: ' + new Date())
         return
       }
       const memberRepertories = {}
@@ -256,10 +253,7 @@ export default {
       // console.log(this.commonTunes)
 
       if (this.commonTunes.length <= 0) {
-        this.$store.commit(
-          'info/setSnackbar',
-          '共通曲がありません: ' + new Date()
-        )
+        this.$message.show('共通曲がありません: ' + new Date())
       }
 
       // console.log(this.commonTunes)
@@ -296,7 +290,7 @@ export default {
           })
           .includes(this.groupName)
       ) {
-        this.$store.commit('info/setSnackbar', 'すでに登録されています')
+        this.$message.show('すでに登録されています')
         return
       }
       const value = {
@@ -305,7 +299,7 @@ export default {
       }
       const item = await this.$firestore.collection('groups').add(value)
       // console.log(item)
-      this.$store.commit('info/setSnackbar', '登録しました')
+      this.$message.show('登録しました')
 
       this.items.unshift({ ...value, id: item.id })
       this.addGroupDialog = false
@@ -317,7 +311,7 @@ export default {
         .collection('groups')
         .doc(this.editGroup.id)
         .update({ ...this.editGroup })
-      this.$store.commit('info/setSnackbar', '更新しました')
+      this.$message.show('更新しました')
       this.editGroupDialog = false
     },
     async addMember() {
@@ -329,7 +323,7 @@ export default {
           })
           .includes(this.memberModel.value)
       ) {
-        this.$store.commit('info/setSnackbar', 'すでに登録されています')
+        this.$message.show('すでに登録されています')
         return
       }
       const value = {
@@ -340,10 +334,7 @@ export default {
         authorRef: this.$firebase.currentUser.uid,
       }
       const item = await this.$firestore.collection('groupMembers').add(value)
-      this.$store.commit(
-        'info/setSnackbar',
-        this.memberModel.text + 'を追加しました'
-      )
+      this.$message.show(this.memberModel.text + 'を追加しました')
       this.editGroupMembers.unshift({ ...value, id: item.id })
       this.memberModel = null
       this.search = null

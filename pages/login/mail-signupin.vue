@@ -41,11 +41,11 @@ export default class MailSignupin extends Vue {
       .auth()
       .signInWithEmailAndPassword(this.email, this.password)
       .then(() => {
-        this.$store.commit('info/setSnackbar', 'サインインしました')
+        this.$message.show('サインインしました')
         this.$router.push('/')
       })
-      .catch((e) => {
-        this.$store.commit('info/setSnackbar', e)
+      .catch((e: any) => {
+        this.$message.show(e)
       })
   }
 
@@ -65,13 +65,13 @@ export default class MailSignupin extends Vue {
       .then(() => {
         return this.signin()
       })
-      .catch((e) => {
+      .catch((e: any) => {
         console.log(e)
         // console.log(e.code)
         if (e.code === 'auth/email-already-in-use') {
           return this.signin()
         } else {
-          this.$store.commit('info/setSnackbar', e)
+          this.$message.show(e)
         }
       })
       .finally(() => {

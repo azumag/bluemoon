@@ -22,8 +22,8 @@ v-app
   v-content.bg
     v-container
       nuxt
-    v-snackbar(v-model="snackbar" color='info' :bottom="true", :right="true", :timeout="3000")
-      | {{ snackbarText }}
+    v-snackbar(v-model="$message.display" color='$message.color' :top='$message.top' :bottom="$message.bottom", :right="$message.right", :left='$message.left' :timeout="$message.timeout")
+      | {{ $message.text }}
   //- v-navigation-drawer(v-model='rightDrawer', :right='right', temporary, fixed)
   //-   v-list
   //-     v-list-item(@click.native='right = !right')
@@ -60,7 +60,6 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Bluemoon',
-      snackbar: false,
       user: null,
     }
   },
@@ -104,13 +103,6 @@ export default {
         })
       }
       return items
-    },
-  },
-  watch: {
-    snackbarText(v) {
-      if (v !== '') {
-        this.snackbar = true
-      }
     },
   },
 }
