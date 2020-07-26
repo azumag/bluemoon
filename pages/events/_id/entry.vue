@@ -169,15 +169,12 @@ export default {
             }
           })
           .then(() => {
-            this.$store.commit('info/setSnackbar', '参加登録しました')
+            this.$message.show('参加登録しました')
             this.$router.push('/entries/')
           })
           .catch((e) => {
             console.log('Error getting documents', e)
-            this.$store.commit(
-              'info/setSnackbar',
-              'ファイルアップロード時にエラーが起こりました'
-            )
+            this.$message.show('ファイルアップロード時にエラーが起こりました')
             if (this.entryId) {
               this.deleteEntry(this.entryId)
             }
@@ -190,7 +187,7 @@ export default {
             this.files = null
           })
       } else {
-        this.$store.commit('info/setSnackbar', '動画が登録されていません')
+        this.$message.show('動画が登録されていません')
       }
     },
   },

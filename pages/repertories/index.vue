@@ -149,7 +149,7 @@ export default {
           })
           .includes(this.search)
       ) {
-        this.$store.commit('info/setSnackbar', 'すでに登録されています')
+        this.$message.show('すでに登録されています')
         return
       }
       this.loading = true
@@ -159,7 +159,7 @@ export default {
       }
       const item = await this.$firestore.collection('tunes').add(value)
       // console.log(item)
-      this.$store.commit('info/setSnackbar', '登録しました')
+      this.$message.show('登録しました')
 
       const tune = { ...value, id: item.id }
       this.items.push(tune)
@@ -176,7 +176,7 @@ export default {
           })
           .includes(this.model.text)
       ) {
-        this.$store.commit('info/setSnackbar', 'すでに登録されています')
+        this.$message.show('すでに登録されています')
         return
       }
       const value = {
@@ -187,7 +187,7 @@ export default {
       const repertory = await this.$firestore
         .collection('repertories')
         .add(value)
-      this.$store.commit('info/setSnackbar', '登録しました')
+      this.$message.show('登録しました')
       // console.log(item)
 
       this.repertories.unshift({ ...value, id: repertory.id })

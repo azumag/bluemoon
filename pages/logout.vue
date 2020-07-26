@@ -12,7 +12,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$store.commit('info/setSnackbar', 'Logout')
+          this.$message.show('Logout')
           this.$router.push('/')
         })
     },

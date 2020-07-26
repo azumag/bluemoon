@@ -155,11 +155,11 @@ export default {
             .delete()
         })
         .then(() => {
-          this.$store.commit('info/setSnackbar', '削除しました')
+          this.$message.show('削除しました')
           this.$router.back()
         })
         .catch(() => {
-          this.$store.commit('info/setSnackbar', '削除に失敗しました')
+          this.$message.show('削除に失敗しました')
         })
     },
     deleteFile(filename) {
@@ -176,10 +176,10 @@ export default {
           return this.updateForm()
         })
         .then(() => {
-          this.$store.commit('info/setSnackbar', '削除しました')
+          this.$message.show('削除しました')
         })
         .catch(() => {
-          this.$store.commit('info/setSnackbar', '削除に失敗しました')
+          this.$message.show('削除に失敗しました')
         })
     },
     updateForm() {
@@ -236,14 +236,11 @@ export default {
             }
           })
           .then(() => {
-            this.$store.commit('info/setSnackbar', 'エントリーを更新しました')
+            this.$message.show('エントリーを更新しました')
           })
           .catch((e) => {
             console.log('Error getting documents', e)
-            this.$store.commit(
-              'info/setSnackbar',
-              'ファイルアップロード時にエラーが起こりました'
-            )
+            this.$message.show('ファイルアップロード時にエラーが起こりました')
             const storageRef = this.$firestorage().ref()
             storageRef
               .child(this.filePath)
@@ -262,7 +259,7 @@ export default {
             this.files = null
           })
       } else {
-        this.$store.commit('info/setSnackbar', '動画が登録されていません')
+        this.$message.show('動画が登録されていません')
       }
     },
   },
