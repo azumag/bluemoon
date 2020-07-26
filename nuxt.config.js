@@ -63,6 +63,7 @@ export default {
     '@/plugins/firebase-auth',
     '@/plugins/nuxt-client-init.js',
     '@/plugins/autolink.js',
+    '@/plugins/message',
   ],
   /*
    ** Nuxt.js modules
