@@ -118,6 +118,15 @@ v-layout(column, justify-center, align-center)
               | 開催草案
           v-card-text
             | エントリーシステムが準備でき次第このページに概要を記載します。それまでは上記草稿を御覧ください
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-card-title.headline
+            a(href='https://youtu.be/qG7gwa3etrY')
+              | 前回の様子（動画）
+          v-card-text
+            | こんな感じというのを掴んでもらいたくて，前回の様子を短い動画にまとめました。
+            | 本動画は Vol.2 開催までの限定公開となります。
+    //-
     //-   v-col(v-if="event.performing_format" ,cols=12)
     //-     v-card(color='rgb(100, 100, 100, 0.4)')
     //-       v-card-title.headline
