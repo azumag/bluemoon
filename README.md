@@ -8,9 +8,9 @@ setup
 docker-compose build dev
 ```
 
-```
+<!-- ```
 docker-compose up dev firebase-emulator
-```
+``` -->
 
 ### lint fix
 ```
