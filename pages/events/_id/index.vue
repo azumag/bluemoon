@@ -114,6 +114,8 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)')
           //- v-card-title.headline
           //-   | エントリー締め切りました
+          v-card-title.headline
+            | エントリー受付開始しました
           //- v-btn(outlined block @click="gotoEntryList")
           //-   | エントリーリスト
           v-card-text(v-if="this.$firebase.currentUser")
