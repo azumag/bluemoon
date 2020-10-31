@@ -80,16 +80,16 @@ export default {
           title: 'エントリーリスト',
           to: '/entries',
         })
-        items.push({
-          icon: 'bubble_chart',
-          title: 'レパートリー登録',
-          to: '/repertories',
-        })
-        items.push({
-          icon: 'bubble_chart',
-          title: 'グループ',
-          to: '/groups',
-        })
+        // items.push({
+        //   icon: 'bubble_chart',
+        //   title: 'レパートリー登録',
+        //   to: '/repertories',
+        // })
+        // items.push({
+        //   icon: 'bubble_chart',
+        //   title: 'グループ',
+        //   to: '/groups',
+        // })
         items.push({
           icon: 'person',
           title: 'Logout',
