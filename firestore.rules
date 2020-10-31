@@ -21,8 +21,8 @@ service cloud.firestore {
     }
     match /entries/{id} {
       allow read, list: if true;
-      // allow create: if request.auth.uid != null;
-      // allow write: if request.auth.uid != null;
+      allow create: if request.auth.uid != null;
+      allow write: if request.auth.uid != null;
     }
     match /events/{id} {
       allow read, list: if true;

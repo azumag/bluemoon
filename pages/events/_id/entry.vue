@@ -38,9 +38,16 @@ v-layout(column, justify-center, align-center)
                 label="紹介文，動画説明等"
                 hint="（例）\n2010年に結成されたブルーグラスバンド. リーダーの無二のリズム感から生まれるギター＆ボーカルを中心に、個性あふれるストリングスが絡み合って紡ぎ出される、思わず身体を動かさずにはいられなくなるアグレッシブでバウンシーなサウンドが特徴。"
               )
+              v-card(color='transparent')
+                v-alert(outlined color='rgb(100, 100, 100, 0.8)')
+                  v-label エントリー動画の種類
+                  v-radio-group(row outlined v-model="form.videoType")
+                    v-radio(label="フェス用に作成した動画（15分程度）" value='crafted')
+                    v-radio(label="過去行われたライブの録画（10分程度）" value='live')
+                    v-radio(label="混在(10分程度）" value='mixed')
               v-textarea(v-model="form.fileURLs", required,
                 outlined
-                label="エントリー動画（15分程度，合計15分程度ならば複数可）"
+                label="エントリー動画への URL（合計時間が枠内ならば複数可）"
                 hint="（例）\nhttps://www.youtube.com/watch?v=xxxxxxx"
               )
               v-file-input(v-show="!loading" accept="video/*" label="直接アップロードする(複数選択可)"
@@ -51,6 +58,12 @@ v-layout(column, justify-center, align-center)
                 v-model="files"
                 outlined
               )
+              v-card(color='transparent')
+                v-alert(outlined color='rgb(100, 100, 100, 0.8)')
+                  v-card-body
+                    v-checkbox(outlined label="エントリー動画のアーカイブ公開を許可" v-model="form.publishAgree")
+                  v-card-text.red--text
+                    | ※ アーカイブ公開を許可すると，オンラインフェス終了後に「フェスのようす」として公開される動画の中に含まれる可能性があります
               v-btn(@click='submit' v-show="!loading" block=true color="primary")
                 | エントリーする
               v-progress-circular(v-show="loading" indeterminate color="primary")
@@ -80,6 +93,8 @@ export default {
         email: '',
         userId: '',
         fileNames: [],
+        videoType: 'crafted',
+        publishAgree: false,
       },
       requiredRule: [
         (v) => {

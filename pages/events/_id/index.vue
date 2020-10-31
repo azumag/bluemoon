@@ -110,6 +110,27 @@ v-layout(column, justify-center, align-center)
     //-         | ご協賛
     //-       a(href="https://twitter.com/komeya88") 米屋さん
     //-       span.body-1 よりコロナビールをご提供いただきました
+    v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          //- v-card-title.headline
+          //-   | エントリー締め切りました
+          //- v-btn(outlined block @click="gotoEntryList")
+          //-   | エントリーリスト
+          v-card-text(v-if="this.$firebase.currentUser")
+            v-btn(@click="gotoEntryForm()"
+              outlined
+              block
+            )
+              | エントリーフォームへ
+          v-card-text(v-else)
+            | エントリーするにはログインして下さい🙇‍♂️
+            | エントリー管理のためログイン必須になっています，お手数ですがご協力下さい
+            div
+              v-btn.mx-2(@click="gotoLogin()"
+                block
+                outlined
+              )
+                | ログイン
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
@@ -117,7 +138,7 @@ v-layout(column, justify-center, align-center)
             a(href='https://docs.google.com/document/d/1-vRzkOKvFc-Fa-f1cmnAMRNJwMtL1QkEaLLh234LnXo/edit?usp=sharing')
               | 開催草案
           v-card-text
-            | エントリーシステムが準備でき次第このページに概要を記載します。それまでは上記草稿を御覧ください
+            | 準備でき次第このページに概要を記載します。それまでは上記草稿を御覧ください
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
@@ -126,7 +147,7 @@ v-layout(column, justify-center, align-center)
           v-card-text
             | こんな感じというのを掴んでもらいたくて，前回の様子を短い動画にまとめました。
             | 本動画は Vol.2 開催までの限定公開となります。
-    //-
+        //-
     //-   v-col(v-if="event.performing_format" ,cols=12)
     //-     v-card(color='rgb(100, 100, 100, 0.4)')
     //-       v-card-title.headline
@@ -293,27 +314,7 @@ v-layout(column, justify-center, align-center)
       //-             nuxt-link.blue--text(to='/howto/multi-recording')
       //-               | 多重録画アプリの紹介
       //-             |」を参考にぜひ。
-      //- v-col(cols=12)
-      //-   v-card(color='rgb(100, 100, 100, 0.4)')
-      //-     v-card-title.headline
-      //-       | エントリー締め切りました
-      //-     v-btn(outlined block @click="gotoEntryList")
-      //-       | エントリーリスト
-          //- v-card-text(v-if="this.$firebase.currentUser")
-          //-   v-btn(@click="gotoEntryForm(event)"
-          //-     outlined
-          //-     block
-          //-   )
-          //-     | エントリーフォームへ
-          //- v-card-text(v-else)
-          //-   | エントリーするにはログインして下さい🙇‍♂️
-          //-   | エントリー管理のためログイン必須になっています，お手数ですがご協力下さい
-          //-   div
-          //-     v-btn.mx-2(@click="gotoLogin()"
-          //-       block
-          //-       outlined
-          //-     )
-          //-       | ログイン
+      
 </template>
 
 <script>
@@ -358,8 +359,7 @@ export default {
       .get()
       .then((event) => {
         if (event.exists) {
-          this.event = event.data()
-          console.log(event)
+          this.event = { id: event.id, ...event.data() }
         } else {
           console.log('error:', event)
           this.$router.back()
@@ -370,11 +370,11 @@ export default {
       })
   },
   methods: {
-    gotoEntryForm(event) {
-      this.$router.push('/events/' + event.id + '/entry/')
+    gotoEntryForm() {
+      this.$router.push('/events/' + this.event.id + '/entry/')
     },
-    gotoEntryList(event) {
-      this.$router.push('/events/' + event.id + '/entries/')
+    gotoEntryList() {
+      this.$router.push('/events/' + this.event.id + '/entries/')
     },
     gotoLogin() {
       this.$router.push('/login/')

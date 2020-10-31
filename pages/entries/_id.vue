@@ -37,6 +37,13 @@ v-layout(column, justify-center, align-center)
                 label="紹介文，動画説明等"
                 hint="（例）\n2010年に結成されたブルーグラスバンド. リーダーの無二のリズム感から生まれるギター＆ボーカルを中心に、個性あふれるストリングスが絡み合って紡ぎ出される、思わず身体を動かさずにはいられなくなるアグレッシブでバウンシーなサウンドが特徴。"
               )
+              v-card(color='transparent')
+                v-alert(outlined color='rgb(100, 100, 100, 0.8)')
+                  v-label エントリー動画の種類
+                  v-radio-group(row outlined v-model="form.videoType")
+                    v-radio(label="フェス用に作成した動画（15分程度）" value='crafted')
+                    v-radio(label="過去行われたライブの録画（10分程度）" value='live')
+                    v-radio(label="混在(10分程度）" value='mixed')
               v-textarea(v-model="form.fileURLs", required,
                 outlined
                 label="エントリー動画（15分程度，合計15分程度ならば複数可）"
@@ -59,6 +66,12 @@ v-layout(column, justify-center, align-center)
                 v-list-item-action
                   v-btn(@click.stop="deleteFile(upfile)" color='red')
                     | 削除
+          v-card(color='transparent')
+                v-alert(outlined color='rgb(100, 100, 100, 0.8)')
+                  v-card-body
+                    v-checkbox(outlined label="エントリー動画のアーカイブ公開を許可" v-model="form.publishAgree")
+                  v-card-text.red--text
+                    | ※ アーカイブ公開を許可すると，オンラインフェス終了後に「フェスのようす」として公開される動画の中に含まれる可能性があります
           v-divider
           v-btn.ma-2(@click='update' v-show="!loading" block outlined color="primary")
             | 更新する
@@ -88,6 +101,8 @@ export default {
         email: '',
         userId: '',
         fileNames: [],
+        videoType: null,
+        publishAgree: null,
       },
       requiredRule: [
         (v) => {
