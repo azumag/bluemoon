@@ -77,7 +77,7 @@ export default {
         })
         items.push({
           icon: 'bubble_chart',
-          title: 'エントリーリスト',
+          title: '自分のエントリー',
           to: '/entries',
         })
         // items.push({
