@@ -13,7 +13,7 @@ v-layout(column, justify-center, align-center)
           )
           v-card-title.headline
             | エントリーフォーム
-          v-card-text
+          v-card-text.red--text
             | 内容はエントリー送信後，「自分のエントリー」ページから編集・取り下げできます。
             | 一つのアカウントで複数のエントリーは可能ですが，同じ個人，同じバンドでの複数のエントリーは控えていただけると幸いです。
             hr.mt-2.mb-2
@@ -45,7 +45,9 @@ v-layout(column, justify-center, align-center)
                     v-radio(label="フェス用に作成した動画（15分程度）" value='crafted')
                     v-radio(label="過去行われたライブの録画（10分程度）" value='live')
                     v-radio(label="混在(10分程度）" value='mixed')
-              v-textarea(v-model="form.fileURLs", required,
+                  v-card-text.red--text
+                    | ※ 動画がまだなくとも締め切りまで更新可能・取り下げ可能ですので，ぜひまずエントリーを✍
+              v-textarea(v-model="form.fileURLs", required
                 outlined
                 label="エントリー動画への URL（合計時間が枠内ならば複数可）"
                 hint="（例）\nhttps://www.youtube.com/watch?v=xxxxxxx"
