@@ -204,78 +204,78 @@ export default {
         .set(this.form)
     },
     update() {
-      if (this.files || this.form.fileURLs || this.form.fileNames.length > 0) {
-        this.loading = true
-        if (this.files) {
-          this.files.forEach((file) => {
-            const index = this.form.fileNames.indexOf(file.name)
-            if (index === -1) {
-              this.form.fileNames.push(file.name)
-            }
-          })
-        }
-        this.updateForm()
-          .then(() => {
-            if (this.files) {
-              const storageRef = this.$firestorage().ref()
-              const uploadTasks = this.files.map((file) => {
-                const filesRef = storageRef.child(this.filePath + file.name)
-                const uploadTask = filesRef.put(file)
-                uploadTask.on(
-                  this.$firestorage.TaskEvent.STATE_CHANGED,
-                  (snapshot) => {
-                    const progress =
-                      (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                    console.log('Upload is ' + progress + '% done')
-                    this.uploadStatuses[file] = progress
-                    switch (snapshot.state) {
-                      case this.$firestorage.TaskState.PAUSED: // or 'paused'
-                        console.log('Upload is paused')
-                        break
-                      case this.$firestorage.TaskState.RUNNING: // or 'running'
-                        console.log('Upload is running')
-                        break
-                    }
-                  },
-                  (error) => {
-                    console.log('taskprogresserror', error)
-                    this.errors.push(error)
-                  },
-                  () => {
-                    console.log('upload finish')
-                  }
-                )
-                return uploadTask
-              })
-              return Promise.all(uploadTasks)
-            }
-          })
-          .then(() => {
-            this.$message.show('エントリーを更新しました')
-          })
-          .catch((e) => {
-            console.log('Error getting documents', e)
-            this.$message.show('ファイルアップロード時にエラーが起こりました')
-            const storageRef = this.$firestorage().ref()
-            storageRef
-              .child(this.filePath)
-              .listAll()
-              .then((dir) => {
-                this.form.fileNames = dir.items.map((fileRef) => {
-                  return fileRef.name
-                })
-              })
-          })
-          .finally(() => {
-            this.loading = false
-            this.errors = []
-            this.entryId = null
-            this.uploadStatuses = {}
-            this.files = null
-          })
-      } else {
-        this.$message.show('動画が登録されていません')
+      // if (this.files || this.form.fileURLs || this.form.fileNames.length > 0) {
+      this.loading = true
+      if (this.files) {
+        this.files.forEach((file) => {
+          const index = this.form.fileNames.indexOf(file.name)
+          if (index === -1) {
+            this.form.fileNames.push(file.name)
+          }
+        })
       }
+      this.updateForm()
+        .then(() => {
+          if (this.files) {
+            const storageRef = this.$firestorage().ref()
+            const uploadTasks = this.files.map((file) => {
+              const filesRef = storageRef.child(this.filePath + file.name)
+              const uploadTask = filesRef.put(file)
+              uploadTask.on(
+                this.$firestorage.TaskEvent.STATE_CHANGED,
+                (snapshot) => {
+                  const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                  console.log('Upload is ' + progress + '% done')
+                  this.uploadStatuses[file] = progress
+                  switch (snapshot.state) {
+                    case this.$firestorage.TaskState.PAUSED: // or 'paused'
+                      console.log('Upload is paused')
+                      break
+                    case this.$firestorage.TaskState.RUNNING: // or 'running'
+                      console.log('Upload is running')
+                      break
+                  }
+                },
+                (error) => {
+                  console.log('taskprogresserror', error)
+                  this.errors.push(error)
+                },
+                () => {
+                  console.log('upload finish')
+                }
+              )
+              return uploadTask
+            })
+            return Promise.all(uploadTasks)
+          }
+        })
+        .then(() => {
+          this.$message.show('エントリーを更新しました')
+        })
+        .catch((e) => {
+          console.log('Error getting documents', e)
+          this.$message.show('ファイルアップロード時にエラーが起こりました')
+          const storageRef = this.$firestorage().ref()
+          storageRef
+            .child(this.filePath)
+            .listAll()
+            .then((dir) => {
+              this.form.fileNames = dir.items.map((fileRef) => {
+                return fileRef.name
+              })
+            })
+        })
+        .finally(() => {
+          this.loading = false
+          this.errors = []
+          this.entryId = null
+          this.uploadStatuses = {}
+          this.files = null
+        })
+      // } else {
+      //   this.$message.show('動画が登録されていません')
+      // }
     },
   },
 }

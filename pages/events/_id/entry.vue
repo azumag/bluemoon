@@ -47,7 +47,7 @@ v-layout(column, justify-center, align-center)
                     v-radio(label="混在(10分程度）" value='mixed')
                   v-card-text.red--text
                     | ※ 動画がまだなくとも締め切りまで更新可能・取り下げ可能ですので，ぜひまずエントリーを✍
-              v-textarea(v-model="form.fileURLs", required
+              v-textarea(v-model="form.fileURLs"
                 outlined
                 label="エントリー動画への URL（合計時間が枠内ならば複数可）"
                 hint="（例）\nhttps://www.youtube.com/watch?v=xxxxxxx"
@@ -124,88 +124,88 @@ export default {
       if (!this.valid) {
         return
       }
-      if (this.files || this.form.fileURLs) {
-        this.loading = true
-        this.form.userId = this.$firebase.currentUser.uid
-        this.form.eventId = this.$route.params.id
-        if (this.files) {
-          this.form.fileNames = this.files.map((file) => {
-            return file.name
-          })
-        }
-        this.$firestore
-          .collection('entries')
-          .add(this.form)
-          .then((result) => {
-            if (this.files) {
-              const storageRef = this.$firestorage().ref()
-              const uploadTasks = this.files.map((file) => {
-                const filesRef = storageRef.child(
-                  'users/' +
-                    this.form.userId +
-                    '/events/' +
-                    this.form.eventId +
-                    '/entries/' +
-                    result.id +
-                    '/' +
-                    file.name
-                )
-                const uploadTask = filesRef.put(file)
-
-                uploadTask.on(
-                  this.$firestorage.TaskEvent.STATE_CHANGED,
-                  (snapshot) => {
-                    const progress =
-                      (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                    console.log('Upload is ' + progress + '% done')
-                    this.uploadStatuses[file] = progress
-                    switch (snapshot.state) {
-                      case this.$firestorage.TaskState.PAUSED: // or 'paused'
-                        console.log('Upload is paused')
-                        break
-                      case this.$firestorage.TaskState.RUNNING: // or 'running'
-                        console.log('Upload is running')
-                        break
-                    }
-                  },
-                  (error) => {
-                    console.log('taskprogresserror', error)
-                    this.errors.push(error)
-                    this.entryId = result.id
-                    // console.log(result.id)
-                  },
-                  () => {
-                    console.log('upload finish')
-                  }
-                )
-
-                return uploadTask
-              })
-
-              return Promise.all(uploadTasks)
-            }
-          })
-          .then(() => {
-            this.$message.show('参加登録しました')
-            this.$router.push('/entries/')
-          })
-          .catch((e) => {
-            console.log('Error getting documents', e)
-            this.$message.show('ファイルアップロード時にエラーが起こりました')
-            if (this.entryId) {
-              this.deleteEntry(this.entryId)
-            }
-          })
-          .finally(() => {
-            this.loading = false
-            this.errors = []
-            this.entryId = null
-            this.uploadStatuses = {}
-            this.files = null
-          })
-      } else {
-        this.$message.show('動画が登録されていません')
+      // if (this.files || this.form.fileURLs) {
+      this.loading = true
+      this.form.userId = this.$firebase.currentUser.uid
+      this.form.eventId = this.$route.params.id
+      if (this.files) {
+        this.form.fileNames = this.files.map((file) => {
+          return file.name
+        })
       }
+      this.$firestore
+        .collection('entries')
+        .add(this.form)
+        .then((result) => {
+          if (this.files) {
+            const storageRef = this.$firestorage().ref()
+            const uploadTasks = this.files.map((file) => {
+              const filesRef = storageRef.child(
+                'users/' +
+                  this.form.userId +
+                  '/events/' +
+                  this.form.eventId +
+                  '/entries/' +
+                  result.id +
+                  '/' +
+                  file.name
+              )
+              const uploadTask = filesRef.put(file)
+
+              uploadTask.on(
+                this.$firestorage.TaskEvent.STATE_CHANGED,
+                (snapshot) => {
+                  const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                  console.log('Upload is ' + progress + '% done')
+                  this.uploadStatuses[file] = progress
+                  switch (snapshot.state) {
+                    case this.$firestorage.TaskState.PAUSED: // or 'paused'
+                      console.log('Upload is paused')
+                      break
+                    case this.$firestorage.TaskState.RUNNING: // or 'running'
+                      console.log('Upload is running')
+                      break
+                  }
+                },
+                (error) => {
+                  console.log('taskprogresserror', error)
+                  this.errors.push(error)
+                  this.entryId = result.id
+                  // console.log(result.id)
+                },
+                () => {
+                  console.log('upload finish')
+                }
+              )
+
+              return uploadTask
+            })
+
+            return Promise.all(uploadTasks)
+          }
+        })
+        .then(() => {
+          this.$message.show('参加登録しました')
+          this.$router.push('/entries/')
+        })
+        .catch((e) => {
+          console.log('Error getting documents', e)
+          this.$message.show('ファイルアップロード時にエラーが起こりました')
+          if (this.entryId) {
+            this.deleteEntry(this.entryId)
+          }
+        })
+        .finally(() => {
+          this.loading = false
+          this.errors = []
+          this.entryId = null
+          this.uploadStatuses = {}
+          this.files = null
+        })
+      // } else {
+      //   this.$message.show('動画が登録されていません')
+      // }
     },
   },
 }
