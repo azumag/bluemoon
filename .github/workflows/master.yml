@@ -1,7 +1,8 @@
 name: master branch workflow
 on:
   push:
-    branchs: [master]
+    branches: 
+      - master
 
 jobs:
   firebase-deploy:
