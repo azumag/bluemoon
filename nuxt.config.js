@@ -72,6 +72,7 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/eslint-module',
     '@nuxtjs/pwa',
+    'nuxt-i18n',
     [
       '@nuxtjs/dotenv',
       {
@@ -111,4 +112,19 @@ export default {
   server: {
     host: '0.0.0.0',
   },
+  i18n: {
+    locales: ['en', 'ja'],
+    defaultLocale: 'ja',
+    vueI18n: {
+      fallbackLocale: 'ja',
+      messages: {
+        en: {
+          welcome: 'Welcome'
+        },
+        ja: {
+          welcome: 'yokoso'
+        },
+      }
+    }
+  }
 }
