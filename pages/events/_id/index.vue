@@ -11,7 +11,7 @@ v-layout(column, justify-center, align-center)
           )
             v-card-title.headline
               | {{ event.title }}
-            //- div.ma-2.text-lg-right -- Stay Home, Country Roads.
+            // - div.ma-2.text-lg-right -- Stay Home, Country Roads.
           v-card-text
             | {{ event.abstract }}
       //- v-col(cols=12)

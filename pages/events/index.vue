@@ -8,17 +8,19 @@ v-layout(column, justify-center, align-center)
         src="/events2-sm.jpg"
       )
         v-card-title.headline
-          | 開催行事
+          | {{$t('openEvent')}}
       v-card-text
-        | 行事の情報・参加登録等
-        hr
+        | {{$t('eventDescription')}}
+        span.ma-4
+          v-btn(v-for="locale in availableLocales" color='orange' outlined)
+            nuxt-link(:key="locale" :to="switchLocalePath(locale)") {{ $t(locale) }}
     v-row
       v-col(cols="12")
         v-card(color='rgb(100, 100, 100, 0.4)'
           shaped
         )
           v-card-title
-            span.headline 開催予定
+            span.headline {{ $t('scheduledEvent')}} 
           v-card-text
             v-list
               v-list-item(v-for="(event, i) in openEvents" :key="event.id")
@@ -33,7 +35,7 @@ v-layout(column, justify-center, align-center)
           shaped
         )
           v-card-title
-            span.headline 開催終了
+            span.headline {{ $t('finishedEvent') }} 
           v-card-text
             v-list
               v-list-item(v-for="(event, i) in closedEvents" :key="event.id")
@@ -54,6 +56,13 @@ export default {
       openEvents: [],
       closedEvents: [],
     }
+  },
+  computed: {
+    availableLocales() {
+      // console.log(this.$i18n.locales)
+      // console.log(this.$i18n.locale)
+      return this.$i18n.locales.filter((i) => i !== this.$i18n.locale)
+    },
   },
   mounted() {
     this.getEvents()

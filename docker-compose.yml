@@ -9,8 +9,6 @@ services:
       - |
         yarn
         yarn dev
-    depends_on:
-      - firebase-emulator
     ports:
       - 3000:3000
     volumes:
@@ -23,29 +21,12 @@ services:
     volumes:
       - .:/app
 
-  firebase-emulator:
-    image: bluemoon_dev
-    command:
-      - /bin/sh
-      - -c
-      - |
-        cd functions
-        npm install
-        npm run build
-        cd ..
-        firebase emulators:start --only functions,firestore
-    ports:
-      - 8000:8080
-      - 4400:4400
-    volumes:
-      - .:/app/bluemoon
-
   editor:
     image: codercom/code-server
     entrypoint:
       - /bin/sh
       - -c
-      - dumb-init code-server --auth none
+      - dumb-init code-server --auth none --host 0.0.0.0
     ports:
       - "283:8080"
     volumes:

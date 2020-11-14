@@ -106,7 +106,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(_config, _ctx) {},
+    extend(_config, _ctx) { },
   },
   buildModules: ['@nuxt/typescript-build'],
   server: {
@@ -119,12 +119,22 @@ export default {
       fallbackLocale: 'ja',
       messages: {
         en: {
-          welcome: 'Welcome'
+          welcome: 'Welcome',
+          openEvent: 'Opening Event',
+          eventDescription: 'Information of events and registrations',
+          ja: 'Japanese',
+          scheduledEvent: 'Scheduled Events',
+          finishedEvent: 'Finished Events'
         },
         ja: {
-          welcome: 'yokoso'
+          welcome: 'yokoso',
+          openEvent: '開催行事',
+          eventDescription: '行事の情報・参加登録等',
+          en: "English",
+          scheduledEvent: '開催予定',
+          finishedEvent: '終了'
         },
-      }
-    }
-  }
+      },
+    },
+  },
 }
