@@ -2,11 +2,17 @@
 v-app
   v-navigation-drawer(v-model='drawer', :mini-variant='miniVariant', :clipped='clipped', fixed, app)
     v-list
-      v-list-item(v-for='(item, i) in menuItems', :key='i', :to='item.to', router, exact)
+      v-list-item(v-for='(item, i) in menuItems', :key='i', :to='localePath(item.to)', router, exact)
         v-list-item-action
           v-icon {{ item.icon }}
         v-list-item-content
           v-list-item-title(v-text='item.title')
+      v-list-item(v-for="locale in availableLocales" :to="switchLocalePath(locale)")
+        v-list-item-action
+          v-icon language
+        v-list-item-content
+          v-list-item-title(:key="locale" v-text='$t(locale)')
+
   v-app-bar(:clipped-left='clipped', app)
     v-app-bar-nav-icon(@click='drawer=!drawer')
     // v-btn(icon, @click.stop='miniVariant = !miniVariant')
@@ -47,7 +53,7 @@ export default {
       },
       version: '0.0.4',
       clipped: false,
-      drawer: false,
+      drawer: true,
       fixed: false,
       items: [
         {
@@ -64,6 +70,9 @@ export default {
     }
   },
   computed: {
+    availableLocales() {
+      return this.$i18n.locales.filter((i) => i !== this.$i18n.locale)
+    },
     snackbarText() {
       return this.$store.state.info.snackbarText
     },
@@ -72,12 +81,12 @@ export default {
       if (this.$firebase.currentUser) {
         items.push({
           icon: 'bubble_chart',
-          title: '開催行事',
+          title: this.$i18n.t('events'),
           to: '/events',
         })
         items.push({
           icon: 'bubble_chart',
-          title: '自分のエントリー',
+          title: this.$i18n.t('entries'),
           to: '/entries',
         })
         // items.push({

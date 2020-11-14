@@ -114,8 +114,7 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)')
           //- v-card-title.headline
           //-   | エントリー締め切りました
-          v-card-title.headline
-            | エントリー受付開始しました
+          v-card-title.headline {{ $t('openRegistration') }}
           //- v-btn(outlined block @click="gotoEntryList")
           //-   | エントリーリスト
           v-card-text(v-if="this.$firebase.currentUser")
@@ -123,7 +122,7 @@ v-layout(column, justify-center, align-center)
               outlined
               block
             )
-              | エントリーフォームへ
+              | {{ $t('entryForm') }}
           v-card-text(v-else)
             | エントリーするにはログインして下さい🙇‍♂️
             | エントリー管理のためログイン必須になっています，お手数ですがご協力下さい
@@ -139,6 +138,9 @@ v-layout(column, justify-center, align-center)
           v-card-title.headline
             a(href='https://docs.google.com/document/d/1-vRzkOKvFc-Fa-f1cmnAMRNJwMtL1QkEaLLh234LnXo/edit?usp=sharing')
               | 開催草案
+          v-card-title.headline
+            a(href='https://docs.google.com/document/d/15zlF7fmlSQeIL_9ha81tRp8lLPLiHH2wUloSW2t-Cww/edit?usp=sharing')
+              | English Version
           v-card-text
             | 準備でき次第このページに概要を記載します。それまでは上記草稿を御覧ください
       v-col(cols=12)

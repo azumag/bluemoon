@@ -55,7 +55,7 @@ v-layout(column, justify-center, align-center)
             | お知らせ
           v-card-title.title.white--text(
             style="background-image: url('/fes2-sm.jpg'); background-color: rgba(80, 80, 80, 0.4)"
-            @click.stop="$router.push('/events/')"
+            @click.stop="$router.push(localePath('/events/'))"
           )
             | Bluegrass Lockdown Music Festival Vol.2 開催
       v-col(cols=12)

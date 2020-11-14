@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     gotoEvent(event) {
-      this.$router.push('/events/' + event.id)
+      this.$router.push(this.localePath('events') + '/' + event.id)
     },
     async getEvents() {
       await this.$firestore

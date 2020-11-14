@@ -120,19 +120,28 @@ export default {
       messages: {
         en: {
           welcome: 'Welcome',
+          events: 'Events',
           openEvent: 'Opening Event',
           eventDescription: 'Information of events and registrations',
           ja: 'Japanese',
           scheduledEvent: 'Scheduled Events',
-          finishedEvent: 'Finished Events'
+          finishedEvent: 'Finished Events',
+          entries: 'Your own entries',
+          openRegistration: 'Registration has been started',
+          entryForm: 'Entry Form'
         },
+
         ja: {
           welcome: 'yokoso',
+          events: '行事',
           openEvent: '開催行事',
           eventDescription: '行事の情報・参加登録等',
           en: "English",
           scheduledEvent: '開催予定',
-          finishedEvent: '終了'
+          finishedEvent: '終了',
+          entries: 'あなたのエントリー',
+          openRegistration: 'エントリー受付開始しました',
+          entryForm: 'エントリーフォームへ'
         },
       },
     },
