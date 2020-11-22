@@ -12,47 +12,47 @@ v-layout(column, justify-center, align-center)
             src="/registration.jpg"
           )
           v-card-title.headline
-            | エントリーフォーム
+            | {{ $t('entryForm') }}
           v-card-text.red--text
-            | 内容はエントリー送信後，「自分のエントリー」ページから編集・取り下げできます。
-            | 一つのアカウントで複数のエントリーは可能ですが，同じ個人，同じバンドでの複数のエントリーは控えていただけると幸いです。
+            | {{ $t('entryDescription') }}
             hr.mt-2.mb-2
             v-form(ref="formValidate", v-model="valid")
               v-text-field.mt-7.mb-2(v-model="form.name", required,
-                hint="（例）バンド名，個人名"
-                label="エントリー名"
+                :hint="$t('formNameHint')"
+                :label="$t('formEntryLabel')"
                 placeholder="The Monroe Brothers"
                 :rules="requiredRule"
                 outlined
               )
               v-text-field.mt-2(v-model.email="form.email", required,
                 placeholder="xxxxxx.yyyy.zzzzz@bluemoon.works"
-                hint="主催から連絡や確認等行う場合があります"
-                label="連絡先メールアドレス"
+                :hint="$t('formEmailHint')"
+                :label="$t('formEmailLabel')"
                 :rules="requiredRule"
                 outlined
               )
               v-textarea(v-model="form.description", required,
                 :rules="requiredRule"
                 outlined
-                label="紹介文，動画説明等"
-                hint="（例）\n2010年に結成されたブルーグラスバンド. リーダーの無二のリズム感から生まれるギター＆ボーカルを中心に、個性あふれるストリングスが絡み合って紡ぎ出される、思わず身体を動かさずにはいられなくなるアグレッシブでバウンシーなサウンドが特徴。"
+                :label="$t('formDescriptionLabel')"
+                :hint="$t('formDescriptionHint')"
               )
               v-card(color='transparent')
                 v-alert(outlined color='rgb(100, 100, 100, 0.8)')
-                  v-label エントリー動画の種類
+                  v-label {{ $t('formVideoTypeLabel') }}
                   v-radio-group(row outlined v-model="form.videoType")
-                    v-radio(label="フェス用に作成した動画（15分程度）" value='crafted')
-                    v-radio(label="過去行われたライブの録画（10分程度）" value='live')
-                    v-radio(label="混在(10分程度）" value='mixed')
+                    v-radio(:label="$t('formVideoTypeCraftedLabel')" value='crafted')
+                    v-radio(:label="$t('formVideoTypeLiveLabel')" value='live')
+                    v-radio(:label="$t('formVideoTypeMixedLabel')" value='mixed')
                   v-card-text.red--text
-                    | ※ 動画がまだなくとも締め切りまで更新可能・取り下げ可能ですので，ぜひまずエントリーを✍
+                    | {{ $t('formVideoTypeNotice') }}
               v-textarea(v-model="form.fileURLs"
                 outlined
-                label="エントリー動画への URL（合計時間が枠内ならば複数可）"
+                :label="$t('formFileURLLabel')"
                 hint="（例）\nhttps://www.youtube.com/watch?v=xxxxxxx"
               )
-              v-file-input(v-show="!loading" accept="video/*" label="直接アップロードする(複数選択可)"
+              v-file-input(v-show="!loading" accept="video/*"
+                :label="t('formUploadLabel')"
                 show-size
                 counter
                 chips
@@ -63,11 +63,11 @@ v-layout(column, justify-center, align-center)
               v-card(color='transparent')
                 v-alert(outlined color='rgb(100, 100, 100, 0.8)')
                   v-card-body
-                    v-checkbox(outlined label="エントリー動画のアーカイブ公開を許可" v-model="form.publishAgree")
+                    v-checkbox(outlined :label="$t('formPublishAgreeLabel')" v-model="form.publishAgree")
                   v-card-text.red--text
-                    | ※ アーカイブ公開を許可すると，オンラインフェス終了後に「フェスのようす」として公開される動画の中に含まれる可能性があります
+                    | {{ $t('formPublishAgreeNotice') }}
               v-btn(@click='submit' v-show="!loading" block=true color="primary")
-                | エントリーする
+                | {{ $t('submit') }}
               v-progress-circular(v-show="loading" indeterminate color="primary")
               div(v-show="loading" v-for="(file, i) in files" :key="file.id")
                 v-progress-circular(indeterminate color='amber')
@@ -116,6 +116,9 @@ export default {
     }
   },
   methods: {
+    t(key) {
+      return this.$i18n.t(key)
+    },
     async deleteEntry(entryId) {
       await this.$firestore.collection('entries').doc(entryId).delete()
     },
@@ -186,12 +189,15 @@ export default {
           }
         })
         .then(() => {
-          this.$message.show('参加登録しました')
-          this.$router.push('/entries/')
+          const msg = this.$i18n.t('registrationFinished')
+          this.$message.show(msg)
+          const localePath = this.localePath('entries')
+          this.$router.push(localePath + '/')
         })
         .catch((e) => {
           console.log('Error getting documents', e)
-          this.$message.show('ファイルアップロード時にエラーが起こりました')
+          const msg = this.$i18n.t('fileUploadError')
+          this.$message.show(msg)
           if (this.entryId) {
             this.deleteEntry(this.entryId)
           }

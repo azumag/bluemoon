@@ -124,8 +124,8 @@ v-layout(column, justify-center, align-center)
             )
               | {{ $t('entryForm') }}
           v-card-text(v-else)
-            | エントリーするにはログインして下さい🙇‍♂️
-            | エントリー管理のためログイン必須になっています，お手数ですがご協力下さい
+            | {{ $t('registrationNotice') }}
+            | {{ $t('registrationNotice2') }}
             div
               v-btn.mx-2(@click="gotoLogin()"
                 block
@@ -375,13 +375,16 @@ export default {
   },
   methods: {
     gotoEntryForm() {
-      this.$router.push('/events/' + this.event.id + '/entry/')
+      const localePath = this.localePath('events')
+      this.$router.push(localePath + '/' + this.event.id + '/entry/')
     },
     gotoEntryList() {
-      this.$router.push('/events/' + this.event.id + '/entries/')
+      const localePath = this.localePath('events')
+      this.$router.push(localePath + '/' + this.event.id + '/entries/')
     },
     gotoLogin() {
-      this.$router.push('/login/')
+      const localePath = this.localePath('login')
+      this.$router.push(localePath + '/')
     },
   },
 }
