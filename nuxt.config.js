@@ -155,7 +155,12 @@ export default {
           withdraw: 'Withdraw',
           required: 'Requied',
           uploadedFiles: "Uploaded Files",
-          delete: 'Delete'
+          delete: 'Delete',
+          update: 'UPDATE',
+          deleteConfirmation: 'Cancel the entry, OK?',
+          deleted: 'Withdrawed',
+          deleteError: 'Error',
+          updateEntry: 'Entry Updated',
         },
         ja: {
           welcome: 'yokoso',
@@ -194,7 +199,12 @@ export default {
           withdraw: '取り消す',
           required: '必須項目です',
           uploadedFiles: "アップロード済ファイル",
-          delete: '削除'
+          delete: '削除',
+          update: '更新する',
+          deleteConfirmation: 'エントリーを取り消します。よろしいですか',
+          deleted: '取り消しました',
+          deleteError: '取り消し中にエラーが発生しました',
+          updateEntry: '更新しました',
         },
       },
     },

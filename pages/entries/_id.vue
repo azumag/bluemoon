@@ -70,12 +70,12 @@ v-layout(column, justify-center, align-center)
           v-card(color='transparent')
                 v-alert(outlined color='rgb(100, 100, 100, 0.8)')
                   v-card-body
-                    v-checkbox(outlined label="エントリー動画のアーカイブ公開を許可" v-model="form.publishAgree")
+                    v-checkbox(outlined :label="$t('formPublishAgreeLabel')" v-model="form.publishAgree")
                   v-card-text.red--text
-                    | ※ アーカイブ公開を許可すると，オンラインフェス終了後に「フェスのようす」として公開される動画の中に含まれる可能性があります
+                    | {{ $t('formPublishAgreeNotice') }}
           v-divider
           v-btn.ma-2(@click='update' v-show="!loading" block outlined color="primary")
-            | 更新する
+            | {{ $t('update') }}
           v-progress-circular(v-show="loading" indeterminate color="primary")
             div(v-show="loading" v-for="(file, i) in files" :key="file.id")
               v-progress-circular(indeterminate color='amber')
@@ -107,7 +107,7 @@ export default {
       },
       requiredRule: [
         (v) => {
-          return !!v || '必須項目です'
+          return !!v || this.$i18n.t('required')
         },
       ],
       loading: false,
@@ -149,7 +149,8 @@ export default {
   },
   methods: {
     deleteEntry() {
-      if (!confirm('削除します。よろしいですか？')) {
+      const msg = this.$i18n.t('deleteConfirmation')
+      if (!confirm(msg)) {
         return
       }
       const storageRef = this.$firestorage().ref()
@@ -171,15 +172,18 @@ export default {
             .delete()
         })
         .then(() => {
-          this.$message.show('削除しました')
+          const msg = this.$i18n.t('deleted')
+          this.$message.show(msg)
           this.$router.back()
         })
         .catch(() => {
-          this.$message.show('削除に失敗しました')
+          const msg = this.$i18n.t('deleteError')
+          this.$message.show(msg)
         })
     },
     deleteFile(filename) {
-      if (!confirm('削除します。よろしいですか？')) {
+      const msg = this.$i18n.t('deleteConfirmation')
+      if (!confirm(msg)) {
         return
       }
       const storageRef = this.$firestorage().ref()
@@ -192,10 +196,12 @@ export default {
           return this.updateForm()
         })
         .then(() => {
-          this.$message.show('削除しました')
+          const msg = this.$i18n.t('deleted')
+          this.$message.show(msg)
         })
         .catch(() => {
-          this.$message.show('削除に失敗しました')
+          const msg = this.$i18n.t('deleteError')
+          this.$message.show(msg)
         })
     },
     updateForm() {
@@ -252,11 +258,13 @@ export default {
           }
         })
         .then(() => {
-          this.$message.show('エントリーを更新しました')
+          const msg = this.$i18n.t('updateEntry')
+          this.$message.show(msg)
         })
         .catch((e) => {
           console.log('Error getting documents', e)
-          this.$message.show('ファイルアップロード時にエラーが起こりました')
+          const msg = this.$i18n.t('fileUploadError')
+          this.$message.show(msg)
           const storageRef = this.$firestorage().ref()
           storageRef
             .child(this.filePath)
