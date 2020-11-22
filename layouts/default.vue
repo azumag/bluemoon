@@ -7,7 +7,7 @@ v-app
           v-icon {{ item.icon }}
         v-list-item-content
           v-list-item-title(v-text='item.title')
-      v-list-item(v-for="locale in availableLocales" :to="switchLocalePath(locale)")
+      v-list-item(v-for="locale in availableLocales" :key="locale" :to="switchLocalePath(locale)")
         v-list-item-action
           v-icon language
         v-list-item-content

@@ -10,7 +10,7 @@ v-layout(column, justify-center, align-center)
             src="/entrylist.jpg"
           )
             v-card-title.headline
-              | エントリーリスト
+              | {{ $t('entryList') }}
     v-row(v-for="(entry, i) in entries" :key="entry.id")
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)' shaped outlined)
@@ -18,7 +18,7 @@ v-layout(column, justify-center, align-center)
             | {{ entry.name }}
           v-card-text
             v-btn(@click='gotoDetail(entry)' block=true outlined=true)
-              | 確認・編集
+              | {{ $t('edit') }}
 </template>
 
 <script>
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     gotoDetail(entry) {
-      this.$router.push('/entries/' + entry.id)
+      this.$router.push(this.localePath('entries') + '/' + entry.id)
     },
   },
 }

@@ -12,7 +12,7 @@ v-layout(column, justify-center, align-center)
       v-card-text
         | {{$t('eventDescription')}}
         span.ma-4
-          v-btn(v-for="locale in availableLocales" color='orange' outlined)
+          v-btn(v-for="locale in availableLocales" :key='locale' color='orange' outlined)
             nuxt-link(:key="locale" :to="switchLocalePath(locale)") {{ $t(locale) }}
     v-row
       v-col(cols="12")
