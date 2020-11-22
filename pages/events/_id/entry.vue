@@ -52,7 +52,7 @@ v-layout(column, justify-center, align-center)
                 hint="（例）\nhttps://www.youtube.com/watch?v=xxxxxxx"
               )
               v-file-input(v-show="!loading" accept="video/*"
-                :label="t('formUploadLabel')"
+                :label="$t('formUploadLabel')"
                 show-size
                 counter
                 chips
@@ -100,7 +100,7 @@ export default {
       },
       requiredRule: [
         (v) => {
-          return !!v || '必須項目です'
+          return !!v || this.$i18n.t('required')
         },
       ],
       loading: false,

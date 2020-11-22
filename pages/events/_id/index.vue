@@ -14,6 +14,10 @@ v-layout(column, justify-center, align-center)
             // - div.ma-2.text-lg-right -- Stay Home, Country Roads.
           v-card-text
             | {{ event.abstract }}
+            span.ma-4
+              v-btn(v-for="locale in availableLocales" :key='locale' color='orange' outlined)
+                nuxt-link(:key="locale" :to="switchLocalePath(locale)") {{ $t(locale) }}
+ 
       //- v-col(cols=12)
       //-   v-card(color='rgb(100, 100, 100, 0.4)')
       //-     v-chip(
@@ -131,7 +135,7 @@ v-layout(column, justify-center, align-center)
                 block
                 outlined
               )
-                | ログイン
+                | LOGIN
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
@@ -354,6 +358,9 @@ export default {
     },
     expandMessage2() {
       return this.isExpand[1] ? '閉じる' : '開く'
+    },
+    availableLocales() {
+      return this.$i18n.locales.filter((i) => i !== this.$i18n.locale)
     },
   },
   async mounted() {

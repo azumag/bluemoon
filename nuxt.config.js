@@ -129,6 +129,7 @@ export default {
           entries: 'Your own entries',
           openRegistration: 'Registration has been started',
           registrationNotice: 'Please login for registration',
+          registrationNotice2: '',
           entryForm: 'Entry Form',
           entryDescription: 'You can edit/withdraw your entries after submission. It\'s available to multiple entries, however, notße that please avoid same band entry.',
           formNameHint: '(e.g., Band name)',
@@ -148,7 +149,12 @@ export default {
           formPublishAgreeNotice: 'If you allow archival publishing, it may be included in the videos that will be published as "festival footage" after the online festival',
           submit: 'Submit',
           registrationFinished: 'Thank you for your entry!',
-          fileUploadError: 'File Upload Error'
+          fileUploadError: 'File Upload Error',
+          entryList: 'Your own entries',
+          edit: 'Edit',
+          withdraw: 'Withdraw',
+          required: 'Requied',
+          uploadedFiles: "Uploaded Files"
         },
         ja: {
           welcome: 'yokoso',
@@ -181,7 +187,12 @@ export default {
           formPublishAgreeNotice: '※ アーカイブ公開を許可すると，オンラインフェス終了後に「フェスのようす」として公開される動画の中に含まれる可能性があります',
           submit: 'エントリーする',
           registrationFinished: '参加登録しました',
-          fileUploadError: 'ファイルアップロード時にエラーが起こりました'
+          fileUploadError: 'ファイルアップロード時にエラーが起こりました',
+          entryList: 'エントリーリスト',
+          edit: '編集',
+          withdraw: '取り消す',
+          required: '必須項目です',
+          uploadedFiles: "アップロード済ファイル"
         },
       },
     },
