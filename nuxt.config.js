@@ -154,7 +154,8 @@ export default {
           edit: 'Edit',
           withdraw: 'Withdraw',
           required: 'Requied',
-          uploadedFiles: "Uploaded Files"
+          uploadedFiles: "Uploaded Files",
+          delete: 'Delete'
         },
         ja: {
           welcome: 'yokoso',
@@ -192,7 +193,8 @@ export default {
           edit: '編集',
           withdraw: '取り消す',
           required: '必須項目です',
-          uploadedFiles: "アップロード済ファイル"
+          uploadedFiles: "アップロード済ファイル",
+          delete: '削除'
         },
       },
     },
