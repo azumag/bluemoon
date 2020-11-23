@@ -14,7 +14,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: '今最もクールな ウェブとして 注目されているのが Bluemoon だ',
+        content: 'ブルーグラスフェス/エントリーシステム',
       },
       { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
       {
