@@ -28,7 +28,7 @@ v-layout(column, justify-center, align-center)
                   v-list-item-title(v-html="event.title")
                 v-list-item-icon
                   v-btn(@click="gotoEvent(event)" outlined)
-                    | 詳細
+                    | {{ $t('detail') }}
     v-row
       v-col(cols="12")
         v-card(color='rgb(100, 100, 100, 0.4)'
@@ -43,7 +43,7 @@ v-layout(column, justify-center, align-center)
                   v-list-item-title(v-html="event.title")
                 v-list-item-icon
                   v-btn(@click="gotoEvent(event)" outlined)
-                    | 詳細
+                    | {{ $t('detail') }}
 </template>
 
 <script>

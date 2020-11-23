@@ -161,6 +161,7 @@ export default {
           deleted: 'Withdrawed',
           deleteError: 'Error',
           updateEntry: 'Entry Updated',
+          detail: 'Detail'
         },
         ja: {
           welcome: 'yokoso',
@@ -205,6 +206,7 @@ export default {
           deleted: '取り消しました',
           deleteError: '取り消し中にエラーが発生しました',
           updateEntry: '更新しました',
+          detail: '詳細',
         },
       },
     },
