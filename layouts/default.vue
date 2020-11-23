@@ -51,7 +51,7 @@ export default {
         description:
           '今最もクールな ウェブとして 注目されているのが Bluemoon だ',
       },
-      version: '0.0.4',
+      version: '1.0.4',
       clipped: false,
       drawer: true,
       fixed: false,
