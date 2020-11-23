@@ -68,21 +68,21 @@ export default {
   },
   async mounted() {
     if (this.$firebase.currentUser) {
-      await this.$firestore
-        .collection('votes')
-        .doc(this.$firebase.currentUser.uid)
-        .get()
-        .then((res) => {
-          console.log(res.data())
-          this.votes = res.data().entryIds
-        })
-        .catch((err) => {
-          console.log('Error getting documents', err)
-        })
+      // await this.$firestore
+      //   .collection('votes')
+      //   .doc(this.$firebase.currentUser.uid)
+      //   .get()
+      //   .then((res) => {
+      //     console.log(res.data())
+      //     this.votes = res.data().entryIds
+      //   })
+      //   .catch((err) => {
+      //     console.log('Error getting documents', err)
+      //   })
     }
     await this.$firestore
       .collection('entries')
-      // .where('eventId', '==', '2pbLysWMNdNXnSvgBNr2')
+      .where('eventId', '==', this.$route.params.id)
       .get()
       .then((res) => {
         res.forEach((doc) => {
@@ -108,83 +108,83 @@ export default {
       }
       return '投票する'
     },
-    unvote(entry) {
-      const index = this.votes.indexOf(entry.id)
-      this.votes.splice(index, 1)
-      this.$firestore
-        .collection('votes')
-        .doc(this.$firebase.currentUser.uid)
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            return this.$firestore
-              .collection('votes')
-              .doc(this.$firebase.currentUser.uid)
-              .set({
-                entryIds: this.votes,
-              })
-              .then(() => {
-                this.$message.show('取り消しました')
-              })
-          }
-        })
-    },
-    vote(entry) {
-      if (this.$firebase.currentUser) {
-        if (this.isVoted(entry)) {
-          return this.unvote(entry)
-        }
-        this.$firestore
-          .collection('votes')
-          .doc(this.$firebase.currentUser.uid)
-          .get()
-          .then((doc) => {
-            console.log(doc.exists)
-            if (!doc.exists) {
-              return this.$firestore
-                .collection('votes')
-                .doc(this.$firebase.currentUser.uid)
-                .set({
-                  entryIds: [entry.id],
-                })
-                .then(() => {
-                  this.votes = [entry.id]
-                  this.$message.show('投票しました')
-                })
-            } else {
-              const data = doc.data()
-              if (data.entryIds.length >= 3) {
-                this.$message.show('投票数上限を超えています')
-                return
-              }
-              if (
-                data.entryIds.find((e) => {
-                  return e === entry.id
-                })
-              ) {
-                this.$message.show('すでにあります')
-              } else {
-                data.entryIds.push(entry.id)
-                return this.$firestore
-                  .collection('votes')
-                  .doc(this.$firebase.currentUser.uid)
-                  .set({
-                    entryIds: data.entryIds,
-                  })
-                  .then(() => {
-                    this.votes = data.entryIds
-                    this.$message.show('投票しました')
-                  })
-              }
-            }
-          })
-          .catch((err) => {
-            console.log('Error getting document', err)
-          })
-      } else {
-        this.$message.show('投票するためにログインをお願いいたします🙇‍♂')
-      }
-    },
+    // unvote(entry) {
+    //   const index = this.votes.indexOf(entry.id)
+    //   this.votes.splice(index, 1)
+    //   this.$firestore
+    //     .collection('votes')
+    //     .doc(this.$firebase.currentUser.uid)
+    //     .get()
+    //     .then((doc) => {
+    //       if (doc.exists) {
+    //         return this.$firestore
+    //           .collection('votes')
+    //           .doc(this.$firebase.currentUser.uid)
+    //           .set({
+    //             entryIds: this.votes,
+    //           })
+    //           .then(() => {
+    //             this.$message.show('取り消しました')
+    //           })
+    //       }
+    //     })
+    // },
+    // vote(entry) {
+    //   if (this.$firebase.currentUser) {
+    //     if (this.isVoted(entry)) {
+    //       return this.unvote(entry)
+    //     }
+    //     this.$firestore
+    //       .collection('votes')
+    //       .doc(this.$firebase.currentUser.uid)
+    //       .get()
+    //       .then((doc) => {
+    //         console.log(doc.exists)
+    //         if (!doc.exists) {
+    //           return this.$firestore
+    //             .collection('votes')
+    //             .doc(this.$firebase.currentUser.uid)
+    //             .set({
+    //               entryIds: [entry.id],
+    //             })
+    //             .then(() => {
+    //               this.votes = [entry.id]
+    //               this.$message.show('投票しました')
+    //             })
+    //         } else {
+    //           const data = doc.data()
+    //           if (data.entryIds.length >= 3) {
+    //             this.$message.show('投票数上限を超えています')
+    //             return
+    //           }
+    //           if (
+    //             data.entryIds.find((e) => {
+    //               return e === entry.id
+    //             })
+    //           ) {
+    //             this.$message.show('すでにあります')
+    //           } else {
+    //             data.entryIds.push(entry.id)
+    //             return this.$firestore
+    //               .collection('votes')
+    //               .doc(this.$firebase.currentUser.uid)
+    //               .set({
+    //                 entryIds: data.entryIds,
+    //               })
+    //               .then(() => {
+    //                 this.votes = data.entryIds
+    //                 this.$message.show('投票しました')
+    //               })
+    //           }
+    //         }
+    //       })
+    //       .catch((err) => {
+    //         console.log('Error getting document', err)
+    //       })
+    //   } else {
+    //     this.$message.show('投票するためにログインをお願いいたします🙇‍♂')
+    //   }
+    // },
   },
 }
 </script>
