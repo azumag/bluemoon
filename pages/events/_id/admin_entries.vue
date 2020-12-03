@@ -44,6 +44,13 @@ v-layout(column, justify-center, align-center)
                 | {{ entry.name }}
               v-expansion-panel-content.text--secondary
                 div.ma-2 {{ entry.description }}
+                div.ma-2 {{ {...entry} }}
+                div(v-if="entry.fileNames")
+                  div(v-for="filename in entry.fileNames" :key='filename')
+                    | {{ filename }}
+                div(v-if="entry.fileURLs")
+                  | {{ entry.fileURLs }}
+
                 v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry)")
                   | {{ voteString(entry) }}
 </template>
@@ -67,6 +74,17 @@ export default {
     },
   },
   async mounted() {
+    if (this.$firebase.currentUser) {
+      if (
+        this.$firebase.currentUser.uid === '9OxUbixjH0NhepFvA2ZImgrNfAB3' ||
+        this.$firebase.currentUser.uid === 'ujmwQq1n0rWQPyTtI5RYLBmykYE2'
+      ) {
+      } else {
+        this.$router.push('/')
+      }
+    } else {
+      this.$router.push('/login/')
+    }
     if (this.$firebase.currentUser) {
       // await this.$firestore
       //   .collection('votes')
