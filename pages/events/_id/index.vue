@@ -171,6 +171,7 @@ v-layout(column, justify-center, align-center)
       v-col(v-if="event.ofuse" cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
+            v-icon attach_money
             | {{ $t('ofuse') }}
           v-card-text
             | {{ fireTrans(event, 'ofuse' )}}
