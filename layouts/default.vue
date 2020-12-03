@@ -48,8 +48,7 @@ export default {
   data() {
     return {
       meta: {
-        description:
-          'ブルーグラスオンラインフェス',
+        description: 'ブルーグラスオンラインフェス',
       },
       version: '1.0.4',
       clipped: false,
