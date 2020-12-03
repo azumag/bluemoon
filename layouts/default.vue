@@ -49,7 +49,7 @@ export default {
     return {
       meta: {
         description:
-          '今最もクールな ウェブとして 注目されているのが Bluemoon だ',
+          'ブルーグラスオンラインフェス',
       },
       version: '1.0.4',
       clipped: false,
