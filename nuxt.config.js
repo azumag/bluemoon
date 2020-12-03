@@ -215,6 +215,7 @@ export default {
           awardTitle: 'タイトル',
           filmEditing: '動画編集技術賞',
           repairTicket: 'Iwashita Mandolins & Guitars リペア券 (リフレット)',
+          creative: '独創独自賞',
           prize: '賞品',
           appleJuice: 'りんごジュース',
           musicTech: '音声技術賞',
