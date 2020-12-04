@@ -282,7 +282,7 @@ v-layout(column, justify-center, align-center)
                 v-expansion-panel-header
                   | {{ $t('QAPrepareVideo') }}
                 v-expansion-panel-content
-                  div {{ $t('QAPrepareVideo') }}
+                  div {{ $t('QAPrepareVideoAnswer') }}
               v-expansion-panel
                 v-expansion-panel-header
                   | {{ $t('QAVideoTooShort') }}
