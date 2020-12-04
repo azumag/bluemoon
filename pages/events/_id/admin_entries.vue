@@ -78,7 +78,8 @@ export default {
       if (
         this.$firebase.currentUser.uid === '9OxUbixjH0NhepFvA2ZImgrNfAB3' ||
         this.$firebase.currentUser.uid === 'ujmwQq1n0rWQPyTtI5RYLBmykYE2' ||
-        this.$firebase.currentUser.uid === 'tekzU5qfJPXWP3r2y2PnTcpTXI23'
+        this.$firebase.currentUser.uid === 'tekzU5qfJPXWP3r2y2PnTcpTXI23' ||
+        this.$firebase.currentUser.uid === 'mxtWRtvtuehpy91AG6KuRPfM5Nz2'
       ) {
       } else {
         this.$router.push('/')
