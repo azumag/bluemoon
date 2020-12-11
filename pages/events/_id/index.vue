@@ -37,7 +37,7 @@ v-layout(column, justify-center, align-center)
             text-color="white"
           )
             | ご協賛
-          span.body-1  賞品をご提供頂きました
+          span.body-1  賞品(お菓子詰め合わせ）をご提供頂きました!!!
           v-container(
             style="background-image: url('/hirasawa2.jpeg'); background-size: cover"
             height="auto"
@@ -63,7 +63,7 @@ v-layout(column, justify-center, align-center)
             text-color="white"
           )
             | ご協賛
-          span.body-1  賞品の割引をいただきました
+          span.body-1  賞品(リペア券、ピック）の割引をいただきました!
           v-container(
             style="background-image: url('/iwashita-mandolins.jpeg'); background-size: cover"
             height="auto"
@@ -93,7 +93,29 @@ v-layout(column, justify-center, align-center)
             )
               | ご協賛
             a(href="https://twitter.com/subhuman_2") まいちゃん
-            span.body-1 よりライブ動画部門の賞品をご提供頂きました
+            span.body-1 よりライブ動画部門の賞品 (ビール）をご提供頂きました!!
+      v-row
+        v-col(cols=12)
+          v-card(color='rgb(100, 100, 100, 0.4)')
+            v-chip(
+              class="ma-2"
+              color="red"
+              text-color="white"
+            )
+              | ご協賛
+            a(href="https://twitter.com/komeya88") 米屋さん
+            span.body-1 より米屋賞の品（チューハイ詰め合わせ）をご提供頂きました!!
+        v-col(cols=12)
+          v-card(color='rgb(100, 100, 100, 0.4)')
+            v-chip(
+              class="ma-2"
+              color="red"
+              text-color="white"
+            )
+              | ご協賛
+            a(href="https://twitter.com/tempakyousuke2") てんぱさん
+            span.body-1 より賞品（信州・丸山農園特製りんごジュース）をご提供頂きました!!
+
     v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           //- v-card-title.headline
@@ -238,6 +260,15 @@ v-layout(column, justify-center, align-center)
                         tr
                           td {{ $t('specialAward') }}
                           td {{ $t('soba')}}
+              v-expansion-panel
+                v-expansion-panel-header
+                  div.title.mt-2.font-weight-bold 
+                    v-icon grade 
+                    span.ma-2 {{ $t('komeyaAward') }}
+                v-expansion-panel-content
+                  div.subtitle-2.ma-4 {{ $t('descKomeyaAward') }}
+                  div.subtitle-2.ma-4 {{ $t('komeyaAwardPrize') }}
+              v
             hr
             div.title.pa-2 {{ $t('notice') }}
             v-expansion-panels
