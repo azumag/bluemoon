@@ -220,7 +220,7 @@ export default {
           repairTicket: 'Iwashita Mandolins & Guitars リペア券 (リフレット)',
           creative: '独創独自賞',
           prize: '賞品',
-          appleJuice: 'りんごジュース',
+          appleJuice: '信州・丸山農園特製りんごジュース',
           musicTech: '音声技術賞',
           jindaijiBeer: '深大寺ビール',
           bluegrassLove: 'ブルーグラス愛を感じる賞',
