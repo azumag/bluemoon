@@ -265,7 +265,7 @@ v-layout(column, justify-center, align-center)
                           v-expansion-panel-header
                             | 日本アルプス弦楽団
                           v-expansion-panel-content
-                            | B-rise です。 なかなか室内で集まっての練習も憚られる日々、練習はもっぱら近所の公園。 憧れの名曲”Yankees revenge “を目指すも、撮影したものを見てみると、元曲にみなぎる殺気が感じられない､､､と言う事で”calm revenge “”穏やかな復讐”と言う題にしました。 最後まで聞いて頂ければ嬉しいです。
+                            | 京都のヨーデル娘を筆頭にしたヨーデル好きによるヨーデル好きのためのヨーデルをするバンド。 さあ、画面の前の皆さんもご一緒に、ヨロレイヒー！＼(^o^)／
                         v-expansion-panel
                           v-expansion-panel-header
                             | 箸休め?Sacred
