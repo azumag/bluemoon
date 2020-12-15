@@ -150,6 +150,7 @@ v-layout(column, justify-center, align-center)
                         div.ma-4 BLUEST BELIEVERS
                         div.ma-4 もっつ
                         div.ma-4 まるみ
+                        div.ma-4 A-RISE
                         div.ma-4 自由人 :-)
                         div.ma-4 Hiroshi Masuda
                         div.ma-4 Two Crie Stringband
