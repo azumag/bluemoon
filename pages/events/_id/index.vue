@@ -161,7 +161,7 @@ v-layout(column, justify-center, align-center)
                         div.subtitle-2.ma-4 Masaoka and Friends Band
                         div.subtitle-2.ma-4 引きこもりジジイ
                         div.subtitle-2.ma-4 扇町ボンバーズ
-                        div.subtitle-2.ma-4 米屋 With 原宿限界タピオカボーイズ
+                        div.subtitle-2.ma-4 米屋 with 原宿限界タピオカボーイズ
                         div.subtitle-2.ma-4 ゴールデンロッドガールズ
                         div.subtitle-2.ma-4 ゆうと
                     tr
