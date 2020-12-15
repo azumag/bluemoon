@@ -146,49 +146,49 @@ v-layout(column, justify-center, align-center)
                     tr
                       td 18:15 - 19:30
                       td
-                        div.subtitle-2.ma-4 Lingerie Douglas
-                        div.subtitle-2.ma-4 BLUEST BELIEVERS
-                        div.subtitle-2.ma-4 もっつ
-                        div.subtitle-2.ma-4 まるみ
-                        div.subtitle-2.ma-4 自由人 :-)
-                        div.subtitle-2.ma-4 Hiroshi Masuda
-                        div.subtitle-2.ma-4 Two Crie Stringband
+                        div.ma-4 Lingerie Douglas
+                        div.ma-4 BLUEST BELIEVERS
+                        div.ma-4 もっつ
+                        div.ma-4 まるみ
+                        div.ma-4 自由人 :-)
+                        div.ma-4 Hiroshi Masuda
+                        div.ma-4 Two Crie Stringband
                     tr
                       td 19:30 - 21:00
                       td
-                        div.subtitle-2.ma-4 Lonesome Garage Band
-                        div.subtitle-2.ma-4 もひかん
-                        div.subtitle-2.ma-4 Masaoka and Friends Band
-                        div.subtitle-2.ma-4 引きこもりジジイ
-                        div.subtitle-2.ma-4 扇町ボンバーズ
-                        div.subtitle-2.ma-4 米屋 with 原宿限界タピオカボーイズ
-                        div.subtitle-2.ma-4 ゴールデンロッドガールズ
-                        div.subtitle-2.ma-4 ゆうと
+                        div.ma-4 Lonesome Garage Band
+                        div.ma-4 もひかん
+                        div.ma-4 Masaoka and Friends Band
+                        div.ma-4 引きこもりジジイ
+                        div.ma-4 扇町ボンバーズ
+                        div.ma-4 米屋 with 原宿限界タピオカボーイズ
+                        div.ma-4 ゴールデンロッドガールズ
+                        div.ma-4 ゆうと
                     tr
                       td 21:00 - 21:15
                       td 中入り（休憩） Cluster バーチャルイベント会場切り替えのため
                     tr
                       td 21:15 - 22:30
                       td 
-                        div.subtitle-2.ma-4 Unripened Stringplunkers
-                        div.subtitle-2.ma-4 B-RISE
-                        div.subtitle-2.ma-4 日本アルプス弦楽団
-                        div.subtitle-2.ma-4 箸休め?Sacred
-                        div.subtitle-2.ma-4 Copper Kettles
-                        div.subtitle-2.ma-4 まいばす
-                        div.subtitle-2.ma-4 れいじーぴっかーず
+                        div.ma-4 Unripened Stringplunkers
+                        div.ma-4 B-RISE
+                        div.ma-4 日本アルプス弦楽団
+                        div.ma-4 箸休め?Sacred
+                        div.ma-4 Copper Kettles
+                        div.ma-4 まいばす
+                        div.ma-4 れいじーぴっかーず
                     tr
                       td 22:30 - 24:00
                       td 
-                        div.subtitle-2.ma-4 鳩正宗
-                        div.subtitle-2.ma-4 雑貨屋フレイヴァー
-                        div.subtitle-2.ma-4 マーマレードボーイズ
-                        div.subtitle-2.ma-4 コーラスウォーター
-                        div.subtitle-2.ma-4 MTB
-                        div.subtitle-2.ma-4 Deep Blue Boys
-                        div.subtitle-2.ma-4 ジャンクション
-                        div.subtitle-2.ma-4 かみおか（おだ）
-                        div.subtitle-2.ma-4 水木ゆうこ＆サウザンドリバー
+                        div.ma-4 鳩正宗
+                        div.ma-4 雑貨屋フレイヴァー
+                        div.ma-4 マーマレードボーイズ
+                        div.ma-4 コーラスウォーター
+                        div.ma-4 MTB
+                        div.ma-4 Deep Blue Boys
+                        div.ma-4 ジャンクション
+                        div.ma-4 かみおか（おだ）
+                        div.ma-4 水木ゆうこ＆サウザンドリバー
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
