@@ -128,7 +128,7 @@ v-layout(column, justify-center, align-center)
                 | * 不備・漏れなどがありましたらお申し付けください →
                 a(href='https://twitter.com/bluegrass_moon' target='_blank')
                   | @bluegrass_moon
-              v-timeline
+              v-timeline(dense)
                 v-timeline-item
                   v-card
                     v-card-title
