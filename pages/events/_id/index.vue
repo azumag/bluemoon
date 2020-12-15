@@ -116,28 +116,76 @@ v-layout(column, justify-center, align-center)
             a(href="https://twitter.com/tempakyousuke2") てんぱさん
             span.body-1 より賞品（信州・丸山農園特製りんごジュース）をご提供頂きました!!
 
-    v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)')
-          v-card-title.headline
-            | エントリー締め切りました
-          //- v-card-title.headline {{ $t('openRegistration') }}
-          //- v-btn(outlined block @click="gotoEntryList")
-          //-   | エントリーリスト
-          //- v-card-text(v-if="this.$firebase.currentUser")
-          //-   v-btn(@click="gotoEntryForm()"
-          //-     outlined
-          //-     block
-          //-   )
-          //-     | {{ $t('entryForm') }}
-          //- v-card-text(v-else)
-          //-   | {{ $t('registrationNotice') }}
-          //-   | {{ $t('registrationNotice2') }}
-          //-   div
-          //-     v-btn.mx-2(@click="gotoLogin()"
-          //-       block
-          //-       outlined
-          //-     )
-                | LOGIN
+    v-row
+      v-col(cols=12)
+          v-card(color='rgb(100, 100, 100, 0.4)')
+            v-card-title.headline
+              | タイムテーブルが決まりました
+            v-card-text
+              | エントリ放送時間帯は多少前後する可能性があります
+              div.red--text
+                | * エントリー一覧は放送順ではありません、ご注意ください
+              v-simple-table
+                template
+                  //- thead
+                  //-   tr
+                  //-     th test
+                  //-     th b
+                  tbody
+                    tr
+                      td 17:30
+                      td 
+                        a(href="https://cluster.mu/") Cluster 
+                        | フェスバーチャル会場の開場 （入退場自由）
+                    tr
+                      td 18:15 - 
+                      td Youtube 放送開始
+                    tr
+                      td 18:15 - 19:30
+                      td
+                        div.subtitle-2.ma-4 Lingerie Douglas
+                        div.subtitle-2.ma-4 BLUEST BELIEVERS
+                        div.subtitle-2.ma-4 もっつ
+                        div.subtitle-2.ma-4 まるみ
+                        div.subtitle-2.ma-4 自由人 :-)
+                        div.subtitle-2.ma-4 Hiroshi Masuda
+                        div.subtitle-2.ma-4 Two Crie Stringband
+                    tr
+                      td 19:30 - 21:00
+                      td
+                        div.subtitle-2.ma-4 Lonesome Garage Band
+                        div.subtitle-2.ma-4 もひかん
+                        div.subtitle-2.ma-4 Masaoka and Friends Band
+                        div.subtitle-2.ma-4 引きこもりジジイ
+                        div.subtitle-2.ma-4 扇町ボンバーズ
+                        div.subtitle-2.ma-4 米屋 With 原宿限界タピオカボーイズ
+                        div.subtitle-2.ma-4 ゴールデンロッドガールズ
+                        div.subtitle-2.ma-4 ゆうと
+                    tr
+                      td 21:00 - 21:15
+                      td 中入り（休憩） Cluster バーチャルイベント会場切り替えのため
+                    tr
+                      td 21:15 - 22:30
+                      td 
+                        div.subtitle-2.ma-4 Unripened Stringplunkers
+                        div.subtitle-2.ma-4 B-RISE
+                        div.subtitle-2.ma-4 日本アルプス弦楽団
+                        div.subtitle-2.ma-4 箸休め?Sacred
+                        div.subtitle-2.ma-4 Copper Kettles
+                        div.subtitle-2.ma-4 まいばす
+                        div.subtitle-2.ma-4 れいじーぴっかーず
+                    tr
+                      td 22:30 - 24:00
+                      td 
+                        div.subtitle-2.ma-4 鳩正宗
+                        div.subtitle-2.ma-4 雑貨屋フレイヴァー
+                        div.subtitle-2.ma-4 マーマレードボーイズ
+                        div.subtitle-2.ma-4 コーラスウォーター
+                        div.subtitle-2.ma-4 MTB
+                        div.subtitle-2.ma-4 Deep Blue Boys
+                        div.subtitle-2.ma-4 ジャンクション
+                        div.subtitle-2.ma-4 かみおか（おだ）
+                        div.subtitle-2.ma-4 水木ゆうこ＆サウザンドリバー
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
@@ -166,6 +214,30 @@ v-layout(column, justify-center, align-center)
               | {{ $t('howtoEntry') }}
             v-card-text
               | {{ fireTrans(event, 'howtoEntry') }}
+
+      v-col(cols=12)
+          v-card(color='rgb(100, 100, 100, 0.4)')
+            v-card-title.headline
+              | エントリー締め切りました
+            //- v-card-title.headline {{ $t('openRegistration') }}
+            //- v-btn(outlined block @click="gotoEntryList")
+            //-   | エントリーリスト
+            //- v-card-text(v-if="this.$firebase.currentUser")
+            //-   v-btn(@click="gotoEntryForm()"
+            //-     outlined
+            //-     block
+            //-   )
+            //-     | {{ $t('entryForm') }}
+            //- v-card-text(v-else)
+            //-   | {{ $t('registrationNotice') }}
+            //-   | {{ $t('registrationNotice2') }}
+            //-   div
+            //-     v-btn.mx-2(@click="gotoLogin()"
+            //-       block
+            //-       outlined
+            //-     )
+                  | LOGIN
+    
       v-col(v-if="event.notice" cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline.red--text
@@ -391,6 +463,10 @@ export default {
     gotoEntryList() {
       const localePath = this.localePath('events')
       this.$router.push(localePath + '/' + this.event.id + '/entries/')
+    },
+    gotoTimetable() {
+      const localePath = this.localePath('events')
+      this.$router.push(localePath + '/' + this.event.id + '/timetable/')
     },
     gotoLogin() {
       const localePath = this.localePath('login')
