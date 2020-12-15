@@ -124,7 +124,10 @@ v-layout(column, justify-center, align-center)
             v-card-text
               | エントリ放送時間帯は多少前後する可能性があります
               div.red--text
-                | * エントリー一覧は放送順ではありません、ご注意ください
+                | * 時間帯内の一覧は放送順ではありません、ご注意ください
+                | * 不備・漏れなどがありましたらお申し付けください →
+                a(href='https://twitter.com/bluegrass_moon' target='_blank')
+                  | @bluegrass_moon
               v-simple-table
                 template
                   //- thead
@@ -135,7 +138,7 @@ v-layout(column, justify-center, align-center)
                     tr
                       td 17:30
                       td 
-                        a(href="https://cluster.mu/") Cluster 
+                        a(href="https://cluster.mu/" target='_blank') Cluster 
                         | フェスバーチャル会場の開場 （入退場自由）
                     tr
                       td 18:15 - 
