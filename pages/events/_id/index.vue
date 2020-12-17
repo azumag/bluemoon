@@ -149,7 +149,7 @@ v-layout(column, justify-center, align-center)
                 v-timeline-item
                   v-card
                     v-card-title
-                      | 18:15 - 19:30
+                      | 18:15 - 19:30 (順不同)
                     v-card-text
                       v-expansion-panels
                         v-expansion-panel
@@ -196,7 +196,7 @@ v-layout(column, justify-center, align-center)
                 v-timeline-item
                   v-card
                     v-card-title
-                      | 19:30 - 21:00
+                      | 19:30 - 21:00（順不同）
                     v-card-text
                       v-expansion-panels
                         v-expansion-panel
@@ -248,7 +248,7 @@ v-layout(column, justify-center, align-center)
                 v-timeline-item
                   v-card
                     v-card-title
-                      | 21:15 - 22:30
+                      | 21:15 - 22:30 (順不同)
                     v-card-text
                       v-expansion-panels
                         v-expansion-panel
@@ -293,7 +293,7 @@ v-layout(column, justify-center, align-center)
                 v-timeline-item
                   v-card
                     v-card-title
-                      | 22:30 - 24:00
+                      | 22:30 - 24:00（順不同）
                     v-card-text
                       v-expansion-panels
                         v-expansion-panel
