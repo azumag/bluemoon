@@ -273,6 +273,7 @@ v-layout(column, justify-center, align-center)
                         v-expansion-panel
                           v-expansion-panel-header
                             | 箸休め?Sacred
+                            | 右耳：語り　左耳：ギター
                           v-expansion-panel-content
                             | 「ブルーグラスの背後にあるキリスト教の文脈の把握」
                         v-expansion-panel
