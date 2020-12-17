@@ -125,7 +125,6 @@ v-layout(column, justify-center, align-center)
             v-card-text
               | エントリ放送時間帯は多少前後する可能性があります
               div.red--text
-                | * 時間帯内の一覧は放送順ではありません、ご注意ください
                 | * 不備・漏れなどがありましたらお申し付けください →
                 a(href='https://twitter.com/bluegrass_moon' target='_blank')
                   | @bluegrass_moon
@@ -151,6 +150,7 @@ v-layout(column, justify-center, align-center)
                     v-card-title
                       | 18:15 - 19:30 (順不同)
                     v-card-text
+                      div.red--text * 時間帯内の一覧は放送順ではありません、ご注意ください
                       v-expansion-panels
                         v-expansion-panel
                           v-expansion-panel-header
