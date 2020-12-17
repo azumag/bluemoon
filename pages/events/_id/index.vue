@@ -120,6 +120,7 @@ v-layout(column, justify-center, align-center)
       v-col(cols=12)
           v-card(color='rgb(100, 100, 100, 0.4)')
             v-card-title.headline
+              | 12月19日(土曜) 開催
               | タイムテーブルが決まりました
             v-card-text
               | エントリ放送時間帯は多少前後する可能性があります
@@ -131,17 +132,20 @@ v-layout(column, justify-center, align-center)
               v-timeline(dense)
                 v-timeline-item
                   v-card
-                    v-card-title
+                    v-card-title.headline
                       | 17:30
                     v-card-text
                       a(href="https://cluster.mu/" target='_blank') Cluster 
                       | フェスバーチャル会場の開場 （入退場自由）
                 v-timeline-item
                   v-card
-                    v-card-title
+                    v-card-title.headline
                       | 18:15
                     v-card-text
                       | Youtube 放送開始
+                      div.headline
+                        a(href='https://youtu.be/8aQyxnLzbv8' target="_blank")
+                          | https://youtu.be/8aQyxnLzbv8
                 v-timeline-item
                   v-card
                     v-card-title
