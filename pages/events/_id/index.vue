@@ -314,7 +314,7 @@ v-layout(column, justify-center, align-center)
                             | 名古屋を拠点に活動しています、コーラスウォーターと申します。主にブルーグラスの楽器編成で日本語のオリジナル曲を演奏しています。 今回はオンラインフェスに参加するにあたって、ブルーグラッサーにとって馴染み深い場所で（勝手に）演奏しました。
                         v-expansion-panel
                           v-expansion-panel-header
-                            | MTB
+                            | Master of Traditional Bluegrass 
                           v-expansion-panel-content
                             | MTB(Master of Traditional Bluegrass )を目指して活動を始めました！ fd テイター(安田) bj もっつ md アッキー gt 村田
                         v-expansion-panel
