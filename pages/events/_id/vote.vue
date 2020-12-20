@@ -167,11 +167,16 @@ export default {
         .get()
         .then((doc) => {
           if (doc.exists) {
+            const createdAt = doc.data().createdAt
+              ? doc.data().createdAt
+              : new Date()
             return this.$firestore
               .collection('votes')
               .doc(this.$firebase.currentUser.uid)
               .set({
                 entryKinds: this.votes,
+                updatedAt: new Date(),
+                createdAt,
               })
               .then(() => {
                 console.log(this.votes)
