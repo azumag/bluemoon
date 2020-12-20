@@ -118,7 +118,7 @@ v-layout(column, justify-center, align-center)
     v-row
       v-col(cols=12)
           v-card(color='rgb(100, 100, 100, 0.4)')
-            v-card-title.headline
+            v-card-title.headline.red--text
               | 放送終了いたしました。本当にありがとうございました。投票ページをオープンしておりますので、是非各エントリに対しての投票お願いします
             v-btn(@click="gotoVote()"
               outlined
