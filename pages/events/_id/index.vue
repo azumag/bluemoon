@@ -115,7 +115,16 @@ v-layout(column, justify-center, align-center)
               | ご協賛
             a(href="https://twitter.com/tempakyousuke2") てんぱさん
             span.body-1 より賞品（信州・丸山農園特製りんごジュース）をご提供頂きました!!
-
+    v-row
+      v-col(cols=12)
+          v-card(color='rgb(100, 100, 100, 0.4)')
+            v-card-title.headline
+              | 放送終了いたしました。本当にありがとうございました。投票ページをオープンしておりますので、是非各エントリに対しての投票お願いします
+            v-btn(@click="gotoVote()"
+              outlined
+              block
+            )
+              | 投票ページ
     v-row
       v-col(cols=12)
           v-card(color='rgb(100, 100, 100, 0.4)')
@@ -628,6 +637,10 @@ export default {
     gotoLogin() {
       const localePath = this.localePath('login')
       this.$router.push(localePath + '/')
+    },
+    gotoVote() {
+      const localePath = this.localePath('events')
+      this.$router.push(localePath + '/' + this.event.id + '/vote/')
     },
   },
 }
