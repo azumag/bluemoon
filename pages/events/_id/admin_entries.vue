@@ -44,15 +44,16 @@ v-layout(column, justify-center, align-center)
                 | {{ entry.name }}
               v-expansion-panel-content.text--secondary
                 div.ma-2 {{ entry.description }}
-                div.ma-2 {{ {...entry} }}
+                //- div.ma-2 {{ {...entry} }}
                 div(v-if="entry.fileNames")
                   div(v-for="filename in entry.fileNames" :key='filename')
                     | {{ filename }}
                 div(v-if="entry.fileURLs")
                   | {{ entry.fileURLs }}
 
-                v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry)")
-                  | {{ voteString(entry) }}
+                div(v-if="entry.publishAgree")
+                  v-chip アーカイブ可能
+
 </template>
 
 <script>

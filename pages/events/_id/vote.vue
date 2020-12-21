@@ -53,7 +53,7 @@ v-layout(column, justify-center, align-center)
                     v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'ライブ動画賞')")
                       | ライブ動画賞
                 
-                span(v-for="(voteKind, i) in prizes" :key='voteKind')
+                span(v-if="(entry.videoType != 'live')" v-for="(voteKind, i) in prizes" :key='voteKind')
                   v-btn.ma-4(:color="voteColor(voteKind)" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, voteKind)")
                     | {{ voteString(voteKind) }}
 </template>
