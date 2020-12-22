@@ -15,10 +15,11 @@ v-layout(column, justify-center, align-center)
             div.red--text(v-if="entry.votes") {{ entry.votes.length }}
             div.ma-2(v-for="(vote, j) in entry.votes")
               //- div {{ vote }}
-              div.blue--text {{ users.find((u) => { return u.uid === vote.id }).name }}
-              div Entry length {{ vote.entryIds.length }}
-              div.ma-2(v-for="(entryJ, k) in vote.entryIds" :key="entryJ.id")
-                div {{ entries.find((e) => {return e.id === entryJ}).name }}
+              //- div.blue--text {{ users.find((u) => { return u.uid === vote.id }).name }}
+              //- div Entry length {{ vote.entryKinds.length }}
+              div.ma-2(v-for="(entryJ, k) in vote.entryKinds" :key="entryJ")
+                //- div {{ entries.find((e) => {return e.id === entryJ}).name }}
+                | {{ entryJ }}
 
 </template>
 <script>
@@ -45,6 +46,7 @@ export default {
       })
     await this.$firestore
       .collection('votes')
+      .where('entryKinds', '!=', 'false')
       .get()
       .then((res) => {
         res.forEach((doc) => {
@@ -57,14 +59,15 @@ export default {
     console.log(this.votes)
     const results = {}
     this.votes.forEach((vote) => {
-      vote.entryIds.forEach((entryId) => {
-        console.log(entryId)
-        console.log(results[entryId])
-        if (results[entryId]) {
-          results[entryId].push(vote)
-        } else {
-          results[entryId] = [vote]
-        }
+      vote.entryKinds.forEach((ek) => {
+        Object.keys(ek).forEach((ekey) => {
+          const entryID = ek[ekey]
+          if (results[entryID]) {
+            results[entryID].push(ekey)
+          } else {
+            results[entryID] = [ekey]
+          }
+        })
       })
     })
     await this.$firestore
