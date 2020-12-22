@@ -12,14 +12,16 @@ v-layout(column, justify-center, align-center)
           v-card-title.headline
             | {{ entry.name }}
           v-card-text.title
-            div.red--text(v-if="entry.votes") {{ entry.votes.length }}
-            div.ma-2(v-for="(vote, j) in entry.votes")
-              //- div {{ vote }}
+            | {{ entry.votes }}
+            //- div.red--text(v-if="Object.keys(entry.votes).length > 0") {{ entry.votes.length }}
+            //- div.ma-2(v-if="Object.keys(entry.votes).length" v-for="(votekey) in Object.keys(entry.votes)")
+              div {{ votekey }}
+              //- span {{ entry.votes[votekey] }}
               //- div.blue--text {{ users.find((u) => { return u.uid === vote.id }).name }}
               //- div Entry length {{ vote.entryKinds.length }}
-              div.ma-2(v-for="(entryJ, k) in vote.entryKinds" :key="entryJ")
+              //- div.ma-2(v-for="(key, k) in Object.keys(vote.entryKinds)" :key="entryJ")
                 //- div {{ entries.find((e) => {return e.id === entryJ}).name }}
-                | {{ entryJ }}
+                | {{ key }}
 
 </template>
 <script>
@@ -46,28 +48,29 @@ export default {
       })
     await this.$firestore
       .collection('votes')
-      .where('entryKinds', '!=', 'false')
       .get()
       .then((res) => {
         res.forEach((doc) => {
-          this.votes.push({ ...doc.data(), id: doc.id })
+          const data = doc.data()
+          if (data.entryKinds) {
+            this.votes.push({ ...doc.data(), id: doc.id })
+          }
         })
       })
       .catch((err) => {
         console.log('Error getting documents', err)
       })
-    console.log(this.votes)
+    console.log({ vote: this.votes })
     const results = {}
     this.votes.forEach((vote) => {
-      vote.entryKinds.forEach((ek) => {
-        Object.keys(ek).forEach((ekey) => {
-          const entryID = ek[ekey]
-          if (results[entryID]) {
-            results[entryID].push(ekey)
-          } else {
-            results[entryID] = [ekey]
-          }
-        })
+      console.log(vote.entryKinds)
+      Object.keys(vote.entryKinds).forEach((ekey) => {
+        const entryID = vote.entryKinds[ekey]
+        if (results[entryID]) {
+          results[entryID].push(ekey)
+        } else {
+          results[entryID] = [ekey]
+        }
       })
     })
     await this.$firestore
@@ -85,12 +88,21 @@ export default {
 
     console.log(results)
     this.entries.forEach((entry) => {
+      entry.votes = {}
       Object.keys(results).forEach((resultKey) => {
         if (entry.id === resultKey) {
-          entry.votes = results[resultKey]
+          results[resultKey].forEach((nkey) => {
+            console.log({ nkey })
+            if (entry.votes[nkey]) {
+              entry.votes[nkey] += 1
+            } else {
+              entry.votes[nkey] = 1
+            }
+          })
           console.log(results[resultKey])
         }
       })
+      console.log({ vo: entry.votes })
     })
 
     console.log(this.entries)
