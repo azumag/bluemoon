@@ -130,6 +130,120 @@ v-layout(column, justify-center, align-center)
       v-col(cols=12)
           v-card(color='rgb(100, 100, 100, 0.4)')
             v-card-title.headline
+              | 投票結果
+            v-card-text
+              div.headline
+                a(href="https://youtu.be/IbjMAwLjhXk" target="_blank") 発表会動画はこちら
+    v-row
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon.ma-2 grade
+            | ライブ動画賞 
+          v-card-text
+            div.title 1位: 日本アルプス弦楽団
+            div.subtitle
+              | 2位 鳩正宗
+            div.subtitle
+              | 3位 マーマレードボーイズ
+            div.headline
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon.ma-2 grade
+            | 演奏すごい賞
+          v-card-text
+            div.title.ma-2 1位: 雑貨屋フレイヴァー
+            div.subtitle.ma-2
+              | 2位 Deep Blue Boys
+            div.subtitle.ma-2
+              | 3位 Lonesome Garage Band
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon.ma-2 grade
+            | とにかく端的に好き賞
+          v-card-text
+            div.title.ma-2 1位: 米屋 with 原宿限界タピオカボーイズ
+            div.subtitle.ma-2
+              | 2位 雑貨屋フレイヴァー
+              | まいばす
+            div.subtitle.ma-2
+              | 3位  コーラスウォーター
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon.ma-2 grade
+            | 動画編集技術賞
+          v-card-text
+            div.title.ma-2 1位: Masaoka and Friends Band
+            div.subtitle.ma-2
+              | 2位 タピオカボーイズ
+            div.subtitle.ma-2
+              | 3位  Unripened Stringplunkers
+              | まいばす
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon.ma-2 grade
+            | 独創独自賞 
+          v-card-text
+            div.title.ma-2 1位: まいばす
+            div.subtitle.ma-2
+              | 2位 タピオカボーイズ
+            div.subtitle.ma-2
+              | 3位 Unripened Stringplunkers
+              | まいばす
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon.ma-2 grade
+            | 音声技術賞
+          v-card-text
+            div.title.ma-2 1位: ジャンクション
+            div.subtitle.ma-2
+              | 2位 まいばす
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon grade
+            | ブルーグラス愛を感じる賞
+          v-card-text
+            div.title 1位: 扇町ボンバーズ
+            div.subtitle
+              | 2位 Master of Traditional Bluegrass
+
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon.ma-2 grade
+            | 心にしみた賞
+          v-card-text
+            div.title.ma-2 1位: コーラスウォーター
+            div.subtitle.ma-2
+              | 2位 まいばす
+            div.subtitle.ma-2
+              | 3位 扇町ボンバーズ
+              | Lonesome Garage Band
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon.ma-2 grade
+            | 主催者特別賞
+          v-card-text
+            div.title.ma-2 Deep Blue Boys
+      v-col(cols=6)
+        v-card
+          v-card-title
+            v-icon.ma-2 grade
+            | 米屋賞
+          v-card-text
+            div.title.ma-2 Unripened Stringplunkers
+ 
+    v-row
+      v-col(cols=12)
+          v-card(color='rgb(100, 100, 100, 0.4)')
+            v-card-title.headline
               | 12月19日(土曜) 開催
               | タイムテーブルが決まりました
             v-card-text
@@ -360,14 +474,14 @@ v-layout(column, justify-center, align-center)
             a(href='https://docs.google.com/document/d/1-vRzkOKvFc-Fa-f1cmnAMRNJwMtL1QkEaLLh234LnXo/edit?usp=sharing')
               | 開催草案
               a(href='https://docs.google.com/document/d/15zlF7fmlSQeIL_9ha81tRp8lLPLiHH2wUloSW2t-Cww/edit?usp=sharing')  / Draft Plan (English Version)
-      v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)')
-          v-card-title.headline
-            a(href='https://youtu.be/qG7gwa3etrY')
-              | {{ $t('前回の様子（動画)') }}
-          v-card-text
-            | {{ $t('こんな感じというのを掴んでもらいたくて，前回の様子を短い動画にまとめました。') }}
-            | 本動画は Vol.2 開催までの限定公開となります。
+      //- v-col(cols=12)
+      //-   v-card(color='rgb(100, 100, 100, 0.4)')
+      //-     v-card-title.headline
+      //-       a(href='https://youtu.be/qG7gwa3etrY')
+      //-         | {{ $t('前回の様子（動画)') }}
+      //-     v-card-text
+      //-       | {{ $t('こんな感じというのを掴んでもらいたくて，前回の様子を短い動画にまとめました。') }}
+      //-       | 本動画は Vol.2 開催までの限定公開となります。
       //- v-col(v-if="event.performing_format" ,cols=12)
       //-   v-card(color='rgb(100, 100, 100, 0.4)')
       //-     v-card-title.headline
