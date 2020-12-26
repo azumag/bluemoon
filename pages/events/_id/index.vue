@@ -239,6 +239,114 @@ v-layout(column, justify-center, align-center)
             | 米屋賞
           v-card-text
             div.title.ma-2 Unripened Stringplunkers
+      v-col(cols=12)
+        v-card
+          v-card-title
+            | 入賞は逃しましたが…特筆したい個人エントリ
+          v-card-text
+            div.title.ma-2 Lonesome Garage Band
+            | もひかん /
+            | まるみ /
+            | 引きこもりジジイ /
+            | もっつ /
+            | かみおか（おだ） /
+            | Lingerie Douglas /
+            | Hiroshi Masuda /
+            | ゆうと /
+            | 箸休め？Sacred
+
+    v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-card-title.headline
+            | Award (賞)
+          v-card-text
+            hr
+            div.ma-2.pa-2
+              | {{ $t('descriptionAward') }}
+            div.ma-1.pa-2.red--text
+              | {{ $t('noticeAward') }}
+            hr
+            v-expansion-panels
+              v-expansion-panel
+                v-expansion-panel-header
+                  div.title.mt-2.font-weight-bold 
+                    v-icon grade 
+                    span.ma-2 {{ $t('liveVideoAward') }}
+                v-expansion-panel-content
+                  div.subtitle-2.ma-4 {{ $t('descLiveVideoAward') }}
+                  div.subtitle-2.ma-4 {{ $t('liveVideoAwardPrize') }}
+              v-expansion-panel
+                v-expansion-panel-header
+                  div.title.mt-2.font-weight-bold
+                    v-icon grade 
+                    span.ma-2 {{ $t('craftedVideoAward') }} 
+                v-expansion-panel-content
+                  div
+                    | {{ $t('noticeCraftedAward') }}
+                  v-simple-table
+                    template
+                      thead
+                        tr
+                          th {{ $t('awardTitle') }}
+                          th {{ $t('prize') }}
+                      tbody
+                        tr
+                          td {{ $t('superLike') }}
+                          td {{ $t('repairTicket') }}
+                        tr
+                          td {{ $t('filmEditing') }}
+                          td {{ $t('appleJuice')}}
+                        tr
+                          td {{ $t('musicTech') }}
+                          td {{ $t('jindaijiBeer')}}
+                        tr
+                          td {{ $t('bluegrassLove') }}
+                          td {{ $t('okashi') }}
+                        tr
+                          td {{ $t('creative') }}
+                          td {{ $t('pick')}}
+                        tr
+                          td {{ $t('bestPerfomance') }}
+                          td {{ $t('pick')}}
+                        tr
+                          td {{ $t('emotional') }}
+                          td {{ $t('pick')}}
+                        tr
+                          td {{ $t('specialAward') }}
+                          td {{ $t('soba')}}
+              v-expansion-panel
+                v-expansion-panel-header
+                  div.title.mt-2.font-weight-bold 
+                    v-icon grade 
+                    span.ma-2 {{ $t('komeyaAward') }}
+                v-expansion-panel-content
+                  div.subtitle-2.ma-4 {{ $t('descKomeyaAward') }}
+                  div.subtitle-2.ma-4 {{ $t('komeyaAwardPrize') }}
+            hr
+            div.title.pa-2 {{ $t('notice') }}
+            v-expansion-panels
+              v-expansion-panel
+                v-expansion-panel-header
+                  | {{ $t('リペア券注意事項') }} (Sorry, This prize is only available for living person in Japan)
+                v-expansion-panel-content
+                  div.ma-2 提供元: 
+                    a.blue--text(href="https://twitter.com/iwashita_md_gt")
+                      | Iwashita Mandolins & Guitars
+                  div.pa-2
+                    div ・リペア券1枚につき楽器1本を対象に1度のみ利用可能とし、有効期限は当工房が廃業しない限り無期限とします。
+                    div ・対象は1970年以降に製造された楽器に限らせていただきます。
+                    div ・ご利用の際は予めリペア券ご利用の旨をご連絡の上、リペア券をケースに同梱して発送してください。
+                  div.ma-2.font-weight-bold 送料と発送について
+                  div.ma-2.pa-2
+                    div ・送料についてはリペア券のご利用に限り当工房の負担と致しますので着払いでご発送ください。ただし30万円以上の楽器の場合は発送時のみお客様負担で運送保険へのご加入をお願い致します。(ヤマト運輸のヤマト便がおすすめです)
+                    div ・発送時は弦を完全に緩めハードケースに入れた上で段ボール箱に梱包して発送してください。(分からなければメールやお電話でご相談ください) インターネットで調べるとギター運送用の段ボール箱も販売されています。
+                  div.ma-2.font-weight-bold リペアについて
+                  div.ma-2.pa-2
+                    div 予め楽器の状態をお伝え頂くことも可能ですが、楽器到着後に実物を確認の上最終的な作業内容をご相談させて頂きます。
+                  div.ma-2.font-weight-bold リフレットについて
+                  div.ma-2.pa-2
+                    div 対象となる楽器の指板の材質やバインディングの有無については問いません。原則として元々のフレットと類似した形状のニッケルシルバーのフレットへの交換とさせて頂きます。また指板のアールについても元々の状態と同じ形状での修正とさせて頂きます。フレット交換に合わせてナットも牛骨で製作・交換致します。
+                  | 以上、不明な点がございましたらリペア券ご利用の際にご相談ください。
  
     v-row
       v-col(cols=12)
@@ -553,100 +661,6 @@ v-layout(column, justify-center, align-center)
             div
               a(href='https://ofuse.me/bgonfes') 
                 | {{ $t('gotoOfuse') }} 
- 
-      v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)')
-          v-card-title.headline
-            | Award (賞)
-          v-card-text
-            hr
-            div.ma-2.pa-2
-              | {{ $t('descriptionAward') }}
-            div.ma-1.pa-2.red--text
-              | {{ $t('noticeAward') }}
-            hr
-            v-expansion-panels
-              v-expansion-panel
-                v-expansion-panel-header
-                  div.title.mt-2.font-weight-bold 
-                    v-icon grade 
-                    span.ma-2 {{ $t('liveVideoAward') }}
-                v-expansion-panel-content
-                  div.subtitle-2.ma-4 {{ $t('descLiveVideoAward') }}
-                  div.subtitle-2.ma-4 {{ $t('liveVideoAwardPrize') }}
-              v-expansion-panel
-                v-expansion-panel-header
-                  div.title.mt-2.font-weight-bold
-                    v-icon grade 
-                    span.ma-2 {{ $t('craftedVideoAward') }} 
-                v-expansion-panel-content
-                  div
-                    | {{ $t('noticeCraftedAward') }}
-                  v-simple-table
-                    template
-                      thead
-                        tr
-                          th {{ $t('awardTitle') }}
-                          th {{ $t('prize') }}
-                      tbody
-                        tr
-                          td {{ $t('superLike') }}
-                          td {{ $t('repairTicket') }}
-                        tr
-                          td {{ $t('filmEditing') }}
-                          td {{ $t('appleJuice')}}
-                        tr
-                          td {{ $t('musicTech') }}
-                          td {{ $t('jindaijiBeer')}}
-                        tr
-                          td {{ $t('bluegrassLove') }}
-                          td {{ $t('okashi') }}
-                        tr
-                          td {{ $t('creative') }}
-                          td {{ $t('pick')}}
-                        tr
-                          td {{ $t('bestPerfomance') }}
-                          td {{ $t('pick')}}
-                        tr
-                          td {{ $t('emotional') }}
-                          td {{ $t('pick')}}
-                        tr
-                          td {{ $t('specialAward') }}
-                          td {{ $t('soba')}}
-              v-expansion-panel
-                v-expansion-panel-header
-                  div.title.mt-2.font-weight-bold 
-                    v-icon grade 
-                    span.ma-2 {{ $t('komeyaAward') }}
-                v-expansion-panel-content
-                  div.subtitle-2.ma-4 {{ $t('descKomeyaAward') }}
-                  div.subtitle-2.ma-4 {{ $t('komeyaAwardPrize') }}
-              v
-            hr
-            div.title.pa-2 {{ $t('notice') }}
-            v-expansion-panels
-              v-expansion-panel
-                v-expansion-panel-header
-                  | {{ $t('リペア券注意事項') }} (Sorry, This prize is only available for living person in Japan)
-                v-expansion-panel-content
-                  div.ma-2 提供元: 
-                    a.blue--text(href="https://twitter.com/iwashita_md_gt")
-                      | Iwashita Mandolins & Guitars
-                  div.pa-2
-                    div ・リペア券1枚につき楽器1本を対象に1度のみ利用可能とし、有効期限は当工房が廃業しない限り無期限とします。
-                    div ・対象は1970年以降に製造された楽器に限らせていただきます。
-                    div ・ご利用の際は予めリペア券ご利用の旨をご連絡の上、リペア券をケースに同梱して発送してください。
-                  div.ma-2.font-weight-bold 送料と発送について
-                  div.ma-2.pa-2
-                    div ・送料についてはリペア券のご利用に限り当工房の負担と致しますので着払いでご発送ください。ただし30万円以上の楽器の場合は発送時のみお客様負担で運送保険へのご加入をお願い致します。(ヤマト運輸のヤマト便がおすすめです)
-                    div ・発送時は弦を完全に緩めハードケースに入れた上で段ボール箱に梱包して発送してください。(分からなければメールやお電話でご相談ください) インターネットで調べるとギター運送用の段ボール箱も販売されています。
-                  div.ma-2.font-weight-bold リペアについて
-                  div.ma-2.pa-2
-                    div 予め楽器の状態をお伝え頂くことも可能ですが、楽器到着後に実物を確認の上最終的な作業内容をご相談させて頂きます。
-                  div.ma-2.font-weight-bold リフレットについて
-                  div.ma-2.pa-2
-                    div 対象となる楽器の指板の材質やバインディングの有無については問いません。原則として元々のフレットと類似した形状のニッケルシルバーのフレットへの交換とさせて頂きます。また指板のアールについても元々の状態と同じ形状での修正とさせて頂きます。フレット交換に合わせてナットも牛骨で製作・交換致します。
-                  | 以上、不明な点がございましたらリペア券ご利用の際にご相談ください。
             
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')

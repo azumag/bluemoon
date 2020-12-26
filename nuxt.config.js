@@ -287,7 +287,7 @@ export default {
           updateEntry: '更新しました',
           detail: '詳細',
           komeyaAward: '米屋賞',
-          descKomeyaAward: '基準は秘密…何で決まるかお楽しみだ！',
+          descKomeyaAward: 'チャットコメントの数を集計/ 最もコメントが多かったエントリを表彰/ Cluster 側コメントは集計不可のため、youtube 側のみで判定（すみません）/ 集計対象期間は、当該エントリの説明が始まったときから担ぎエントリの説明が始まるまでの、エントリに関わるコメント（前エントリ用のコメントと思われるものは差し引く） ',
           komeyaAwardPrize: 'チューハイ詰め合わせ',
         },
       },
