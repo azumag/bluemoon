@@ -211,6 +211,7 @@ v-layout(column, justify-center, align-center)
             div.title 1位: 扇町ボンバーズ
             div.subtitle
               | 2位 Master of Traditional Bluegrass
+              | マーマレードボーイズ（＊ライブ動画であるため、無効となってしまいますが、得票が多かったため掲載いたします）
 
       v-col(cols=6)
         v-card
