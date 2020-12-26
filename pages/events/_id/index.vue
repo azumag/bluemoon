@@ -192,8 +192,7 @@ v-layout(column, justify-center, align-center)
             div.subtitle.ma-2
               | 2位 タピオカボーイズ
             div.subtitle.ma-2
-              | 3位 Unripened Stringplunkers
-              | まいばす
+              | 3位 Masaoka and Friends Band
       v-col(cols=6)
         v-card
           v-card-title
