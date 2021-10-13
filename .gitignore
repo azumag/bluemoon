@@ -88,3 +88,5 @@ sw.*
 .DS_Store
 
 nuxt2
+nuxt.d.ts
+.output
