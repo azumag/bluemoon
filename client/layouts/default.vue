@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black text-white h-screen">
-    <Header title="bluemoon" />
+    <Header title="Bluemoon" />
     <slot />
   </div>
 </template>
