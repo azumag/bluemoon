@@ -26,22 +26,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, toRefs } from 'vue'
+<script lang="ts" setup>
+import { defineProps, defineEmits } from 'vue';
 
-type Props = {
-  title: String;
-};
+const props = defineProps<{
+  title: string;
+}>();
 
-export default defineComponent({
-  props: {
-    title: {
-      type: String,
-      default: "",
-    },
-  },
-  emits: ["click"],
-  setup() {
-  },
-})
+const emit = defineEmits<{
+  (e: 'click'): void;
+}>();
 </script>
