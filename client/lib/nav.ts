@@ -1,27 +1,40 @@
 interface Nav {
   icon: string;
-  title: string;
+  title?: string;
+  i18n?: string;
   to: string;
   children?: Nav[];
 }
 
-export const createNav = (i18n) => {
-  const nav = [
-    {
-      icon: 'apps',
-      title: 'Welcome',
-      to: '/',
-    },
-    {
-      icon: 'bubble_chart',
-      title: i18n.t('events'),
-      to: '/events',
-    },
-    {
-      icon: 'bubble_chart',
-      title: i18n.t('entries'),
-      to: '/entries',
-    },
-  ];
-  return nav;
-};
+export const nav: Nav[] = [
+  {
+    icon: 'moon',
+    title: 'Welcome',
+    to: '/',
+  },
+  {
+    icon: 'user-alt',
+    title: 'login',
+    to: '/login',
+  },
+  {
+    icon: 'music',
+    i18n: 'events',
+    to: '/events',
+  },
+  {
+    icon: 'guitar',
+    i18n: 'entries',
+    to: '/entries',
+  },
+  {
+    icon: 'sign-out-alt',
+    title: 'Logout',
+    to: '/logout',
+  },
+  {
+    icon: 'globe',
+    i18n: 'locale',
+    to: '',
+  },
+];
