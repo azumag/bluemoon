@@ -7,7 +7,10 @@
       }"
       @click="$emit('close')"
     >
-      {{ item.i18n ? $t(item.i18n) : item.title }}
+      <font-awesome-icon class="self-center" :icon="item.icon" />
+      <div class="ml-8">
+        {{ item.i18n ? $t(item.i18n) : item.title }}
+      </div>
     </div>
   </nuxt-link>
 </template>
@@ -33,7 +36,7 @@ const routeMatch = (path: string) => {
 
 <style scoped>
 .link {
-  @apply p-2 text-lg font-semibold transition-all duration-300 hover:bg-gray-700;
+  @apply py-3 px-4 text-lg font-semibold transition-all duration-300 hover:bg-gray-700 flex;
 }
 
 .route-match {

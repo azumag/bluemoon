@@ -9,7 +9,7 @@
         hidden: !modelValue,
       }"
       @click="close"
-    ></div>
+    />
   </div>
 </template>
 
