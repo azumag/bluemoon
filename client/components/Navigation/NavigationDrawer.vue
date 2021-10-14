@@ -15,14 +15,7 @@
 
 <script lang="ts" setup>
 import AccordionMenu from './AccordionMenu.vue';
-
-interface Nav {
-  icon: string;
-  title?: string;
-  i18n?: string;
-  to: string;
-  children?: Nav[];
-}
+import type { Nav } from '@/lib/nav';
 
 defineProps<{
   modelValue: boolean;

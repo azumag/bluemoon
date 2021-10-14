@@ -1,9 +1,10 @@
-interface Nav {
+export interface Nav {
   icon: string;
   title?: string;
   i18n?: string;
-  to: string;
+  to?: string;
   children?: Nav[];
+  action?: any;
 }
 
 export const nav: Nav[] = [
@@ -31,10 +32,5 @@ export const nav: Nav[] = [
     icon: 'sign-out-alt',
     title: 'Logout',
     to: '/logout',
-  },
-  {
-    icon: 'globe',
-    i18n: 'nav.other_language',
-    to: '',
   },
 ];

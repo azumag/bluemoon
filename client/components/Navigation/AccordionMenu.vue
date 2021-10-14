@@ -7,9 +7,9 @@
         :item="item"
         @close="$emit('close')"
       />
-      <NavLink
+      <NavBlock
         v-else
-        :key="`NavLink${item.to}`"
+        :key="`NavBlock${item.to}`"
         :item="item"
         @close="$emit('close')"
       />
@@ -19,15 +19,8 @@
 
 <script lang="ts" setup>
 import AccordionButton from './AccordionButton.vue';
-import NavLink from './NavLink.vue';
-
-interface Nav {
-  icon: string;
-  title?: string;
-  i18n?: string;
-  to: string;
-  children?: Nav[];
-}
+import NavBlock from './NavBlock.vue';
+import type { Nav } from '@/lib/nav';
 
 const props = defineProps<{
   nav: Nav[];

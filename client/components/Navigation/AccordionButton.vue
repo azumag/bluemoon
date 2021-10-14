@@ -21,13 +21,8 @@
 </template>
 
 <script lang="ts" setup>
-interface Nav {
-  icon: string;
-  title?: string;
-  i18n?: string;
-  to: string;
-  children?: Nav[];
-}
+import type { Nav } from '@/lib/nav';
+
 const props = defineProps<{
   item: Nav;
 }>();
