@@ -1,5 +1,5 @@
-import { jaMessages } from '../i18n/ja';
-import { enMessages } from '../i18n/en';
+import { jaMessages } from '@/i18n/ja/index';
+import { enMessages } from '@/i18n/en/index';
 import { createI18n } from 'vue-i18n';
 
 const i18n = createI18n({
