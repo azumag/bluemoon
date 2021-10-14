@@ -33,7 +33,7 @@ const routeMatch = (path: string) => {
 
 <style scoped>
 .link {
-  @apply p-2 text-lg font-semibold border-gray-100 hover:bg-gray-700;
+  @apply p-2 text-lg font-semibold transition-all duration-300 hover:bg-gray-700;
 }
 
 .route-match {
