@@ -1,4 +1,7 @@
+import { nav } from './nav';
+
 export const enMessages = {
+  ...nav,
   welcome: 'Welcome',
   notice: 'Notice',
   ofuse: 'To give money',
@@ -39,7 +42,6 @@ export const enMessages = {
   QAhowtoMakeVideosAnswer: '',
   aboutTimetable: 'About the timetable',
   howtoEntry: 'How to entry',
-  events: 'Events',
   komeyaAward: 'Komeya Award',
   descKomeyaAward:
     'The criteria is a secret... and well see what we can come up with!',
@@ -51,7 +53,6 @@ export const enMessages = {
   appleJuice: 'Apple Juice',
   scheduledEvent: 'Scheduled Events',
   finishedEvent: 'Finished Events',
-  entries: 'Your own entries',
   openRegistration: 'Registration has been started',
   registrationNotice: 'Please login for registration',
   musicTech: 'Music Mastering / Mixing Award',

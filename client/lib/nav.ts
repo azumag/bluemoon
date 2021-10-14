@@ -19,12 +19,12 @@ export const nav: Nav[] = [
   },
   {
     icon: 'music',
-    i18n: 'events',
+    i18n: 'nav.events',
     to: '/events',
   },
   {
     icon: 'guitar',
-    i18n: 'entries',
+    i18n: 'nav.entries',
     to: '/entries',
   },
   {
@@ -34,7 +34,7 @@ export const nav: Nav[] = [
   },
   {
     icon: 'globe',
-    i18n: 'locale',
+    i18n: 'nav.other_language',
     to: '',
   },
 ];

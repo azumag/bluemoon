@@ -1,4 +1,7 @@
+import { nav } from './nav';
+
 export const jaMessages = {
+  ...nav,
   welcome: 'yokoso',
   specialAward: '主催者特別賞',
   soba: '深大寺そば & 特製ピック',
@@ -46,13 +49,11 @@ export const jaMessages = {
   gotoOfuse: '募金ページはこちら',
   aboutTimetable: 'タイムテーブルについて',
   howtoEntry: 'エントリー方法',
-  events: '行事',
   openEvent: '開催行事',
   eventDescription: '行事の情報・参加登録等',
   en: 'English',
   scheduledEvent: '開催予定',
   finishedEvent: '終了',
-  entries: 'あなたのエントリー',
   openRegistration: 'エントリー受付開始しました',
   registrationNotice: 'エントリーするにはログインして下さい🙇',
   registrationNotice2:
