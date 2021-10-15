@@ -1,5 +1,5 @@
-import { defineNuxtConfig } from 'nuxt3'
-
+import { defineNuxtConfig } from 'nuxt3';
 export default defineNuxtConfig({
-  rootDir: "./client"
-})
+  ssr: false,
+  rootDir: './client',
+});

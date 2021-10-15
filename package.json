@@ -10,14 +10,25 @@
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^3.0.0-4",
     "firebase-admin": "^8.12.1",
     "firebase-functions": "^3.6.2",
-    "firebase-tools": "^8.4.2"
+    "firebase-tools": "^8.4.2",
+    "vue-i18n": "^9.2.0-beta.11"
   },
   "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^6.0.1",
+    "@nuxtjs/eslint-module": "^3.0.2",
     "autoprefixer": "^10.3.7",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-vue": "^7.19.1",
     "nuxt3": "latest",
     "postcss": "^8.3.9",
+    "prettier": "^2.4.1",
     "tailwindcss": "^2.2.16"
   }
 }

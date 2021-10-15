@@ -8,7 +8,15 @@
     "resolveJsonModule": true,
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      "~/*": [
+        "./client/*"
+      ],
+      "@/*": [
+        "./client/*"
+      ]
+    },
   },
   "exclude": [
     "nuxt2",
