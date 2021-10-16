@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 initializeApp({
-  apiKey: process.env.APIKEY,
-  authDomain: process.env.AUTHDOMAIN,
-  databaseURL: process.env.DATABASEURL,
-  projectId: process.env.PROJECTID,
-  storageBucket: process.env.STORAGEBUCKET,
-  messagingSenderId: process.env.MESSAGINGSENDERID,
+  apiKey: 'AIzaSyBbd3JR0KiWOiCIeh1TFVFRVv0gRzBPtC8',
+  authDomain: 'bluemoon-82c0b.firebaseapp.com',
+  databaseURL: 'https://bluemoon-82c0b.firebaseio.com',
+  projectId: 'bluemoon-82c0b',
+  storageBucket: 'bluemoon-82c0b.appspot.com',
+  messagingSenderId: '520365310779',
 });
 
 export const auth = getAuth();
