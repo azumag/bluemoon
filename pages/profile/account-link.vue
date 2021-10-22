@@ -53,13 +53,16 @@ export default {
   methods: {
     isEmailLinked() {
       if (this.$firebase.currentUser) {
+        let linked = false
         this.$firebase.currentUser.providerData.forEach((profile) => {
           if (profile.providerId === 'password') {
-            return true
+            console.log(profile.providerId)
+            linked = true
           }
         })
-        console.log(this.$firebase.currentUser.providerData)
+        return linked
       } else {
+        // console.log('false2')
         return false
       }
     },
