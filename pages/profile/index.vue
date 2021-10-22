@@ -14,16 +14,19 @@ v-layout(column, justify-center, align-center)
         v-form(ref="form", v-model="valid")
           v-form(ref="formValidate", v-model="valid")
             v-text-field.mt-7.mb-2(v-model="form.displayName", required,
-              label="User Name"
+              :label="$t('UserName')"
               outlined
             )
-            v-text-field.mt-7.mb-2(v-model="form.email", required,
-              label="email"
+            v-text-field.mt-7.mb-2(v-show="isEmailLinked()" v-model="form.email", required,
+              :label="$t('email')"
               outlined
             )
-        v-divider
+            v-btn.ma-2(v-show="!isEmailLinked()" block outlined color="primary")
+              nuxt-link(to="profile/account-link")
+                | {{ $t('AccountLink') }}
+        v-divider.ma-2
         v-btn.ma-2(@click='update' v-show="!loading" block outlined color="primary")
-          | Update
+          | {{ $t('Update') }}
 </template>
 
 <script>
@@ -45,21 +48,9 @@ export default {
       loading: false,
     }
   },
-  computed: {
-    filePath() {
-      return (
-        'users/' +
-        this.form.userId +
-        '/events/' +
-        this.form.eventId +
-        '/entries/' +
-        this.$route.params.id +
-        '/'
-      )
-    },
-  },
   mounted() {
     if (this.$firebase.currentUser) {
+      console.log(this.$firebase.currentUser.providerData)
       if (this.$firebase.currentUser.displayName) {
         this.form.displayName = this.$firebase.currentUser.displayName
       }
@@ -71,6 +62,21 @@ export default {
     }
   },
   methods: {
+    isEmailLinked() {
+      if (this.$firebase.currentUser) {
+        let linked = false
+        this.$firebase.currentUser.providerData.forEach((profile) => {
+          if (profile.providerId === 'password') {
+            console.log(profile.providerId)
+            linked = true
+          }
+        })
+        return linked
+      } else {
+        // console.log('false2')
+        return false
+      }
+    },
     update() {
       if (this.$firebase.currentUser.displayName !== this.form.displayName) {
         this.$firebase.currentUser
@@ -78,17 +84,23 @@ export default {
             displayName: this.form.displayName,
           })
           .then(() => {
-            this.$message.show('Updated User Name')
+            const msg = this.$i18n.t('updated')
+            this.$message.show(msg)
           })
           .catch((error) => {
             this.$error.show(error)
           })
       }
-      if (this.$firebase.currentUser.email !== this.form.email) {
+      if (
+        this.$firebase.currentUser.email &&
+        this.$firebase.currentUser.email !== this.form.email
+      ) {
+        console.log(this.$firebase.currentUser.email)
         this.$firebase.currentUser
           .updateEmail(this.form.email)
           .then(() => {
-            this.$message.show('Updated Email')
+            const msg = this.$i18n.t('updated')
+            this.$message.show(msg)
           })
           .catch((error) => {
             this.$message.show(error.toString())
