@@ -6,7 +6,7 @@
         empty: (modelValue === '' || modelValue === null) && !placeholder,
       }"
     >
-      <input
+      <Field
         class="
           h-full
           w-full
@@ -19,12 +19,14 @@
         :class="{
           'border-red-500': haveError,
         }"
+        :name="name"
         :disabled="disabled"
         :readonly="readonly"
         :placeholder="placeholder"
         :type="type"
         :value="modelValue"
-        @input="$emit('input', $event.target.value)"
+        :rules="rules"
+        @input="$emit('update:modelValue', $event.target.value)"
         @click="$emit('click')"
       />
       <label class="absolute left-2 transition-all bg-white px-1">
@@ -33,34 +35,43 @@
       <p v-if="haveError" class="text-red-500 text-xs italic">
         {{ errorMessages[0] }}
       </p>
+      <ErrorMessage :name="name" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { Field, ErrorMessage } from 'vee-validate';
+
 interface Props {
   modelValue: string | number;
-  placeholder: string;
-  label: string;
-  type: string;
-  disabled: boolean;
-  readonly: boolean;
-  isInvalid: boolean;
-  errorMessages: string[];
+  placeholder?: string;
+  label?: string;
+  type?: string;
+  name: string;
+  disabled?: boolean;
+  readonly?: boolean;
+  isInvalid?: boolean;
+  rules?: string | Object;
+  errorMessages?: string[];
 }
 
 const props = withDefaults(defineProps<Props>(), {
   placeholder: '',
   label: '',
   type: 'text',
+  name: '',
   disabled: false,
   readonly: false,
   isInvalid: false,
   errorMessages: () => [],
+  rules: () => {
+    return {};
+  },
 });
 
 defineEmits<{
-  (e: 'input', value: string | number): void;
+  (e: 'update:modelValue', value: string | number): void;
   (e: 'click'): void;
 }>();
 
@@ -75,6 +86,7 @@ label {
   transform: translateY(-50%);
   font-size: 0.7rem;
   color: rgba(37, 99, 235, 1);
+  @apply text-blue-500 bg-black;
 }
 .empty input:not(:focus) + label {
   top: 50%;
@@ -85,7 +97,7 @@ input:not(:focus) + label {
   color: rgba(150, 150, 150, 1);
 }
 input {
-  border-width: 1px;
+  @apply border bg-black;
 }
 input:focus {
   outline: none;
