@@ -6,7 +6,7 @@
         empty: (modelValue === '' || modelValue === null) && !placeholder,
       }"
     >
-      <Field
+      <input
         class="
           h-full
           w-full
@@ -19,29 +19,26 @@
         :class="{
           'border-red-500': haveError,
         }"
-        :name="name"
         :disabled="disabled"
         :readonly="readonly"
         :placeholder="placeholder"
         :type="type"
         :value="modelValue"
-        :rules="rules"
-        @input="$emit('update:modelValue', $event.target.value)"
+        @input="onInput"
         @click="$emit('click')"
       />
       <label class="absolute left-2 transition-all bg-white px-1">
         {{ label }}
       </label>
-      <p v-if="haveError" class="text-red-500 text-xs italic">
-        {{ errorMessages[0] }}
+      <p class="text-red-500 text-xs italic">
+        {{ errorMessage }}
       </p>
-      <ErrorMessage :name="name" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Field, ErrorMessage } from 'vee-validate';
+import { useField } from 'vee-validate';
 
 interface Props {
   modelValue: string | number;
@@ -70,14 +67,24 @@ const props = withDefaults(defineProps<Props>(), {
   },
 });
 
-defineEmits<{
+const emit = defineEmits<{
   (e: 'update:modelValue', value: string | number): void;
   (e: 'click'): void;
 }>();
+const { value, errorMessage } = useField<string | number>(
+  props.name,
+  props.rules,
+  { initialValue: props.modelValue }
+);
 
 const haveError = computed(() => {
   return props.isInvalid && !props.disabled;
 });
+
+const onInput = (event) => {
+  value.value = event.target.value;
+  emit('update:modelValue', event.target.value);
+};
 </script>
 
 <style scoped>
