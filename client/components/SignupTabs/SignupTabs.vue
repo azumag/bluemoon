@@ -21,7 +21,7 @@
       v-if="tab === 'signin'"
       class="border-gray-100 border border-t-0 rounded-b-md p-10"
     >
-      <Form>
+      <Form @submit="signin">
         <Input
           name="email"
           label="email"
@@ -37,13 +37,18 @@
           type="password"
           autocomplete="on"
         />
+        <div class="flex justify-center">
+          <button class="mt-5 py-2 px-10 bg-blue-500 text-white rounded">
+            ログイン
+          </button>
+        </div>
       </Form>
     </div>
     <div
       v-if="tab === 'signup'"
       class="border-gray-100 border border-t-0 rounded-b-md p-10"
     >
-      <Form>
+      <Form @submit="signup">
         <Input
           name="email"
           label="email"
@@ -59,25 +64,68 @@
           type="password"
           autocomplete="on"
         />
+        <div class="flex justify-center">
+          <button class="mt-5 py-2 px-10 bg-blue-500 text-white rounded">
+            新規登録
+          </button>
+        </div>
       </Form>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import { Form } from 'vee-validate';
 import Input from '@/components/Forms/Input.vue';
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  getAuth,
+} from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 
 let tab = ref('signin');
-let signinValue = ref({
+let signinValue = reactive({
   email: '',
   password: '',
 });
-let signupValue = ref({
+let signupValue = reactive({
   email: '',
   password: '',
 });
+const router = useRouter();
+
+const signin = () => {
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, signinValue.email, signinValue.password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      router.push('/');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(error.message);
+    });
+};
+
+const signup = () => {
+  const auth = getAuth();
+  createUserWithEmailAndPassword(auth, signupValue.email, signupValue.password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
+      router.push('/');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(error.message);
+    });
+};
 </script>
 
 <style scoped>
