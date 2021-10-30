@@ -97,8 +97,13 @@ input:not(:focus) + label {
   color: rgba(150, 150, 150, 1);
 }
 input {
-  @apply border bg-black;
+  @apply border bg-black text-white;
 }
+
+input:-webkit-autofill {
+  transition: all 100000s ease-in-out 0s !important;
+}
+
 input:focus {
   outline: none;
   border-color: rgba(37, 99, 235, 1);
