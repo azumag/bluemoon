@@ -1554,6 +1554,16 @@
     "@typescript-eslint/types" "4.33.0"
     eslint-visitor-keys "^2.0.0"
 
+"@vee-validate/i18n@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@vee-validate/i18n/-/i18n-4.5.3.tgz#8fc3ed3e28eb6841e9427b387f5aa0356e0a6337"
+  integrity sha512-uzgIwWyzKfxQ4d19qoAZBgy7vNV1OyLdYorAcz7yIaUWyJ/L72IMJ0nqTLqTfa+Fgi6FVEIfIEAtMuCzyhIPzA==
+
+"@vee-validate/rules@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@vee-validate/rules/-/rules-4.5.3.tgz#26c4e5398063145260786c7f0e94cafc6724c829"
+  integrity sha512-sPc0mLeTXxkzbS5BAZmJSUi++BtAwvGtxTTLaWQO4XdGpzDGC6GHeSqf/U8oisY7g08t/mLu+GzKtNkUphmShQ==
+
 "@vercel/nft@^0.16.0":
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@vercel/nft/-/nft-0.16.0.tgz#5d9bd7bca046f2c71c8a0595cf3b9d0d98a20ff8"
@@ -1976,6 +1986,11 @@ acorn@^8.0.4, acorn@^8.3.0, acorn@^8.4.1, acorn@^8.5.0:
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.5.0.tgz#4512ccb99b3698c752591e9bb4472e38ad43cee2"
   integrity sha512-yXbYeFy+jUuYd3/CDcg2NkIYE991XYX/bje7LmjJigUciaeO1JR4XxXgCIV1/Zc/dRuFEyw1L0pbA+qynJkW5Q==
+
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+  integrity sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=
 
 agent-base@6, agent-base@^6.0.2:
   version "6.0.2"
@@ -10203,6 +10218,11 @@ yargs@^16.1.1:
     string-width "^4.2.0"
     y18n "^5.0.5"
     yargs-parser "^20.2.2"
+
+yarn@^1.22.17:
+  version "1.22.17"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.17.tgz#bf910747d22497b573131f7341c0e1d15c74036c"
+  integrity sha512-H0p241BXaH0UN9IeH//RT82tl5PfNraVpSpEoW+ET7lmopNC61eZ+A+IDvU8FM6Go5vx162SncDL8J1ZjRBriQ==
 
 yocto-queue@^0.1.0:
   version "0.1.0"
