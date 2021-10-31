@@ -120,7 +120,7 @@ const signup = () => {
       router.push('/');
     })
     .catch((error) => {
-      console.log(error.message);
+      toast.error(error.message);
     });
 };
 </script>
