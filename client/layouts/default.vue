@@ -2,6 +2,7 @@
 import { getCurrentInstance } from 'vue';
 import { nav } from '../lib/nav';
 import { useI18n } from 'vue-i18n';
+import { localize, setLocale } from '@vee-validate/i18n';
 
 const app = getCurrentInstance();
 let open = ref(false);
@@ -13,9 +14,11 @@ const openNav = () => {
 const { locale } = useI18n({ useScope: 'global' });
 const changeLocale = () => {
   if (locale.value === 'en') {
+    setLocale('ja');
     locale.value = 'ja';
   } else {
     locale.value = 'en';
+    setLocale('en');
   }
 };
 

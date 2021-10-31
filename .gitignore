@@ -90,3 +90,5 @@ sw.*
 nuxt2
 nuxt.d.ts
 .output
+
+emulator_data

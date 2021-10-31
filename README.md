@@ -28,3 +28,8 @@ then access http://localhost:283
 docker-compose run --rm yarn yarn build
 firebase deploy
 ```
+# start emulator
+
+```
+firebase emulators:start --export-on-exit=emulator_data --import=emulator_data
+```
