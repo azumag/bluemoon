@@ -117,7 +117,6 @@ const signup = () => {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(user);
-      toast.success('');
       router.push('/');
     })
     .catch((error) => {
