@@ -1,3 +1,5 @@
+import { getAuth, signOut } from 'firebase/auth';
+
 export interface Nav {
   icon: string;
   title?: string;
@@ -36,7 +38,10 @@ export const nav: Nav[] = [
   {
     icon: 'sign-out-alt',
     title: 'Logout',
-    to: '/logout',
     onlyLoggedIn: true,
+    action: () => {
+      const auth = getAuth();
+      signOut(auth);
+    },
   },
 ];
