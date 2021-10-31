@@ -20,7 +20,8 @@
     "firebase-functions": "^3.6.2",
     "firebase-tools": "^8.4.2",
     "vee-validate": "^4.5.4",
-    "vue-i18n": "^9.2.0-beta.11"
+    "vue-i18n": "^9.2.0-beta.11",
+    "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^6.0.1",

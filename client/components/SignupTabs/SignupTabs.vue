@@ -83,7 +83,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
 } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { useToast } from 'vue-toastification';
 
 let tab = ref('signin');
 let signinValue = reactive({
@@ -95,6 +95,7 @@ let signupValue = reactive({
   password: '',
 });
 const router = useRouter();
+const toast = useToast();
 
 const signin = () => {
   const auth = getAuth();
@@ -106,9 +107,7 @@ const signin = () => {
       router.push('/');
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(error.message);
+      toast.error(error.message);
     });
 };
 
@@ -121,9 +120,7 @@ const signup = () => {
       router.push('/');
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(error.message);
+      toast.error(error.message);
     });
 };
 </script>
