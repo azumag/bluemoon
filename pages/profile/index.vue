@@ -12,18 +12,17 @@ v-layout(column, justify-center, align-center)
           | Profile
       v-card-text
         v-form(ref="form", v-model="valid")
-          v-form(ref="formValidate", v-model="valid")
-            v-text-field.mt-7.mb-2(v-model="form.displayName", required,
-              :label="$t('UserName')"
-              outlined
-            )
-            v-text-field.mt-7.mb-2(v-show="isEmailLinked()" v-model="form.email", required,
-              :label="$t('email')"
-              outlined
-            )
-            v-btn.ma-2(v-show="!isEmailLinked()" block outlined color="primary")
-              nuxt-link(to="profile/account-link")
-                | {{ $t('AccountLink') }}
+          v-text-field.mt-7.mb-2(v-model="form.displayName", required,
+            :label="$t('UserName')"
+            outlined
+          )
+          v-text-field.mt-7.mb-2(v-show="isEmailLinked()" v-model="form.email", required,
+            :label="$t('email')"
+            outlined
+          )
+          v-btn.ma-2(v-show="!isEmailLinked()" block outlined color="primary")
+            nuxt-link(to="profile/account-link")
+              | {{ $t('AccountLink') }}
         v-divider.ma-2
         v-btn.ma-2(@click='update' v-show="!loading" block outlined color="primary")
           | {{ $t('Update') }}
@@ -40,11 +39,6 @@ export default {
         displayName: '',
         email: '',
       },
-      requiredRule: [
-        (v) => {
-          return !!v || this.$i18n.t('required')
-        },
-      ],
       loading: false,
     }
   },
@@ -67,13 +61,11 @@ export default {
         let linked = false
         this.$firebase.currentUser.providerData.forEach((profile) => {
           if (profile.providerId === 'password') {
-            console.log(profile.providerId)
             linked = true
           }
         })
         return linked
       } else {
-        // console.log('false2')
         return false
       }
     },

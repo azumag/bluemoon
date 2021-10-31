@@ -11,19 +11,18 @@ v-layout(column, justify-center, align-center)
         div.pa-2.ma-2
           | Account Link
       v-card-text
-        v-form(ref="form", v-model="valid")
-          v-form(ref="formValidate", v-model="valid")
-            v-text-field.mt-7.mb-2(v-model="form.email", required,
-              :label="$t('email')"
-              outlined
-            )
-            v-text-field.mt-7.mb-2(v-model="form.password", required,
-              :label="$t('password')"
-              :rules="passwordRules"
-              hint='6文字以上必須です'
-              type='password'
-              outlined
-            )
+        v-form(ref="formValidate", v-model="valid")
+          v-text-field.mt-7.mb-2(v-model="form.email", required,
+            :label="$t('email')"
+            outlined
+          )
+          v-text-field.mt-7.mb-2(v-model="form.password", required,
+            :label="$t('password')"
+            :rules="passwordRules"
+            hint='6文字以上必須です'
+            type='password'
+            outlined
+          )
         v-divider.ma-2
         v-btn.ma-2(@click='link' v-show="!loading" block outlined color="primary")
           | {{ $t('Link') }}
@@ -56,13 +55,11 @@ export default {
         let linked = false
         this.$firebase.currentUser.providerData.forEach((profile) => {
           if (profile.providerId === 'password') {
-            console.log(profile.providerId)
             linked = true
           }
         })
         return linked
       } else {
-        // console.log('false2')
         return false
       }
     },
