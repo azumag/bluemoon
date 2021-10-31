@@ -6,4 +6,13 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+const auth = getAuth();
+const router = useRouter();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    router.push('/');
+  }
+});
+</script>
