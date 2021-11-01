@@ -21,7 +21,7 @@
       v-if="tab === 'signin'"
       class="border-gray-100 border border-t-0 rounded-b-md p-10"
     >
-      <Form @submit="signin">
+      <Form v-slot="{ validate, errors }">
         <Input
           name="email"
           label="email"
@@ -37,10 +37,18 @@
           type="password"
           autocomplete="on"
         />
-        <div class="flex justify-center">
-          <button class="mt-5 py-2 px-10 bg-blue-500 text-white rounded">
+        <div class="mt-3 flex justify-center">
+          <Button
+            @click="
+              () => {
+                validate().then(({ valid }) => {
+                  if (valid) signin();
+                });
+              }
+            "
+          >
             ログイン
-          </button>
+          </Button>
         </div>
       </Form>
     </div>
@@ -48,7 +56,7 @@
       v-if="tab === 'signup'"
       class="border-gray-100 border border-t-0 rounded-b-md p-10"
     >
-      <Form @submit="signup">
+      <Form v-slot="{ validate, errors }">
         <Input
           name="email"
           label="email"
@@ -65,9 +73,17 @@
           autocomplete="on"
         />
         <div class="flex justify-center">
-          <button class="mt-5 py-2 px-10 bg-blue-500 text-white rounded">
+          <Button
+            @click="
+              () => {
+                validate().then(({ valid }) => {
+                  if (valid) signup();
+                });
+              }
+            "
+          >
             新規登録
-          </button>
+          </Button>
         </div>
       </Form>
     </div>
@@ -75,7 +91,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
 import { Form } from 'vee-validate';
 import Input from '@/components/Forms/Input.vue';
 import {
