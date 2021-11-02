@@ -46,6 +46,7 @@ v-layout(column, justify-center, align-center)
                     v-radio(:label="$t('formVideoTypeMixedLabel')" value='mixed')
                   v-card-text.red--text
                     | {{ $t('formVideoTypeNotice') }}
+                    | 前回受賞バンド（各賞1位）は +2分程度の延長が認められます
               v-textarea(v-model="form.fileURLs"
                 outlined
                 :label="$t('formFileURLLabel')"
