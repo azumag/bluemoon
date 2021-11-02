@@ -22,37 +22,36 @@ v-layout(column, justify-center, align-center)
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
-            a(href='https://docs.google.com/document/d/1-vRzkOKvFc-Fa-f1cmnAMRNJwMtL1QkEaLLh234LnXo/edit?usp=sharing')
+            a(href='https://docs.google.com/document/d/1kcnwA8b1p2ms_9fR42gL_58JJ-UMYNFqzqw4YDd_YuU/')
               | 開催草案
-              a(href='https://docs.google.com/document/d/15zlF7fmlSQeIL_9ha81tRp8lLPLiHH2wUloSW2t-Cww/edit?usp=sharing')  / Draft Plan (English Version)
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
-            a(href='https://youtu.be/qG7gwa3etrY')
+            a(href='https://youtu.be/8aQyxnLzbv8')
               | {{ $t('前回の様子（動画)') }}
 
       v-col(cols=12)
           v-card(color='rgb(100, 100, 100, 0.4)')
-            // v-card-title.headline
-              // | エントリー締め切りました
-            v-card-title.headline {{ $t('openRegistration') }}
-            v-btn(outlined block @click="gotoEntryList")
-              | エントリーリスト
-            v-card-text(v-if="this.$firebase.currentUser")
-              v-btn(@click="gotoEntryForm()"
-                outlined
-                block
-              )
-                | {{ $t('entryForm') }}
-            v-card-text(v-else)
-              | {{ $t('registrationNotice') }}
-              | {{ $t('registrationNotice2') }}
-              div
-                v-btn.mx-2(@click="gotoLogin()"
-                  block
-                  outlined
-                )
-                  | LOGIN
+             v-card-title.headline
+              | エントリー準備中
+            // v-card-title.headline {{ $t('openRegistration') }}
+            // v-btn(outlined block @click="gotoEntryList")
+            //   | エントリーリスト
+            // v-card-text(v-if="this.$firebase.currentUser")
+            //   v-btn(@click="gotoEntryForm()"
+            //     outlined
+            //     block
+            //   )
+            //     | {{ $t('entryForm') }}
+            // v-card-text(v-else)
+            //   | {{ $t('registrationNotice') }}
+            //   | {{ $t('registrationNotice2') }}
+            //   div
+            //     v-btn.mx-2(@click="gotoLogin()"
+            //       block
+            //       outlined
+            //     )
+            //       | LOGIN
     
       v-col(v-if="event.notice" cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
