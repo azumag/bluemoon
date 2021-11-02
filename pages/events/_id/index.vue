@@ -32,27 +32,26 @@ v-layout(column, justify-center, align-center)
 
       v-col(cols=12)
           v-card(color='rgb(100, 100, 100, 0.4)')
-            v-card-title.headline
-              | エントリー準備中
-            // v-card-title.headline {{ $t('openRegistration') }}
+            // v-card-title.headline
+            // | エントリー準備中
+            v-card-title.headline {{ $t('openRegistration') }}
             // v-btn(outlined block @click="gotoEntryList")
-            //   | エントリーリスト
-            // v-card-text(v-if="this.$firebase.currentUser")
-            //   v-btn(@click="gotoEntryForm()"
-            //     outlined
-            //     block
-            //   )
-            //     | {{ $t('entryForm') }}
-            // v-card-text(v-else)
-            //   | {{ $t('registrationNotice') }}
-            //   | {{ $t('registrationNotice2') }}
-            //   div
-            //     v-btn.mx-2(@click="gotoLogin()"
-            //       block
-            //       outlined
-            //     )
-            //       | LOGIN
-    
+            //  | エントリーリスト
+            v-card-text(v-if="this.$firebase.currentUser")
+              v-btn(@click="gotoEntryForm()"
+                outlined
+                block
+              )
+                | {{ $t('entryForm') }}
+            v-card-text(v-else)
+              | {{ $t('registrationNotice') }}
+              | {{ $t('registrationNotice2') }}
+              div
+                v-btn.mx-2(@click="gotoLogin()"
+                  block
+                  outlined
+                )
+                  | LOGIN
       v-col(v-if="event.notice" cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline.red--text
