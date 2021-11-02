@@ -32,7 +32,7 @@ v-layout(column, justify-center, align-center)
 
       v-col(cols=12)
           v-card(color='rgb(100, 100, 100, 0.4)')
-             v-card-title.headline
+            v-card-title.headline
               | エントリー準備中
             // v-card-title.headline {{ $t('openRegistration') }}
             // v-btn(outlined block @click="gotoEntryList")
