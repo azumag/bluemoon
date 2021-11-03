@@ -38,6 +38,12 @@ v-layout(column, justify-center, align-center)
             span.headline {{ $t('finishedEvent') }} 
           v-card-text
             v-list
+              v-list-item
+                v-list-item-content
+                  | Bluegrass Lockdown Music Festival Vol.2
+                v-list-item-icon
+                  nuxt-link(to="/events/2020")
+                    | {{ $t('detail') }}
               v-list-item(v-for="(event, i) in closedEvents" :key="event.id")
                 v-list-item-content
                   v-list-item-title(v-html="event.title")
