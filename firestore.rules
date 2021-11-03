@@ -20,7 +20,7 @@ service cloud.firestore {
       allow read, write: if request.auth.uid != null;
     }
     match /entries/{id} {
-      // allow read, list: if true;
+      allow read, list: if true;
       allow create: if request.auth.uid != null;
       allow write: if request.auth.uid != null;
     }
