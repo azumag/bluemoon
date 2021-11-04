@@ -1,6 +1,6 @@
 <template>
   <div class="inline-block" :class="{ 'w-full': block }">
-    <nuxt-link v-if="to !== ''" :to="to" :target="target">
+    <nuxt-link v-if="haveTo" :to="to" :target="target">
       <BaseButton
         :bg-color="bgColor"
         :bgOpacity="bgOpacity"
@@ -12,7 +12,7 @@
         <slot />
       </BaseButton>
     </nuxt-link>
-    <a v-else-if="href !== ''" :href="href" :target="target">
+    <a v-else-if="haveHref" :href="href" :target="target">
       <BaseButton
         :bg-color="bgColor"
         :bgOpacity="bgOpacity"
@@ -51,7 +51,7 @@ interface Props {
   block?: boolean;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   to: '',
   href: '',
   target: '',
@@ -65,4 +65,12 @@ withDefaults(defineProps<Props>(), {
 defineEmits<{
   (e: 'click'): void;
 }>();
+
+const haveTo = computed(() => {
+  return props.to !== '';
+});
+
+const haveHref = computed(() => {
+  return props.href !== '';
+});
 </script>
