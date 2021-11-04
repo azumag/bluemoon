@@ -20,9 +20,10 @@ interface Props {
 
 const props = defineProps<Props>();
 const buttonClass = computed(() => {
-  const buttonClass: {
+  interface ButtonClass {
     [key: string]: boolean;
-  } = {
+  }
+  const buttonClass: ButtonClass = {
     disabled: props.disabled,
   };
   buttonClass[props.bgColor] = true;
