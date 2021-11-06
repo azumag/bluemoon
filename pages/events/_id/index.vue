@@ -23,7 +23,7 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             a(href='https://docs.google.com/document/d/1kcnwA8b1p2ms_9fR42gL_58JJ-UMYNFqzqw4YDd_YuU/')
-              | 開催草案
+              | 開催草案 (DRAFT)
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
@@ -199,4 +199,3 @@ export default {
   },
 }
 </script>
-

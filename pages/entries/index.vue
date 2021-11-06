@@ -12,7 +12,7 @@ v-layout(column, justify-center, align-center)
             v-card-title.headline
               | {{ $t('entryList') }}
     v-row(v-for="(entry, i) in entries" :key="entry.id")
-      v-col(cols=12)
+      v-col(v-if="entry.event.status === 'open'" cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)' shaped outlined)
           v-card-title.headline
             | {{ entry.name }}
@@ -38,7 +38,16 @@ export default {
       .get()
       .then((res) => {
         res.forEach((doc) => {
-          this.entries.push({ ...doc.data(), id: doc.id })
+          const status = () => {
+            // this is instant resort
+            // TODO: get event status
+            if (doc.data().eventId === 'VTH7oiZR2vmMCPgcW8xC') {
+              return 'open'
+            } else {
+              return 'close'
+            }
+          }
+          this.entries.push({ ...doc.data(), id: doc.id, event: { status } })
         })
       })
       .catch((err) => {
