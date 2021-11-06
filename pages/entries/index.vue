@@ -11,14 +11,40 @@ v-layout(column, justify-center, align-center)
           )
             v-card-title.headline
               | {{ $t('entryList') }}
-    v-row(v-for="(entry, i) in entries" :key="entry.id")
-      v-col(v-if="entry.event.status === 'open'" cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped outlined)
-          v-card-title.headline
-            | {{ entry.name }}
+    v-row
+      v-col(cols="12")
+        v-card(color='rgb(100, 100, 100, 0.4)'
+          shaped
+        )
+          v-card-title
+            span.headline {{ $t('scheduledEvent')}} 
           v-card-text
-            v-btn(@click='gotoDetail(entry)' block=true outlined=true)
-              | {{ $t('edit') }}
+            v-list
+              v-list-item(v-for="(entry, i) in openEntries" :key="entry.id")
+                v-list-item-content
+                  v-list-item-title
+                    | {{ entry.name }}
+                v-list-item-icon
+                  v-btn(@click='gotoDetail(entry)' block=true outlined=true)
+                    | {{ $t('edit') }}
+    v-row
+      v-col(cols="12")
+        v-card(color='rgb(100, 100, 100, 0.4)'
+          shaped
+        )
+          v-card-title
+            span.headline {{ $t('finishedEvent') }} 
+          v-card-text
+            v-list
+              v-list-item
+                v-list-item-content
+              v-list-item(v-for="(entry, i) in closedEntries" :key="entry.id")
+                v-list-item-content
+                  v-list-item-title
+                    | {{ entry.name }}
+                v-list-item-icon
+                  v-btn(@click='gotoDetail(entry)' block=true outlined=true)
+                    | {{ $t('edit') }}
 </template>
 
 <script>
@@ -28,7 +54,8 @@ export default {
   data() {
     return {
       a: '',
-      entries: [],
+      openEntries: [],
+      closedEntries: [],
     }
   },
   async mounted() {
@@ -38,16 +65,13 @@ export default {
       .get()
       .then((res) => {
         res.forEach((doc) => {
-          const status = () => {
-            // this is instant resort
-            // TODO: get event status
-            if (doc.data().eventId === 'VTH7oiZR2vmMCPgcW8xC') {
-              return 'open'
-            } else {
-              return 'close'
-            }
+          // this is instant resort
+          // TODO: get event status from firestore
+          if (doc.data().eventId === 'VTH7oiZR2vmMCPgcW8xC') {
+            this.openEntries.push({ ...doc.data(), id: doc.id })
+          } else {
+            this.closedEntries.push({ ...doc.data(), id: doc.id })
           }
-          this.entries.push({ ...doc.data(), id: doc.id, event: { status } })
         })
       })
       .catch((err) => {
