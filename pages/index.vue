@@ -13,7 +13,6 @@ v-layout(column, justify-center, align-center)
           v-card-actions(v-show="!$firebase.currentUser")
             v-btn(color='white', outlined=true, block=true, text, nuxt, to='/login')
               | ログイン / 新規登録
-
             //- v-card-title.headline.float-right
             //-   | Bluemoon: Your lone journey
       v-col(cols=12)
@@ -23,10 +22,23 @@ v-layout(column, justify-center, align-center)
             color="red"
             text-color="white"
           )
+            | お知らせ
+          v-card-title.title.white--text(
+            style="background-image: url('/fes2-sm.jpg'); background-color: rgba(80, 80, 80, 0.4)"
+            @click.stop="$router.push(localePath('/events/'))"
+          )
+            | Bluegrass Lockdown Music Festival Vol.3 開催     
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
             | ご協賛
-          nuxt-link(to="events")
-            | Bluegrass Lockdown Festival
-          |  の人気投票の賞品をご提供頂きました！
+          // nuxt-link(to="events")
+          //  | Bluegrass Lockdown Festival
+          //|  の人気投票の賞品をご提供頂きました！
           v-container(
             style="background-image: url('/iwashita-mandolins.jpeg'); background-size: cover"
             height="auto"
@@ -45,19 +57,7 @@ v-layout(column, justify-center, align-center)
                   | フラットマンドリン、アコースティックギターなどの製作や修理等
                 div.body-1
                   | 営業時間 10:00～19:00 / 月曜定休
-      v-col(cols=12)
-        v-card(color='rgb(100, 100, 100, 0.4)' shaped)
-          v-chip(
-            class="ma-2"
-            color="red"
-            text-color="white"
-          )
-            | お知らせ
-          v-card-title.title.white--text(
-            style="background-image: url('/fes2-sm.jpg'); background-color: rgba(80, 80, 80, 0.4)"
-            @click.stop="$router.push(localePath('/events/'))"
-          )
-            | Bluegrass Lockdown Music Festival Vol.2 開催
+      
       v-col(cols=12)
       //-   v-card(color='rgb(100, 100, 100, 0.4)' shaped)
       //-     v-card-title.headline

@@ -88,6 +88,11 @@ export default {
           title: this.$i18n.t('entries'),
           to: '/entries',
         })
+        items.push({
+          icon: 'person',
+          title: this.$i18n.t('Profile'),
+          to: '/profile',
+        })
         // items.push({
         //   icon: 'bubble_chart',
         //   title: 'レパートリー登録',
