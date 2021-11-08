@@ -133,7 +133,7 @@ v-layout(column, justify-center, align-center)
             )
               | ご協賛
             a(href="https://twitter.com/komeya88") 米屋さん
-				    span.body-1 より「何か」をご提供頂きます
+            span.body-1 より「何か」をご提供頂きます
             
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
