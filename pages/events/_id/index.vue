@@ -86,8 +86,8 @@ v-layout(column, justify-center, align-center)
             div
               a(href='https://ofuse.me/bgonfes') 
                 | {{ $t('gotoOfuse') }} 
-      
-      v-card(color='rgb(100, 100, 100, 0.4)')
+      v-col(cols=12)  
+        v-card(color='rgb(100, 100, 100, 0.4)')
           v-chip(
             class="ma-2"
             color="red"
