@@ -17,7 +17,29 @@ v-layout(column, justify-center, align-center)
             span.ma-4
               v-btn(v-for="locale in availableLocales" :key='locale' color='orange' outlined)
                 nuxt-link(:key="locale" :to="switchLocalePath(locale)") {{ $t(locale) }}
- 
+    
+    v-row
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-card-title.headline
+            | ブルーグラス音楽（Bluegrass Music)
+          v-container(
+            style="background-image: url('/bluegrass.png'); background-size: cover"
+            height="auto"
+          )
+            v-container(
+              style="background-color: rgba(80, 80, 80, 0.8);"
+            )
+              div.ma-4
+                div.white--text.body-1.ma-2
+                  | ブルーグラスはアメリカ発祥の音楽ジャンルです。広い大地に芝 (Bluegrass) が広がる土地を背景に、
+                  span.white--text.body-1.bold
+                    a.white--text(href="https://www.youtube.com/watch?v=IJbkOL2YRL4")
+                      | ビル・モンロー&ブルーグラスボーイズ（Bill Monroe & The Bluegrass boys）
+                  | がエモいインフルエンサーとなり世に広めました。
+                  | アコースティック楽器とシンプルなコード進行を基盤とした、2ビートの疾走感、独特な歌唱とリズムによる寂寥感、速弾きやソロ交代による各楽器の魅せプレイなど、聞く人と演奏する人を虜にする魅力を持った音楽です。
+                div.ma-2.white--text.body-1
+                  | 近代においては楽器、リズムを含め様々に多様化しており、端的な意味でのルーツ・ミュージックにとどまらない、変化し続ける生きた音楽と言えましょう。  
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
