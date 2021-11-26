@@ -41,14 +41,18 @@ v-layout(column, justify-center, align-center)
                 div.ma-2.white--text.body-1
                   | 近代においては楽器、リズムを含め様々に多様化しており、端的な意味でのルーツ・ミュージックにとどまらない、変化し続ける生きた音楽と言えましょう。  
     v-row
-      v-col(cols=6)
+      v-col(cols=4)
         v-card(color='rgb(100, 100, 100, 0.4)')
           a(href='/blmf2021-1-orig.png')
-            img(src="/blmf2021-1.png")
-      v-col(cols=6)
+            v-img(src="/blmf2021-1.png")
+      v-col(cols=4)
         v-card(color='rgb(100, 100, 100, 0.4)')
           a(href='/blmf2021-2-orig.png')
-            img(src="/blmf2021-2.png")
+            v-img(src="/blmf2021-2.png")
+      v-col(cols=4)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          a(href='/blmf2021-3-orig.png')
+            v-img(src="/blmf2021-3.png")
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
