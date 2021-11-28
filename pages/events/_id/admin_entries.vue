@@ -47,7 +47,8 @@ v-layout(column, justify-center, align-center)
                 //- div.ma-2 {{ {...entry} }}
                 div(v-if="entry.fileNames")
                   div(v-for="filename in entry.fileNames" :key='filename')
-                    | {{ filename }}
+                    a(:href='entryFilePath(entry)')
+                      | {{ filename }}
                 div(v-if="entry.fileURLs")
                   | {{ entry.fileURLs }}
 
@@ -66,6 +67,8 @@ export default {
       a: '',
       entries: [],
       votes: [],
+      consoleURL:
+        'https://console.firebase.google.com/u/0/project/bluemoon-82c0b/storage/bluemoon-82c0b.appspot.com/files/',
     }
   },
   computed: {
@@ -128,6 +131,18 @@ export default {
         return '投票を取り消す'
       }
       return '投票する'
+    },
+    entryFilePath(entry) {
+      return (
+        this.consoleURL +
+        'users/' +
+        entry.userId +
+        '/events/' +
+        entry.eventId +
+        '/entries/' +
+        entry.id +
+        '/'
+      )
     },
     // unvote(entry) {
     //   const index = this.votes.indexOf(entry.id)
