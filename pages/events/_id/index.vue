@@ -200,6 +200,33 @@ v-layout(column, justify-center, align-center)
                   | 栃木・烏山の和洋菓子店です。常時１００種類以上のお菓子を取り揃えております。新商品やイベントの情報など随時発信していきます☆
                 div.body-1
                   | 営業時間 8:00～19:00 / 水曜定休
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | ご協賛
+          span.body-1  賞品(ボトル券）をご提供いただきます
+          v-container(
+            style="background-image: url('/rockeytop.jpeg'); background-size: cover"
+            height="auto"
+          )
+            v-container(
+              style="background-color: rgba(80, 80, 80, 0.8);"
+            )
+              v-avatar.ma-2(size=64)
+                img(src="/rockeytop.jpeg")
+              a.white--text(href="http://ginza-club.net/rocky-top/")
+                | Rocky Top (ロッキートップ)
+              div.ma-4
+                div.white--text.body-1
+                  | 東京の老舗、ミュージックレストラン銀座ロッキートップは、ブルーグラス音楽のメッカとして世界的に知られているところです。
+                  | 「ブルーグラスの父」ビルモンローが作り上げたこの素晴らしい音楽を生演奏という形で再現し、
+                  | 魅力溢れるバンジョーやマンドリン、フィドル(バイオリン)、
+                  | ドブロなどの音色を出来る限り多くの方にお伝えしたいと思っています。
+                  | お食事もできて、ドリンク、フード、チャージ、共にリーズナブル！地下鉄・JRからも徒歩10分以内！
       v-row
         v-col(cols=12)
           v-card(color='rgb(100, 100, 100, 0.4)')
