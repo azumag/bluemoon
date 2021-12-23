@@ -54,16 +54,18 @@ v-layout(column, justify-center, align-center)
           a(href='/blmf2021-3-orig.png')
             v-img(src="/blmf2021-3.png")
     v-row
-      v-col(cols=12)
+      v-col(cols=6)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             a(href='https://docs.google.com/document/d/1kcnwA8b1p2ms_9fR42gL_58JJ-UMYNFqzqw4YDd_YuU/')
               | 開催草案 (DRAFT)
-      v-col(cols=12)
+      v-col(cols=6)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
             a(href='https://youtu.be/8aQyxnLzbv8')
               | {{ $t('前回の様子（動画)') }}
+
+    
 
       v-col(cols=12)
           v-card(color='rgb(100, 100, 100, 0.4)')
@@ -87,6 +89,24 @@ v-layout(column, justify-center, align-center)
                   outlined
                 )
                   | LOGIN
+
+    v-row
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-container(
+            style="background-image: url('/participate.png'); background-size: cover"
+          )
+            v-container(
+              style="background-color: rgba(80, 80, 80, 0.8);"
+            )
+              v-card-title.headline
+                a.white--text
+                  | 視聴・参加方法 
+              div.ma-4
+                v-btn(outlined block)
+                  a.white--text(href="https://www.bluemoon.works/participate.pdf")
+                    | Clusterの使い方と YouTube / Twich 会場アクセス URL
+
       v-col(v-if="event.notice" cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline.red--text

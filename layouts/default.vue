@@ -64,7 +64,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Bluemoon',
+      title: 'Bluegrass Lockdown Music Festival 公式',
       user: null,
     }
   },
