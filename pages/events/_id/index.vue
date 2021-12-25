@@ -65,30 +65,39 @@ v-layout(column, justify-center, align-center)
             a(href='https://youtu.be/8aQyxnLzbv8')
               | {{ $t('前回の様子（動画)') }}
 
-    
-
       v-col(cols=12)
-          v-card(color='rgb(100, 100, 100, 0.4)')
-            // v-card-title.headline
-            // | エントリー準備中
-            v-card-title.headline {{ $t('openRegistration') }}
-            // v-btn(outlined block @click="gotoEntryList")
-            //  | エントリーリスト
-            v-card-text(v-if="this.$firebase.currentUser")
-              v-btn(@click="gotoEntryForm()"
-                outlined
-                block
-              )
-                | {{ $t('entryForm') }}
-            v-card-text(v-else)
-              | {{ $t('registrationNotice') }}
-              | {{ $t('registrationNotice2') }}
-              div
-                v-btn.mx-2(@click="gotoLogin()"
-                  block
-                  outlined
-                )
-                  | LOGIN
+        v-card(color='rgb(100, 100, 100, 0.4)')
+            v-card-title.headline
+              | エントリーは締切です!
+              | エントリーしていただいた方は、以下ページから動画アップロードを
+              | 2021-12-27 9:00 GMT	までしていただけます。
+              | よろしくお願いいたします!
+            v-btn(outlined block)
+              a.white--text(href="https://www.bluemoon.works/entries")
+                | エントリ編集ページ(要ログイン)
+
+      //- v-col(cols=12)
+      //-     v-card(color='rgb(100, 100, 100, 0.4)')
+      //-       // v-card-title.headline
+      //-       // | エントリー準備中
+      //-       v-card-title.headline {{ $t('openRegistration') }}
+      //-       // v-btn(outlined block @click="gotoEntryList")
+      //-       //  | エントリーリスト
+      //-       v-card-text(v-if="this.$firebase.currentUser")
+      //-         v-btn(@click="gotoEntryForm()"
+      //-           outlined
+      //-           block
+      //-         )
+      //-           | {{ $t('entryForm') }}
+      //-       v-card-text(v-else)
+      //-         | {{ $t('registrationNotice') }}
+      //-         | {{ $t('registrationNotice2') }}
+      //-         div
+      //-           v-btn.mx-2(@click="gotoLogin()"
+      //-             block
+      //-             outlined
+      //-           )
+      //-             | LOGIN
 
     v-row
       v-col(cols=12)
