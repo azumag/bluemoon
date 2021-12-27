@@ -44,6 +44,7 @@ v-layout(column, justify-center, align-center)
                 | {{ entry.name }}
               v-expansion-panel-content.text--secondary
                 div.ma-2 {{ entry.description }}
+                div.ma-2 {{ entry.email }}
                 //- div.ma-2 {{ {...entry} }}
                 div(v-if="entry.fileNames")
                   div(v-for="filename in entry.fileNames" :key='filename')
