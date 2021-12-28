@@ -6,8 +6,7 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-img(
             class="white--text align-end"
-            height="200px"
-            src="/fes2-sm.jpg"
+            src="/onfes2021fly.png"
           )
             v-card-title.headline
               | {{ fireTrans(event, 'title') }}
@@ -53,6 +52,11 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)')
           a(href='/blmf2021-3-orig.png')
             v-img(src="/blmf2021-3.png")
+    //- v-row
+    //-   v-col(cols=12)
+    //-     v-card(color='rgb(100, 100, 100, 0.4)')
+    //-       a(href='/onfes2021fly.png')
+    //-         v-img(src="/onfes2021fly.png")
 
     v-row
       v-col(cols=12)
