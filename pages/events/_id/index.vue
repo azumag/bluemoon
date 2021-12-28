@@ -213,7 +213,7 @@ v-layout(column, justify-center, align-center)
                           v-expansion-panel-header
                             | Unripened Stringplunkers
                           v-expansion-panel-content
-                            | 
+                            | ボーカル・すーじーの命題について、演奏を通して考えていきます。
                         v-expansion-panel
                           v-expansion-panel-header
                             | もひかんクラウス＆もひかんステーション
