@@ -263,7 +263,7 @@ v-layout(column, justify-center, align-center)
                             | 短いですが聴いていただけたら嬉しいです。
                         v-expansion-panel
                           v-expansion-panel-header
-                            | Masterof Traditional Bluegrass
+                            | Master of Traditional Bluegrass
                           v-expansion-panel-content
                             | Bill Monroeを始めtraditionalなブルーグラスを中心に渋くキメます！ 
                             div fd テイター安田 
