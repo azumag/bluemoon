@@ -55,10 +55,10 @@ v-layout(column, justify-center, align-center)
 
                 span(v-if="entry.individual === true" color='blue')
                   span(v-if="isVoted('個人作品賞')")
-                    v-btn.ma-4(color="red" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, '個人作品賞')" block outlined)
+                    v-btn.ma-4(color="red" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, '個人作品賞')" block)
                       | {{voteString('個人作品賞')}}
                   span(v-if="!isVoted('個人作品賞')")
-                    v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, '個人作品賞')" block outlined)
+                    v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, '個人作品賞')" block) 
                       | 個人作品賞
                 
                 //- span(v-if="(entry.videoType != 'live')" v-for="(voteKind, i) in prizes" :key='voteKind')
