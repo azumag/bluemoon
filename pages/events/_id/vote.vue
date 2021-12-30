@@ -31,6 +31,13 @@ v-layout(column, justify-center, align-center)
     //-       span.title
     //-         a(href="https://www.youtube.com/watch?v=vah8gAsdyNA")
     //-           | 当日（5月4日19時から）こちらで放送を行います
+
+    v-row
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)' outlined)
+          v-card-title.headline
+            | エントリーへの投票ページです
+ 
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)' outlined)
