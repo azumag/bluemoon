@@ -75,7 +75,7 @@ export default {
     })
     await this.$firestore
       .collection('entries')
-      .where('eventId', '==', 'fe2ypz0gnDuSiY1t2KjG')
+      .where('eventId', '==', 'VTH7oiZR2vmMCPgcW8xC')
       .get()
       .then((res) => {
         res.forEach((doc) => {
