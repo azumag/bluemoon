@@ -296,6 +296,9 @@ export default {
           formVideoTypeCraftedLabel: 'フェス用に作成した動画（15分程度）',
           formVideoTypeLiveLabel: '過去行われたライブの録画（10分程度）',
           formVideoTypeMixedLabel: '混在(10分程度）',
+          formVideoTypeOnlineLabel: 'オンライン・ブルーグラス・アワード: 今回作成した動画（15分程度）',
+          formVideoTypeOfflineLabel: 'オフライン・ブルーグラス・アワード: 過去の録画（10分程度）',
+          formVideoTypeShortLabel: 'ショート・ブルーグラス・アワード: 1分以内の動画',
           formVideoTypeNotice:
             '※ 動画がまだなくとも締め切りまで更新可能・取り下げ可能ですので，ぜひエントリーを✍',
           formFileURLLabel:

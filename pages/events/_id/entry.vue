@@ -41,8 +41,8 @@ v-layout(column, justify-center, align-center)
                 v-alert(outlined color='rgb(100, 100, 100, 0.8)')
                   v-label {{ $t('formVideoTypeLabel') }}
                   v-radio-group(row outlined v-model="form.videoType")
-                    v-radio(:label="$t('formVideoTypeCraftedLabel')" value='crafted')
-                    v-radio(:label="$t('formVideoTypeLiveLabel')" value='live')
+                    v-radio(:label="$t('formVideoTypeOnlineLabel')" value='online')
+                    v-radio(:label="$t('formVideoTypeOfflineLabel')" value='offline')
                     v-radio(:label="$t('formVideoTypeMixedLabel')" value='mixed')
                     v-radio(:label="$t('formVideoTypeShortLabel')" value='short')
                   v-card-text.red--text
