@@ -194,6 +194,9 @@ export default {
           formVideoTypeLiveLabel:
             'The video of past live performance: approx. 15minutes of less',
           formVideoTypeMixedLabel: 'Mixed: approx. 10',
+          formVideoTypeOnlineLabel: 'The video taken for this event: approx. 15minutes of less',
+          formVideoTypeOfflineLabel: 'The video of past live performance: approx. 15minutes of less',
+          formVideoTypeShortLabel: 'The video within 1 minutes',
           formVideoTypeNotice:
             "Even if you don't have a video yet, you can upload it until the deadline",
           soba: 'Jindaiji Soba & Special Pick',
