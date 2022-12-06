@@ -4,13 +4,12 @@ v-layout(column, justify-center, align-center)
     v-row
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
-          //- v-img(
-          //-   class="white--text align-end"
-          //-   src="/onfes2021fly.png"
-          //- )
-          //-   v-card-title.headline
-          //-     | {{ fireTrans(event, 'title') }}
-          //-   // - div.ma-2.text-lg-right -- Stay Home, Country Roads.
+          v-img(
+            class="white--text align-end"
+            src="/blmf2023header.png"
+          )
+            v-card-title.headline
+              | {{ fireTrans(event, 'title') }}
           v-card-text
             | {{ fireTrans(event, 'abstract') }}
             span.ma-4
@@ -40,18 +39,27 @@ v-layout(column, justify-center, align-center)
                 div.ma-2.white--text.body-1
                   | 近代においては楽器、リズムを含め様々に多様化しており、端的な意味でのルーツ・ミュージックにとどまらない、変化し続ける生きた音楽と言えます。  
     v-row
-      v-col(cols=4)
+      v-col(cols=2)
         v-card(color='rgb(100, 100, 100, 0.4)')
-          a(href='/blmf2021-2-orig.png')
-            v-img(src="/blmf2021-2.png")
-    //-   v-col(cols=4)
-    //-     v-card(color='rgb(100, 100, 100, 0.4)')
-    //-       a(href='/blmf2021-1-orig.png')
-    //-         v-img(src="/blmf2021-1.png")
-    //-   v-col(cols=4)
-    //-     v-card(color='rgb(100, 100, 100, 0.4)')
-    //-       a(href='/blmf2021-3-orig.png')
-    //-         v-img(src="/blmf2021-3.png")
+          a(href='/blmf2023fly1.png')
+            v-img(src="/blmf2023fly1.png")
+      v-col(cols=2)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          a(href='/blmf2023fly2.png')
+            v-img(src="/blmf2023fly2.png")
+      v-col(cols=2)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          a(href='/onfes2023fly3.png')
+            v-img(src="/blmf2023fly3.png")
+      v-col(cols=2)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          a(href='/blmf2023fly4.png')
+            v-img(src="/blmf2023fly4.png")
+      v-col(cols=2)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          a(href='/blmf2023fly5.png')
+            v-img(src="/blmf2023fly5.png")
+ 
     //- v-row
     //-   v-col(cols=12)
     //-     v-card(color='rgb(100, 100, 100, 0.4)')
