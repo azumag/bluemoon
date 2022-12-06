@@ -34,7 +34,7 @@ v-layout(column, justify-center, align-center)
                   span.white--text.body-1.bold
                     a.white--text(href="https://www.youtube.com/watch?v=IJbkOL2YRL4")
                       | ビル・モンロー&ブルーグラスボーイズ（Bill Monroe & The Bluegrass boys）
-                  | がエモいインフルエンサーとなり世に広めました。
+                  | がインフルエンサーとなり世に広めました。
                   | アコースティック楽器とシンプルなコード進行を基盤とした、2ビートの疾走感、独特な歌唱とリズムによる寂寥感、速弾きやソロ交代による各楽器の魅せプレイなど、聞く人と演奏する人を虜にする魅力を持った音楽です。
                 div.ma-2.white--text.body-1
                   | 近代においては楽器、リズムを含め様々に多様化しており、端的な意味でのルーツ・ミュージックにとどまらない、変化し続ける生きた音楽と言えます。  
