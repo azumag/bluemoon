@@ -362,6 +362,9 @@ export default {
           console.log('error:', event)
           this.$router.back()
         }
+        if (this.event.status !== 'open') {
+          this.$router.back()
+        }
       })
       .catch((err) => {
         console.log('Error getting documents', err)
