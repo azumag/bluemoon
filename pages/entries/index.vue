@@ -67,7 +67,7 @@ export default {
         res.forEach((doc) => {
           // this is instant resort
           // TODO: get event status from firestore
-          if (doc.data().eventId === 'VTH7oiZR2vmMCPgcW8xC') {
+          if (doc.data().eventId === 'nWIe42DjxjQ4sircilRw') {
             this.openEntries.push({ ...doc.data(), id: doc.id })
           } else {
             this.closedEntries.push({ ...doc.data(), id: doc.id })
