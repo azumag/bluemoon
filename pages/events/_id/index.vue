@@ -363,7 +363,7 @@ export default {
           this.$router.back()
         }
         if (this.event.status !== 'open') {
-          this.$router.back()
+          this.$router.push('/')
         }
       })
       .catch((err) => {
