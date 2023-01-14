@@ -247,6 +247,8 @@ v-layout(column, justify-center, align-center)
               style="background-color: rgba(80, 80, 80, 0.8);"
             )
               v-avatar.ma-2(size=64)
+                img(src="/hirasawa3.png")
+              a.white--text(href="https://www.facebook.com/hirasawasweets/")
               a.white--text(href="https://www.tunecore.co.jp/artists/Ryota-Hirasawa")
                 | ヒラサワリョータ: "the stray bug" / "パティスリーヒラサワ"
               div.ma-4
