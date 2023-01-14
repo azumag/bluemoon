@@ -215,33 +215,45 @@ v-layout(column, justify-center, align-center)
       //-             | フラットマンドリン、アコースティックギターなどの製作や修理等
       //-           div.body-1
       //-             | 営業時間 10:00～19:00 / 月曜定休
-      //- v-col(cols=12)
-      //-   v-card(color='rgb(100, 100, 100, 0.4)')
-      //-     v-chip(
-      //-       class="ma-2"
-      //-       color="red"
-      //-       text-color="white"
-      //-     )
-      //-       | ご協賛
-      //-     span.body-1  賞品(ロールケーキ2本セット）をご提供いただきます
-      //-     v-container(
-      //-       style="background-image: url('/hirasawa2.jpeg'); background-size: cover"
-      //-       height="auto"
-      //-     )
-      //-       v-container(
-      //-         style="background-color: rgba(80, 80, 80, 0.8);"
-      //-       )
-      //-         v-avatar.ma-2(size=64)
-      //-           img(src="/hirasawa1.jpeg")
-      //-         a.white--text(href="https://www.facebook.com/hirasawasweets/")
-      //-           | 御菓子ひらさわ・パティスリーヒラサワ
-      //-         div.ma-4
-      //-           div.white--text.body-1
-      //-             | 栃木県那須烏山市金井1-10-13 
-      //-           div.body-1
-      //-             | 栃木・烏山の和洋菓子店です。常時１００種類以上のお菓子を取り揃えております。新商品やイベントの情報など随時発信していきます☆
-      //-           div.body-1
-      //-             | 営業時間 8:00～19:00 / 水曜定休
+
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | ご協賛
+          span.body-1  賞品(生チョコ25個入り）をご提供いただきました
+          v-container(
+            style="background-image: url('/hirasawa2.jpeg'); background-size: cover"
+            height="auto"
+          )
+            v-container(
+              style="background-color: rgba(80, 80, 80, 0.8);"
+            )
+              v-avatar.ma-2(size=64)
+                img(src="/hirasawa1.jpeg")
+              a.white--text(href="https://www.facebook.com/hirasawasweets/")
+                | 御菓子ひらさわ・パティスリーヒラサワ
+              div.ma-4
+                div.white--text.body-1
+                  | 栃木県那須烏山市金井1-10-13 
+                div.body-1
+                  | 栃木・烏山の和洋菓子店です。常時１００種類以上のお菓子を取り揃えております。新商品やイベントの情報など随時発信していきます☆
+                div.body-1
+                  | 営業時間 8:00～19:00 / 水曜定休
+                  v-container(
+              style="background-color: rgba(80, 80, 80, 0.8);"
+            )
+              v-avatar.ma-2(size=64)
+              a.white--text(href="https://www.tunecore.co.jp/artists/Ryota-Hirasawa")
+                | ヒラサワリョータ: "the stray bug" / "パティスリーヒラサワ"
+              div.ma-4
+                div.white--text.body-1
+                  | パティシエマンドリニスト・ヒラサワリョータ氏による疾走感あふれるブルーグラスインスト
+                div.white--text.body-1
+                  | 各種音楽配信サービスにてリリース！
       //- v-col(cols=12)
       //-   v-card(color='rgb(100, 100, 100, 0.4)')
       //-     v-chip(
