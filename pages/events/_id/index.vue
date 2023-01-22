@@ -264,8 +264,16 @@ v-layout(column, justify-center, align-center)
               text-color="white"
             )
               | ご協賛
-            p ま〜バァさん
-            span.body-1 より「ビール券」6枚組をご提供いただきました！
+            span.body-1 「ビール券」6枚組をご提供いただきました！
+            v-container(
+              style="background-image: url('/beer.jpeg'); background-size: cover"
+              height="auto"
+            )
+              v-container(
+                style="background-color: rgba(80, 80, 80, 0.8);"
+              )
+              a.white--text
+                | ま〜バァさん
       v-col(cols=12)  
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-chip(
