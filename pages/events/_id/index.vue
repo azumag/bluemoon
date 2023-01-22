@@ -163,58 +163,8 @@ v-layout(column, justify-center, align-center)
             div
               a(href='https://ofuse.me/bgonfes') 
                 | {{ $t('gotoOfuse') }} 
-      //- v-col(cols=12)  
-      //-   v-card(color='rgb(100, 100, 100, 0.4)')
-      //-     v-chip(
-      //-       class="ma-2"
-      //-       color="red"
-      //-       text-color="white"
-      //-     )
-      //-       | ご協賛
-      //-     span.body-1 賞品（フルオーダーストラップ、がま口小物入れ）をご提供いただきます
-      //-     v-container(
-      //-       style="background-image: url('/mohikan-koubou.jpeg'); background-size: cover"
-      //-       height="auto"
-      //-     )
-      //-       v-container(
-      //-         style="background-color: rgba(80, 80, 80, 0.8);"
-      //-       )
-      //-         v-avatar.ma-2(size=64)
-      //-           img(src="/m-icon.png")
-      //-         a.white--text(href="https://mohikan1974.theshop.jp/")
-      //-           | 工房もひかん（仮）
-      //-         div.ma-4
-      //-           div.white--text.body-1
-      //-             | トニーライススタイルストラップなど、アメリカンヴィンテージスタイルを得意とするレザークラフト工房。
-      //-           div.body-1
-      //-             | 売れ線アイテムが苦手な、長距離大型トラック運転手の完全趣味片手間変態副業オンラインストアです。その代わり頂いたオーダーはどこよりも丁寧に製作致します。
-      //- v-col(cols=12)  
-      //-   v-card(color='rgb(100, 100, 100, 0.4)')
-      //-     v-chip(
-      //-       class="ma-2"
-      //-       color="red"
-      //-       text-color="white"
-      //-     )
-      //-       | ご協賛
-      //-     span.body-1  賞品(リペア券、ピック）の割引をご提供いただきます
-      //-     v-container(
-      //-       style="background-image: url('/iwashita-mandolins.jpeg'); background-size: cover"
-      //-       height="auto"
-      //-     )
-      //-       v-container(
-      //-         style="background-color: rgba(80, 80, 80, 0.8);"
-      //-       )
-      //-         v-avatar.ma-2(size=64)
-      //-           img(src="/i-icon.jpg")
-      //-         a.white--text(href="https://twitter.com/iwashita_md_gt")
-      //-           | Iwashita Mandolins & Guitars
-      //-         div.ma-4
-      //-           div.white--text.body-1
-      //-             | 山梨県韮崎市の弦楽器工房
-      //-           div.body-1
-      //-             | フラットマンドリン、アコースティックギターなどの製作や修理等
-      //-           div.body-1
-      //-             | 営業時間 10:00～19:00 / 月曜定休
+      
+      
 
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
@@ -305,7 +255,70 @@ v-layout(column, justify-center, align-center)
       //-         | ご協賛
       //-       a(href="https://twitter.com/komeya88") 米屋さん
       //-       span.body-1 より「何か」をご提供頂きます
-            
+      v-row
+        v-col(cols=12)
+          v-card(color='rgb(100, 100, 100, 0.4)')
+            v-chip(
+              class="ma-2"
+              color="red"
+              text-color="white"
+            )
+              | ご協賛
+            p ま〜バァさん
+            span.body-1 より「ビール券」6枚組をご提供いただきました！
+      v-col(cols=12)  
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | ご協賛
+          span.body-1 賞品（Web store 商品券5000円分）をご提供いただきました
+          v-container(
+            style="background-image: url('/mohikan-koubou.jpeg'); background-size: cover"
+            height="auto"
+          )
+            v-container(
+              style="background-color: rgba(80, 80, 80, 0.8);"
+            )
+              v-avatar.ma-2(size=64)
+                img(src="/m-icon.png")
+              a.white--text(href="https://mohikan1974.theshop.jp/")
+                | 工房もひかん（仮）
+              div.ma-4
+                div.white--text.body-1
+                  | トニーライススタイルストラップなど、アメリカンヴィンテージスタイルを得意とするレザークラフト工房。
+                div.body-1
+                  | 売れ線アイテムが苦手な、長距離大型トラック運転手の完全趣味片手間変態副業オンラインストアです。その代わり頂いたオーダーはどこよりも丁寧に製作致します。
+      v-col(cols=12)  
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | ご協賛
+          span.body-1  賞品(ピック）の割引をご提供いただきます!
+          v-container(
+            style="background-image: url('/iwashita-mandolins.jpeg'); background-size: cover"
+            height="auto"
+          )
+            v-container(
+              style="background-color: rgba(80, 80, 80, 0.8);"
+            )
+              v-avatar.ma-2(size=64)
+                img(src="/i-icon.jpg")
+              a.white--text(href="https://twitter.com/iwashita_md_gt")
+                | Iwashita Mandolins & Guitars
+              div.ma-4
+                div.white--text.body-1
+                  | 山梨県韮崎市の弦楽器工房
+                div.body-1
+                  | フラットマンドリン、アコースティックギターなどの製作や修理等
+                div.body-1
+                  | 営業時間 10:00～19:00 / 月曜定休
+                  
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
