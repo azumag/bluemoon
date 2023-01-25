@@ -52,9 +52,9 @@ v-layout(column, justify-center, align-center)
                       | {{ filename }}
                 div(v-if="entry.fileURLs")
                   | {{ entry.fileURLs }}
-
                 div(v-if="entry.publishAgree")
                   v-chip アーカイブ可能
+                v-chip {{ entry.videoType }}
 
 </template>
 
