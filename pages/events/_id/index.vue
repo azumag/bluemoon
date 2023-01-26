@@ -82,12 +82,12 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)')
             v-card-title.headline
               | エントリーは締切です!
-              | エントリーしていただいた方は、以下ページから動画アップロードを
-              | 2023-1-25 9:00 GMT	までしていただけます。
-              | よろしくお願いいたします!
-            v-btn(outlined block)
-              a.white--text(href="https://www.bluemoon.works/entries")
-                | エントリ編集ページ(要ログイン)
+            //  | エントリーしていただいた方は、以下ページから動画アップロードを
+            //  | 2023-1-25 9:00 GMT	までしていただけます。
+            //  | よろしくお願いいたします!
+            // v-btn(outlined block)
+            //   a.white--text(href="https://www.bluemoon.works/entries")
+            //     | エントリ編集ページ(要ログイン)
 
       //- v-col(cols=12)
       //-   v-card(color='rgb(100, 100, 100, 0.4)')
