@@ -221,6 +221,7 @@ v-layout(column, justify-center, align-center)
                             | Country Gen
                             div
                               v-chip オンライン・ブルーグラス・アワード
+                        v-expansion-panel
                           v-expansion-panel-header
                             | 野村昌毅
                           v-expansion-panel-content
