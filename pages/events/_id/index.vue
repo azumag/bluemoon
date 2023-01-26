@@ -324,7 +324,23 @@ v-layout(column, justify-center, align-center)
                   | フラットマンドリン、アコースティックギターなどの製作や修理等
                 div.body-1
                   | 営業時間 10:00～19:00 / 月曜定休
-                  
+      v-col(cols=12)
+        v-card(color='rgb(100, 100, 100, 0.4)')
+          v-chip(
+            class="ma-2"
+            color="red"
+            text-color="white"
+          )
+            | ご協賛
+          span.body-1 あぶらげ様より「うどん（生うどん＆つゆ＆具材のセット、市販品）」をご提供いただきました！
+          v-container(
+            style="background-image: url('/food_udon.png'); background-size: cover"
+            height="auto"
+          )
+            v-container(
+              style="background-color: rgba(80, 80, 80, 0.8);"
+            )
+              a.white--text 香川のうどんはおいしいよ… 
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)')
           v-card-title.headline
