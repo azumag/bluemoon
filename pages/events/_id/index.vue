@@ -95,199 +95,141 @@ v-layout(column, justify-center, align-center)
                     //-   div.ma-4
                     //-     a.white--text(href="https://www.bluemoon.works/participate.pdf")
                     //-       | Clusterの使い方と YouTube / Twich 会場アクセス URL
-                //- v-timeline-item
-                //-   v-card
-                //-     v-card-title
-                //-       | 19:10 - 20:25 (順不同)
-                //-     v-card-title
-                //-       div.red--text * 時間帯内の一覧は放送順ではありません、ご注意ください
-                //-     v-card-text
-                //-       v-expansion-panels
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | もっつ
-                //-           v-expansion-panel-content
-                //-             | 似非Cripple Creek
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | B-rise
-                //-           v-expansion-panel-content
-                //-             | 3回目の開催ありがとうございます！公園でコツコツレパートリーを増やしておりますが、こういうイベントがあると練習にも熱が入るのでありがたいです！今回は2曲録りました！拙い演奏ですが、楽しんでいただけたら嬉しいです。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | ヒラサワリョータ
-                //-           v-expansion-panel-content
-                //-             | 栃木でマンドリン弾きながらパティシエしてます！ 今回はオリジナルインストを2曲弾かせていただきます。 また、毎週金曜日に自分のYouTubeチャンネルにてオリジナルのマンドリン曲をアップしています！ 会場の皆さま！フェスをご視聴の皆さま！「ヒラサワリョータ」で検索、からのチャンネル登録・高評価お待ちしております！！！
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | Bluegrass Babe
-                //-           v-expansion-panel-content
-                //-             | ブルーグラス系ユーチューバー武谷健をリーダーとするオンラインブルーグラスバンド。 2ヶ月に一度、Western Acoustic Musicの配信ライブにて演奏動画を公開！チャンネル登録よろしくお願いします！
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | ランジェリー・ダグラス
-                //-           v-expansion-panel-content
-                //-             | 毎度お世話になります。 今回はLingerie Douglas ではなくランジェリー・ダグラスでエントリーさせていただきます。ドブロ好きの方はもちろんそうでない方にも観て頂きたいです。調子に乗って撮ってたら11分になってしまいました。ごめんなさい。4曲のうち3曲はオリジナルで攻めたいと思います。よろしくお願い申し上げます。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | ブラックタイガー
-                //-           v-expansion-panel-content
-                //-             | 神戸大学ブルーグラスサークルで結成したバンドです！ コロナ禍でほとんど活動できなかった時期もありましたが、なんとか解散せず続けられています。このフェスの参加者の方々には及ばないところが多々あるかと思いますが、ハモりに力を入れています！ よろしくお願いします🙇‍♂️
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | のれん
-                //-           v-expansion-panel-content
-                //-             | 仙台でドブロプレイヤーとして活動している “のれん”こと野崎廉です ドブロでやっていこうと決めて最初に作ったソロドブロインスト”森と凪” ドブロをブルーグラス界隈以外の人に知ってもらいたいと思って作ったYOASOBIカバー、そしてことし発売した自分のミニアルバムにも収録したAngeline the bakerです！ どの動画もドブロの音のみで作られています ぜひお楽しみください！
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | あぶらげもやし
-                //-           v-expansion-panel-content
-                //-             | バンジョーって和風な曲をしんみり演奏するのにも合いそうだよね！ということで、原神というゲームから和テーマのエリア「稲妻」の音楽をアレンジして演奏します。 あぶらげ：バンジョー、ギター(2曲目) もやし：カンテレ、ギター(1曲目)、ミックス
- 
-                //- v-timeline-item
-                //-   v-card
-                //-     v-card-title
-                //-       | 20:25 - 21:50（順不同）
-                //-     v-card-text
-                //-       v-expansion-panels
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | Tuxedocat
-                //-           v-expansion-panel-content
-                //-             | Tuxedocatはハチワレ猫ちゃんのことです。ハチワレちゃんと暮らしていたブルーグラスが大好きな恩師が昨年コロナで亡くなりました。「いつかブルーグラス歌ってほしい」と言われていて、このような場があることを知り、これは天から出せと言われてる気がしたので、今回出させていただきました。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | コーラスウォーター 
-                //-           v-expansion-panel-content
-                //-             | 名古屋を拠点に活動中のブルーグラスポップバンドコーラスウォーターです。今回は演奏動画ではないのですが、アルバム『めがねと水玉』を録音した際のメイキング映像でエントリーします。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | Okano Brothers
-                //-           v-expansion-panel-content
-                //-             | コロナ禍で自宅にいる時間を利用して一人バンドで遊んだものからオリジナル曲を 1. 土砂降りの雨 2. 真っ白な麻シャツ 3. 海への忘れ物
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | Wellぷれいず…
-                //-           v-expansion-panel-content
-                //-             | わぁい Bryan Sutton うぇる Bryan Sutton 大好き 発表の場があるだけで自主練のモチベも変わったので運営様には頭上がりません サットン先生の弾いてた綺麗な曲を弾きます …今年はおとなしくしたつもりです ゆっくりしていってね！
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | 米屋 with 原宿限界タピオカボーイズ
-                //-           v-expansion-panel-content
-                //-             | 
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | 美女とBLUE
-                //-           v-expansion-panel-content
-                //-             | ギターとマンドリンのバンドです。オリジナル4つでのエントリーです。こんな感じでブルーグラスを背景にしつつ演奏の幅を広げれたらと思ってます。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | Copper Kettles
-                //-           v-expansion-panel-content
-                //-             | Country Gentlemenの曲を中心に、他の曲もやるバンドです。ギターとマンドリンはバンドメンバーで、北大ブルーグラス研究会のOBです。1曲だけバンジョーがゲストで参加します
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | hanji
-                //-           v-expansion-panel-content
-                //-             | 40年以上前のブッチロビンスのアルバムの中の曲です。一緒にやる人いないので一人でやってみました。
-                //- v-timeline-item
-                //-   v-card
-                //-     v-card-title
-                //-       | 22:50 - 22:00
-                //-     v-card-text
-                //-       |  中入り（休憩） Cluster バーチャルイベント枠 移動のため
-                //-     v-card-text.headline
-                //-       a.white--text(href="https://cluster.mu/e/0554a113-a821-492c-8b61-9eb141efb303")
-                //-         | 第２会場 URL
-                //-     v-card-text
-                //-       | * Youtube ではそのままご覧いただけます
-                //- v-timeline-item
-                //-   v-card
-                //-     v-card-title
-                //-       | 22:00 - 23:20 (順不同)
-                //-     v-card-text
-                //-       v-expansion-panels
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | 引きこもりジジイ 
-                //-           v-expansion-panel-content
-                //-             | 70歳のジジイが、断続的に53年やってきた「フレイリング～クローハンマー」スタイルの非常に簡単な習得法と、あまり知られていない弾き方、意外かもしれない応用法を「次代を担う方達」への何かしらのヒントとして時間一杯、ぎっしり詰め込んで残しておきたいと参加します。 右手に限っているので「ブルーグラス・バンジョー弾き」ならば簡単に想像がつき、様々なリズム・色々な音楽への応用が出来るでしょう。クローハンマーに自由を！
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | The Music of Masterpieces
-                //-           v-expansion-panel-content
-                //-             | 個人製作動画です。 ゲーム挿入曲をBG調に演奏してみました。 箸休めにどうぞ
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | Unripened Stringplunkers
-                //-           v-expansion-panel-content
-                //-             | ボーカル・すーじーの命題について、演奏を通して考えていきます。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | もひかんクラウス＆もひかんステーション
-                //-           v-expansion-panel-content
-                //-             | 第1回は拝見。 第2回は勇気を出してエントリ 第3回は工房として協賛させていただく事になりました。 腕も知識もございませんが、好きだけはずっと続けていたブルーグラス。 前回のエントリーに際して沢山の皆さんから背中を押して頂き、ドブロも再び触ることになりました。 そして今年も無事に、白塗り部門にエント リーできました。 ロックダウンフェス運営の皆さまをはじめ、工房のお客さま、 twitterのフォロワーの皆さま。あと米ちゃん。 本当にありがとうございます これから出会う皆さん。 どうぞよろしくお願いします。 動画の説明 大好きなakusを演ってみました。公式MVをご存知の方なら、クスッと笑って頂けるかなと思います。 深夜気温2度の河原でキャミソールは凍死するかと思いました。個人的に白塗りロンブロックが気に入ったので、これからもプライベートでやっていこうかなと思います。 次回までにマンドリンを手に入れて、演奏できるバリエーションを増やせたらと思います。どこかに岩下マンドリン落ちてないかな。 最後になりましたが、白塗りは敬愛表現です。アリソンクラウス＆ユニオンステーションは、私の大切な青春です。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | マスダスインゴ
-                //-           v-expansion-panel-content
-                //-             | 昨年はビートルズメドレーでお邪魔しました還暦超え高校同窓Duoです。今回はユーミンメドレーです。ご存知の曲は口ずさみながら楽しんでいただければうれしいです。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | 大椿山
-                //-           v-expansion-panel-content
-                //-             | 北海道大学ブルーグラス研究会の大椿山（おおつばきやま）です。 同期3人で組んだバンドで、うちの歌姫である大久保の歌唱力とギター演奏、ベースの端山による安定した支えに、マンドリンの椿がおんぶにだっこされることで少人数ながらもバランスの良い演奏をお届けできるかなと思っています。 次回Vol.4（コロナがおさまっても開催してほしいです）では北海道大学ブルーグラス研究会全体として参加させてください！
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | 日本アルプス弦楽団
-                //-           v-expansion-panel-content
-                //-             | 京都のヨーデル娘を筆頭にした、ヨーデル好きによるヨーデル好きのためのヨーデルをするバンド。 楽しいヨーデルが皆さんを健康に導きます！
-                //- v-timeline-item
-                //-   v-card
-                //-     v-card-title
-                //-       | 23:20 - 1:00（順不同）
-                //-     v-card-text
-                //-       v-expansion-panels
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | 新・Acoustic’s Sound Garden 2nd Edition 
-                //-           v-expansion-panel-content
-                //-             | 今回、曲を作ったら思ったより長くなってしまい茶番を入れられませんでした。 ごくごくまじめな演奏動画になってしまい、すいません。 しかし、僕の考えうる最高のブルーグラスを表現できた学生6年間の集大成だと思うのでぜひ最後までお楽しみください。 僕に友達がいないばっかりにベース以外僕が弾いています。 だれか共感してくれた人一緒に弾きましょう。 申し訳程度にアテレコしたせいで全然運指あってないので目コピしないでください。 ギターとマンドリンは持ってませんでしたので後輩のギターだけ立てかけときました。 良いお年を。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | The Old Folks
-                //-           v-expansion-panel-content
-                //-             | このバンドは結成して1年半。名古屋のオールザットグラス、フィドルで活躍している籾山君をメインボーカルにしたバンドがやりたいという事で集まりました。メンバーは80年代 立命、関大のサークルで同学年だった照屋（Bj）、イノシシ（G）、籾山（G）、小寺（Mn）、そして岐阜の吉村さん（Bs）、名大の正岡くん（Fi）です。バンドのコンセプトは “カオス(混沌)”。それぞれの個性、価値観がぶつかり合って、普通でない“カオスな状態”の演奏を目指しています。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | もやしちゃん
-                //-           v-expansion-panel-content
-                //-             | 前回は会場製作係でしたが今回は投稿動画でも参加します！ 少し毛色は異なりますが、フィンランドの伝統楽器カンテレにギターとバイオリンを加えて 1曲だけですが曲を作って演奏しました。 カンテレの響きをお楽しみください！
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | 雑貨屋フレイヴァー
-                //-           v-expansion-panel-content
-                //-             | 東北大ブルーグラス同好会のOBバンド、雑貨屋フレイヴァーです。 前回に引き続き、栃木、東京、そしてドイツから、リモートで動画を作って参加させて頂きます。 届け、俺たちの魂のサウンド！ ブルーグラーース！！
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | Lonesome Garage Band
-                //-           v-expansion-panel-content
-                //-             | 短いですが聴いていただけたら嬉しいです。
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | Master of Traditional Bluegrass
-                //-           v-expansion-panel-content
-                //-             | Bill Monroeを始めtraditionalなブルーグラスを中心に渋くキメます！ 
-                //-             div fd テイター安田 
-                //-             div bj もっつ 
-                //-             div md アッキー
-                //-             div gt 村田 
-                //-             div bs 武田(特別ゲスト)
-                //-         v-expansion-panel
-                //-           v-expansion-panel-header
-                //-             | 位牌/真夏日
-                //-           v-expansion-panel-content
-                //-             | maiBass
+                v-timeline-item
+                  v-card
+                    v-card-title
+                      | Block A: 19:10 - 19:54
+                    v-card-text
+                      v-expansion-panels
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | テイター安田ともっつ
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | もやしちゃん
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | B-rise
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | Deep Blue Boys
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | Well & Gone
+                          v-expansion-panel-content
+                v-timeline-item
+                  v-card
+                    v-card-title
+                      | Block B: 19:55 - 20:35
+                    v-card-text
+                      v-expansion-panels
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | dixie mohicks
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | マスダスインゴ
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | ゴールデンロッドガールズ
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | 引きこもりジジイ
+                          v-expansion-panel-content
+                v-timeline-item
+                  v-card
+                    v-card-title
+                      | ショート・ブルーグラス・アワード 20:35 - 20:45
+                    v-card-text
+                      v-expansion-panels
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | StudioBABA & MASAKI
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | 松本達也
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | 米屋 with 原宿限界タピオカボーイズ
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | H.MOMIYAMA
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | あぶらげ
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | Lonesome Garage Band
+                          v-expansion-panel-content
+                v-timeline-item
+                  v-card
+                    v-card-title
+                      | Block C: 20:50 - 21:40
+                    v-card-text
+                      v-expansion-panels
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | Copper Kettles
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | 野村昌毅
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | hanji
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | Blue Moon of kenタニコ feat.ちょび
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | ヤンボーマーボー今日も天気だ仲良しファイターズ
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | StudioBABA & MASAKI
+                          v-expansion-panel-content
+                v-timeline-item
+                  v-card
+                    v-card-title
+                      | Block D: 21:40 - 22:30
+                    v-card-text
+                      v-expansion-panels
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | masaoka and friends
+                          v-expansion-panel-content
+                            | これまではネタ動画系に走っていましたが、今回は真面目に弾きました。 編曲が好きで巷の曲を聴くと頭でバンジョーのロールが流れてしまいます。 今回は選りすぐりのアニソン5曲をブルーグラス楽器で弾いてみました。 サークルを卒業するなりPopsやら軽音楽に浮気してしまう先輩の心に届けば幸いです。 こだわりポイントとしては各楽器1トラックで電子的な編集も入れてないので皆さんのブルーグラスバンドで明日から演奏可能です。 最後になりますが、締め切り2日前に曲決めて深夜の0時からスタジオ入りしてくださったボーカルのはおさん、ベースのたけがみさん、本当に本当にありがとうございました。
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | ちの井本
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | 美女とBLUE
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | Lonesome Garage Band
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
+                            | Master of Traditional Bluegrass
+                          v-expansion-panel-content
 
     v-row
       v-col(cols=6)
