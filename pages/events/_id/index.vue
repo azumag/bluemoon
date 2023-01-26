@@ -106,25 +106,29 @@ v-layout(column, justify-center, align-center)
                             | テイター安田ともっつ
                           v-expansion-panel-content
                             | turkey in the straw north carolina breakdown
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | もやしちゃん
                           v-expansion-panel-content
                             | 勢いでエントリーだけしておくスタイル
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | B-rise
                           v-expansion-panel-content
                             | あけましておめでとうございます！ 今年も開催されるという事でありがとうございます！ 公園生活も長くなって来ましたが 今回は歌もの、一発どりに挑戦しました。 曲は 京王線の唄 Whiskey Before Breakfast 遠くまで行くんだ〜I’ll fly away 〜 楽しんでいただけたら嬉しいです！
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | Deep Blue Boys
                           v-expansion-panel-content
                             | 東京中心に活動する高年齢ブルーグラスバンド。昨年5月に催したライブハウスでの演奏から3曲お届けします。前回出場の際はお蕎麦をいただいたので、今回は節分の豆を狙いにいきます。
-                            v-chip オフライン・ブルーグラス・アワード
+                            div
+                              v-chip オフライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | Well & Gone
@@ -132,7 +136,8 @@ v-layout(column, justify-center, align-center)
                             | 滋賀と岐阜のトニーライスオタクらによる貴重な不定期会合のシーン 絶賛仲間募集中だよ（ﾆﾁｬｱ
                             | Twitter -> @Welpurgis @gt9822
                             | 追記：工房もひかん（仮）さん素敵なストラップ×2ありがとうございました！！
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                 v-timeline-item
                   v-card
                     v-card-title
@@ -144,25 +149,29 @@ v-layout(column, justify-center, align-center)
                             | dixie mohicks
                           v-expansion-panel-content
                             | 本業がかなり忙しく間に合うかわかりませんが、取り敢えず白塗り部門にエントリーいたします。いま紹介されているのであれば間に合ったんでしょう。 戦争が1日でも早く終わることを願い、また正しいことを貫く彼女たちに敬意を表してdixie chicksのI'm ready to make niceを選びました。 見どころは先月この曲の為に、メルカリで買った6800円のフィドルです。 工房も年末から少々おろそかにしておりますが、お山のフェスに行けない私にはここで皆さんとお会い出来ることを楽しみに、楽器を維持しております。 本年もどうぞよろしくお願いします。 もひかん
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | マスダスインゴ
                           v-expansion-panel-content
                             | 3回目の出場 "マスダスインゴ"です。少し古いですがコロナ前の墨田ストリートジャズフェスでの演奏です。揺れるバスの中で40分間、Beatlesを中心に43曲を弾きまくったものの一部を切り取りました。曲目はどれもBeatlesの有名曲です。
-                            v-chip オフライン・ブルーグラス・アワード
+                            div
+                              v-chip オフライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | ゴールデンロッドガールズ
                           v-expansion-panel-content
                             | 結成5年目名大OGゆるふわガールズバンドです❤︎chu!年々ゆるふわ度が増しちゃってごめん❤︎less filterな演奏をゆるゆるとお楽しみくださいまし( o̴̶̷᷄ ·̫ o̴̶̷̥᷅ )
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | 引きこもりジジイ
                           v-expansion-panel-content
                             | 相変わらず、今回も71歳の年寄りが、もたもた弾きます。 「年寄りの冷や水」 「名選手必ずしも名コーチならず」 71歳のジジイが、断続的に半世紀やってきた「各種押弦楽器の左手の準備運動～初心者修錬法」の簡単な練習法と「Gランの各種変形」等を時間一杯、ぎっしり詰め込んで残しておきたいと参加します。 長年楽器を弾いている方には、既によくご存じの方法もあるでしょう。でも、初心者には、手近な楽器であるギターを使い、左手に限っているので「ギター弾き」ならば簡単に想像がつき、容易にバンジョー、マンドリン等各種楽器への応用も想像できるはずです。 なお、前回の「クロハンマーバンジョー入門から応用各種」の動画は、Youtubeに「多摩川童仙坊」で投稿しています。今回の動画も、近いうちにそちらに上げる予定です。
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                 v-timeline-item
                   v-card
                     v-card-title
@@ -210,37 +219,43 @@ v-layout(column, justify-center, align-center)
                             | Copper Kettles
                           v-expansion-panel-content
                             | Country Gen
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                           v-expansion-panel-header
                             | 野村昌毅
                           v-expansion-panel-content
                             | 「私が歌う理由」谷川俊太郎とラングストン・ヒューズの詩に曲をつけました。オートハープでの弾き語りです。2017年7月2日 第7回 隅田川フォークフェスティバルにて。使用楽器：Kotokoto Harp Blue Night（ウォルナット/マホガニー） 1980年、東京生まれ。主に都内でオートハープとギターの弾き語りをやっています。
                             | 日本画作品のホームページ → https://nomuramasaki.jimdofree.com/
-                            v-chip オフライン・ブルーグラス・アワード
+                            div
+                              v-chip オフライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | hanji
                           v-expansion-panel-content
                             | 30年前　友人が金沢を旅した時に書いた歌です。当時　録音したきり歌わなくなってしまっていたので　久しぶりに歌ってみました。
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | Blue Moon of kenタニコ feat.ちょび
                           v-expansion-panel-content
                             | こんばんは！神大ブルーグラスサークル4回生のBlue Moon of Kenタニコと、ちょびです！ロックダウンフェス初投稿させてもらいます！ 「君と唄ったブルームーン」は今回のオンラインフェスのために書き下ろした、出来立てホヤホヤのオリジナル曲です！ポップなメロディはもちろん、ブルーグラッサーならニヤけちゃうようなネタを散りばめた歌詞にもご注目！ フェス当日はどうしても外せない用事ができてしまい、非常に非常に非常に残念ながらリアルタイムで参加できなくなってしまったのですが、アーカイブで楽しませてもらおうと思います！よろしくお願いします🤲
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | ヤンボーマーボー今日も天気だ仲良しファイターズ
                           v-expansion-panel-content
                             | 「ええ感じやん！」って思ってもらえるバンドを目指し、 ブルーグラスやカントリーなどの曲を、 ブルーグラスらしからぬスタイルで演奏するバンドです。 ブルーグラス進化系ハイブリットヤンボースタイル！って呼んでもらっていいですか？！（笑） よろしくお願いいたします！ この動画は、昨年10月に神戸の宇治川音楽祭で演奏した時の動画（YouTubeに公開済み）を、 BLMF用に再編集し直した未公開のBLMF.versionの動画（限定公開）になります。
-                            v-chip オフライン・ブルーグラス・アワード
+                            div
+                              v-chip オフライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | StudioBABA & MASAKI
                           v-expansion-panel-content
                             | StudioBABA&Masaki 今回のBluegrass Lockdown Music Festival Vol.4のために結成されたバンド れいじーぴっかーずの和泉眞生とその友達、馬場、正木での三人組でお届けします。 本来は３曲やる予定でしたが3人の怠惰がそれを許さなかったので今回は一曲の投稿となります。 評判が良ければ、次回に残りの２曲を完成させようと思うので皆様応援よろしくお願い致します。
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                 v-timeline-item
                   v-card
                     v-card-title
@@ -252,25 +267,29 @@ v-layout(column, justify-center, align-center)
                             | masaoka and friends
                           v-expansion-panel-content
                             | これまではネタ動画系に走っていましたが、今回は真面目に弾きました。 編曲が好きで巷の曲を聴くと頭でバンジョーのロールが流れてしまいます。 今回は選りすぐりのアニソン5曲をブルーグラス楽器で弾いてみました。 サークルを卒業するなりPopsやら軽音楽に浮気してしまう先輩の心に届けば幸いです。 こだわりポイントとしては各楽器1トラックで電子的な編集も入れてないので皆さんのブルーグラスバンドで明日から演奏可能です。 最後になりますが、締め切り2日前に曲決めて深夜の0時からスタジオ入りしてくださったボーカルのはおさん、ベースのたけがみさん、本当に本当にありがとうございました。
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | ちの井本
                           v-expansion-panel-content
                             | BanjoとVocalでなんかやります
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | 美女とBLUE
                           v-expansion-panel-content
                             | ギター、マンドリンのデュオです。今回はソリッドなトラッド（歌詞が良い！）と、メロディアスなジャズ、＋aで参加します。 追伸. オリジナル曲のアルバム制作がほぼ完成しましたので、またどこかで聞いて貰えると嬉しいです！よろしくお願いします！
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | Lonesome Garage Band
                           v-expansion-panel-content
                             | Song for a Winter's Night
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
                           v-expansion-panel-header
                             | Master of Traditional Bluegrass
@@ -278,7 +297,8 @@ v-layout(column, justify-center, align-center)
                             | Fiddle、"Tater"安田と、Banjo、手嶋のトラッド志向バンドも何だかんだ結成から3年が経過し、コロナの間を縫いながら地域の東西行ったり来たり細々と活動してきました。
                             | 今回もオンフェス、渋めの選曲で参戦させていただきます！新たに女性ベースを加えパワーアップしたサウンドでお送りいたします。
                             | Fiddle: "Tater"安田、Banjo:手嶋、Mandolin:鈴木アッキー、Guitar:村田、Bass:菅沼
-                            v-chip オンライン・ブルーグラス・アワード
+                            div
+                              v-chip オンライン・ブルーグラス・アワード
 
     v-row
       v-col(cols=6)
