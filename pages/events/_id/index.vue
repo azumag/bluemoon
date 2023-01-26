@@ -146,7 +146,7 @@ v-layout(column, justify-center, align-center)
                 v-timeline-item
                   v-card
                     v-card-title
-                      | ショート・ブルーグラス・アワード 20:35 - 20:45
+                      | ショート・ブルーグラス・アワード 20:35 - 20:50
                     v-card-text
                       v-expansion-panels
                         v-expansion-panel
