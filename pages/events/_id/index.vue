@@ -201,6 +201,10 @@ v-layout(column, justify-center, align-center)
                             | 心筋梗塞から復活して、リハビリを兼ねて録音したものです。
                         v-expansion-panel
                           v-expansion-panel-header
+                            | maibass
+                          v-expansion-panel-content
+                        v-expansion-panel
+                          v-expansion-panel-header
                             | あぶらげ
                           v-expansion-panel-content
                             | 私はVRにかまけていて楽器の練習を怠っていました(首から札)
