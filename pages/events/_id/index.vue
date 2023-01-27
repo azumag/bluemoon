@@ -112,7 +112,7 @@ v-layout(column, justify-center, align-center)
                           v-expansion-panel-header
                             | もやしちゃん
                           v-expansion-panel-content
-                            | 勢いでエントリーだけしておくスタイル
+                            | ワールド製作担当のもやしです。 Arkansas Travelerをカンテレをメインにアレンジして弾いてみました。
                             div
                               v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
