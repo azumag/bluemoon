@@ -223,7 +223,7 @@ v-layout(column, justify-center, align-center)
                           v-expansion-panel-header
                             | Copper Kettles
                           v-expansion-panel-content
-                            | Country Gen
+                            | Country Gentlemenの曲を中心に、他の曲もやるバンドです。 ギターとマンドリンは北大ブルーグラス研究会のOBで、バンジョーは京大軽音楽部のOBです。
                             div
                               v-chip オンライン・ブルーグラス・アワード
                         v-expansion-panel
