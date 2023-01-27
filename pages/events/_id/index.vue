@@ -183,7 +183,7 @@ v-layout(column, justify-center, align-center)
                           v-expansion-panel-header
                             | StudioBABA & MASAKI
                           v-expansion-panel-content
-                            |  Mao&Masaki StudioBABA&Masakiの撮影後のジャムで「高田渡の「アイスクリーム」ってショート動画にちょうど良くないですか？」という話になり急遽撮影。 「もっとブルーグラス界で高田渡が流行って欲しい」「高田渡の「生活の柄」で一緒にジャムをしたい」「えーマジ？高田渡知らないの？キモーイ　高田渡知らないのは小学生までだよね？キャハハハハハハ（出典「奪！童貞。」）」っていう思いで演奏しました。よろしくお願いします。
+                            | Mao&Masaki StudioBABA&Masakiの撮影後のジャムで「高田渡の「アイスクリーム」ってショート動画にちょうど良くないですか？」という話になり急遽撮影。 「もっとブルーグラス界で高田渡が流行って欲しい」「高田渡の「生活の柄」で一緒にジャムをしたい」「えーマジ？高田渡知らないの？キモーイ　高田渡知らないのは小学生までだよね？キャハハハハハハ（出典「奪！童貞。」）」っていう思いで演奏しました。よろしくお願いします。
                         v-expansion-panel
                           v-expansion-panel-header
                             | 松本達也
@@ -201,8 +201,10 @@ v-layout(column, justify-center, align-center)
                             | 心筋梗塞から復活して、リハビリを兼ねて録音したものです。
                         v-expansion-panel
                           v-expansion-panel-header
-                            | maibass
+                            | インターネットやめろ
                           v-expansion-panel-content
+                            | 去年英語圏を中心に世界的に大流行したアレを、自分で演奏する形でやってみました。
+                            | これをやれと呟いたんですよ。私の中のモンローが。
                         v-expansion-panel
                           v-expansion-panel-header
                             | あぶらげ
