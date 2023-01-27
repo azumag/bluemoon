@@ -265,7 +265,7 @@ v-layout(column, justify-center, align-center)
                 v-timeline-item
                   v-card
                     v-card-title
-                      | Block D: 21:40 - 22:30
+                      | Block D: 21:40 - 23:00
                     v-card-text
                       v-expansion-panels
                         v-expansion-panel
