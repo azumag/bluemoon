@@ -84,8 +84,8 @@ v-layout(column, justify-center, align-center)
                       | 18:45 開場
                     v-card-text.headline
                       a.white--text(href="https://cluster.mu/e/95a657d5-10a5-406e-83b6-27941dc21753" target='_blank') 
-                      a.white--text
-                        | Cluster フェスバーチャル会場の開場 （入退場自由）
+                        a.white--text
+                          | Cluster フェスバーチャル会場の開場 （入退場自由）
                 v-timeline-item
                   v-card
                     v-card-title
