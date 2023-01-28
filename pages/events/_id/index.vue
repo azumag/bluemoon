@@ -91,7 +91,7 @@ v-layout(column, justify-center, align-center)
                     v-card-title
                       | 19:00 配信開始
                     v-card-text.headline
-                      a.white--text(href='https://www.youtube.com/watch?v=xeAb34NTNA4' target="_blank")
+                      a.white--text(href='https://www.youtube.com/watch?v=C6duZgJflBU' target="_blank")
                         | Youtube配信
                     //- v-card-title.headline
                     //-   a.white--text
