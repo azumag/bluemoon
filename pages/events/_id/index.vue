@@ -81,14 +81,18 @@ v-layout(column, justify-center, align-center)
                 v-timeline-item
                   v-card
                     v-card-title.headline
-                      | 19:00 開場
+                      | 18:45 開場
                     v-card-text.headline
-                      //- a.white--text(href="" target='_blank') 
+                      a.white--text(href="https://cluster.mu/e/95a657d5-10a5-406e-83b6-27941dc21753" target='_blank') 
                       a.white--text
                         | Cluster フェスバーチャル会場の開場 （入退場自由）
+                v-timeline-item
+                  v-card
+                    v-card-title
+                      | 19:00 配信開始
                     v-card-text.headline
                       a.white--text(href='https://www.youtube.com/watch?v=xeAb34NTNA4' target="_blank")
-                        | Youtube
+                        | Youtube配信
                     //- v-card-title.headline
                     //-   a.white--text
                     //-     | 視聴・参加方法のヘルプ 
