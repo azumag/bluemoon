@@ -64,7 +64,7 @@ v-layout(column, justify-center, align-center)
                     v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オンラインブルーグラスアワード')")
                       | 投票
                 
-                div(v-if="(entry.videoType === 'offline' || entry.videoType === 'mixed')" color='blue')
+                div(v-if="(entry.videoType === 'offline')" color='blue')
                   v-chip オフライン・ブルーグラス・アワード
                   span(v-if="isVoted('オフラインブルーグラスアワード')")
                     v-btn.ma-4(color="red" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オフラインブルーグラスアワード')")
@@ -73,7 +73,7 @@ v-layout(column, justify-center, align-center)
                     v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オフラインブルーグラスアワード')")
                       | 投票
 
-                div(v-if="(entry.videoType === 'short')" color='blue')
+                div(v-if="(entry.videoType === 'short' || entry.videoType === 'mixed')" color='blue')
                   v-chip ショート・ブルーグラス・アワード
                   span(v-if="isVoted('ショートブルーグラスアワード')")
                     v-btn.ma-4(color="red" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'ショートブルーグラスアワード')")
