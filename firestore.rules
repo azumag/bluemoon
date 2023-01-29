@@ -31,7 +31,7 @@ service cloud.firestore {
     }
     match /votes/{id} {
       allow read, list: if true;
-      allow write: if request.time.toMillis() <= timestamp.date(2021,12,31).toMillis() && request.auth.uid != null;
+      // allow write: if request.time.toMillis() <= timestamp.date(2021,12,31).toMillis() && request.auth.uid != null;
       allow write: if request.auth.uid == id;
     }
     match /users/{id} {
