@@ -13,7 +13,7 @@ v-layout(column, justify-center, align-center)
       v-col(cols=12)
         v-card(color='rgb(100, 100, 100, 0.4)' outlined)
           v-card-title.headline
-            | 投票する場合はログインをお願いいたします
+            | お手数ですが、投票のためにログインをお願いいたします
             div
               v-btn.mx-2(@click="gotoLogin()"
                 block
@@ -37,6 +37,9 @@ v-layout(column, justify-center, align-center)
         v-card(color='rgb(100, 100, 100, 0.4)' outlined)
           v-card-title.headline
             | エントリーへの投票ページです
+          v-card-text 
+            | 各部門(オンライン／オフライン／ショート)に対しての投票を一つずつ行えます
+            | エントリはショートとオンラインで分かれている場合があります
  
     v-row
       v-col(cols=12)
