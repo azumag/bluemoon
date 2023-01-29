@@ -58,23 +58,23 @@ v-layout(column, justify-center, align-center)
                       | {{voteString('オンラインブルーグラスアワード')}}
                   span(v-if="!isVoted('オンラインブルーグラスアワード')")
                     v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オンラインブルーグラスアワード')")
-                      | オンラインブルーグラスアワード
+                      | オンラインブルーグラスアワード：投票
                 
                 span(v-if="(entry.videoType === 'offline' || entry.videoType === 'mixed')" color='blue')
                   span(v-if="isVoted('オフラインブルーグラスアワード')")
                     v-btn.ma-4(color="red" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オフラインブルーグラスアワード')")
                       | {{voteString('オフラインブルーグラスアワード')}}
                   span(v-if="!isVoted('オフラインブルーグラスアワード')")
-                    v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オフラインブルーグラスアワード')")
-                      | オフラインブルーグラスアワード
+                    v-btn.ma-4(color="orange" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オフラインブルーグラスアワード')")
+                      | オフラインブルーグラスアワード：投票
 
                 span(v-if="(entry.videoType === 'short')" color='blue')
                   span(v-if="isVoted('ショートブルーグラスアワード')")
                     v-btn.ma-4(color="red" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'ショートブルーグラスアワード')")
                       | {{voteString('ショートブルーグラスアワード')}}
                   span(v-if="!isVoted('ショートブルーグラスアワード')")
-                    v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'ショートブルーグラスアワード')")
-                      | ショートブルーグラスアワード
+                    v-btn.ma-4(color="green" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'ショートブルーグラスアワード')")
+                      | ショートブルーグラスアワード：投票
 
                 //- span(v-if="entry.videoType === true" color='blue')
                 //-   span(v-if="isVoted('オンラインブルーグラスアワード')")
