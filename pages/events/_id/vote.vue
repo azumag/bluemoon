@@ -160,7 +160,7 @@ export default {
         res.forEach((doc) => {
           this.entries.push({ ...doc.data(), id: doc.id })
         })
-        console.log(this.entries)
+        // console.log(this.entries)
       })
       .catch((err) => {
         console.log('Error getting documents', err)
@@ -219,7 +219,7 @@ export default {
                 createdAt,
               })
               .then(() => {
-                console.log(this.votes)
+                // console.log(this.votes)
                 this.votes = { ...this.votes }
                 this.$message.show('取り消しました')
               })
@@ -238,7 +238,7 @@ export default {
           .then((doc) => {
             const entryKinds = {}
             entryKinds[kind] = entry.id
-            console.log(doc.exists)
+            // console.log(doc.exists)
             if (!doc.exists) {
               return this.$firestore
                 .collection('votes')
