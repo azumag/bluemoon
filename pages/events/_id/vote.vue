@@ -52,7 +52,7 @@ v-layout(column, justify-center, align-center)
               v-expansion-panel-content.text--secondary
                 div.ma-2 {{ entry.description }}
 
-                span(v-if="(entry.videoType === 'online')" color='blue')
+                span(v-if="(entry.videoType === 'online' || entry.videoType === 'mixed')" color='blue')
                   span(v-if="isVoted('オンラインブルーグラスアワード')")
                     v-btn.ma-4(color="red" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オンラインブルーグラスアワード')")
                       | {{voteString('オンラインブルーグラスアワード')}}
@@ -60,7 +60,7 @@ v-layout(column, justify-center, align-center)
                     v-btn.ma-4(color="indigo" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オンラインブルーグラスアワード')")
                       | オンラインブルーグラスアワード
                 
-                span(v-if="(entry.videoType === 'offline')" color='blue')
+                span(v-if="(entry.videoType === 'offline' || entry.videoType === 'mixed')" color='blue')
                   span(v-if="isVoted('オフラインブルーグラスアワード')")
                     v-btn.ma-4(color="red" small v-if="availableVote && $firebase.currentUser" @click="vote(entry, 'オフラインブルーグラスアワード')")
                       | {{voteString('オフラインブルーグラスアワード')}}
