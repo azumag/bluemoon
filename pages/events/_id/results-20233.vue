@@ -35,81 +35,81 @@ export default {
     }
   },
   async mounted() {
-    await this.$firestore
-      .collection('users')
-      .get()
-      .then((res) => {
-        res.forEach((doc) => {
-          this.users.push({ ...doc.data(), id: doc.id })
-        })
-      })
-      .catch((err) => {
-        console.log('Error getting documents', err)
-      })
-    await this.$firestore
-      .collection('votes')
-      .get()
-      .then((res) => {
-        res.forEach((doc) => {
-          const data = doc.data()
-          if (data.entryKinds) {
-            this.votes.push({ ...doc.data(), id: doc.id })
-          }
-        })
-      })
-      .catch((err) => {
-        console.log('Error getting documents', err)
-      })
-    console.log({ vote: this.votes })
-    const results = {}
-    this.votes.forEach((vote) => {
-      console.log(vote.entryKinds)
-      Object.keys(vote.entryKinds).forEach((ekey) => {
-        const entryID = vote.entryKinds[ekey]
-        if (results[entryID]) {
-          results[entryID].push(ekey)
-        } else {
-          results[entryID] = [ekey]
-        }
-      })
-    })
-    await this.$firestore
-      .collection('entries')
-      .where('eventId', '==', 'nWIe42DjxjQ4sircilRw')
-      .get()
-      .then((res) => {
-        res.forEach((doc) => {
-          this.entries.push({ ...doc.data(), id: doc.id })
-        })
-      })
-      .catch((err) => {
-        console.log('Error getting documents', err)
-      })
-    console.log(this.entries)
+    // await this.$firestore
+    //   .collection('users')
+    //   .get()
+    //   .then((res) => {
+    //     res.forEach((doc) => {
+    //       this.users.push({ ...doc.data(), id: doc.id })
+    //     })
+    //   })
+    //   .catch((err) => {
+    //     console.log('Error getting documents', err)
+    //   })
+    // await this.$firestore
+    //   .collection('votes')
+    //   .get()
+    //   .then((res) => {
+    //     res.forEach((doc) => {
+    //       const data = doc.data()
+    //       if (data.entryKinds) {
+    //         this.votes.push({ ...doc.data(), id: doc.id })
+    //       }
+    //     })
+    //   })
+    //   .catch((err) => {
+    //     console.log('Error getting documents', err)
+    //   })
+    // console.log({ vote: this.votes })
+    // const results = {}
+    // this.votes.forEach((vote) => {
+    //   console.log(vote.entryKinds)
+    //   Object.keys(vote.entryKinds).forEach((ekey) => {
+    //     const entryID = vote.entryKinds[ekey]
+    //     if (results[entryID]) {
+    //       results[entryID].push(ekey)
+    //     } else {
+    //       results[entryID] = [ekey]
+    //     }
+    //   })
+    // })
+    // await this.$firestore
+    //   .collection('entries')
+    //   .where('eventId', '==', 'nWIe42DjxjQ4sircilRw')
+    //   .get()
+    //   .then((res) => {
+    //     res.forEach((doc) => {
+    //       this.entries.push({ ...doc.data(), id: doc.id })
+    //     })
+    //   })
+    //   .catch((err) => {
+    //     console.log('Error getting documents', err)
+    //   })
+    // console.log(this.entries)
 
-    console.log(results)
-    this.entries.forEach((entry) => {
-      entry.votes = {}
-      Object.keys(results).forEach((resultKey) => {
-        if (entry.id === resultKey) {
-          results[resultKey].forEach((nkey) => {
-            console.log({ nkey })
-            if (entry.votes[nkey]) {
-              entry.votes[nkey] += 1
-            } else {
-              entry.votes[nkey] = 1
-            }
-          })
-          console.log(results[resultKey])
-        }
-      })
-      console.log({ vo: entry.votes })
-    })
+    // console.log(results)
+    // this.entries.forEach((entry) => {
+    //   entry.votes = {}
+    //   Object.keys(results).forEach((resultKey) => {
+    //     if (entry.id === resultKey) {
+    //       results[resultKey].forEach((nkey) => {
+    //         console.log({ nkey })
+    //         if (entry.votes[nkey]) {
+    //           entry.votes[nkey] += 1
+    //         } else {
+    //           entry.votes[nkey] = 1
+    //         }
+    //       })
+    //       console.log(results[resultKey])
+    //     }
+    //   })
+    //   console.log({ vo: entry.votes })
+    // })
 
-    console.log(this.entries)
-    this.entries.sort((a, b) => {
-      return (b.votes ? b.votes.length : 0) - (a.votes ? a.votes.length : 0)
-    })
+    // console.log(this.entries)
+    // this.entries.sort((a, b) => {
+    //   return (b.votes ? b.votes.length : 0) - (a.votes ? a.votes.length : 0)
+    // })
   },
 }
 </script>
