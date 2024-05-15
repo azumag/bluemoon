@@ -1,3 +1,7 @@
+.bg-marblebluegrad {
+  background: linear-gradient(90deg, rgb(234, 73, 156), rgb(102, 101, 241));
+}
+
 .bg-royalblue {
   background-color: #4169e1;
 }
