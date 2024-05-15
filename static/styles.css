@@ -12,6 +12,12 @@ p span {
   line-height: 1.75;
 }
 
+div span {
+  display: inline-block;
+  text-align: center;
+  line-height: 1.75;
+}
+
 p.text-strike span {
   display: inline;
   text-decoration: line-through;
