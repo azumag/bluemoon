@@ -1,160 +1,395 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
   <title>Bluegrass Lockdown Music Festival</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css?20240514">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+
+  <script type="text/javascript" src="slick.js"></script>
 </head>
+
 <body class="bg-black">
-    
-    <section class="bg-blue-500 text-white text-center p-20">
-        <h1 class="text-4xl font-bold mb-4">Bluegrass Lockdown Music Festival</h1>
-        <p>ブルーグラス音楽作品を募集し，それらをネット上の３D会場にてライブストリーミングで放送します。ちょっと撮ってみた動画、リモートでメンバーと作った動画、過去のライブ演奏動画、練習したけどお蔵入りになっていた曲などを気軽に投稿してもらいたいです。オンラインフェスには、地理的要因や時間的要因等でメンバーが集まりづらいバンドや、独創的な演奏にもスポットが当たる良さがあります。一体感のある、即時性と非同期性を両立できるこのライブイベントの形式がブルーグラスの発展の一助となればいいなと思っています。</p>
-    </section>
 
-    <section>
-      <div class="bg-gray-700 bg-opacity-40 p-4">
-        <h1 class="text-white text-2xl font-bold mb-4">ブルーグラス音楽（Bluegrass Music)</h1>
-        <div class="bg-cover" style="background-image: url('bluegrass.png');">
-          <div class="bg-gray-800 bg-opacity-80 p-4">
-            <p class="text-white text-base mb-4">
-              ブルーグラスはアメリカ発祥の音楽ジャンルです。広い大地に芝 (Bluegrass) が広がる土地を背景に、
-              <strong>
-                <a href="https://www.youtube.com/watch?v=IJbkOL2YRL4" class="text-white underline">
-                  ビル・モンロー&ブルーグラスボーイズ（Bill Monroe & The Bluegrass boys）
-                </a>
-              </strong>
-              がインフルエンサーとなり世に広めました。
-              アコースティック楽器とシンプルなコード進行を基盤とした、2ビートの疾走感、独特な歌唱とリズムによる寂寥感、速弾きやソロ交代による各楽器の魅せプレイなど、聞く人と演奏する人を虜にする魅力を持った音楽です。
-            </p>
-            <p class="text-white text-base">
-              近代においては楽器、リズムを含め様々に多様化しており、端的な意味でのルーツ・ミュージックにとどまらない、変化し続ける生きた音楽と言えます。
-            </p>
-          </div>
-        </div>
+  <section class="jumbotron jumbotron-fluid bg-marblebluegrad text-white text-center">
+    <div class="container">
+      <br />
+      <h1>
+        <span>Bluegrass Lockdown</span> <span>Music Festival Vol.5</span>
+      </h1>
+      <br />
+    </div>
+  </section>
+
+  <section class="jumbotron jumbotron-fluid bg-royalblue text-white text-center">
+    <div class="container p-2">
+      <img src="blmf2024header.png" class="img-fluid mt-4" alt="Bluegrass Lockdown Music Festival Vol.5"><br />
+      <br />
+      <p class="fs-2">
+        <span>ブルーグラス音楽 × Virtual 空間 の</span><span>融合フェス</span>
+      </p>
+      <br />
+
+      <ul class="slider p-0">
+        <li>
+          <img src='scene1.png' alt="">
+        </li>
+        <li>
+          <img src='scene2.png' alt="">
+        </li>
+        <li>
+          <img src='scene3.png' alt="">
+        </li>
+        <li>
+          <img src='scene4.png' alt="">
+        </li>
+        <li>
+          <img src='scene5.png' alt="">
+        </li>
+        <li>
+          <img src='scene6.png' alt="">
+        </li>
+        <li>
+          <img src='scene7.png' alt="">
+        </li>
+        <li>
+          <img src='scene8.png' alt="">
+        </li>
+        <li>
+          <img src='scene9.png' alt="">
+        </li>
+        <li>
+          <img src='scene10.png' alt="">
+        </li>
+      </ul>
+
+      <div class="text-start">
+        <p>
+          <span>ブルーグラス音楽作品を募集し，</span><span>それらをネット上のVirtual会場にて</span><span>ライブストリーミングで放送します。</span>
+        </p>
+        <p>
+          <span>ちょっと撮ってみた動画、</span><span>リモートでメンバーと作った動画、</span><span>過去のライブ演奏動画、</span><span>練習したけどお蔵入りになっていた曲などを</span><span>気軽に投稿してもらいたいです。</span>
+        </p>
+        <p>
+          <span>オンラインフェスには、</span><span>地理的要因や時間的要因等で</span><span>メンバーが集まりづらいバンドや、</span><span>独創的な演奏にも</span><span>スポットが当たる良さがあります。</span>
+        </p>
+        <p>
+          <span>一体感のある、即時性と非同期性を両立できる</span><span>このライブイベントの形式が</span><span>ブルーグラス音楽の発展の一助と</span><span>なればいいなと思っています。</span>
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- イベント詳細 -->
-    <section class="container mx-auto my-8 text-white text-center">
-        <h2 class="text-2xl font-bold mb-4">イベント詳細</h2>
-        <p class="text-lg text-blue-500 hover:text-blue-700">
-          <a href="https://docs.google.com/document/d/10vBFIZ0baMv_RcIMDBwfZhjlSUFG31N248M81--D5JA/edit#heading=h.gwyuy1itf1m" class="underline font-bold transition duration-300 ease-in-out transform hover:-translate-y-1">
-            概要草案
+  <section class="jumbotron jumbotron-fluid text-white text-center bg-midnightblue">
+    <div class="container p-2">
+      <h1>
+        <span>ブルーグラス音楽</span> <span>(Bluegrass Music)</span>
+      </h1>
+      <div class="text-start">
+        <p>
+          <span>ブルーグラスはアメリカ発祥の音楽ジャンルです。</span><span>広い大地に芝 (Bluegrass) が広がる土地を背景に、</span>
+        </p>
+        <p>
+          <a href="https://www.youtube.com/watch?v=IJbkOL2YRL4" class="text-white text-underline">
+            <span>ビル・モンロー & ブルーグラスボーイズ</span><span>（Bill Monroe & The Bluegrass boys）</span>
           </a>
         </p>
-    </section>
+        <p>
+          <span>がインフルエンサーとなり世に広めました。</span>
+        </p>
+        <p>
+          <span>アコースティック楽器と</span><span>シンプルなコード進行を基盤とした、</span>
+          <span>2ビートの疾走感、</span><span>独特な歌唱とリズムによる寂寥感、</span>
+          <span>速弾きやソロ交代による</span><span>各楽器の魅せプレイなど、</span>
+          <span>聞く人と演奏する人を</span><span>虜にする魅力を持った音楽です。</span>
+        </p>
+        <p>
+          <span>近代においては楽器、</span><span>リズムを含め様々に多様化しており、</span><span>端的な意味での</span><span>ルーツ・ミュージックにとどまらない、</span><span>変化し続ける生きた音楽と言えます。</span>
+        </p>
+      </div>
+      <img src="bluegrass.png" class="img-fluid" alt="bluegrass"><br />
+    </div>
+  </section>
 
-    <section class="bg-black-500 text-white p-8">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold mt-8">スケジュール</h2>
+  <section class="jumbotron jumbotron-fluid text-white text-center">
+    <div class="container p-2">
+      <h1>イベント詳細</h1>
+      <div class="text-start">
+        <p>
+          <a href="https://docs.google.com/document/d/10vBFIZ0baMv_RcIMDBwfZhjlSUFG31N248M81--D5JA/edit#heading=h.gwyuy1itf1m"
+            class="text-white text-underline">
+            概要草案はこちら
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="jumbotron jumbotron-fluid text-white text-center">
+    <div class="container p-2">
+      <h2>スケジュール</h2>
+      <div class="text-start container-fluid">
+        <div class="row row-cols-1 border-bottom">
+          <div class="col col-5 p-0">2024年4月8日</div>
+          <div class="col col-7">エントリー開始</div>
+        </div>
+        <div class="row row-cols-1 border-bottom">
+          <div class="col col-5 p-0"><span>2024年5月6日</span><span>23時59分（GMT）</span></div>
+          <div class="col col-7"><span>ショート部門</span> <span>エントリー締め切り</span></div>
+        </div>
+        <div class="row row-cols-1 border-bottom">
+          <div class="col col-5 p-0"><span>2024年5月12日</span><span>23時59分（GMT）</span></div>
+          <div class="col col-7"><span>オンライン部門</span> <span>エントリー締め切り</span></div>
+        </div>
+        <div class="row row-cols-1 border-bottom">
+          <div class="col col-5 p-0"><span>2024年5月19日</span><span>23時59分（GMT）</span></div>
+          <div class="col col-7">動画差し替え期限</div>
+        </div>
+        <div class="row row-cols-1 border-bottom">
+          <div class="col col-5 p-0">2024年5月20日</div>
+          <div class="col col-7"><span>タイムテーブル</span><span>公開予定</span></div>
+        </div>
+        <div class="row row-cols-1 border-bottom">
+          <div class="col col-5 p-0"><span>2024年5月26日</span><span>14時頃（JST）から</span></div>
+          <div class="col col-7">開催予定</div>
+        </div>
+      </div>
+
+      <h2><span>当日のオンライン会場<br />参加方法</span></h2>
+      <div class="text-start">
+        <p>
+          下記の記事をご覧ください。<br />
+          <a href="https://note.com/komeya88_note/n/n1df03673e6b9?sub_rt=share_pb" class="text-white text-underline">
+            Bluegrass Lockdown Music Festivalを楽しむために
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="jumbotron jumbotron-fluid text-white text-center bg-midnightblue">
+    <div class="container p-2">
+      <h1>エントリーリスト</h1>
+
+      <h2 class="mt-4">オンライン・ブルーグラス・アワード</h2>
+      <div class="text-start">
         <ul class="list-disc pl-5">
-            <li>2024年4月8日: エントリー開始</li>
-            <li>2024年5月6日23時59分（GMT）: ショート部門 エントリー締め切り</li>
-            <li>2024年5月12日23時59分（GMT）: オンライン部門 エントリー締め切り</li>
-            <li>2023年5月19日23時59分（GMT): 動画の差し替え期限</li>
-            <li>2023年5月20日: タイムテーブル公開予定</li>
-            <li>2023年5月26日14時頃から (JST): 開催予定</li>
+          <li>生活ができそう</li>
+          <li>美女とBLUE</li>
+          <li>Lonesome Garage Band</li>
+          <li>Old Axe</li>
+          <li>グラッシーコネクション</li>
+          <li>白塗りバンド（仮）</li>
+          <li>ゴールデンロッドガールズ</li>
+          <li>Romion Station</li>
+          <li>スラックス＝スクラッグス</li>
+          <li>引きこもりジジイ</li>
+          <li>Copper Kettles</li>
+          <li>Patrick Gushue</li>
+          <li>野村昌毅</li>
+          <li>Black Mountain Ramblers</li>
+          <li>Ida Bluegrass Band</li>
         </ul>
       </div>
-    </section>
 
-    <section class="bg-gray-500 text-white p-8">
-      <div class="container mx-auto">
-        <h1 class="text-3xl font-bold text-center mb-6">エントリー方法と動画投稿ガイド</h1>
-
-        <h2 class="text-2xl font-bold mt-4">エントリー方法</h2>
-        <p>音楽作品動画を用意し、エントリーフォームにて登録してください。</p>
-
-        <h2 class="text-2xl font-bold mt-4">動画の長さとカテゴリー</h2>
+      <h2 class="mt-4">ショート・ブルーグラス・アワード</h2>
+      <div class="text-start">
         <ul class="list-disc pl-5">
-            <li><strong>オンライン・ブルーグラス・アワード:</strong> 2023年1月〜開催日までに撮影された演奏動画。10分程度以下。</li>
-            <li><strong>今回フェスで初出のもの:</strong> 今回のフェスのエントリー用につくった動画。15分程度以下。</li>
-            <li><strong>ショート・ブルーグラス・アワード:</strong> 1分程度の動画。縦長の動画であること。</li>
+          <li>
+            <a href="https://m.youtube.com/shorts/Y7493En9KKs?si=WlgRt4Sp_vd174Mm"
+              class="text-white text-underline">Lonesome Garage Band</a>
+          </li>
+          <li>
+            <a href="https://youtube.com/shorts/QiamTM9jdCg" class="text-white text-underline">もやしちゃん</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=N-nQ6hnlz2w" class="text-white text-underline">もみやま</a>
+          </li>
+          <li>
+            <a href="https://x.com/azumag/status/1789797331396927868" class="text-white text-underline">米屋 with
+              原宿限界タピオカボーイズ</a>
+          </li>
         </ul>
-
-        <h2 class="text-2xl font-bold mt-4">動画投稿方法</h2>
-        <ul class="list-disc pl-5">
-            <li><strong>オンラインブルーグラスアワード:</strong> フォームのアップローダを利用、またはYouTubeなどへのアップロード後、エントリーフォームにURLを記載。</li>
-            <li><strong>ショートブルーグラスアワード:</strong> YouTube, Instagram, TikTokなどで事前投稿し、投稿フォームにて登録。</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-4">その他の情報</h2>
-        <p>直接投稿する際の動画容量は1GB以下程度であると助かります。参加費・視聴費は無料です。</p>
-        <p>ハッシュタグ: #Bluegrass #BLMF2024 #LockdownFes</p>
       </div>
-    </section>
 
-    <section class="text-white p-8">
-      <h2 class="text-2xl font-bold mt-8">エントリ動画の募集要項</h2>
-      <ul class="list-disc pl-5">
-          <li>ブルーグラスに影響を受けた音楽動画作品であること。</li>
-          <li>放映した時に主催者が怒られないような作品であること。</li>
-      </ul>
-      <p class="mt-4">
-          エントリーページ: <a href="https://forms.gle/Bw45mGAZPh1SNg8QA" class="text-blue-500 hover:text-blue-700 underline">https://forms.gle/Bw45mGAZPh1SNg8QA</a>
-      </p>
-    </section>
+    </div>
+  </section>
 
-    <section class="bg-red-500 text-white p-8">
-      <div class="container mx-auto">
-      <h2 class="text-2xl font-bold mt-8">注意事項</h2>
+  <section class="jumbotron jumbotron-fluid text-white text-center bg-midnightblue">
+    <div class="container p-2">
+      <h1><span>エントリー方法</span> <span>& 動画投稿ガイド</span></h1>
+
+      <h2 class="mt-4">エントリー方法</h2>
+      <div class="text-start">
+        <p class="text-strike">
+          <span>音楽作品動画を用意し、</span><span>下記にあるエントリーフォームにて</span><span>登録してください。</span>
+        </p>
+        <p>
+          <span>エントリーを締め切りました。</span>
+          <span>動画の差し替えについては、</span><span>下記にある動画差し替えフォームより</span><span>投稿をお願いいたします。</span>
+        </p>
+      </div>
+
+      <h2 class="mt-4">動画の長さとカテゴリー</h2>
+      <div class="text-start">
+        <h5>&lt;オンライン・ブルーグラス・アワード&gt;</h5>
+        <p>
+          　<span>2023年1月〜開催日までに</span><span>撮影された演奏動画。</span><span>10分程度以下。</span>
+        </p>
+        <h5>&lt;今回フェスで初出のもの&gt;</h5>
+        <p>
+          　<span>今回のフェスのエントリー用につくった動画。</span><span> 15分程度以下。</span>
+        </p>
+        <h5>&lt;ショート・ブルーグラス・アワード&gt;</h5>
+        <p>
+          　<span>1分程度の短い動画であること。</span>
+        </p>
+      </div>
+
+      <h2 class="mt-4">動画投稿方法</h2>
+      <div class="text-start">
+        <h5>&lt;オンライン・ブルーグラス・アワード&gt;</h5>
+        <p>
+          　<span>フォームのアップローダを利用、</span><span>またはYouTubeなどへのアップロード後、</span><span>エントリーフォームにURLを記載。</span>
+        </p>
+        <h5>&lt;ショート・ブルーグラス・アワード&gt;</h5>
+        <p>
+          　<span>YouTube,&nbsp;</span><span>Instagram,&nbsp;</span><span>TikTok&nbsp;などで事前投稿し、</span><span>投稿フォームにて登録。</span>
+        </p>
+      </div>
+
+      <h2 class="mt-4">その他の情報</h2>
+      <div class="text-start">
+        <p><span>直接投稿する際の動画容量は</span><span>1GB以下程度であると助かります。</span></p>
+        <p>参加費・視聴費は無料です。</p>
+        <p><span>ハッシュタグ:</span> <span>#Bluegrass #BLMF2024 #LockdownFes</span></p>
+      </div>
+    </div>
+
+    <div class="container p-2">
+      <h2 class="mt-4">エントリー動画の募集要項</h2>
+      <div class="text-start">
+        <ul class="list-disc pl-5">
+          <li><span>ブルーグラスに影響を受けた</span><span>音楽動画作品であること。</span></li>
+          <li><span>放映した時に</span><span>主催者が怒られないような</span><span>作品であること。</span></li>
+        </ul>
+        <p class="mt-4">
+          <span>エントリーフォーム:</span> <span>エントリーは締め切りました。</span><br />
+          <span>動画差し替えフォーム:</span> <span>以下のURLから投稿してください。</span><br />
+          <a href="https://forms.gle/ECMMJ82KTiqz6cdG7"
+            class="text-white text-underline">https://forms.gle/ECMMJ82KTiqz6cdG7</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="jumbotron jumbotron-fluid text-white text-left">
+    <div class="container p-2">
+      <h2>注意事項</h2>
       <ul class="list-disc pl-5">
         <li>動画への出演者にはすべて了承を得ること。</li>
         <li>トラブルに対して開催者は責任を負いかねます。</li>
       </ul>
-    </section>
+    </div>
+    </div>
+  </section>
 
-    <section class="bg-black-500 text-white p-8">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold mt-8">問い合わせ</h2>
-        <p>問い合わせフォームからお願いいたします。</p>
-        <p><a href="https://forms.gle/YvrhQACRjSLzzBiV9" class="text-blue-500 hover:text-blue-700 underline">問い合わせフォーム</a></p>
-
-        <p>下記 X (旧 Twitter) アカウントへのDMもしくはリプライ、Discord への書き込みでも可</p>
+  <section class="jumbotron jumbotron-fluid text-white text-left">
+    <div class="container p-2">
+      <h2>問い合わせ</h2>
+      <div class="text-start">
+        <p>
+          <span>下記の問い合わせフォーム、</span><span>またはX (旧 Twitter) アカウントへの</span><span>DMもしくはリプライ、</span><span>Discord
+            への書き込みから</span><span>お願いいたします。</span>
+        </p>
         <ul class="list-disc pl-5">
-            <li>公式 twitter: <a href="https://twitter.com/bluegrass_moon" class="text-blue-500 hover:text-blue-700 underline">https://twitter.com/bluegrass_moon</a></li>
-            <li>Discord: <a href="https://discord.gg/AWB5mdtD4C" class="text-blue-500 hover:text-blue-700 underline">https://discord.gg/AWB5mdtD4C</a></li>
-            <li>サイト：<a href="https://www.bluemoon.works/" class="text-blue-500 hover:text-blue-700 underline">https://www.bluemoon.works/</a></li>
+          <li class="pb-2">問い合わせフォーム<br />
+            <a href="https://forms.gle/YvrhQACRjSLzzBiV9"
+              class="text-white text-underline">https://forms.gle/YvrhQACRjSLzzBiV9</a>
+          </li>
+          <li class="pb-2">公式 twitter<br />
+            <a href="https://twitter.com/bluegrass_moon"
+              class="text-white text-underline">https://twitter.com/bluegrass_moon</a>
+          </li>
+          <li class="pb-2">Discord<br />
+            <a href="https://discord.gg/AWB5mdtD4C" class="text-white text-underline">https://discord.gg/AWB5mdtD4C</a>
+          </li>
+          <li class="pb-2">Bluemoon サイト<br />
+            <a href="https://www.bluemoon.works/" class="text-white text-underline">https://www.bluemoon.works/</a>
+          </li>
         </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="bg-indigo-500 text-white p-8">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold mt-8">お布施</h2>
-        <p class="mt-4">
-            OFUSEというサービスで投げ銭を募集しております。全額当フェスの運営維持費として計上させていただきます。
-        </p>
-      </div>
-    </section>
+  <section class="jumbotron jumbotron-fluid text-white text-left">
+    <div class="container p-2">
+      <h2>お布施</h2>
+      <p>
+        OFUSEというサービスで投げ銭を募集しております。全額当フェスの運営維持費として計上させていただきます。
+      </p>
+    </div>
+  </section>
 
-    <section class="bg-gray text-white p-8">
-      <div class="container mx-auto">
-          <h2 class="text-2xl font-bold mb-4">FAQ</h2>
-          <div class="mb-4">
-              <h3 class="font-semibold">投稿動画の作り方がわからない</h3>
-              <p>YouTubeなどで多く説明動画を作ってくださっているので、これらの動画を参考にするとよいです。（例：<a href="https://www.youtube.com/results?search_query=%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E5%85%B1%E6%BC%94%E3%81%AE%E4%BB%95%E6%96%B9" class="text-blue-500 hover:text-blue-700 underline">https://www.youtube.com/results?search_query=リモート共演の仕方</a>）</p>
-          </div>
-          <div class="mb-4">
-              <h3 class="font-semibold">どんな動画ならOK？</h3>
-              <p>一概にこれはダメ、これはよい、と規定はできません。基本的には、投稿者がブルーグラスである、ブルーグラスに影響を受けたと主張できる作品であれば問題ありません。また近縁であるようなアイリッシュ寄りのもの・オールドタイムも歓迎です。かなりの範囲大丈夫と考えてもらってよいです。</p>
-          </div>
-          <div class="mb-4">
-              <h3 class="font-semibold">動画を用意してからエントリーすべき？</h3>
-              <p>先にエントリーを作成してもらい、（URL欄にはその旨を記載）あとから編集ページでアップロードしてもらっても構いません。</p>
-          </div>
-          <div class="mb-4">
-              <h3 class="font-semibold">動画が時間に満たないのですが</h3>
-              <p>問題ありません！投稿いただけるだけで幸いです。短い動画部門もあります。</p>
-          </div>
-      </div>
-    </section>
+  <section class="jumbotron jumbotron-fluid text-white text-left">
+    <div class="container p-2">
+      <h2>FAQ</h2>
+      <ul class="list-disc">
+        <li>
+          <h5>投稿動画の作り方がわからない</h5>
+          <p>
+            <span>YouTubeなどで多く</span><span>説明動画を作ってくださっているので、</span><span>これらの動画を参考にするとよいです。</span><br />
+            （例：<a
+              href="https://www.youtube.com/results?search_query=%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E5%85%B1%E6%BC%94%E3%81%AE%E4%BB%95%E6%96%B9"
+              class="text-white text-underline">https://www.youtube.com/results?search_query=リモート共演の仕方</a>）
+          </p>
+        </li>
+        <li>
+          <h5>どんな動画ならOK？</h5>
+          <p>
+            <span>一概にこれはダメ、これはよい、</span><span>と規定はできません。</span>
+            <span>基本的には、投稿者がブルーグラスである、</span><span>ブルーグラスに影響を受けたと</span><span>主張できる作品であれば問題ありません。</span>
+            <span>また近縁であるような</span><span>アイリッシュ寄りのもの、</span><span>オールドタイムも歓迎です。</span><span>かなりの範囲大丈夫と考えてもらってよいです。</span>
+          </p>
+        </li>
+        <li>
+          <h5>動画を用意してからエントリーすべき？</h3>
+            <p>
+              <span>先にエントリーを作成してもらい、</span><span>あとから編集ページで</span><span>アップロードしてもらっても構いません。</span><br />
+              （URL欄にはその旨を記載ください。）
+            </p>
+        </li>
+        <li>
+          <h5>動画が時間に満たないのですが...</h3>
+            <p>
+              <span>問題ありません！</span><span>投稿いただけるだけで幸いです。</span><br />
+              短い動画部門もあります。
+            </p>
+        </li>
+    </div>
+    </ul>
+    </div>
+  </section>
 
-    <!-- フッター -->
-    <footer class="bg-gray-800 text-white text-center p-4">
-        © 2023 Bluemoon Works
-    </footer>
+  <!-- フッター -->
+  <footer class="text-white text-center bg-midnightblue p-4">
+    © 2020-2024 Bluemoon Works
+    <br />
+    <br />
+  </footer>
 </body>
+
 </html>
