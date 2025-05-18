@@ -1,18 +1,23 @@
 $(function () {
     $('.slider').slick({
-        arrows: false, // 前・次のボタンを表示しない
-        dots: false, // ドットナビゲーションを表示しない
+        arrows: true, // 前・次のボタンを表示する
+        dots: true, // ドットナビゲーションを表示する
         autoplay: true,
-        autoplaySpeed: 0,
-        speed: 8000, // スライドさせるスピード（ミリ秒）
-        cssEase: 'linear',
+        autoplaySpeed: 3000, // 3秒ごとに切り替え
+        speed: 500, // スライドさせるスピード（ミリ秒）
         slidesToShow: 1, // 表示させるスライド数
-        variableWidth: true, // スライド幅の自動計算を無効化
-        pauseOnFocus: false,
-        pauseOnHover: false,
-        pauseOnDotsHover: false,
-        swipe: false,
-        swipeToSlide: false,
-        touchMove: false,
+        centerMode: true,
+        centerPadding: '60px',
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            }
+        ]
     });
 });
