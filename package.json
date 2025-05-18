@@ -1,6 +1,6 @@
 {
   "name": "bluemoon",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "",
   "author": "azumag, tempakyousuke",
   "private": true,
@@ -23,7 +23,7 @@
     "firebase-functions": "^3.6.2",
     "firebase-tools": "^8.4.2",
     "lodash.clonedeep": "^4.5.0",
-    "nuxt": "^2.12.2",
+    "nuxt": "^2.15.8",
     "nuxt-i18n": "^6.15.4",
     "nuxt-property-decorator": "^2.7.2",
     "require-vuejs": "^1.1.3",
