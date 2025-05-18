@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8" />
@@ -8,22 +8,20 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css?20240523">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"></script>
-
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-
   <script type="text/javascript" src="slick.js"></script>
 </head>
 
 <body class="bg-black">
-
+  <!-- ヘッダーセクション -->
   <section class="jumbotron jumbotron-fluid bg-marblebluegrad text-white text-center">
     <div class="container">
       <br />
@@ -34,7 +32,52 @@
     </div>
   </section>
 
-  <section class="jumbotron jumbotron-fluid bg-royalblue text-white text-center">
+  <!-- ナビゲーションバー -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-midnightblue sticky-top">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">BLMF紹介</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#news">NewsLine</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#bluegrass">ブルーグラスとは</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="2025.html">イベント詳細</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="2025.html#entry-list">エントリーリスト</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="2025.html#entry-guide">エントリー方法</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="2025.html#caution">注意事項</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="2025.html#contact">問い合わせ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="2025.html#donation">お布施</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="2025.html#faq">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BLMF紹介セクション -->
+  <section id="about" class="jumbotron jumbotron-fluid bg-royalblue text-white text-center">
     <div class="container p-2">
       <img src="blmf2024header.png" class="img-fluid mt-4" alt="Bluegrass Lockdown Music Festival Vol.5"><br />
       <br />
@@ -43,38 +86,10 @@
       </p>
       <br />
 
-      <ul class="slider p-0">
-        <li>
-          <img src='scene1.png' alt="">
-        </li>
-        <li>
-          <img src='scene2.png' alt="">
-        </li>
-        <li>
-          <img src='scene3.png' alt="">
-        </li>
-        <li>
-          <img src='scene4.png' alt="">
-        </li>
-        <li>
-          <img src='scene5.png' alt="">
-        </li>
-        <li>
-          <img src='scene6.png' alt="">
-        </li>
-        <li>
-          <img src='scene7.png' alt="">
-        </li>
-        <li>
-          <img src='scene8.png' alt="">
-        </li>
-        <li>
-          <img src='scene9.png' alt="">
-        </li>
-        <li>
-          <img src='scene10.png' alt="">
-        </li>
-      </ul>
+      <!-- スライダーを一時的に非表示にして問題を特定 -->
+      <div class="text-center mb-4">
+        <img src='scene1.png' alt="" class="img-fluid" style="max-width: 400px;">
+      </div>
 
       <div class="text-start">
         <p>
@@ -93,7 +108,36 @@
     </div>
   </section>
 
-  <section class="jumbotron jumbotron-fluid text-white text-center bg-midnightblue">
+  <!-- NewsLineセクション -->
+  <section id="news" class="jumbotron jumbotron-fluid text-white text-center">
+    <div class="container p-2">
+      <h1>NewsLine</h1>
+      <div class="card bg-midnightblue text-white mb-3">
+        <div class="card-body text-start">
+          <h5 class="card-title">2025年5月15日</h5>
+          <p class="card-text">Webベース作成完了しました。エントリー開始は週末を予定しています。</p>
+        </div>
+      </div>
+      <div class="card bg-midnightblue text-white mb-3">
+        <div class="card-body text-start">
+          <h5 class="card-title">エントリー締め切り日程</h5>
+          <p class="card-text">
+            ・ショート部門：6月8日<br>
+            ・通常部門：6月16日
+          </p>
+        </div>
+      </div>
+      <div class="card bg-midnightblue text-white mb-3">
+        <div class="card-body text-start">
+          <h5 class="card-title">開催日決定</h5>
+          <p class="card-text">6月22日に開催決定しました！詳細は随時更新します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ブルーグラスとはセクション -->
+  <section id="bluegrass" class="jumbotron jumbotron-fluid text-white text-center bg-midnightblue">
     <div class="container p-2">
       <h1>
         <span>ブルーグラス音楽</span> <span>(Bluegrass Music)</span>
@@ -124,536 +168,85 @@
     </div>
   </section>
 
-  <section class="jumbotron jumbotron-fluid text-white text-center">
-    <div class="container p-2">
-      <h1>イベント詳細</h1>
-      <div class="text-start">
-        <p>
-          <a href="https://docs.google.com/document/d/10vBFIZ0baMv_RcIMDBwfZhjlSUFG31N248M81--D5JA/edit#heading=h.gwyuy1itf1m"
-            target="_blank" class="text-white text-underline">
-            概要草案はこちら
-          </a>
-        </p>
-        <img src="Cluster_BLMF5.png" class="img-fluid" alt="Cluster_BLMF5">
-      </div>
-    </div>
 
-    <div class="container p-2">
-      <h2>投票について</h2>
-      <div class="text-start">
-        <p>
-          <span>良かったエントリーに、</span><span>清き一票を！</span>
-          <a href="https://forms.gle/kiFMDf9E42JqYDwV9" target="_blank"
-            class="text-white text-underline">
-            https://forms.gle/kiFMDf9E42JqYDwV9
-          </a>
-        </p>
-      </div>
-    </div>
-
-    <div class="container p-2">
-      <h2>スケジュール</h2>
-      <div class="text-start container-fluid">
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-5 p-0"><s>2024年4月8日</s></div>
-          <div class="col col-7"><s>エントリー開始</s></div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-5 p-0"><span><s>2024年5月6日</s></span><span><s>23時59分（GMT）</s></span></div>
-          <div class="col col-7"><span><s>ショート部門</s></span> <span><s>エントリー締め切り</s></span></div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-5 p-0"><span><s>2024年5月12日</s></span><span><s>23時59分（GMT）</s></span></div>
-          <div class="col col-7"><span><s>オンライン部門</s></span> <span><s>エントリー締め切り</s></span></div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-5 p-0"><span><s>2024年5月19日</s></span><span><s>23時59分（GMT）</s></span></div>
-          <div class="col col-7"><s>動画差し替え期限</s></div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-5 p-0"><s>2024年5月20日</s></div>
-          <div class="col col-7"><span><s>タイムテーブル</s></span><span><s>公開予定</s></span></div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-5 p-0"><span>2024年5月26日</span><span>14時頃（JST）から</span></div>
-          <div class="col col-7">開催予定</div>
-        </div>
-      </div>
-      <br />
-    </div>
-
-    <div class="container p-2">
-      <h2>タイムテーブル</h2>
-      <div class="text-start container-fluid">
-        <div class="row row-cols-1 border-bottom fw-bold fs-5">
-          <div class="col p-0"><span>オンライン・ブルーグラス・アワード </span>　<span>前半</span></div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-3 p-0">13時30分</div>
-          <div class="col col-1">-</div>
-          <div class="col col-8">開場</div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-3 p-0">14時00分</div>
-          <div class="col col-1">-</div>
-          <div class="col col-8">オープニングあいさつ</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0">14時05分</div>
-          <div class="col col-1">1</div>
-          <div class="col col-8">Ida Bluegrass Band</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">2</div>
-          <div class="col col-8">グラッシーコネクション</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">3</div>
-          <div class="col col-8">ゴールデンロッドガールズ</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">4</div>
-          <div class="col col-8">どぶろひくぞう</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">5</div>
-          <div class="col col-8">生活ができそう</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">6</div>
-          <div class="col col-8">Romion Station</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">7</div>
-          <div class="col col-8">Copper Kettles</div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">8</div>
-          <div class="col col-8">美女とBLUE</div>
-        </div>
-        <br />
-
-        <div class="row row-cols-1 border-bottom fw-bold fs-5">
-          <div class="col p-0">ショート・ブルーグラス・アワード</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0">15時30分</div>
-          <div class="col col-1">9</div>
-          <div class="col col-8">Lonesome Garage Band</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">10</div>
-          <div class="col col-8">もやしちゃん</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">11</div>
-          <div class="col col-8">もみやま</div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">12</div>
-          <div class="col col-8">米屋 with 原宿限界タピオカボーイズ</div>
-        </div>
-        <br />
-
-        <div class="row row-cols-1 border-bottom fw-bold fs-5">
-          <div class="col p-0"><span>オンライン・ブルーグラス・アワード </span>　<span>後半</span></div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0">15時45分</div>
-          <div class="col col-1">13</div>
-          <div class="col col-8">野村昌毅</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">14</div>
-          <div class="col col-8">引きこもりジジイ</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">15</div>
-          <div class="col col-8">Black Mountain Ramblers</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">16</div>
-          <div class="col col-8">Patrick Gushue</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">17</div>
-          <div class="col col-8">白塗りバンド（仮）</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">18</div>
-          <div class="col col-8">Lonesome Garage Band</div>
-        </div>
-        <div class="row row-cols-1">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">19</div>
-          <div class="col col-8">スラックス=スクラッグス</div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-3 p-0"></div>
-          <div class="col col-1">20</div>
-          <div class="col col-8">Old Axe</div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-3 p-0">17時00分</div>
-          <div class="col col-1">-</div>
-          <div class="col col-8">閉会挨拶と案内</div>
-        </div>
-        <div class="row row-cols-1 border-bottom">
-          <div class="col col-3 p-0">17時30分</div>
-          <div class="col col-1">-</div>
-          <div class="col col-8">閉場</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container p-2">
-      <h2>協賛・賞品提供</h2>
-      <div class="text-start">
-        <h5>【 工房もひかんWeb商品券 5000円分 】</h5>
-        <p>
-          <span>　アメリカンヴィンテージスタイルを</span><span>得意とする</span><span>レザークラフト工房です。</span><br/>
-          <span>　オシャレかつマニアックな</span><span>仕上がりに</span><span>オーダーはひっきりなし。</span><br/>
-          <span>　クリエイティブな作品で</span><span>受賞して、</span><span>クリエイティブな</span><span>オーダーをしよう！</span>
-        </p>
-        <p>
-          　提供：工房もひかん 様<br/>
-          　URL: <a href="https://mohikan1974.theshop.jp/" target="_blank"
-            class="text-white text-underline">
-            https://mohikan1974.theshop.jp/
-          </a><br/>
-          　X(Twitter): <a href="https://x.com/koubou_mohikan" target="_blank"
-            class="text-white text-underline">
-            @koubou_mohikan
-          </a><br/>
-        </p>
-        <br/>
-
-        <h5>【 オンフェス記念木製ピック 】</h5>
-        <p>
-          <span>　オンフェスおなじみとなった</span><span>記念木製ピック。</span><br/>
-          <span>　ピックは記念品ながらも、</span><span>実用品としても使いやすい</span><span>とご好評です。</span>
-        </p>
-        <p>
-          　提供：Iwashita Mandolins & Guitars 様<br/>
-          　X(Twitter): <a href="https://x.com/iwashita_md_gt" target="_blank"
-            class="text-white text-underline">
-            @iwashita_md_gt
-          </a><br/>
-        </p>
-        <br/>
-
-        <h5>【 ビール券 】</h5>
-        <p>
-          　初夏をクールに過ごすありがたいビール。<br/>
-          　ビール好きにはたまらないビール券をどうぞ！
-        </p>
-        <p>
-          　提供：まーバァ 様
-        </p>
-        <br/>
-
-        <h5>【 深大寺ブレンドコーヒー or 深大寺そば（選べます） 】</h5>
-        <p>
-          <span>　主催のあずまぐが</span><span>個人的に好きなエントリーに、</span><span>個人的に好きな</span><span>深大寺ブレンドコーヒー、</span><span>または深大寺そばを</span><span>送りつけます。</span><br/>
-          <span>　今後とも、</span><span>細く長く</span><span>よろしくお願いいたします。</span>
-        </p>
-        <p>
-          　提供：あずまぐ<br/>
-          　X(Twitter): <a href="https://x.com/azumag" target="_blank"
-            class="text-white text-underline">
-            @azumag
-          </a><br/>
-          
-        </p>
-
-        
-      </div>
-    </div>
-
-    <div class="container p-2">
-      <h2><span>当日のオンライン会場<br />参加方法</span></h2>
-      <div class="text-start">
-        <p>
-          <span>当日はclusterと</span><span>Youtubeで</span><span>視聴が可能ですが、</span><span>メタバース空間で楽しんで</span><span>こそのBLMF！</span><br />
-          <br />
-          <span>導入が難しいな～</span><span>と悩んでいる方のために</span><span>インストールの方法の</span><span>解説がございます。</span><br />
-          <span>今回初参加の方も</span><span>参考にしてみてください。</span><br />
-          <a href="https://note.com/komeya88_note/n/n1df03673e6b9?sub_rt=share_pb" target="_blank"
-            class="text-white text-underline">
-            Bluegrass Lockdown Music Festivalを楽しむために
-          </a>
-        </p>
-      </div>
-    </div>
-
-    <div class="container p-2">
-      <h2><span>Cluster</span><span>イベントページ</span></h2>
-      <div class="text-start">
-        <p>
-          <span>Clusterからの</span><span>会場の入口は</span><span>こちらのページから！</span><br />
-          <a href="https://cluster.mu/e/8d69b864-f510-4949-a877-b3b417054728" target="_blank"
-            class="text-white text-underline">
-            <img src="logo_2line_A_solid.png" width="48px">
-          </a>
-          <a href="https://cluster.mu/e/8d69b864-f510-4949-a877-b3b417054728" target="_blank"
-            class="text-white text-underline">
-            Clusterイベントページ
-          </a>
-        </p>
-      </div>
-    </div>
-
-    <div class="container p-2">
-      <h2><span>Youtube</span><span>配信</span></h2>
-      <div class="text-start">
-        <p>
-          <span>Youtube配信URLはこちら！</span><br />
-          <a href="https://www.youtube.com/live/mRxRoMelz9o?si=7uz1bLA5TwjlUsBn" target="_blank">
-            <img src="youtube_social_icon_red.png" width="32px" />
-          </a>
-          <a href="https://www.youtube.com/live/mRxRoMelz9o?si=7uz1bLA5TwjlUsBn" target="_blank"
-            class="text-white text-underline">
-            https://www.youtube.com/live/mRxRoMelz9o?si=7uz1bLA5TwjlUsBn
-          </a>
-        </p>
-      </div>
-    </div>
-  </section>
-
+  <!-- 詳細ページへのリンクセクション -->
   <section class="jumbotron jumbotron-fluid text-white text-center bg-midnightblue">
     <div class="container p-2">
-      <h1>エントリーリスト</h1>
-
-      <h2 class="mt-4">オンライン・ブルーグラス・アワード</h2>
-      <div class="text-start">
-        <ul class="list-disc pl-5">
-          <li>生活ができそう</li>
-          <li>美女とBLUE</li>
-          <li>Lonesome Garage Band</li>
-          <li>Old Axe</li>
-          <li>グラッシーコネクション</li>
-          <li>白塗りバンド（仮）</li>
-          <li>ゴールデンロッドガールズ</li>
-          <li>Romion Station</li>
-          <li>スラックス＝スクラッグス</li>
-          <li>引きこもりジジイ</li>
-          <li>Copper Kettles</li>
-          <li>Patrick Gushue</li>
-          <li>野村昌毅</li>
-          <li>Black Mountain Ramblers</li>
-          <li>Ida Bluegrass Band</li>
-          <li>どぶろひくぞう</li>
-        </ul>
+      <h1>詳細ページ</h1>
+      <div class="row row-cols-1 row-cols-md-2 g-4 mt-3">
+        <div class="col">
+          <div class="card bg-royalblue text-white h-100">
+            <div class="card-body">
+              <h5 class="card-title">イベント詳細</h5>
+              <p class="card-text">スケジュール、タイムテーブル、協賛・賞品提供、当日のオンライン会場参加方法、Youtube配信など</p>
+              <a href="2025.html#event-details" class="btn btn-outline-light">詳細を見る</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-royalblue text-white h-100">
+            <div class="card-body">
+              <h5 class="card-title">エントリーリスト</h5>
+              <p class="card-text">エントリーされたバンドや演奏者のリストを確認できます</p>
+              <a href="2025.html#entry-list" class="btn btn-outline-light">リストを見る</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-royalblue text-white h-100">
+            <div class="card-body">
+              <h5 class="card-title">エントリー方法/動画投稿ガイド</h5>
+              <p class="card-text">エントリー方法や動画投稿に関するガイドラインを確認できます</p>
+              <a href="2025.html#entry-guide" class="btn btn-outline-light">ガイドを見る</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-royalblue text-white h-100">
+            <div class="card-body">
+              <h5 class="card-title">注意事項</h5>
+              <p class="card-text">イベント参加にあたっての注意事項を確認できます</p>
+              <a href="2025.html#caution" class="btn btn-outline-light">注意事項を見る</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-royalblue text-white h-100">
+            <div class="card-body">
+              <h5 class="card-title">問い合わせ</h5>
+              <p class="card-text">イベントに関する問い合わせ方法を確認できます</p>
+              <a href="2025.html#contact" class="btn btn-outline-light">問い合わせ方法を見る</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-royalblue text-white h-100">
+            <div class="card-body">
+              <h5 class="card-title">お布施</h5>
+              <p class="card-text">イベント運営へのサポート方法を確認できます</p>
+              <a href="2025.html#donation" class="btn btn-outline-light">サポート方法を見る</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card bg-royalblue text-white h-100">
+            <div class="card-body">
+              <h5 class="card-title">FAQ</h5>
+              <p class="card-text">よくある質問と回答を確認できます</p>
+              <a href="2025.html#faq" class="btn btn-outline-light">FAQを見る</a>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <h2 class="mt-4">ショート・ブルーグラス・アワード</h2>
-      <div class="text-start">
-        <ul class="list-disc pl-5">
-          <li>
-            <a href="https://m.youtube.com/shorts/Y7493En9KKs?si=WlgRt4Sp_vd174Mm" target="_blank"
-              class="text-white text-underline">Lonesome Garage Band</a>
-          </li>
-          <li>
-            <a href="https://youtube.com/shorts/QiamTM9jdCg" target="_blank"
-              class="text-white text-underline">もやしちゃん</a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/watch?v=N-nQ6hnlz2w" target="_blank"
-              class="text-white text-underline">もみやま</a>
-          </li>
-          <li>
-            <a href="https://x.com/azumag/status/1789797331396927868" target="_blank"
-              class="text-white text-underline">米屋 with
-              原宿限界タピオカボーイズ</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="jumbotron jumbotron-fluid text-white text-center bg-midnightblue">
-    <div class="container p-2">
-      <h1><span>エントリー方法</span> <span>& 動画投稿ガイド</span></h1>
-
-      <h2 class="mt-4">エントリー方法</h2>
-      <div class="text-start">
-        <p class="text-strike">
-          <span>音楽作品動画を用意し、</span><span>下記にあるエントリーフォームにて</span><span>登録してください。</span>
-        </p>
-        <p>
-          <span>エントリーを締め切りました。</span>
-          <span>動画の差し替えについては、</span><span>下記にある動画差し替えフォームより</span><span>投稿をお願いいたします。</span>
-        </p>
-      </div>
-
-      <h2 class="mt-4">動画の長さとカテゴリー</h2>
-      <div class="text-start">
-        <h5>&lt;オンライン・ブルーグラス・アワード&gt;</h5>
-        <p>
-          　<span>2023年1月〜開催日までに</span><span>撮影された演奏動画。</span><span>10分程度以下。</span>
-        </p>
-        <h5>&lt;今回フェスで初出のもの&gt;</h5>
-        <p>
-          　<span>今回のフェスのエントリー用につくった動画。</span><span> 15分程度以下。</span>
-        </p>
-        <h5>&lt;ショート・ブルーグラス・アワード&gt;</h5>
-        <p>
-          　<span>1分程度の短い動画であること。</span>
-        </p>
-      </div>
-
-      <h2 class="mt-4">動画投稿方法</h2>
-      <div class="text-start">
-        <h5>&lt;オンライン・ブルーグラス・アワード&gt;</h5>
-        <p>
-          　<span>フォームのアップローダを利用、</span><span>またはYouTubeなどへのアップロード後、</span><span>エントリーフォームにURLを記載。</span>
-        </p>
-        <h5>&lt;ショート・ブルーグラス・アワード&gt;</h5>
-        <p>
-          　<span>YouTube,&nbsp;</span><span>Instagram,&nbsp;</span><span>TikTok&nbsp;などで事前投稿し、</span><span>投稿フォームにて登録。</span>
-        </p>
-      </div>
-
-      <h2 class="mt-4">その他の情報</h2>
-      <div class="text-start">
-        <p><span>直接投稿する際の動画容量は</span><span>1GB以下程度であると助かります。</span></p>
-        <p>参加費・視聴費は無料です。</p>
-        <p><span>ハッシュタグ:</span> <span>#Bluegrass #BLMF2024 #LockdownFes</span></p>
-      </div>
-    </div>
-
-    <div class="container p-2">
-      <h2 class="mt-4">エントリー動画の募集要項</h2>
-      <div class="text-start">
-        <ul class="list-disc pl-5">
-          <li><span>ブルーグラスに影響を受けた</span><span>音楽動画作品であること。</span></li>
-          <li><span>放映した時に</span><span>主催者が怒られないような</span><span>作品であること。</span></li>
-        </ul>
-        <p class="mt-4">
-          <span>エントリーフォーム:</span> <span>エントリーは締め切りました。</span><br />
-          <span>動画差し替えフォーム:</span> <span>以下のURLから投稿してください。</span><br />
-          <a href="https://forms.gle/ECMMJ82KTiqz6cdG7" target="_blank"
-            class="text-white text-underline">https://forms.gle/ECMMJ82KTiqz6cdG7</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="jumbotron jumbotron-fluid text-white text-left">
-    <div class="container p-2">
-      <h2>注意事項</h2>
-      <ul class="list-disc pl-5">
-        <li>動画への出演者にはすべて了承を得ること。</li>
-        <li>トラブルに対して開催者は責任を負いかねます。</li>
-      </ul>
-    </div>
-    </div>
-  </section>
-
-  <section class="jumbotron jumbotron-fluid text-white text-left">
-    <div class="container p-2">
-      <h2>問い合わせ</h2>
-      <div class="text-start">
-        <p>
-          <span>下記の問い合わせフォーム、</span><span>またはX (旧 Twitter) アカウントへの</span><span>DMもしくはリプライ、</span><span>Discord
-            への書き込みから</span><span>お願いいたします。</span>
-        </p>
-        <ul class="list-disc pl-5">
-          <li class="pb-2">問い合わせフォーム<br />
-            <a href="https://forms.gle/YvrhQACRjSLzzBiV9" target="_blank"
-              class="text-white text-underline">https://forms.gle/YvrhQACRjSLzzBiV9</a>
-          </li>
-          <li class="pb-2">公式 twitter<br />
-            <a href="https://twitter.com/bluegrass_moon" target="_blank"
-              class="text-white text-underline">https://twitter.com/bluegrass_moon</a>
-          </li>
-          <li class="pb-2">Discord<br />
-            <a href="https://discord.gg/AWB5mdtD4C" target="_blank"
-              class="text-white text-underline">https://discord.gg/AWB5mdtD4C</a>
-          </li>
-          <li class="pb-2">Bluemoon サイト<br />
-            <a href="https://www.bluemoon.works/" target="_blank"
-              class="text-white text-underline">https://www.bluemoon.works/</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="jumbotron jumbotron-fluid text-white text-left">
-    <div class="container p-2">
-      <h2>お布施</h2>
-      <p>
-        OFUSEというサービスで投げ銭を募集しております。全額当フェスの運営維持費として計上させていただきます。<br />
-        <br />
-        <a href="https://ofuse.me/bgonfes" target="_blank" class="text-white text-underline">OFUSEはこちら</a>
-      </p>
-    </div>
-  </section>
-
-  <section class="jumbotron jumbotron-fluid text-white text-left">
-    <div class="container p-2">
-      <h2>FAQ</h2>
-      <ul class="list-disc">
-        <li>
-          <h5>投稿動画の作り方がわからない</h5>
-          <p>
-            <span>YouTubeなどで多く</span><span>説明動画を作ってくださっているので、</span><span>これらの動画を参考にするとよいです。</span><br />
-            （例：<a
-              href="https://www.youtube.com/results?search_query=%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E5%85%B1%E6%BC%94%E3%81%AE%E4%BB%95%E6%96%B9"
-              target="_blank"
-              class="text-white text-underline">https://www.youtube.com/results?search_query=リモート共演の仕方</a>）
-          </p>
-        </li>
-        <li>
-          <h5>どんな動画ならOK？</h5>
-          <p>
-            <span>一概にこれはダメ、これはよい、</span><span>と規定はできません。</span>
-            <span>基本的には、投稿者がブルーグラスである、</span><span>ブルーグラスに影響を受けたと</span><span>主張できる作品であれば問題ありません。</span>
-            <span>また近縁であるような</span><span>アイリッシュ寄りのもの、</span><span>オールドタイムも歓迎です。</span><span>かなりの範囲大丈夫と考えてもらってよいです。</span>
-          </p>
-        </li>
-        <li>
-          <h5>動画を用意してからエントリーすべき？</h3>
-            <p>
-              <span>先にエントリーを作成してもらい、</span><span>あとから編集ページで</span><span>アップロードしてもらっても構いません。</span><br />
-              （URL欄にはその旨を記載ください。）
-            </p>
-        </li>
-        <li>
-          <h5>動画が時間に満たないのですが...</h3>
-            <p>
-              <span>問題ありません！</span><span>投稿いただけるだけで幸いです。</span><br />
-              短い動画部門もあります。
-            </p>
-        </li>
-    </div>
-    </ul>
     </div>
   </section>
 
   <!-- フッター -->
   <footer class="text-white text-center bg-midnightblue p-4">
-    © 2020-2024 Bluemoon Works
-    <br />
-    <br />
+    <p>© 2025 Bluegrass Lockdown Music Festival</p>
   </footer>
+
+  <!-- slick.jsで設定済みのため、ここでの追加設定は不要 -->
 </body>
 
 </html>
