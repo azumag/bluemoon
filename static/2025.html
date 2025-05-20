@@ -18,132 +18,360 @@
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
   <script type="text/javascript" src="slick.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    /* カラースキーム */
+    :root {
+      --primary: #3a5f8e;
+      --secondary: #6c8ab7;
+      --accent: #f39c12;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --white: #ffffff;
+      --section-odd: #ffffff;
+      --section-even: #eef2f7;
+    }
+
+    /* ナビゲーション */
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: var(--primary) !important;
+    }
+
+    .nav-link {
+      color: var(--white) !important;
+      font-weight: 500;
+      padding: 0.8rem 1rem !important;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent) !important;
+      transform: translateY(-2px);
+    }
+
+    /* ヘッダー */
+    .header-section {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      padding: 5rem 0;
+    }
+
+    /* セクション共通 */
+    section {
+      padding: 4rem 0;
+    }
+
+    section:nth-child(even) {
+      background-color: var(--section-even);
+    }
+
+    section:nth-child(odd) {
+      background-color: var(--section-odd);
+    }
+
+    /* 見出し */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent);
+    }
+
+    .text-center h2:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* リスト */
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    /* カード */
+    .card {
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      border-radius: 8px 8px 0 0 !important;
+    }
+
+    /* スケジュール表 */
+    .schedule-row {
+      padding: 1rem;
+      border-bottom: 1px solid #dee2e6;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .schedule-row:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-date {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ボタン */
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background-color: #2d4c72;
+      border-color: #2d4c72;
+    }
+
+    .btn-outline-primary {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-outline-primary:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    /* リンク */
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* フッター */
+    footer {
+      background-color: var(--dark);
+      color: var(--light);
+      padding: 3rem 0;
+    }
+
+    /* レスポンシブ調整 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-white">
-  <!-- ヘッダーセクション -->
-  <section class="jumbotron jumbotron-fluid bg-marblebluegrad text-dark text-center">
-    <div class="container">
-      <br />
-      <h1>
-        <span>Bluegrass Lockdown</span> <span>Music Festival Vol.6</span>
-      </h1>
-      <p class="lead mt-3 text-dark">2025年6月22日 19時開始(JST)</p>
-      <br />
-    </div>
-  </section>
-
+<body>
   <!-- ナビゲーションバー -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-midnightblue sticky-top">
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
+      <a class="navbar-brand text-white" href="index.html">BLMF</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link text-dark" href="index.html">トップページ</a>
+            <a class="nav-link" href="index.html">トップページ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#event-details">イベント詳細</a>
+            <a class="nav-link" href="#event-details">イベント詳細</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#schedule">スケジュール</a>
+            <a class="nav-link" href="#schedule">スケジュール</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="#timetable">タイムテーブル</a>
+            <a class="nav-link" href="#timetable">タイムテーブル</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#sponsors">協賛・賞品</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              イベント情報
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#sponsors">協賛・賞品</a></li>
+              <li><a class="dropdown-item" href="#participation">参加方法</a></li>
+              <li><a class="dropdown-item" href="#venue">会場ページ</a></li>
+              <li><a class="dropdown-item" href="#youtube">Youtube配信</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#participation">参加方法</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              エントリー
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#entry-list">エントリーリスト</a></li>
+              <li><a class="dropdown-item" href="#entry-guide">エントリー方法</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#venue">会場ページ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#youtube">Youtube配信</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#entry-list">エントリーリスト</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#entry-guide">エントリー方法</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#caution">注意事項</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#contact">問い合わせ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#donation">お布施</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#faq">FAQ</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              その他
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#caution">注意事項</a></li>
+              <li><a class="dropdown-item" href="#contact">問い合わせ</a></li>
+              <li><a class="dropdown-item" href="#donation">お布施</a></li>
+              <li><a class="dropdown-item" href="#faq">FAQ</a></li>
+            </ul>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
+  <!-- ヘッダーセクション -->
+  <section class="header-section text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold text-white">
+        <span>Bluegrass Lockdown</span><br><span>Music Festival Vol.6</span>
+      </h1>
+      <p class="lead mt-4 text-white">2025年6月22日 19時開始(JST)</p>
+      <a href="#event-details" class="btn btn-light btn-lg mt-3">詳細を見る</a>
+    </div>
+  </section>
+
   <!-- イベント詳細セクション -->
-  <section id="event-details" class="jumbotron jumbotron-fluid text-dark text-center">
-    <div class="container p-2">
-      <h1>イベント詳細</h1>
-      <div class="text-start">
-        <p>
-          <span>Bluegrass Lockdown Music Festival Vol.6は、</span><span>ブルーグラス音楽とバーチャル空間が融合した</span><span>オンラインフェスティバルです。</span>
-        </p>
-        <p>
-          <span>VRChat Group+ インスタンスで開催。</span>
-          <span>合わせて Youtube/Twitch で配信予定。</span>
-        </p>
-        <img src="Cluster_BLMF5.png" class="img-fluid" alt="Bluegrass Lockdown Music Festival Vol.6 virtual venue illustration">
-      </div>
-    </div>
-
-    <!-- スケジュールセクション -->
-    <div id="schedule" class="container p-2">
-      <h2>スケジュール</h2>
-      <div class="text-start container-fluid">
-        <div class="row row-cols-1 border-bottom border-light">
-          <div class="col col-5 p-0">2025年4月26日</div>
-          <div class="col col-7">エントリー開始</div>
-        </div>
-        <div class="row row-cols-1 border-bottom border-light">
-          <div class="col col-5 p-0"><span>2025年6月8日</span><span>23:59 GMT</span></div>
-          <div class="col col-7"><span>ショート部門</span> <span>エントリー締め切り</span></div>
-        </div>
-        <div class="row row-cols-1 border-bottom border-light">
-          <div class="col col-5 p-0"><span>2025年6月15日</span><span>23:59 GMT</span></div>
-          <div class="col col-7"><span>通常部門</span> <span>エントリー締め切り</span></div>
-        </div>
-        <div class="row row-cols-1 border-bottom border-light">
-          <div class="col col-5 p-0"><span>2025年6月20日まで</span></div>
-          <div class="col col-7">タイムテーブル発表</div>
-        </div>
-        <div class="row row-cols-1 border-bottom border-light">
-          <div class="col col-5 p-0"><span>2025年6月22日 19時 JST</span></div>
-          <div class="col col-7">開催予定</div>
+  <section id="event-details" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center mb-5">
+          <h2>イベント詳細</h2>
         </div>
       </div>
-      <br />
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title h4 mb-4">Bluegrass Lockdown Music Festival とは</h3>
+              <p class="card-text">
+                ブルーグラス音楽とバーチャル空間が融合したオンラインフェスティバルです。VRChat Group+ インスタンスで開催され、合わせて Youtube/Twitch で配信予定です。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="Cluster_BLMF5.png" class="img-fluid rounded shadow"
+            alt="Bluegrass Lockdown Music Festival Vol.6 virtual venue illustration">
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- タイムテーブルセクション -->
-    <div id="timetable" class="container p-2">
-      <h2>タイムテーブル</h2>
+  <!-- スケジュールセクション -->
+  <section id="schedule" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center mb-5">
+          <h2>スケジュール</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body p-0">
+              <div class="schedule-row">
+                <div class="col-5 schedule-date">2025年4月26日</div>
+                <div class="col-7">エントリー開始</div>
+              </div>
+              <div class="schedule-row">
+                <div class="col-5 schedule-date">2025年6月8日 23:59 GMT</div>
+                <div class="col-7">ショート部門 エントリー締め切り</div>
+              </div>
+              <div class="schedule-row">
+                <div class="col-5 schedule-date">2025年6月15日 23:59 GMT</div>
+                <div class="col-7">通常部門 エントリー締め切り</div>
+              </div>
+              <div class="schedule-row">
+                <div class="col-5 schedule-date">2025年6月20日まで</div>
+                <div class="col-7">タイムテーブル発表</div>
+              </div>
+              <div class="schedule-row">
+                <div class="col-5 schedule-date">2025年6月22日 19時 JST</div>
+                <div class="col-7">開催予定</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- タイムテーブルセクション -->
+  <section id="timetable" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 border-bottom pb-2">タイムテーブル</h2>
       <div class="text-start container-fluid">
         <p>タイムテーブルは6月20日までに公開予定です。</p>
       </div>
     </div>
+  </section>
 
-    <!-- 協賛・賞品提供セクション -->
-    <div id="sponsors" class="container p-2">
-      <h2>協賛・賞品提供</h2>
+  <!-- 協賛・賞品提供セクション -->
+  <section id="sponsors" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 border-bottom pb-2">協賛・賞品提供</h2>
       <div class="text-start">
         <p>協賛・SpecialThanks</p>
         <ul class="list-disc pl-5 text-dark">
@@ -152,10 +380,12 @@
         </ul>
       </div>
     </div>
+  </section>
 
-    <!-- 当日のオンライン会場参加方法セクション -->
-    <div id="participation" class="container p-2">
-      <h2><span>当日のオンライン会場<br />参加方法</span></h2>
+  <!-- 当日のオンライン会場参加方法セクション -->
+  <section id="participation" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 border-bottom pb-2"><span>当日のオンライン会場<br />参加方法</span></h2>
       <div class="text-start">
         <p>
           <span>当日はVRChatと</span><span>Youtube/Twitchで</span><span>視聴が可能ですが、</span><span>メタバース空間で楽しんで</span><span>こそのBLMF！</span><br />
@@ -165,10 +395,12 @@
         </p>
       </div>
     </div>
+  </section>
 
-    <!-- 会場ページセクション -->
-    <div id="venue" class="container p-2">
-      <h2><span>VRChat</span><span>イベントページ</span></h2>
+  <!-- 会場ページセクション -->
+  <section id="venue" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 border-bottom pb-2"><span>VRChat</span><span>イベントページ</span></h2>
       <div class="text-start">
         <p>
           <span>VRChatからの</span><span>会場の入口は</span><span>こちらのページから！</span><br />
@@ -176,10 +408,12 @@
         </p>
       </div>
     </div>
+  </section>
 
-    <!-- Youtube/Twitch配信セクション -->
-    <div id="youtube" class="container p-2">
-      <h2><span>Youtube/Twitch</span><span>配信</span></h2>
+  <!-- Youtube/Twitch配信セクション -->
+  <section id="youtube" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 border-bottom pb-2"><span>Youtube/Twitch</span><span>配信</span></h2>
       <div class="text-start">
         <p>
           <span>Youtube/Twitch配信URLは開催前に公開されます。</span><br />
@@ -211,7 +445,7 @@
           <a href="https://forms.gle/s7irN32K7XfpYBESA" target="_blank" class="text-dark text-underline">https://forms.gle/s7irN32K7XfpYBESA</a>
         </p>
         <p>
-          <span>ファイルアップロードの機能のため Google Account が必須になっているので、</span><span>Google Account ない人はメール</span> 
+          <span>ファイルアップロードの機能のため Google Account が必須になっているので、</span><span>Google Account ない人はメール</span>
           <a href="mailto:bluegrass.lockdown.music.festival@gmail.com" class="text-dark text-underline">bluegrass.lockdown.music.festival@gmail.com</a> <span>で受け付けます。</span>
         </p>
         <p>
@@ -246,86 +480,48 @@
   </section>
 
   <!-- 注意事項セクション -->
-  <section id="caution" class="jumbotron jumbotron-fluid text-dark text-left">
-    <div class="container p-2">
-      <h1 class="text-center">注意事項</h1>
-      <ul class="list-disc pl-5 text-dark">
-        <li>著作権に配慮した楽曲選択をお願いします</li>
-        <li>投稿された動画はイベント中に公開されます</li>
-        <li>他の参加者への敬意を持った行動をお願いします</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 問い合わせセクション -->
-  <section id="contact" class="jumbotron jumbotron-fluid text-dark text-left">
-    <div class="container p-2">
-      <h1 class="text-center">問い合わせ</h1>
-      <div class="text-start">
-        <p>
-          <span>以下の方法でお問い合わせいただけます：</span>
-        </p>
-        <ul class="list-disc pl-5 text-dark">
-          <li class="pb-2">問い合わせフォーム<br />
-            （準備中）
-          </li>
-          <li class="pb-2">公式 twitter<br />
-            <a href="https://twitter.com/bluemoon_fes" target="_blank" class="text-dark text-underline">@bluemoon_fes</a>
-          </li>
-          <li class="pb-2">Discord<br />
-            （準備中）
-          </li>
-          <li class="pb-2">Bluemoon サイト<br />
-            <a href="https://bluemoon-fes.web.app/" target="_blank" class="text-dark text-underline">https://bluemoon-fes.web.app/</a>
-          </li>
-        </ul>
+  <section id="caution" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center mb-5">
+          <h2>注意事項</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">著作権に配慮した楽曲選択をお願いします</li>
+                <li class="list-group-item">投稿された動画はイベント中に公開されます</li>
+                <li class="list-group-item">他の参加者への敬意を持った行動をお願いします</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- お布施セクション -->
-  <section id="donation" class="jumbotron jumbotron-fluid text-dark text-left">
-    <div class="container p-2">
-      <h1 class="text-center">お布施</h1>
-      <p>
-        <span>イベント運営へのサポートとして、</span><span>お布施（寄付）を受け付けております。</span><br />
-        <span>詳細は準備中です。</span>
-      </p>
+  <!-- フッターセクション -->
+  <footer class="text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <h4>Bluegrass Lockdown Music Festival</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <a href="index.html" class="btn btn-outline-light">トップページに戻る</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>© 2025 Bluegrass Lockdown Music Festival</p>
+        </div>
+      </div>
     </div>
-  </section>
-
-  <!-- FAQセクション -->
-  <section id="faq" class="jumbotron jumbotron-fluid text-dark text-left">
-    <div class="container p-2">
-      <h1 class="text-center">FAQ</h1>
-      <ul class="list-disc text-dark">
-        <li>
-          <h5>参加費はかかりますか？</h5>
-          <p>
-            <span>参加費は無料です。</span><span>ただし、お布施（寄付）は</span><span>歓迎しております。</span>
-          </p>
-        </li>
-        <li>
-          <h5>動画を用意してからエントリーすべき？</h5>
-          <p>
-            <span>エントリー時点では動画のURLが未定でも構いません。</span><span>締切までに動画を用意してください。</span>
-          </p>
-        </li>
-        <li>
-          <h5>動画が時間に満たないのですが...</h5>
-          <p>
-            <span>通常部門は3分以上、</span><span>ショート部門は1分程度を</span><span>目安としています。</span><span>ご不明点はお問い合わせください。</span>
-          </p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- フッター -->
-  <footer class="text-dark text-center bg-midnightblue p-4">
-    <p>© 2025 Bluegrass Lockdown Music Festival</p>
-    <a href="index.html" class="btn btn-outline-dark mt-2">トップページに戻る</a>
   </footer>
-</body>
 
-</html>
+  <!-- ...existing code... -->
