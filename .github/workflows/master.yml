@@ -17,6 +17,10 @@ jobs:
        with:
         service_account_key: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
         
+     - name: Set up Node.js
+       uses: actions/setup-node@v3
+       with:
+         node-version: '16.x'
      - name: Install Firebase CLI
        run: npm install -g firebase-tools
 
