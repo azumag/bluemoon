@@ -11,6 +11,7 @@
     "source": "functions"
   },
   "hosting": {
+    "site": "bluemoon-82c0b",
     "public": "static",
     "ignore": [
       "firebase.json",
