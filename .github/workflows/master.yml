@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@master
-      with:
-        node-version: '14.x'
-    - uses: w9jds/firebase-action@master
-      with:
-        args: deploy --only hosting
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+     - name: Checkout code
+       uses: actions/checkout@v4
+     - name: Decode Firebase service account key
+       env:
+         FIREBASE_SERVICE_ACCOUNT_KEY_BASE64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY_BASE64 }}
+       run: |
+          echo "$FIREBASE_SERVICE_ACCOUNT_KEY_BASE64" | base64 -d > ./firebase-key.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/firebase-key.json" >> $GITHUB_ENV
+     - name: Deploy to Firebase Hosting
+       run: firebase deploy --only hosting
+       
