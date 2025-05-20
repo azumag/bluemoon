@@ -8,7 +8,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles_white.css">
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -18,11 +18,312 @@
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
   <script type="text/javascript" src="slick.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      color: #333;
+      /* background-color is set by styles_white.css or section specific styles */
+    }
+
+    /* カラースキーム */
+    :root {
+      --primary: #3a5f8e;
+      --secondary: #6c8ab7;
+      --accent: #f39c12;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --white: #ffffff;
+      --section-odd: #ffffff;
+      --section-even: #eef2f7;
+    }
+
+    /* ナビゲーション */
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: var(--primary) !important;
+    }
+
+    .nav-link {
+      color: var(--white) !important;
+      font-weight: 500;
+      padding: 0.8rem 1rem !important;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent) !important;
+      transform: translateY(-2px);
+    }
+
+    /* ヘッダー */
+    .header-section { /* Applied to the main header */
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      padding: 5rem 0;
+    }
+
+    /* セクション共通 */
+    section.jumbotron { /* Ensure jumbotron class is also styled if used */
+      padding: 4rem 0;
+    }
+
+    section.jumbotron:nth-of-type(even) { /* Adjusted for potentially mixed section types */
+      background-color: var(--section-even);
+    }
+
+    section.jumbotron:nth-of-type(odd) {
+      background-color: var(--section-odd);
+    }
+    
+    /* Ensure direct section styling is also available */
+    section:nth-of-type(even) {
+        background-color: var(--section-even);
+    }
+    section:nth-of-type(odd) {
+        background-color: var(--section-odd);
+    }
+
+
+    /* 見出し */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .header-section h1, .header-section p { /* Ensure header text is white */
+        color: var(--white);
+    }
+    
+    section:not(.header-section):not(.bg-midnightblue):not(.bg-royalblue):not(.text-white) h1, 
+    section:not(.header-section):not(.bg-midnightblue):not(.bg-royalblue):not(.text-white) h2,
+    section:not(.header-section):not(.bg-midnightblue):not(.bg-royalblue):not(.text-white) p,
+    section:not(.header-section):not(.bg-midnightblue):not(.bg-royalblue):not(.text-white) span,
+    section:not(.header-section):not(.bg-midnightblue):not(.bg-royalblue):not(.text-white) div {
+        color: var(--dark); /* Default text color for sections */
+    }
+    
+    /* 背景色がある場合のテキスト色を強制的に設定 */
+    section.text-white h1,
+    section.text-white h2,
+    section.text-white p,
+    section.text-white span,
+    section.text-white div,
+    section.text-white a {
+        color: var(--white) !important; /* Override for sections that need white text */
+    }
+    
+    section.bg-midnightblue {
+        background-color: var(--primary) !important;
+    }
+    
+    section.bg-royalblue {
+        background-color: var(--secondary) !important;
+    }
+    
+    section.bg-midnightblue h1,
+    section.bg-midnightblue h2,
+    section.bg-midnightblue p,
+    section.bg-midnightblue span,
+    section.bg-midnightblue div,
+    section.bg-midnightblue a,
+    section.bg-royalblue h1,
+    section.bg-royalblue h2,
+    section.bg-royalblue p,
+    section.bg-royalblue span,
+    section.bg-royalblue div,
+    section.bg-royalblue a {
+        color: var(--white) !important;
+    }
+
+
+    h1 {
+      font-size: 2.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent);
+    }
+
+    .text-center h2:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* リスト */
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    /* カード */
+    .card {
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      border-radius: 8px 8px 0 0 !important;
+    }
+    
+    .card.bg-midnightblue {
+        background-color: var(--primary) !important; /* Example: map old class to new theme */
+    }
+    .card.bg-midnightblue .card-title, 
+    .card.bg-midnightblue .card-text {
+        color: var(--white) !important;
+    }
+    .card.bg-royalblue {
+        background-color: var(--secondary) !important; /* Example: map old class to new theme */
+    }
+    .card.bg-royalblue .card-title, 
+    .card.bg-royalblue .card-text, 
+    .card.bg-royalblue .btn {
+        color: var(--white) !important;
+    }
+    .card.bg-royalblue .btn-outline-light {
+        border-color: var(--white);
+    }
+    .card.bg-royalblue .btn-outline-light:hover {
+        background-color: var(--white);
+        color: var(--secondary) !important;
+    }
+
+
+    /* スケジュール表 */
+    .schedule-row {
+      padding: 1rem;
+      border-bottom: 1px solid #dee2e6;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .schedule-row:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-date {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ボタン */
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background-color: #2d4c72;
+      border-color: #2d4c72;
+    }
+
+    .btn-outline-primary {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-outline-primary:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+    
+    .btn-outline-light { /* Ensure this is styled for dark backgrounds */
+        color: var(--light);
+        border-color: var(--light);
+    }
+    .btn-outline-light:hover {
+        background-color: var(--light);
+        color: var(--dark);
+    }
+
+    /* リンク */
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    
+    section a.text-white.text-underline { /* Specific link style from old CSS */
+        color: var(--white) !important;
+        text-decoration: underline !important;
+    }
+    section a.text-white.text-underline:hover {
+        color: var(--accent) !important;
+    }
+
+
+    /* フッター */
+    footer {
+      background-color: var(--dark);
+      color: var(--light) !important; /* Ensure text is light */
+      padding: 3rem 0;
+    }
+    footer p {
+        color: var(--light) !important; /* Ensure paragraph text is light */
+    }
+
+    /* レスポンシブ調整 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-black">
+<body class="">
   <!-- ヘッダーセクション -->
-  <section class="jumbotron jumbotron-fluid bg-marblebluegrad text-white text-center">
+  <section class="jumbotron jumbotron-fluid header-section text-center">
     <div class="container">
       <br />
       <h1>
@@ -34,7 +335,7 @@
   </section>
 
   <!-- ナビゲーションバー -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-midnightblue sticky-top">
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +361,7 @@
   </nav>
 
   <!-- BLMF紹介セクション -->
-  <section id="about" class="jumbotron jumbotron-fluid bg-royalblue text-white text-center">
+  <section id="about" class="jumbotron jumbotron-fluid text-center">
     <div class="container p-2">
       <h1 class="mt-4 mb-4">Bluegrass Lockdown Music Festival</h1>
       <p class="fs-2">
@@ -91,7 +392,7 @@
   </section>
 
   <!-- NewsLineセクション -->
-  <section id="news" class="jumbotron jumbotron-fluid text-white text-center">
+  <section id="news" class="jumbotron jumbotron-fluid text-center">
     <div class="container p-2">
       <h1>NewsLine</h1>
       <div class="card bg-midnightblue text-white mb-3">
@@ -119,7 +420,7 @@
   </section>
 
   <!-- ブルーグラスとはセクション -->
-  <section id="bluegrass" class="jumbotron jumbotron-fluid text-white text-center bg-midnightblue">
+  <section id="bluegrass" class="jumbotron jumbotron-fluid text-center text-white bg-midnightblue">
     <div class="container p-2">
       <h1>
         <span>ブルーグラス音楽</span> <span>(Bluegrass Music)</span>
@@ -152,7 +453,7 @@
 
 
   <!-- イベント一覧セクション -->
-  <section id="events" class="jumbotron jumbotron-fluid text-white text-center bg-midnightblue">
+  <section id="events" class="jumbotron jumbotron-fluid text-center text-white bg-midnightblue">
     <div class="container p-2">
       <h1>イベント一覧</h1>
       <div class="row row-cols-1 row-cols-md-2 g-4 mt-3">
@@ -179,11 +480,10 @@
   </section>
 
   <!-- フッター -->
-  <footer class="text-white text-center bg-midnightblue p-4">
+  <footer class="text-center p-4">
     <p>© 2023-2025 Bluegrass Lockdown Music Festival</p>
   </footer>
 
   <!-- slick.jsで設定済みのため、ここでの追加設定は不要 -->
 </body>
-
 </html>
