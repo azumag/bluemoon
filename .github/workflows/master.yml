@@ -21,7 +21,7 @@ jobs:
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id: <YOUR_PROJECT_ID>
+          project_id: bluemoon-82c0b
           install_components: 'firebase'
 
       - name: Set up Node.js
@@ -33,4 +33,5 @@ jobs:
         run: npm install -g firebase-tools
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --project <YOUR_PROJECT_ID>
+        run: firebase deploy --only hosting --project bluemoon-82c0b
+
