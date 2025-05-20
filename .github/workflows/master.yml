@@ -16,6 +16,7 @@ jobs:
        uses: google-github-actions/setup-gcloud@v2
        with:
         service_account_key: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+        export_default_credentials: true
         
      - name: Set up Node.js
        uses: actions/setup-node@v3
