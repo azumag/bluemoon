@@ -28,3 +28,6 @@ then access http://localhost:283
 docker-compose run --rm yarn yarn build
 firebase deploy
 ```
+
+## Firebase Configuration
+The site is configured to deploy to the Firebase hosting site "bluemoon-82c0b" as specified in the firebase.json file.

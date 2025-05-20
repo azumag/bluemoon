@@ -19,3 +19,6 @@ jobs:
         args: deploy --only hosting
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        # NOTE: FIREBASE_TOKEN is deprecated and will be removed in future versions.
+        # Consider using a service account key with GOOGLE_APPLICATION_CREDENTIALS instead.
+        # See: https://cloud.google.com/docs/authentication/getting-started
