@@ -22,8 +22,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: bluemoon-82c0b
-          install_components: 'firebase'
-
+   
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
