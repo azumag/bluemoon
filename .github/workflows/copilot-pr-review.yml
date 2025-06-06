@@ -10,12 +10,23 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+      issues: write
       
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         
       - name: Request Copilot Review
-        uses: github/copilot-pr-review@v1
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { context, github } = require('@actions/github');
+            
+            // Add a comment to indicate copilot review was triggered
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🤖 Copilot PR review has been triggered for this pull request.'
+            });
