@@ -2,7 +2,7 @@ name: Copilot PR Review
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   copilot-review:
@@ -10,12 +10,41 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+      issues: write
       
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         
       - name: Request Copilot Review
-        uses: github/copilot-pr-review@v1
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              // Request Copilot as a reviewer for the PR
+              await github.rest.pulls.requestReviewers({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                reviewers: ['copilot']
+              });
+              
+              // Add a comment to indicate copilot reviewer was assigned
+              await github.rest.issues.createComment({
+                issue_number: context.payload.pull_request.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '🤖 Copilot has been assigned as a reviewer for this pull request.'
+              });
+            } catch (error) {
+              console.log('Error requesting Copilot as reviewer:', error.message);
+              
+              // Fallback: Add a comment indicating the review was triggered
+              await github.rest.issues.createComment({
+                issue_number: context.payload.pull_request.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '🤖 Copilot PR review has been triggered for this pull request. (Note: Could not assign as reviewer - user may need to be added manually)'
+              });
+            }
