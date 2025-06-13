@@ -12,27 +12,32 @@ jobs:
       pull-requests: write
       
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Copilot PR Summary
-        uses: github/copilot-pr-summary@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          
       - name: Request Copilot Code Review
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             try {
+              // Request Copilot as a reviewer
               await github.rest.pulls.requestReviewers({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 pull_number: context.payload.pull_request.number,
-                team_reviewers: ['copilot']
+                reviewers: ['github-copilot[bot]']
               });
               console.log('Successfully requested Copilot code review');
             } catch (error) {
               console.log('Error requesting Copilot review:', error.message);
+              // Try alternative approach
+              try {
+                await github.rest.issues.createComment({
+                  issue_number: context.payload.pull_request.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: '@github-copilot review'
+                });
+                console.log('Requested Copilot review via comment');
+              } catch (commentError) {
+                console.log('Error creating review comment:', commentError.message);
+              }
             }
