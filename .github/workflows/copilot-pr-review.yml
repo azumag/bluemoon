@@ -10,41 +10,34 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-      issues: write
       
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Request Copilot Review
-        uses: actions/github-script@v6
+      - name: Request Copilot Code Review
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             try {
-              // Request Copilot as a reviewer for the PR
+              // Request Copilot as a reviewer
               await github.rest.pulls.requestReviewers({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 pull_number: context.payload.pull_request.number,
-                reviewers: ['copilot']
+                reviewers: ['github-copilot[bot]']
               });
-              
-              // Add a comment to indicate copilot reviewer was assigned
-              await github.rest.issues.createComment({
-                issue_number: context.payload.pull_request.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: '🤖 Copilot has been assigned as a reviewer for this pull request.'
-              });
+              console.log('Successfully requested Copilot code review');
             } catch (error) {
-              console.log('Error requesting Copilot as reviewer:', error.message);
-              
-              // Fallback: Add a comment indicating the review was triggered
-              await github.rest.issues.createComment({
-                issue_number: context.payload.pull_request.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: '🤖 Copilot PR review has been triggered for this pull request. (Note: Could not assign as reviewer - user may need to be added manually)'
-              });
+              console.log('Error requesting Copilot review:', error.message);
+              // Try alternative approach
+              try {
+                await github.rest.issues.createComment({
+                  issue_number: context.payload.pull_request.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: '@github-copilot review'
+                });
+                console.log('Requested Copilot review via comment');
+              } catch (commentError) {
+                console.log('Error creating review comment:', commentError.message);
+              }
             }
