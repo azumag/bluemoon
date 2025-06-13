@@ -17,27 +17,89 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            try {
-              // Request Copilot as a reviewer
-              await github.rest.pulls.requestReviewers({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.payload.pull_request.number,
-                reviewers: ['github-copilot[bot]']
-              });
-              console.log('Successfully requested Copilot code review');
-            } catch (error) {
-              console.log('Error requesting Copilot review:', error.message);
-              // Try alternative approach
+            const prNumber = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            
+            console.log(`Processing PR #${prNumber} in ${owner}/${repo}`);
+            
+            // Try multiple approaches to trigger Copilot review
+            let reviewRequested = false;
+            
+            // Approach 1: Try requesting Copilot as reviewer with different identifiers
+            const copilotIdentifiers = ['copilot', 'github-copilot[bot]', 'copilot[bot]'];
+            
+            for (const identifier of copilotIdentifiers) {
+              if (reviewRequested) break;
+              
+              try {
+                await github.rest.pulls.requestReviewers({
+                  owner,
+                  repo,
+                  pull_number: prNumber,
+                  reviewers: [identifier]
+                });
+                console.log(`Successfully requested Copilot review with identifier: ${identifier}`);
+                reviewRequested = true;
+              } catch (error) {
+                console.log(`Failed to request review with ${identifier}: ${error.message}`);
+              }
+            }
+            
+            // Approach 2: Try team-based assignment
+            if (!reviewRequested) {
+              try {
+                await github.rest.pulls.requestReviewers({
+                  owner,
+                  repo,
+                  pull_number: prNumber,
+                  team_reviewers: ['copilot']
+                });
+                console.log('Successfully requested Copilot team review');
+                reviewRequested = true;
+              } catch (error) {
+                console.log(`Failed to request team review: ${error.message}`);
+              }
+            }
+            
+            // Approach 3: Use comment-based triggers
+            if (!reviewRequested) {
+              const commentBodies = [
+                '@copilot review',
+                '@copilot please review this PR',
+                '@github/copilot review'
+              ];
+              
+              for (const body of commentBodies) {
+                try {
+                  await github.rest.issues.createComment({
+                    issue_number: prNumber,
+                    owner,
+                    repo,
+                    body
+                  });
+                  console.log(`Posted Copilot review request comment: ${body}`);
+                  reviewRequested = true;
+                  break;
+                } catch (error) {
+                  console.log(`Failed to create comment "${body}": ${error.message}`);
+                }
+              }
+            }
+            
+            if (!reviewRequested) {
+              console.log('All Copilot review request methods failed');
+              // Post a informational comment
               try {
                 await github.rest.issues.createComment({
-                  issue_number: context.payload.pull_request.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  body: '@github-copilot review'
+                  issue_number: prNumber,
+                  owner,
+                  repo,
+                  body: '🤖 Unable to automatically request Copilot review. You can manually request it by commenting `@copilot review`'
                 });
-                console.log('Requested Copilot review via comment');
-              } catch (commentError) {
-                console.log('Error creating review comment:', commentError.message);
+              } catch (error) {
+                console.log('Failed to post fallback comment:', error.message);
               }
+            } else {
+              console.log('Copilot review successfully requested!');
             }
