@@ -93,3 +93,77 @@ h2 span {
   color: #fff;
   background-color: #333;
 }
+
+/* ヘッダーセクションのスタイル */
+.header-section {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--white);
+}
+
+.header-section h1,
+.header-section h2,
+.header-section p,
+.header-section span,
+.header-section .lead {
+  color: var(--white) !important;
+}
+
+/* 次回開催カードのスタイル */
+.next-event-card {
+  max-width: 900px;
+  background-color: rgba(108, 138, 183, 0.95);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.next-event-card .card-body {
+  padding: 1.5rem;
+}
+
+.next-event-card .badge {
+  background: linear-gradient(45deg, #ffc107, #ff9800);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  display: inline-block;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.next-event-card .date-display {
+  padding: 0.8rem 1.5rem 0.4rem;
+  margin-bottom: -0.3rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.next-event-card .date-display span {
+  font-size: 2rem;
+  background: linear-gradient(45deg, #ffc107, #ff9800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: inline-block;
+  transition: transform 0.3s ease;
+  color: transparent !important;
+}
+
+.next-event-card .time-display {
+  font-size: 1.3rem;
+  margin-top: -0.4rem;
+  color: var(--white) !important;
+}
+
+.next-event-card .time-display .timezone {
+  font-size: 1rem;
+}
+
+.next-event-card .btn-outline-light {
+  transition: all 0.3s ease;
+  border-width: 2px;
+  position: relative;
+  overflow: hidden;
+}
