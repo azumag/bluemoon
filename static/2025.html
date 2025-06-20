@@ -214,6 +214,12 @@
       padding: 3rem 0;
     }
 
+    /* タイムテーブル専用スタイル */
+    .card-header-accent {
+      background-color: var(--accent) !important;
+      border-color: var(--accent) !important;
+    }
+
     /* レスポンシブ調整 */
     @media (max-width: 768px) {
       h1 {
@@ -375,10 +381,10 @@
         <div class="col-lg-4 mb-4">
           <div class="card h-100 border-primary">
             <div class="card-header text-center">
-              <h4 class="mb-0 text-white">
+              <h3 class="h4 mb-0 text-white">
                 <span class="badge bg-light text-primary me-2">1</span>
                 前半
-              </h4>
+              </h3>
             </div>
             <div class="card-body">
               <ul class="list-unstyled mb-0">
@@ -396,11 +402,11 @@
         </div>
         <div class="col-lg-4 mb-4">
           <div class="card h-100 border-warning">
-            <div class="card-header text-center" style="background-color: var(--accent); border-color: var(--accent);">
-              <h4 class="mb-0 text-white">
+            <div class="card-header text-center card-header-accent">
+              <h3 class="h4 mb-0 text-white">
                 <span class="badge bg-light text-dark me-2">2</span>
                 ショート
-              </h4>
+              </h3>
             </div>
             <div class="card-body">
               <ul class="list-unstyled mb-0">
@@ -415,10 +421,10 @@
         <div class="col-lg-4 mb-4">
           <div class="card h-100 border-primary">
             <div class="card-header text-center">
-              <h4 class="mb-0 text-white">
+              <h3 class="h4 mb-0 text-white">
                 <span class="badge bg-light text-primary me-2">3</span>
                 後半
-              </h4>
+              </h3>
             </div>
             <div class="card-body">
               <ul class="list-unstyled mb-0">
