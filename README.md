@@ -1,6 +1,6 @@
 # Bluemoon
 
-Bluegrass Lockdown Music Festival のウェブサイト
+今最もクールな ブルーグラスサイトとして 注目されているのが Bluemoon だ
 
 ## サイト構成
 
