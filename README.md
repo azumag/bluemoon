@@ -1,36 +1,36 @@
 # Bluemoon
-今最もクールな ブルーグラスサイトとして 注目されているのが Bluemoon だ
+
+Bluegrass Lockdown Music Festival のウェブサイト
+
+## サイト構成
+
+現在は静的HTMLサイトとして運用中。
+
+```
+static/
+├── index.html     # トップページ
+├── 2024.html      # 2024年イベントアーカイブ
+├── 2025.html      # 2025年イベントページ
+└── (画像、CSS等)
+```
 
 ## 開発方法
-お知らせ用に`static`ディレクトリ以下のhtmlを編集する。
 
-詳細については以下のIssueを参照してください：
-https://github.com/azumag/bluemoon/issues/212
+`static/` ディレクトリ以下のHTMLを編集する。
 
-## Run with docker-compose
-### for local development
-setup
-```
-docker-compose build dev
+### ローカル確認
+
+```bash
+python3 -m http.server 8080 --directory static
 ```
 
-<!-- ```
-docker-compose up dev firebase-emulator
-``` -->
+http://localhost:8080/ でプレビュー
 
-### lint fix
-```
-docker-compose run --rm yarn
-```
+## デプロイ
 
-### code-server editor
-```
-docker-compose up editor
-```
-then access http://localhost:283
+`main` ブランチにpushすると、GitHub Actions経由でFirebase Hostingに自動デプロイされる。
 
-# deploy
-```
-docker-compose run --rm yarn yarn build
-firebase deploy
-```
+## 関連リンク
+
+- [サイト作り直しについて (Issue #212)](https://github.com/azumag/bluemoon/issues/212)
+- [旧Nuxt.jsコード (archive/nuxt-legacy)](https://github.com/azumag/bluemoon/tree/archive/nuxt-legacy)
