@@ -37,6 +37,23 @@ npm run preview   # ビルド結果をローカルで確認
 
 新しい年度イベントページを追加する場合は `src/content/events/` に `.mdx` ファイルを1つ追加するだけで `/events/<slug>` に自動生成されます。
 
+### コンテンツ管理(Sveltia CMS)
+
+`https://www.bluemoon.works/admin/` にSveltia CMSを配置しています。`events` / `news` / `pages` コレクションを管理でき、GitHub OAuthでログインして変更をGitHubリポジトリへ直接commitします。
+
+- CMS設定: `public/admin/config.yml`
+- CMS本体: `public/admin/index.html`(CDNから読み込み)
+- OAuth Worker: `workers/sveltia-cms-auth/`(GitHubログイン処理用)
+
+編集者のアカウントを追加するには、GitHubでリポジトリ `azumag/bluemoon` にそのユーザーを collaborator として追加してください。
+
+#### 画像の格納先
+
+- **eventsのヒーロー画像**: `src/assets/events/` にアップロードされ、Astroで最適化されます
+- **news/pages本文の画像**: `public/images/` にアップロードされ、`/images/...` として配信されます
+
+`public/images/` が存在しない場合は空の `.gitkeep` を置いてください。
+
 ### 現行サイト(static/)
 
 ```bash
@@ -49,13 +66,22 @@ http://localhost:8080/ でプレビュー
 
 ### Cloudflare本番
 
-`main`ブランチにpushすると、`.github/workflows/main.yml`が次の順で実行され、Cloudflare Workersの`bluemoon`へデプロイします。
+`main`ブランチにpushすると、`.github/workflows/main.yml`が次の順で実行され、Cloudflare Workersの`bluemoon`(本番)と`sveltia-cms-auth`(CMS認証)へデプロイします。
 
 ```text
-npm ci → npm run check → npm run build → wrangler deploy
+npm ci → npm run check → npm run build → wrangler deploy (bluemoon)
+                                          → wrangler deploy (sveltia-cms-auth)
 ```
 
-初回だけ、GitHubリポジトリのActions Secretに`CLOUDFLARE_API_TOKEN`を登録してください。CloudflareダッシュボードでAccount → Workers Scripts → Editだけを許可したAPIトークンを作成し、値をGitHubのSettings → Secrets and variables → Actionsに保存します。アカウントIDは`wrangler.toml`の`account_id`を使用します。
+`sveltia-cms-auth` Workerの初回セットアップ:
+
+1. GitHubの `https://github.com/settings/applications/new` でOAuthアプリを登録。Authorization callback URLは `https://sveltia-cms-auth.tsubasa-azumagakito.workers.dev/callback`
+2. 発行されたClient ID / SecretをCloudflare Workersダッシュボード(`sveltia-cms-auth` → Settings → Variables)へ設定
+   - `GITHUB_CLIENT_ID`(通常変数)
+   - `GITHUB_CLIENT_SECRET`(Encrypt)
+   - `ALLOWED_DOMAINS`: `localhost:4321, www.bluemoon.works`(**必須**。認証エンドポイントの開放ドメインを制限するため。未設定だとCMSの認証が任意サイトから利用できてしまう)
+
+初回だけ、GitHubリポジトリのActions Secretに`CLOUDFLARE_API_TOKEN`を登録してください。Cloudflareダッシュボードで**アカウントレベル(全Workerスクリプト)**のデプロイ権限を許可したAPIトークンを作成します。`bluemoon`と`sveltia-cms-auth`の両方にデプロイするため、特定スクリプト名限定のトークンでは`sveltia-cms-auth`のデプロイが失敗します。値をGitHubのSettings → Secrets and variables → Actionsに保存します。アカウントIDは`wrangler.toml`の`account_id`を使用します。
 
 ローカルからデプロイする場合は、Cloudflare OAuthログイン済みの環境で次を実行します。
 

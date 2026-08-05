@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: azumag/bluemoon
+  branch: main
+  # sveltia-cms-auth Worker(デプロイ後に実際のURLへ更新)
+  base_url: https://sveltia-cms-auth.tsubasa-azumagakito.workers.dev
+
+# 本文中(markdown)で挿入する画像の格納先。`public/` 配下なので `/images/...` として配信される
+media_folder: /public/images
+public_folder: /images
+
+collections:
+  - name: events
+    label: イベント
+    label_singular: イベント
+    folder: src/content/events
+    extension: mdx
+    format: yaml-frontmatter
+    identifier_field: year
+    slug: '{{year}}'
+    create: true
+    delete: true
+    media_folder: /src/assets/events
+    public_folder: /src/assets/events
+    preview_path: /events/{{slug}}
+    fields:
+      - { name: title, label: タイトル, widget: string }
+      - { name: year, label: 年, widget: number, required: true }
+      - { name: volume, label: ボリューム, widget: string, required: false }
+      - { name: eventDate, label: 開催日時(表示文字列), widget: string, required: false }
+      - { name: summary, label: 概要, widget: text }
+      - { name: heroImage, label: ヒーロー画像, widget: image, required: false, media_folder: /src/assets/events, public_folder: /src/assets/events }
+      - { name: heroImageAlt, label: 画像代替テキスト, widget: string, required: false }
+      - { name: archiveLabel, label: アーカイブラベル, widget: string, required: false }
+      - { name: status, label: ステータス, widget: select, default: archived, options: [upcoming, archived] }
+      - { name: body, label: 本文, widget: markdown }
+
+  - name: news
+    label: ニュース
+    label_singular: ニュース
+    folder: src/content/news
+    extension: md
+    create: true
+    delete: true
+    fields:
+      - { name: title, label: タイトル, widget: string }
+      - { name: date, label: 日付(YYYY-MM-DD), widget: string, required: false }
+      - { name: sns, label: SNSリンク表示, widget: boolean, default: false }
+      - { name: body, label: 本文, widget: markdown }
+
+  - name: pages
+    label: ページ
+    label_singular: ページ
+    folder: src/content/pages
+    extension: md
+    create: true
+    delete: true
+    fields:
+      - { name: title, label: タイトル, widget: string }
+      - { name: description, label: 説明, widget: text, required: false }
+      - { name: body, label: 本文, widget: markdown }
