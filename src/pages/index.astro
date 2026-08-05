@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -8,25 +9,16 @@ import bluegrassImg from '../assets/site/bluegrass.png';
 import xLogo from '../assets/site/x-logo-small-white.png';
 import blueskyLogo from '../assets/site/bluesky_media_kit_logo_transparent_small_1.png';
 
-const newsItems = [
-  {
-    title: '各種SNSアカウントはこちら',
-    body: null,
-    sns: true,
-  },
-  {
-    title: '開催日決定',
-    body: '6月22日 19時開始(JST)に開催決定しました！詳細は随時更新します。',
-  },
-  {
-    title: 'エントリー締め切り日程',
-    body: '・ショート部門：6月8日<br />・通常部門：6月15日',
-  },
-  {
-    title: '2025年5月15日',
-    body: 'Webベース作成完了しました。エントリー開始は週末を予定しています。',
-  },
-];
+const newsEntries = (await getCollection('news')).sort((a, b) =>
+  (b.data.date ?? '').localeCompare(a.data.date ?? ''),
+);
+const newsItems = await Promise.all(
+  newsEntries.map(async (entry) => ({
+    title: entry.data.title,
+    sns: entry.data.sns,
+    Content: (await render(entry)).Content,
+  })),
+);
 ---
 
 <BaseLayout title="Bluegrass Lockdown Music Festival">
@@ -90,7 +82,9 @@ const newsItems = [
                 </a>
               </p>
             ) : (
-              <p class="card__text" set:html={item.body} />
+              <div class="card__text">
+                <item.Content />
+              </div>
             )}
           </div>
         </div>

@@ -1,0 +1,9 @@
+{
+  "name": "sveltia-cms-auth",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sveltia CMS GitHub OAuth authenticator (Cloudflare Worker)",
+  "scripts": {
+    "deploy": "wrangler deploy"
+  }
+}
