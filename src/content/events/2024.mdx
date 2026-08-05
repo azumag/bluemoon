@@ -4,24 +4,39 @@ volume: Vol.5
 year: 2024
 eventDate: 2024年5月26日 14時頃（JST）から
 summary: 2024年に開催されたBluegrass Lockdown Music Festival Vol.4のアーカイブ
-heroImage: /blmf2024header.png
+heroImage: ../../assets/events/2024/blmf2024header.png
 heroImageAlt: Bluegrass Lockdown Music Festival Vol.5
 status: archived
 ---
 
+import { Image } from 'astro:assets';
 import ScheduleTable from '../../components/ScheduleTable.astro';
 import Timetable from '../../components/Timetable.astro';
 import InfoCard from '../../components/InfoCard.astro';
 import CardGrid from '../../components/CardGrid.astro';
 import Gallery from '../../components/Gallery.astro';
+import bluegrassImg from '../../assets/site/bluegrass.png';
+import clusterImg from '../../assets/events/2024/Cluster_BLMF5.png';
+import clusterLogo from '../../assets/events/2024/logo_2line_A_solid.png';
+import youtubeIcon from '../../assets/events/2024/youtube_social_icon_red.png';
+import scene1 from '../../assets/site/scene1.png';
+import scene2 from '../../assets/events/2024/scene2.png';
+import scene3 from '../../assets/events/2024/scene3.png';
+import scene4 from '../../assets/events/2024/scene4.png';
+import scene5 from '../../assets/events/2024/scene5.png';
+import scene6 from '../../assets/events/2024/scene6.png';
+import scene7 from '../../assets/events/2024/scene7.png';
+import scene8 from '../../assets/events/2024/scene8.png';
+import scene9 from '../../assets/events/2024/scene9.png';
+import scene10 from '../../assets/events/2024/scene10.png';
 
 <p class="lead" style="font-size: 1.3rem;">ブルーグラス音楽 × Virtual 空間の融合フェス</p>
 
 <Gallery images={[
-  { src: '/scene1.png' }, { src: '/scene2.png' }, { src: '/scene3.png' },
-  { src: '/scene4.png' }, { src: '/scene5.png' }, { src: '/scene6.png' },
-  { src: '/scene7.png' }, { src: '/scene8.png' }, { src: '/scene9.png' },
-  { src: '/scene10.png' },
+  { src: scene1 }, { src: scene2 }, { src: scene3 },
+  { src: scene4 }, { src: scene5 }, { src: scene6 },
+  { src: scene7 }, { src: scene8 }, { src: scene9 },
+  { src: scene10 },
 ]} />
 
 ブルーグラス音楽作品を募集し，それらをネット上のVirtual会場にてライブストリーミングで放送します。
@@ -40,13 +55,13 @@ import Gallery from '../../components/Gallery.astro';
 
 近代においては楽器、リズムを含め様々に多様化しており、端的な意味でのルーツ・ミュージックにとどまらない、変化し続ける生きた音楽と言えます。
 
-<img src="/bluegrass.png" alt="bluegrass" style="max-width: 420px; margin: 1rem 0;" />
+<Image src={bluegrassImg} alt="bluegrass" format="webp" style="max-width: 420px; width: 100%; height: auto; margin: 1rem 0;" />
 
 ## イベント詳細
 
 [概要草案はこちら](https://docs.google.com/document/d/10vBFIZ0baMv_RcIMDBwfZhjlSUFG31N248M81--D5JA/edit#heading=h.gwyuy1itf1m)
 
-<img src="/Cluster_BLMF5.png" alt="Cluster_BLMF5" style="max-width: 480px; margin: 1rem 0;" />
+<Image src={clusterImg} alt="Cluster_BLMF5" format="webp" style="max-width: 480px; width: 100%; height: auto; margin: 1rem 0;" />
 
 ## 投票について
 
@@ -148,13 +163,13 @@ import Gallery from '../../components/Gallery.astro';
 
 Clusterからの会場の入口はこちらのページから！
 
-[![Clusterロゴ](/logo_2line_A_solid.png)](https://cluster.mu/e/8d69b864-f510-4949-a877-b3b417054728) [Clusterイベントページ](https://cluster.mu/e/8d69b864-f510-4949-a877-b3b417054728)
+<a href="https://cluster.mu/e/8d69b864-f510-4949-a877-b3b417054728"><Image src={clusterLogo} alt="Clusterロゴ" format="webp" width={48} /></a> [Clusterイベントページ](https://cluster.mu/e/8d69b864-f510-4949-a877-b3b417054728)
 
 ## Youtube配信
 
 Youtube配信URLはこちら！
 
-[![Youtubeアイコン](/youtube_social_icon_red.png)](https://www.youtube.com/live/mRxRoMelz9o?si=7uz1bLA5TwjlUsBn) [https://www.youtube.com/live/mRxRoMelz9o](https://www.youtube.com/live/mRxRoMelz9o?si=7uz1bLA5TwjlUsBn)
+<a href="https://www.youtube.com/live/mRxRoMelz9o?si=7uz1bLA5TwjlUsBn"><Image src={youtubeIcon} alt="Youtubeアイコン" format="webp" width={32} /></a> [https://www.youtube.com/live/mRxRoMelz9o](https://www.youtube.com/live/mRxRoMelz9o?si=7uz1bLA5TwjlUsBn)
 
 ## エントリーリスト
 

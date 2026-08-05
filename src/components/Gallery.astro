@@ -1,10 +1,13 @@
 ---
-interface Image {
-  src: string;
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface GalleryImage {
+  src: ImageMetadata;
   alt?: string;
 }
 interface Props {
-  images: Image[];
+  images: GalleryImage[];
   label?: string;
 }
 const { images, label = '開催時の様子' } = Astro.props;
@@ -14,7 +17,7 @@ const { images, label = '開催時の様子' } = Astro.props;
   <ul class="gallery__track">
     {images.map((img) => (
       <li class="gallery__item">
-        <img src={img.src} alt={img.alt ?? ''} loading="lazy" />
+        <Image src={img.src} alt={img.alt ?? ''} format="webp" loading="lazy" />
       </li>
     ))}
   </ul>

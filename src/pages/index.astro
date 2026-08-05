@@ -1,7 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import scene1 from '../assets/site/scene1.png';
+import bluegrassImg from '../assets/site/bluegrass.png';
+import xLogo from '../assets/site/x-logo-small-white.png';
+import blueskyLogo from '../assets/site/bluesky_media_kit_logo_transparent_small_1.png';
 
 const newsItems = [
   {
@@ -56,7 +61,7 @@ const newsItems = [
       <p class="lead" style="font-size: 1.5rem;">ブルーグラス音楽 × Virtual 空間の融合フェス</p>
 
       <div style="margin: 2rem 0;">
-        <img src="/scene1.png" alt="" style="max-width: 400px;" />
+        <Image src={scene1} alt="" format="webp" style="max-width: 400px; width: 100%; height: auto;" />
       </div>
 
       <div class="text-start">
@@ -78,10 +83,10 @@ const newsItems = [
             {item.sns ? (
               <p class="card__text sns-links">
                 <a href="https://x.com/bluegrass_moon" target="_blank" rel="noopener" aria-label="Visit Bluegrass Moon on X">
-                  <img alt="X logo" src="/x-logo-small-white.png" />
+                  <Image alt="X logo" src={xLogo} format="webp" width={20} height={20} />
                 </a>
                 <a href="https://bsky.app/profile/blmf-info.bsky.social" target="_blank" rel="noopener" aria-label="Visit BLMF Info on Bluesky">
-                  <img alt="Bluesky logo" src="/bluesky_media_kit_logo_transparent_small_1.png" />
+                  <Image alt="Bluesky logo" src={blueskyLogo} format="webp" width={20} height={20} />
                 </a>
               </p>
             ) : (
@@ -110,7 +115,7 @@ const newsItems = [
         </p>
         <p>近代においては楽器、リズムを含め様々に多様化しており、端的な意味でのルーツ・ミュージックにとどまらない、変化し続ける生きた音楽と言えます。</p>
       </div>
-      <img src="/bluegrass.png" alt="bluegrass" style="max-width: 480px; margin-top: 1rem;" />
+      <Image src={bluegrassImg} alt="bluegrass" format="webp" style="max-width: 480px; width: 100%; height: auto; margin-top: 1rem;" />
     </div>
   </section>
 
