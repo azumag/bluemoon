@@ -2,16 +2,7 @@ name: PR build check & preview
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
-    paths:
-      - 'src/**'
-      - 'public/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'astro.config.mjs'
-      - 'tsconfig.json'
-      - 'firebase.preview.json'
-      - '.github/workflows/pr-preview.yml'
+    types: [opened, synchronize, reopened, closed]
 
 concurrency:
   group: pr-preview-${{ github.event.pull_request.number }}
@@ -19,6 +10,7 @@ concurrency:
 
 jobs:
   build-and-preview:
+    if: github.event.action != 'closed'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -32,56 +24,42 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.x'
-          cache: 'npm'
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Check (astro check)
+      - name: Check
         run: npm run check
 
       - name: Build
         run: npm run build
 
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}'
-
-      - name: Set up gcloud CLI
-        uses: google-github-actions/setup-gcloud@v2
-        with:
-          project_id: bluemoon-82c0b
-
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
-
-      - name: Deploy preview channel
+      - name: Deploy preview Worker
         id: deploy
-        run: |
-          firebase hosting:channel:deploy "pr-${{ github.event.pull_request.number }}" \
-            --config firebase.preview.json \
-            --project bluemoon-82c0b \
-            --expires 7d \
-            --json > preview-output.json
-          cat preview-output.json
-          node -e "
-            const fs = require('fs');
-            const out = JSON.parse(fs.readFileSync('preview-output.json', 'utf8'));
-            const sites = out.result?.['bluemoon-82c0b'] ?? Object.values(out.result ?? {})[0] ?? {};
-            const url = sites.url ?? '';
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, \`url=\${url}\n\`);
-          "
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: deploy --name bluemoon-pr-${{ github.event.pull_request.number }}
 
       - name: Comment preview URL on PR
         uses: actions/github-script@v7
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.deployment-url }}
+          WORKER_NAME: bluemoon-pr-${{ github.event.pull_request.number }}
         with:
           script: |
-            const url = `${{ steps.deploy.outputs.url }}`;
+            const url = process.env.PREVIEW_URL;
+            if (!url) {
+              core.setFailed('Wrangler did not return a workers.dev deployment URL');
+              return;
+            }
+
             const marker = '<!-- pr-preview-comment -->';
             const body = [
               marker,
-              `🔍 プレビューをデプロイしました: ${url}`,
+              `🔍 Cloudflare Workers preview: ${url}`,
+              `Worker: ${process.env.WORKER_NAME}`,
               '',
               '(このコメントは新しいpushのたびに更新されます)',
             ].join('\n');
@@ -91,7 +69,7 @@ jobs:
               repo: context.repo.repo,
               issue_number: context.issue.number,
             });
-            const existing = comments.find((c) => c.body?.includes(marker));
+            const existing = comments.find((comment) => comment.body?.includes(marker));
 
             if (existing) {
               await github.rest.issues.updateComment({
@@ -108,3 +86,19 @@ jobs:
                 body,
               });
             }
+
+  cleanup-preview:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Delete preview Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: delete bluemoon-pr-${{ github.event.pull_request.number }} --force
