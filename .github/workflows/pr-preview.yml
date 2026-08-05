@@ -40,6 +40,7 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: '4.119.0'
           command: deploy --name bluemoon-pr-${{ github.event.pull_request.number }}
 
       - name: Comment preview URL on PR
@@ -101,4 +102,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: '4.119.0'
           command: delete bluemoon-pr-${{ github.event.pull_request.number }} --force
