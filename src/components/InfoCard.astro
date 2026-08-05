@@ -1,0 +1,12 @@
+---
+interface Props {
+  title?: string;
+  variant?: 'plain' | 'brand' | 'accent';
+}
+const { title, variant = 'plain' } = Astro.props;
+---
+
+<div class:list={['info-card', variant !== 'plain' && `info-card--${variant}`]}>
+  {title && <h4 class="info-card__title">{title}</h4>}
+  <div class="info-card__body"><slot /></div>
+</div>

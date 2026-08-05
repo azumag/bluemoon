@@ -1,0 +1,40 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  volume?: string;
+  eventDate?: string;
+  heroImage?: string;
+  heroImageAlt?: string;
+}
+
+const { title, volume, eventDate, heroImage, heroImageAlt } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Bluegrass Lockdown Music Festival`}>
+  <header class="event-hero">
+    <div class="container">
+      <p class="event-hero__eyebrow"><a href="/">&larr; トップページに戻る</a></p>
+      <h1>{title}</h1>
+      {volume && <p class="event-hero__meta">{volume}</p>}
+      {eventDate && <p class="event-hero__meta">{eventDate}</p>}
+      {heroImage && (
+        <img
+          src={heroImage}
+          alt={heroImageAlt ?? ''}
+          class="event-hero__image"
+        />
+      )}
+    </div>
+  </header>
+
+  <main class="event-body">
+    <div class="container">
+      <slot />
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

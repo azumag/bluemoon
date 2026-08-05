@@ -1,0 +1,36 @@
+---
+interface Row {
+  order?: string;
+  time?: string;
+  name: string;
+}
+interface Block {
+  heading: string;
+  badge?: string;
+  rows: Row[];
+}
+interface Props {
+  blocks: Block[];
+}
+const { blocks } = Astro.props;
+---
+
+<div class="timetable">
+  {blocks.map((block) => (
+    <div class="timetable__block">
+      <h3 class="timetable__heading">
+        {block.badge && <span class="timetable__badge">{block.badge}</span>}
+        {block.heading}
+      </h3>
+      <ul class="timetable__rows">
+        {block.rows.map((row) => (
+          <li class="timetable__row">
+            {row.time && <span class="timetable__time">{row.time}</span>}
+            {row.order && <span class="timetable__order">{row.order}</span>}
+            <span class="timetable__name">{row.name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

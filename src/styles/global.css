@@ -256,3 +256,116 @@ a:hover { color: var(--accent); text-decoration: underline; }
   .badge { animation: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ===== イベントアーカイブページ ===== */
+.event-hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--white);
+  padding: 3.5rem 1rem 3rem;
+  text-align: center;
+}
+.event-hero h1 { color: var(--white); margin-bottom: 0.5rem; }
+.event-hero__eyebrow { margin-bottom: 1rem; }
+.event-hero__eyebrow a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.event-hero__eyebrow a:hover { color: var(--white); }
+.event-hero__meta { color: rgba(255, 255, 255, 0.9); font-size: 1.05rem; margin: 0 0 0.5rem; }
+.event-hero__image {
+  max-width: 480px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  margin-top: 1.5rem;
+}
+
+.event-body { padding: 3rem 1rem 4rem; background: var(--white); }
+.event-body h2 { margin-top: 3rem; }
+.event-body h2:first-child { margin-top: 0; }
+.event-body > .container > :first-child h2 { margin-top: 0; }
+.event-body a { word-break: break-word; }
+
+/* スケジュール */
+.schedule { border: 1px solid #e5e7ec; border-radius: 8px; overflow: hidden; margin: 0 0 2rem; }
+.schedule-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #e5e7ec;
+}
+.schedule-row:last-child { border-bottom: none; }
+.schedule-row__date { font-weight: 600; color: var(--primary); flex: 0 0 auto; min-width: 13em; }
+.schedule-row--done { opacity: 0.55; }
+.schedule-row--done .schedule-row__date,
+.schedule-row--done .schedule-row__label { text-decoration: line-through; }
+
+/* タイムテーブル */
+.timetable { display: grid; gap: 1.5rem; margin: 0 0 2rem; }
+.timetable__block { border: 1px solid #e5e7ec; border-radius: 8px; overflow: hidden; }
+.timetable__heading {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.timetable__badge {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+.timetable__rows { list-style: none; margin: 0; padding: 0.5rem 1rem; }
+.timetable__row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed #eceef2;
+}
+.timetable__row:last-child { border-bottom: none; }
+.timetable__time { font-family: monospace; color: var(--ink-faint, #7c869c); min-width: 4.5em; }
+.timetable__order { color: var(--accent); font-weight: 700; min-width: 1.5em; }
+
+/* 情報カード / グリッド */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin: 0 0 2rem; }
+.info-card { border: 1px solid #e5e7ec; border-radius: 8px; padding: 1.25rem; }
+.info-card__title { margin: 0 0 0.75rem; font-size: 1rem; }
+.info-card__body > :last-child { margin-bottom: 0; }
+.info-card--brand { background: var(--primary); color: var(--white); border-color: var(--primary); }
+.info-card--brand .info-card__title { color: var(--white); }
+.info-card--brand a { color: var(--white); text-decoration: underline; }
+.info-card--accent { background: var(--section-tint); border-color: var(--section-tint); }
+
+/* ギャラリー(スクロールスナップ、slick-carouselの軽量代替) */
+.gallery { margin: 1.5rem 0; }
+.gallery__track {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.6rem;
+  -webkit-overflow-scrolling: touch;
+}
+.gallery__item { flex: 0 0 auto; scroll-snap-align: center; }
+.gallery__item img {
+  width: 260px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: block;
+}
+@media (min-width: 700px) {
+  .gallery__item img { width: 340px; }
+}

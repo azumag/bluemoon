@@ -1,0 +1,21 @@
+---
+interface Image {
+  src: string;
+  alt?: string;
+}
+interface Props {
+  images: Image[];
+  label?: string;
+}
+const { images, label = '開催時の様子' } = Astro.props;
+---
+
+<div class="gallery" role="region" aria-label={label}>
+  <ul class="gallery__track">
+    {images.map((img) => (
+      <li class="gallery__item">
+        <img src={img.src} alt={img.alt ?? ''} loading="lazy" />
+      </li>
+    ))}
+  </ul>
+</div>
