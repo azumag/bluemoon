@@ -86,3 +86,7 @@ sw.*
 
 # Mac OSX
 .DS_Store
+
+# Astro
+.astro/
+dist/

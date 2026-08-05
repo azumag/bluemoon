@@ -1,0 +1,44 @@
+---
+const links = [
+  { href: '#about', label: 'BLMF紹介' },
+  { href: '#news', label: 'NewsLine' },
+  { href: '#bluegrass', label: 'ブルーグラスとは' },
+  { href: '#past-events', label: 'イベント一覧' },
+];
+---
+
+<nav class="site-nav" aria-label="サイト内ナビゲーション">
+  <div class="container">
+    <button
+      class="site-nav__toggle"
+      type="button"
+      aria-controls="site-nav-links"
+      aria-expanded="false"
+      aria-label="メニューを開閉"
+    >
+      <span></span>
+    </button>
+    <ul class="site-nav__links" id="site-nav-links">
+      {links.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.site-nav__toggle');
+  const links = document.getElementById('site-nav-links');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = links?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  });
+
+  links?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      links.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
