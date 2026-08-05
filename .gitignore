@@ -90,3 +90,7 @@ sw.*
 # Astro
 .astro/
 dist/
+
+# Cloudflare Wrangler
+.wrangler/
+.dev.vars
