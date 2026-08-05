@@ -1,0 +1,110 @@
+name: PR build check & preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'astro.config.mjs'
+      - 'tsconfig.json'
+      - 'firebase.preview.json'
+      - '.github/workflows/pr-preview.yml'
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check (astro check)
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}'
+
+      - name: Set up gcloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: bluemoon-82c0b
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Deploy preview channel
+        id: deploy
+        run: |
+          firebase hosting:channel:deploy "pr-${{ github.event.pull_request.number }}" \
+            --config firebase.preview.json \
+            --project bluemoon-82c0b \
+            --expires 7d \
+            --json > preview-output.json
+          cat preview-output.json
+          node -e "
+            const fs = require('fs');
+            const out = JSON.parse(fs.readFileSync('preview-output.json', 'utf8'));
+            const sites = out.result?.['bluemoon-82c0b'] ?? Object.values(out.result ?? {})[0] ?? {};
+            const url = sites.url ?? '';
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, \`url=\${url}\n\`);
+          "
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = `${{ steps.deploy.outputs.url }}`;
+            const marker = '<!-- pr-preview-comment -->';
+            const body = [
+              marker,
+              `🔍 プレビューをデプロイしました: ${url}`,
+              '',
+              '(このコメントは新しいpushのたびに更新されます)',
+            ].join('\n');
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find((c) => c.body?.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }

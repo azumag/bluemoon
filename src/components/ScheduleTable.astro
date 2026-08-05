@@ -1,0 +1,20 @@
+---
+interface Row {
+  date: string;
+  label: string;
+  done?: boolean;
+}
+interface Props {
+  rows: Row[];
+}
+const { rows } = Astro.props;
+---
+
+<div class="schedule">
+  {rows.map((row) => (
+    <div class:list={['schedule-row', row.done && 'schedule-row--done']}>
+      <div class="schedule-row__date">{row.date}</div>
+      <div class="schedule-row__label">{row.label}</div>
+    </div>
+  ))}
+</div>

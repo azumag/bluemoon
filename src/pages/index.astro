@@ -1,0 +1,136 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import scene1 from '../assets/site/scene1.png';
+import bluegrassImg from '../assets/site/bluegrass.png';
+import xLogo from '../assets/site/x-logo-small-white.png';
+import blueskyLogo from '../assets/site/bluesky_media_kit_logo_transparent_small_1.png';
+
+const newsItems = [
+  {
+    title: '各種SNSアカウントはこちら',
+    body: null,
+    sns: true,
+  },
+  {
+    title: '開催日決定',
+    body: '6月22日 19時開始(JST)に開催決定しました！詳細は随時更新します。',
+  },
+  {
+    title: 'エントリー締め切り日程',
+    body: '・ショート部門：6月8日<br />・通常部門：6月15日',
+  },
+  {
+    title: '2025年5月15日',
+    body: 'Webベース作成完了しました。エントリー開始は週末を予定しています。',
+  },
+];
+---
+
+<BaseLayout title="Bluegrass Lockdown Music Festival">
+  <section class="site-header">
+    <div class="container">
+      <p class="lead">オンラインブルーグラスフェスティバル</p>
+      <h1>Bluegrass Lockdown Music Festival</h1>
+
+      <div class="card card--accent next-event">
+        <div class="card__body">
+          <div class="next-event__row">
+            <span class="badge">NEXT</span>
+            <p class="next-event__title">Coming Soon...</p>
+          </div>
+          <a href="/events/2025" class="btn btn--outline-light">
+            <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16Z"></path>
+              <path d="M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5Z"></path>
+            </svg>
+            前回のイベント
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SiteNav />
+
+  <section id="about" class="section section--tint text-center">
+    <div class="container">
+      <h1>Bluegrass Lockdown Music Festival</h1>
+      <p class="lead" style="font-size: 1.5rem;">ブルーグラス音楽 × Virtual 空間の融合フェス</p>
+
+      <div style="margin: 2rem 0;">
+        <Image src={scene1} alt="" format="webp" style="max-width: 400px; width: 100%; height: auto;" />
+      </div>
+
+      <div class="text-start">
+        <p>ブルーグラス音楽作品を募集し，それらをネット上のVirtual会場にてライブストリーミングで放送します。</p>
+        <p>ちょっと撮ってみた動画、リモートでメンバーと作った動画、過去のライブ演奏動画、練習したけどお蔵入りになっていた曲などを気軽に投稿してもらいたいです。</p>
+        <p>オンラインフェスには、地理的要因や時間的要因等でメンバーが集まりづらいバンドや、独創的な演奏にもスポットが当たる良さがあります。</p>
+        <p>一体感のある、即時性と非同期性を両立できるこのライブイベントの形式がブルーグラス音楽の発展の一助となればいいなと思っています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="news" class="section section--white text-center">
+    <div class="container">
+      <h1>NewsLine</h1>
+      {newsItems.map((item) => (
+        <div class="card card--brand">
+          <div class="card__body">
+            <h5 class="card__title">{item.title}</h5>
+            {item.sns ? (
+              <p class="card__text sns-links">
+                <a href="https://x.com/bluegrass_moon" target="_blank" rel="noopener" aria-label="Visit Bluegrass Moon on X">
+                  <Image alt="X logo" src={xLogo} format="webp" width={20} height={20} />
+                </a>
+                <a href="https://bsky.app/profile/blmf-info.bsky.social" target="_blank" rel="noopener" aria-label="Visit BLMF Info on Bluesky">
+                  <Image alt="Bluesky logo" src={blueskyLogo} format="webp" width={20} height={20} />
+                </a>
+              </p>
+            ) : (
+              <p class="card__text" set:html={item.body} />
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="bluegrass" class="section section--brand text-center">
+    <div class="container">
+      <h1>ブルーグラス音楽 (Bluegrass Music)</h1>
+      <div class="text-start">
+        <p>ブルーグラスはアメリカ発祥の音楽ジャンルです。広い大地に芝 (Bluegrass) が広がる土地を背景に、</p>
+        <p>
+          <a href="https://www.youtube.com/watch?v=IJbkOL2YRL4" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline;">
+            ビル・モンロー &amp; ブルーグラスボーイズ（Bill Monroe &amp; The Bluegrass boys）
+          </a>
+        </p>
+        <p>がインフルエンサーとなり世に広めました。</p>
+        <p>
+          アコースティック楽器とシンプルなコード進行を基盤とした、2ビートの疾走感、独特な歌唱とリズムによる寂寥感、
+          速弾きやソロ交代による各楽器の魅せプレイなど、聞く人と演奏する人を虜にする魅力を持った音楽です。
+        </p>
+        <p>近代においては楽器、リズムを含め様々に多様化しており、端的な意味でのルーツ・ミュージックにとどまらない、変化し続ける生きた音楽と言えます。</p>
+      </div>
+      <Image src={bluegrassImg} alt="bluegrass" format="webp" style="max-width: 480px; width: 100%; height: auto; margin-top: 1rem;" />
+    </div>
+  </section>
+
+  <section id="past-events" class="section section--brand text-center">
+    <div class="container">
+      <h1>過去のイベント</h1>
+      <div class="card card--accent" style="max-width: 420px; margin-inline: auto;">
+        <div class="card__body">
+          <h5 class="card__title">BLMF Vol.4 (2024)</h5>
+          <p class="card__text">2024年に開催されたBluegrass Lockdown Music Festival Vol.4のアーカイブ</p>
+          <a href="/events/2024" class="btn btn--outline-light" style="margin-top: 0.75rem;">アーカイブを見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SiteFooter />
+</BaseLayout>
