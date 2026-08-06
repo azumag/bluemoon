@@ -70,6 +70,9 @@ jobs:
             echo "::error::GitHub App token could not be created. Check CMS_APP_ID / CMS_APP_PRIVATE_KEY secrets."
             exit 1
           fi
+          # actions/checkout sets http.https://github.com/.extraheader with the GITHUB_TOKEN,
+          # which overrides credentials in the remote URL. Unset it so the push uses the app token.
+          git config --unset-all http.https://github.com/.extraheader || true
           git remote set-url origin "https://x-access-token:${CMS_MERGE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
