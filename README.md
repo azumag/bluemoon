@@ -55,7 +55,13 @@ CMSの書き込み先は `cms-drafts` ブランチです。公開操作がある
 
 #### CMS自動マージの前提
 
-`cms-publish.yml` がmainへマージするには、GitHub ActionsのSecret `CMS_MERGE_PAT` が必要です。mainのルールセット(copilot review)をバイパスできる権限が必要なため、リポジトリadminの権限で発行した **fine-grained PAT**(リポジトリ `azumag/bluemoon` 限定、Permissions: Contents → Read and write)を設定してください。
+`cms-publish.yml` がmainへマージするには、以下のActions Secretが必要です。mainのルールセット(copilot review)をバイパスできる権限が必要なため、**GitHub App**(例: `bluemoon-cms-bot`)を使用します(PATは2025年以降のGitHub仕様でルールセットをバイパスできません)。
+
+1. GitHub App作成(Webhook無効、Permissions: Contents → Read and write、対象リポジトリ `azumag/bluemoon` のみ)し、リポジトリへインストール
+2. リポジトリのルールセット「copilot review」のバイパスリストにそのAppを追加(設定済み)
+3. Secretsに登録:
+   - `CMS_APP_ID`: GitHub AppのApp ID
+   - `CMS_APP_PRIVATE_KEY`: GitHub Appのprivate key(PEMの全文)
 
 #### 画像の格納先
 
