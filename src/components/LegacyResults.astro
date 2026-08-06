@@ -1,0 +1,75 @@
+---
+interface Props {
+  eventId: string;
+}
+const { eventId } = Astro.props;
+import legacyResults from '../data/legacy/results.json';
+import legacyEntries from '../data/legacy/entries.json';
+
+interface LegacyEntry {
+  id: string;
+  eventId: string;
+  name: string;
+}
+interface VoteAgg {
+  total: number;
+  kinds: Record<string, number>;
+}
+const results = legacyResults as Record<string, Record<string, VoteAgg>>;
+const entries = legacyEntries as LegacyEntry[];
+
+const eventResults = results[eventId] ?? {};
+const nameById = new Map(entries.filter((e) => e.eventId === eventId).map((e) => [e.id, e.name]));
+const ranked = Object.entries(eventResults).sort((a, b) => b[1].total - a[1].total);
+
+// 部門(賞)ごとの上位3件
+const kinds: Record<string, [string, number][]> = {};
+for (const [entryId, agg] of Object.entries(eventResults)) {
+  for (const [kind, count] of Object.entries(agg.kinds)) {
+    (kinds[kind] ??= []).push([entryId, count]);
+  }
+}
+for (const list of Object.values(kinds)) {
+  list.sort((a, b) => b[1] - a[1]);
+}
+const kindNames = Object.keys(kinds);
+---
+
+<section class="legacy-results">
+  <h2>人気投票集計</h2>
+  {ranked.length === 0 ? (
+    <p class="muted">投票データはありません。</p>
+  ) : (
+    <>
+      <h3>総合得票</h3>
+      <ol class="legacy-results__rank">
+        {ranked.map(([entryId, agg], i) => (
+          <li>
+            <span class="legacy-results__place">{i + 1}</span>
+            <span class="legacy-results__name">{nameById.get(entryId) ?? entryId}</span>
+            <span class="legacy-results__count">{agg.total}票</span>
+          </li>
+        ))}
+      </ol>
+      {kindNames.length > 0 && (
+        <>
+          <h3>部門別</h3>
+          {kindNames.map((kind) => (
+            <div class="legacy-results__kind">
+              <h4>{kind}</h4>
+              <ol class="legacy-results__rank">
+                {kinds[kind].slice(0, 3).map(([entryId, count], i) => (
+                  <li>
+                    <span class="legacy-results__place">{i + 1}</span>
+                    <span class="legacy-results__name">{nameById.get(entryId) ?? entryId}</span>
+                    <span class="legacy-results__count">{count}票</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </>
+      )}
+    </>
+  )}
+</section>

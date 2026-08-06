@@ -369,3 +369,40 @@ a:hover { color: var(--accent); text-decoration: underline; }
 @media (min-width: 700px) {
   .gallery__item img { width: 340px; }
 }
+
+/* 旧イベントアーカイブ(エントリー一覧・投票集計) */
+.legacy-entries { margin: 2rem 0; }
+.legacy-entries__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.legacy-entries__item {
+  border: 1px solid #e5e7ec;
+  border-radius: 8px;
+  padding: 1.25rem;
+  background: var(--white);
+}
+.legacy-entries__item h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+.legacy-entries__item p { margin: 0 0 0.5rem; }
+.legacy-entries__links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.legacy-results { margin: 2rem 0; }
+.legacy-results__rank {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  counter-reset: none;
+}
+.legacy-results__rank li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed #eceef2;
+}
+.legacy-results__place {
+  font-family: monospace;
+  color: var(--accent);
+  font-weight: 700;
+  min-width: 1.6em;
+}
+.legacy-results__name { font-weight: 600; }
+.legacy-results__count { color: var(--ink-faint, #7c869c); margin-left: auto; }
+.legacy-results__kind h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+.muted { color: var(--ink-faint, #7c869c); }

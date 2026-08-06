@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-06T09:37:27.027Z",
+  "exportedAt": "2026-08-06T19:28:49.567Z",
   "source": "Firestore REST API (https://firestore.googleapis.com/v1/projects/bluemoon-82c0b/databases/(default)/documents)",
   "entriesTotal": 121,
   "entriesConsented": 115,
@@ -32,7 +32,7 @@
     {
       "id": "nWIe42DjxjQ4sircilRw",
       "volume": 4,
-      "year": 2022,
+      "year": 2023,
       "title": "Bluegrass Lockdown Music Festival Vol.4",
       "entries": 26,
       "votesCast": 68
