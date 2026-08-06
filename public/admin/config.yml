@@ -44,9 +44,11 @@ collections:
     extension: md
     create: true
     delete: true
+    # お知らせはトップページのNewsLineに表示されるため、プレビューはトップページを開く
+    preview_path: /
     fields:
       - { name: title, label: タイトル, widget: string }
-      - { name: date, label: 日付(YYYY-MM-DD), widget: string, required: false }
+      - { name: date, label: 日付, widget: datetime, type: date, required: false }
       - { name: sns, label: SNSリンク表示, widget: boolean, default: false }
       - { name: body, label: 本文, widget: markdown }
 

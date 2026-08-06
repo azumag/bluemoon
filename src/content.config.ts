@@ -24,7 +24,8 @@ const news = defineCollection({
     date: z
       .union([z.string(), z.date()])
       .transform((d) => (d instanceof Date ? d.toISOString().slice(0, 10) : d))
-      .pipe(z.string().regex(/^\d{4}-\d{2}-\d{2}$/))
+      .pipe(z.string().regex(/^\d{4}-\d{2}-\d{2}$/).or(z.literal('')))
+      .transform((d) => (d === '' ? undefined : d))
       .optional(),
     sns: z.boolean().default(false),
   }),
