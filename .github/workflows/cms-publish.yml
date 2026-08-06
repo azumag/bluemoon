@@ -40,8 +40,8 @@ jobs:
           set -e
           changed="$(git diff --name-only origin/main...HEAD)"
           if [ -z "$changed" ]; then
-            echo "No changes detected. Skipping."
-            exit 1
+            echo "::notice::No changes between cms-drafts and main. Nothing to publish."
+            exit 0
           fi
           bad="$(echo "$changed" | grep -vE '^(src/content/|src/assets/events/|public/images/)' || true)"
           if [ -n "$bad" ]; then
@@ -78,6 +78,14 @@ jobs:
           if git merge --no-edit origin/cms-drafts; then
             git push origin main
             echo "::notice::cms-drafts has been merged into main. The main branch workflow will deploy to production."
+            # Sync main back to cms-drafts so the CMS branch stays up to date with code changes
+            # and the workflow file (which is read from the pushed branch for push events).
+            if git merge-base --is-ancestor origin/cms-drafts main; then
+              git push origin main:refs/heads/cms-drafts
+              echo "::notice::cms-drafts has been synced to main."
+            else
+              echo "::warning::cms-drafts is behind main but cannot be fast-forwarded. Sync manually."
+            fi
           else
             echo "::error::Merge conflict between cms-drafts and main. Resolve manually (e.g. merge main into cms-drafts)."
             exit 1
