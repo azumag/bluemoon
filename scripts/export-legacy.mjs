@@ -22,7 +22,7 @@ const EVENTS = {
   '2pbLysWMNdNXnSvgBNr2': { volume: 1, year: 2020, title: 'オンラインフェス' },
   'fe2ypz0gnDuSiY1t2KjG': { volume: 2, year: 2020, title: 'Bluegrass Lockdown Music Festival Vol.2' },
   'VTH7oiZR2vmMCPgcW8xC': { volume: 3, year: 2021, title: 'Bluegrass Lockdown Music Festival Vol.3' },
-  'nWIe42DjxjQ4sircilRw': { volume: 4, year: 2022, title: 'Bluegrass Lockdown Music Festival Vol.4' },
+  'nWIe42DjxjQ4sircilRw': { volume: 4, year: 2023, title: 'Bluegrass Lockdown Music Festival Vol.4' },
 };
 
 function decodeValue(v) {
@@ -77,7 +77,7 @@ const consented = entries
   .map((e) => ({
     id: e.__id__,
     eventId: e.eventId,
-    name: e.name ?? '',
+    name: String(e.name ?? '').trim(),
     description: e.description ?? '',
     fileURLs: String(e.fileURLs ?? '').trim(),
     fileNames: Array.isArray(e.fileNames) ? e.fileNames : [],
