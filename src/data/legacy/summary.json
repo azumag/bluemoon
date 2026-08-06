@@ -1,0 +1,41 @@
+{
+  "exportedAt": "2026-08-06T09:37:27.027Z",
+  "source": "Firestore REST API (https://firestore.googleapis.com/v1/projects/bluemoon-82c0b/databases/(default)/documents)",
+  "entriesTotal": 121,
+  "entriesConsented": 115,
+  "votesTotal": 168,
+  "events": [
+    {
+      "id": "2pbLysWMNdNXnSvgBNr2",
+      "volume": 1,
+      "year": 2020,
+      "title": "オンラインフェス",
+      "entries": 31,
+      "votesCast": 213
+    },
+    {
+      "id": "fe2ypz0gnDuSiY1t2KjG",
+      "volume": 2,
+      "year": 2020,
+      "title": "Bluegrass Lockdown Music Festival Vol.2",
+      "entries": 30,
+      "votesCast": 284
+    },
+    {
+      "id": "VTH7oiZR2vmMCPgcW8xC",
+      "volume": 3,
+      "year": 2021,
+      "title": "Bluegrass Lockdown Music Festival Vol.3",
+      "entries": 28,
+      "votesCast": 279
+    },
+    {
+      "id": "nWIe42DjxjQ4sircilRw",
+      "volume": 4,
+      "year": 2022,
+      "title": "Bluegrass Lockdown Music Festival Vol.4",
+      "entries": 26,
+      "votesCast": 68
+    }
+  ]
+}
