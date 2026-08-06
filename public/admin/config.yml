@@ -3,7 +3,9 @@
 backend:
   name: github
   repo: azumag/bluemoon
-  branch: main
+  # CMSの書き込み先ブランチ。cms-draftsへのpushはCI(cms-publish.yml)が検証後にmainへ自動マージし、
+  # mainのデプロイCIが本番へ反映する。このブランチはルールセットでコンテンツパスのみ編集可能に制限される
+  branch: cms-drafts
   # sveltia-cms-auth Worker(デプロイ後に実際のURLへ更新)
   base_url: https://sveltia-cms-auth.tsubasa-azumagakito.workers.dev
 

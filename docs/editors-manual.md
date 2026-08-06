@@ -25,7 +25,9 @@
    | 本文 (Body) | お知らせの内容。改行や箇条書き(「- 」で始める)、リンクが使える |
 
 4. 右下の「保存」(Save)ボタンをクリックし、続いて「公開」(Publish)ボタンをクリック
-5. 自動ビルドが走り、**2〜3分後**にトップページ(<https://www.bluemoon.works/>)の「NewsLine」欄に新しいお知らせが表示される
+5. 公開は自動で処理され、**2〜3分後**にトップページ(<https://www.bluemoon.works/>)の「NewsLine」欄に新しいお知らせが表示される
+
+> 公開後の処理(ブランチへのcommit・mainへのマージ・本番デプロイ)はすべて自動で行われます。編集担当者は「保存」→「公開」の操作だけで構いません。
 
 ## 3. お知らせの編集・削除
 
@@ -55,5 +57,8 @@
 ## 7. 管理者向けメモ
 
 - **編集者の追加**: GitHub リポジトリ `azumag/bluemoon` の Settings → Collaborators からGitHubユーザー名を追加する
+- **公開の仕組み**: CMSの書き込み先は `cms-drafts` ブランチ。公開操作のcommitがあると `cms-publish.yml` が検証後にmainへ自動マージし、mainのデプロイCIが本番へ反映する。`cms-drafts` はルールセットでコンテンツパス(`src/content/**`・`src/assets/events/**`・`public/images/**`)のみ編集可能
+- **自動マージの前提**: リポジトリのSecret `CMS_MERGE_PAT`(fine-grained PAT、リポジトリ限定・Contents read/write)が必要。未設定だと自動マージが失敗する
+- **マージ競合時**: `cms-publish.yml` が失敗するので、手動でmainをcms-draftsへマージして解決する
 - **CMSの構成変更**: `public/admin/config.yml`(リポジトリ内)を編集し、mainブランチへマージすると自動デプロイされる
 - **初回セットアップ**: [README.md](https://github.com/azumag/bluemoon/blob/main/README.md) の「コンテンツ管理(Sveltia CMS)」セクションを参照

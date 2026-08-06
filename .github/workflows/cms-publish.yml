@@ -1,0 +1,58 @@
+name: CMS publish
+
+on:
+  push:
+    branches:
+      - cms-drafts
+
+concurrency:
+  group: cms-publish
+  cancel-in-progress: false
+
+jobs:
+  validate-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout cms-drafts
+        uses: actions/checkout@v4
+        with:
+          ref: cms-drafts
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      - name: Merge cms-drafts into main
+        env:
+          CMS_MERGE_PAT: ${{ secrets.CMS_MERGE_PAT }}
+        run: |
+          set -e
+          if [ -z "$CMS_MERGE_PAT" ]; then
+            echo "::error::CMS_MERGE_PAT secret is not configured. Set it in repository secrets."
+            exit 1
+          fi
+          git remote set-url origin "https://x-access-token:${CMS_MERGE_PAT}@github.com/${GITHUB_REPOSITORY}.git"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout -b main origin/main
+          if git merge --no-edit origin/cms-drafts; then
+            git push origin main
+            echo "::notice::cms-drafts has been merged into main. The main branch workflow will deploy to production."
+          else
+            echo "::error::Merge conflict between cms-drafts and main. Resolve manually (e.g. merge main into cms-drafts)."
+            exit 1
+          fi

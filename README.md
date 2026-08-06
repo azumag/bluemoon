@@ -39,7 +39,11 @@ npm run preview   # ビルド結果をローカルで確認
 
 ### コンテンツ管理(Sveltia CMS)
 
-`https://www.bluemoon.works/admin/` にSveltia CMSを配置しています。`events` / `news` / `pages` コレクションを管理でき、GitHub OAuthでログインして変更をGitHubリポジトリへ直接commitします。
+`https://www.bluemoon.works/admin/` にSveltia CMSを配置しています。`events` / `news` / `pages` コレクションを管理でき、GitHub OAuthでログインして変更をGitHubリポジトリへcommitします。
+
+CMSの書き込み先は `cms-drafts` ブランチです。公開操作があると `.github/workflows/cms-publish.yml` が検証(`npm run check` / `npm run build`)後にmainへ自動マージし、`main` ブランチのデプロイCIが本番へ反映します。このため、編集担当者はブランチやPRを意識せずに公開できます。
+
+`cms-drafts` ブランチはルールセットで **コンテンツパス(`src/content/**` / `src/assets/events/**` / `public/images/**`)のみ編集可能**に制限されています。コード変更はこれまでどおりPR経由です。
 
 - CMS設定: `public/admin/config.yml`
 - CMS本体: `public/admin/index.html`(CDNから読み込み)
@@ -48,6 +52,10 @@ npm run preview   # ビルド結果をローカルで確認
 編集者のアカウントを追加するには、GitHubでリポジトリ `azumag/bluemoon` にそのユーザーを collaborator として追加してください。
 
 編集者向けの更新手順は [docs/editors-manual.md](docs/editors-manual.md) を参照してください。
+
+#### CMS自動マージの前提
+
+`cms-publish.yml` がmainへマージするには、GitHub ActionsのSecret `CMS_MERGE_PAT` が必要です。mainのルールセット(copilot review)をバイパスできる権限が必要なため、リポジトリadminの権限で発行した **fine-grained PAT**(リポジトリ `azumag/bluemoon` 限定、Permissions: Contents → Read and write)を設定してください。
 
 #### 画像の格納先
 
