@@ -52,16 +52,25 @@ jobs:
           echo "Changed paths (all within allowed content paths):"
           echo "$changed" | sed 's/^/  /'
 
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.CMS_APP_ID }}
+          private-key: ${{ secrets.CMS_APP_PRIVATE_KEY }}
+          owner: azumag
+          repositories: bluemoon
+
       - name: Merge cms-drafts into main
         env:
-          CMS_MERGE_PAT: ${{ secrets.CMS_MERGE_PAT }}
+          CMS_MERGE_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           set -e
-          if [ -z "$CMS_MERGE_PAT" ]; then
-            echo "::error::CMS_MERGE_PAT secret is not configured. Set it in repository secrets."
+          if [ -z "$CMS_MERGE_TOKEN" ]; then
+            echo "::error::GitHub App token could not be created. Check CMS_APP_ID / CMS_APP_PRIVATE_KEY secrets."
             exit 1
           fi
-          git remote set-url origin "https://x-access-token:${CMS_MERGE_PAT}@github.com/${GITHUB_REPOSITORY}.git"
+          git remote set-url origin "https://x-access-token:${CMS_MERGE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin main
