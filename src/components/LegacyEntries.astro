@@ -1,0 +1,35 @@
+---
+interface Props {
+  eventId: string;
+}
+const { eventId } = Astro.props;
+import legacyEntries from '../data/legacy/entries.json';
+const entries = legacyEntries.filter((e) => e.eventId === eventId);
+const links = (s: string): string[] =>
+  (s ?? '')
+    .split(/\r?\n+/)
+    .map((u) => u.trim())
+    .filter((u) => u.startsWith('http'));
+---
+
+<section class="legacy-entries">
+  <h2>エントリー一覧</h2>
+  <p class="muted">順不同・放送順ではありません（旧サイトのアーカイブより）</p>
+  <ul class="legacy-entries__list">
+    {entries.map((e) => (
+      <li class="legacy-entries__item">
+        <h3>{e.name}</h3>
+        {e.description && <p>{e.description}</p>}
+        {links(e.fileURLs).length > 0 && (
+          <div class="legacy-entries__links">
+            {links(e.fileURLs).map((u) => (
+              <a href={u} target="_blank" rel="noopener">
+                動画を見る
+              </a>
+            ))}
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+</section>
