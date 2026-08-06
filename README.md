@@ -47,6 +47,8 @@ npm run preview   # ビルド結果をローカルで確認
 
 編集者のアカウントを追加するには、GitHubでリポジトリ `azumag/bluemoon` にそのユーザーを collaborator として追加してください。
 
+編集者向けの更新手順は [docs/editors-manual.md](docs/editors-manual.md) を参照してください。
+
 #### 画像の格納先
 
 - **eventsのヒーロー画像**: `src/assets/events/` にアップロードされ、Astroで最適化されます
