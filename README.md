@@ -41,9 +41,9 @@ npm run preview   # ビルド結果をローカルで確認
 
 `https://www.bluemoon.works/admin/` にSveltia CMSを配置しています。`events` / `news` / `pages` コレクションを管理でき、GitHub OAuthでログインして変更をGitHubリポジトリへcommitします。
 
-CMSの書き込み先は `cms-drafts` ブランチです。公開操作があると `.github/workflows/cms-publish.yml` が検証(`npm run check` / `npm run build`)後にmainへ自動マージし、`main` ブランチのデプロイCIが本番へ反映します。このため、編集担当者はブランチやPRを意識せずに公開できます。
+CMSの書き込み先は `cms-drafts` ブランチです。公開操作があると `.github/workflows/cms-publish.yml` が検証(`npm run check` / `npm run build` / 変更パスがコンテンツパスのみか検査)後にmainへ自動マージし、`main` ブランチのデプロイCIが本番へ反映します。このため、編集担当者はブランチやPRを意識せずに公開できます。
 
-`cms-drafts` ブランチはルールセットで **コンテンツパス(`src/content/**` / `src/assets/events/**` / `public/images/**`)のみ編集可能**に制限されています。コード変更はこれまでどおりPR経由です。
+`cms-drafts` への変更は **コンテンツパス(`src/content/**` / `src/assets/events/**` / `public/images/**`)のみ**が公開フローを通ります。それ以外のパス(コード・設定等)の変更が含まれるpushは公開ワークフローが失敗し、本番には反映されません(GitHub Freeではルールセットのパス制限が使えないため、CI層で検査しています。ブランチの削除・force-pushはルールセットで禁止)。コード変更はこれまでどおりPR経由です。
 
 - CMS設定: `public/admin/config.yml`
 - CMS本体: `public/admin/index.html`(CDNから読み込み)

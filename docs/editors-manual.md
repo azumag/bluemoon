@@ -57,7 +57,7 @@
 ## 7. 管理者向けメモ
 
 - **編集者の追加**: GitHub リポジトリ `azumag/bluemoon` の Settings → Collaborators からGitHubユーザー名を追加する
-- **公開の仕組み**: CMSの書き込み先は `cms-drafts` ブランチ。公開操作のcommitがあると `cms-publish.yml` が検証後にmainへ自動マージし、mainのデプロイCIが本番へ反映する。`cms-drafts` はルールセットでコンテンツパス(`src/content/**`・`src/assets/events/**`・`public/images/**`)のみ編集可能
+- **公開の仕組み**: CMSの書き込み先は `cms-drafts` ブランチ。公開操作のcommitがあると `cms-publish.yml` が検証(ビルド+変更パス検査)後にmainへ自動マージし、mainのデプロイCIが本番へ反映する。`cms-drafts` へはコンテンツパス(`src/content/**`・`src/assets/events/**`・`public/images/**`)の変更のみが公開され、それ以外の変更が混ざると公開は失敗する
 - **自動マージの前提**: リポジトリのSecret `CMS_MERGE_PAT`(fine-grained PAT、リポジトリ限定・Contents read/write)が必要。未設定だと自動マージが失敗する
 - **マージ競合時**: `cms-publish.yml` が失敗するので、手動でmainをcms-draftsへマージして解決する
 - **CMSの構成変更**: `public/admin/config.yml`(リポジトリ内)を編集し、mainブランチへマージすると自動デプロイされる

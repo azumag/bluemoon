@@ -35,6 +35,23 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify only CMS content paths changed
+        run: |
+          set -e
+          changed="$(git diff --name-only origin/main...HEAD)"
+          if [ -z "$changed" ]; then
+            echo "No changes detected. Skipping."
+            exit 1
+          fi
+          bad="$(echo "$changed" | grep -vE '^(src/content/|src/assets/events/|public/images/)' || true)"
+          if [ -n "$bad" ]; then
+            echo "::error::cms-drafts must only contain CMS content changes. Blocked paths:"
+            echo "$bad" | sed 's/^/  /'
+            exit 1
+          fi
+          echo "Changed paths (all within allowed content paths):"
+          echo "$changed" | sed 's/^/  /'
+
       - name: Merge cms-drafts into main
         env:
           CMS_MERGE_PAT: ${{ secrets.CMS_MERGE_PAT }}
