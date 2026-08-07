@@ -7,10 +7,14 @@ on:
 jobs:
   cloudflare-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -33,6 +37,21 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           wranglerVersion: '4.119.0'
           command: deploy
+
+      # CMS(Sveltia CMS)はcms-draftsブランチを読み書きするため、
+      # mainへのコード・コンテンツ変更をcms-draftsへ同期する
+      # (同期pushでcms-publish.ymlが発火するが、差分なしのため何も公開されない)
+      - name: Sync main to cms-drafts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin cms-drafts
+          if git merge-base --is-ancestor origin/cms-drafts main; then
+            git push origin main:refs/heads/cms-drafts
+            echo "::notice::cms-drafts synced to main"
+          else
+            echo "::warning::cms-drafts is behind main but cannot be fast-forwarded. Sync manually."
+          fi
 
   deploy-cms-auth:
     runs-on: ubuntu-latest
