@@ -18,10 +18,9 @@ src/
 └── styles/global.css
 
 public/          # そのまま配信される静的ファイル(favicon等)
-static/          # 旧サイトのフォールバック(Firebase Hosting配信元、Epic4完了まで維持)
 ```
 
-本番はCloudflare Workers Static AssetsのWorker `bluemoon`から、`src/`のAstroビルド成果物(`dist/`)を配信します。Firebase Hostingと`static/`はFirestoreデータ移行(Epic4)が完了するまでフォールバック用に残します。
+本番はCloudflare Workers Static AssetsのWorker `bluemoon`から、`src/`のAstroビルド成果物(`dist/`)を配信します。
 
 ## 開発方法
 
@@ -70,14 +69,6 @@ CMSの書き込み先は `cms-drafts` ブランチです。公開操作がある
 
 `public/images/` が存在しない場合は空の `.gitkeep` を置いてください。
 
-### 現行サイト(static/)
-
-```bash
-python3 -m http.server 8080 --directory static
-```
-
-http://localhost:8080/ でプレビュー
-
 ## デプロイ
 
 ### Cloudflare本番
@@ -111,8 +102,6 @@ wrangler deploy
 ### Pull Requestプレビュー
 
 Pull Requestを作成または更新すると、`.github/workflows/pr-preview.yml`がPR番号ごとに`bluemoon-pr-<番号>`というWorkerを作成し、workers.devのプレビューURLをPRへコメントします。PRをクローズすると、そのプレビューWorkerを削除します。
-
-Firebase Hostingのプレビューは使用しませんが、Firebase関連設定と`static/`はフォールバック用に保持します。
 
 ## 関連リンク
 
