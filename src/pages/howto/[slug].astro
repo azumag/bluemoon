@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages
+    .filter((entry) => (entry.body ?? '').trim().length > 0)
+    .map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | Bluegrass Lockdown Music Festival`}>
+  <header class="event-hero">
+    <div class="container">
+      <p class="event-hero__eyebrow"><a href="/">&larr; トップページに戻る</a></p>
+      <h1>{entry.data.title}</h1>
+    </div>
+  </header>
+
+  <main class="event-body">
+    <div class="container">
+      <Content />
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
