@@ -58,9 +58,12 @@ collections:
     label: ページ
     label_singular: ページ
     folder: src/content/pages
-    extension: md
+    extension: mdx
+    format: yaml-frontmatter
     create: true
     delete: true
+    # /howto/{{slug}} で公開される(src/pages/howto/[slug].astro)
+    preview_path: /howto/{{slug}}
     fields:
       - { name: title, label: タイトル, widget: string }
       - { name: description, label: 説明, widget: text, required: false }
