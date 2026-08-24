@@ -1,24 +1,11 @@
 ---
 import { Image } from 'astro:assets';
-import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import NewsLine from '../components/NewsLine.astro';
 import scene1 from '../assets/site/scene1.png';
 import bluegrassImg from '../assets/site/bluegrass.png';
-import xLogo from '../assets/site/x-logo-small-white.png';
-import blueskyLogo from '../assets/site/bluesky_media_kit_logo_transparent_small_1.png';
-
-const newsEntries = (await getCollection('news')).sort((a, b) =>
-  (b.data.date ?? '').localeCompare(a.data.date ?? ''),
-);
-const newsItems = await Promise.all(
-  newsEntries.map(async (entry) => ({
-    title: entry.data.title,
-    sns: entry.data.sns,
-    Content: (await render(entry)).Content,
-  })),
-);
 ---
 
 <BaseLayout title="Bluegrass Lockdown Music Festival">
@@ -42,6 +29,8 @@ const newsItems = await Promise.all(
           </a>
         </div>
       </div>
+
+      <NewsLine />
     </div>
   </section>
 
@@ -62,33 +51,6 @@ const newsItems = await Promise.all(
         <p>オンラインフェスには、地理的要因や時間的要因等でメンバーが集まりづらいバンドや、独創的な演奏にもスポットが当たる良さがあります。</p>
         <p>一体感のある、即時性と非同期性を両立できるこのライブイベントの形式がブルーグラス音楽の発展の一助となればいいなと思っています。</p>
       </div>
-    </div>
-  </section>
-
-  <section id="news" class="section section--white text-center">
-    <div class="container">
-      <h1>NewsLine</h1>
-      {newsItems.map((item) => (
-        <div class="card card--brand">
-          <div class="card__body">
-            <h5 class="card__title">{item.title}</h5>
-            {item.sns ? (
-              <p class="card__text sns-links">
-                <a href="https://x.com/bluegrass_moon" target="_blank" rel="noopener" aria-label="Visit Bluegrass Moon on X">
-                  <Image alt="X logo" src={xLogo} format="webp" width={20} height={20} />
-                </a>
-                <a href="https://bsky.app/profile/blmf-info.bsky.social" target="_blank" rel="noopener" aria-label="Visit BLMF Info on Bluesky">
-                  <Image alt="Bluesky logo" src={blueskyLogo} format="webp" width={20} height={20} />
-                </a>
-              </p>
-            ) : (
-              <div class="card__text">
-                <item.Content />
-              </div>
-            )}
-          </div>
-        </div>
-      ))}
     </div>
   </section>
 
