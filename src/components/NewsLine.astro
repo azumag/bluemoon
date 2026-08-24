@@ -1,0 +1,321 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import xLogo from '../assets/site/x-logo-small-white.png';
+import blueskyLogo from '../assets/site/bluesky_media_kit_logo_transparent_small_1.png';
+
+const newsEntries = (await getCollection('news')).sort((a, b) =>
+  (b.data.date ?? '').localeCompare(a.data.date ?? ''),
+);
+
+const newsItems = await Promise.all(
+  newsEntries.map(async (entry) => ({
+    title: entry.data.title,
+    date: entry.data.date,
+    sns: entry.data.sns,
+    Content: (await render(entry)).Content,
+  })),
+);
+
+const [latestItem, ...olderItems] = newsItems;
+---
+
+{latestItem && (
+  <section id="news" class="newsline" aria-labelledby="newsline-heading">
+    <h2 id="newsline-heading" class="newsline__heading">NewsLine</h2>
+
+    <details class="newsline__latest">
+      <summary>
+        <span class="newsline__badge">NEWS</span>
+        <span class="newsline__latest-title">{latestItem.title}</span>
+        {latestItem.date && <time datetime={latestItem.date}>{latestItem.date}</time>}
+        <span class="newsline__more" aria-hidden="true">詳細</span>
+      </summary>
+      <div class="newsline__latest-body">
+        {latestItem.sns ? (
+          <div class="newsline__sns-links">
+            <a href="https://x.com/bluegrass_moon" target="_blank" rel="noopener" aria-label="Visit Bluegrass Moon on X">
+              <Image alt="X logo" src={xLogo} format="webp" width={20} height={20} />
+            </a>
+            <a href="https://bsky.app/profile/blmf-info.bsky.social" target="_blank" rel="noopener" aria-label="Visit BLMF Info on Bluesky">
+              <Image alt="Bluesky logo" src={blueskyLogo} format="webp" width={20} height={20} />
+            </a>
+          </div>
+        ) : (
+          <div class="newsline__body">
+            <latestItem.Content />
+          </div>
+        )}
+      </div>
+    </details>
+
+    {olderItems.length > 0 && (
+      <div class="newsline__carousel" data-news-carousel>
+        <div class="newsline__carousel-header">
+          <span>過去のニュース</span>
+          <div class="newsline__controls" aria-label="ニュースを切り替える">
+            <button type="button" data-news-prev aria-label="前のニュース">‹</button>
+            <button type="button" data-news-next aria-label="次のニュース">›</button>
+          </div>
+        </div>
+
+        <div class="newsline__track" data-news-track tabindex="0" aria-label="過去のニュース一覧">
+          {olderItems.map((item) => (
+            <article class="newsline__slide">
+              <div class="newsline__slide-meta">
+                <h3>{item.title}</h3>
+                {item.date && <time datetime={item.date}>{item.date}</time>}
+              </div>
+              {item.sns ? (
+                <div class="newsline__sns-links">
+                  <a href="https://x.com/bluegrass_moon" target="_blank" rel="noopener" aria-label="Visit Bluegrass Moon on X">
+                    <Image alt="X logo" src={xLogo} format="webp" width={20} height={20} />
+                  </a>
+                  <a href="https://bsky.app/profile/blmf-info.bsky.social" target="_blank" rel="noopener" aria-label="Visit BLMF Info on Bluesky">
+                    <Image alt="Bluesky logo" src={blueskyLogo} format="webp" width={20} height={20} />
+                  </a>
+                </div>
+              ) : (
+                <div class="newsline__body">
+                  <item.Content />
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+  </section>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-news-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>('[data-news-track]');
+    const prev = carousel.querySelector<HTMLButtonElement>('[data-news-prev]');
+    const next = carousel.querySelector<HTMLButtonElement>('[data-news-next]');
+
+    if (!track || !prev || !next) return;
+
+    const slideWidth = () => {
+      const slide = track.querySelector<HTMLElement>('.newsline__slide');
+      if (!slide) return track.clientWidth;
+      const gap = Number.parseFloat(getComputedStyle(track).gap || '0');
+      return slide.getBoundingClientRect().width + gap;
+    };
+
+    const updateControls = () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= maxScroll - 2;
+    };
+
+    prev.addEventListener('click', () => track.scrollBy({ left: -slideWidth(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left: slideWidth(), behavior: 'smooth' }));
+    track.addEventListener('scroll', updateControls, { passive: true });
+    window.addEventListener('resize', updateControls);
+    updateControls();
+  });
+</script>
+
+<style>
+  .newsline {
+    max-width: 900px;
+    margin: 1rem auto 0;
+    text-align: left;
+  }
+
+  .newsline__heading {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .newsline__latest {
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--ink);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+    overflow: hidden;
+  }
+
+  .newsline__latest summary {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-height: 3rem;
+    padding: 0.65rem 0.9rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .newsline__latest summary::-webkit-details-marker { display: none; }
+
+  .newsline__badge {
+    flex: 0 0 auto;
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .newsline__latest-title {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 700;
+  }
+
+  .newsline__latest time,
+  .newsline__slide time {
+    flex: 0 0 auto;
+    color: #6c7480;
+    font-size: 0.78rem;
+  }
+
+  .newsline__more {
+    flex: 0 0 auto;
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .newsline__latest[open] .newsline__more::after { content: ' ▲'; }
+  .newsline__latest:not([open]) .newsline__more::after { content: ' ▼'; }
+
+  .newsline__latest-body {
+    border-top: 1px solid #e7e9ee;
+    padding: 0.95rem 1rem 1rem;
+  }
+
+  .newsline__carousel {
+    margin-top: 0.7rem;
+    padding: 0.7rem;
+    border-radius: 8px;
+    background: rgba(15, 34, 60, 0.22);
+  }
+
+  .newsline__carousel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.55rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .newsline__controls {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .newsline__controls button {
+    display: inline-grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    font: inherit;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .newsline__controls button:hover:not(:disabled),
+  .newsline__controls button:focus-visible {
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .newsline__controls button:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .newsline__track {
+    display: flex;
+    gap: 0.7rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+  }
+
+  .newsline__slide {
+    flex: 0 0 min(86%, 520px);
+    scroll-snap-align: start;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--ink);
+    padding: 0.9rem 1rem;
+  }
+
+  .newsline__slide-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .newsline__slide h3 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 0.95rem;
+  }
+
+  .newsline__body {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .newsline__body :global(p:last-child) { margin-bottom: 0; }
+
+  .newsline__sns-links {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .newsline__sns-links a {
+    display: inline-grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: var(--primary);
+  }
+
+  @media (max-width: 640px) {
+    .newsline__latest summary {
+      gap: 0.5rem;
+      padding-inline: 0.7rem;
+    }
+
+    .newsline__latest time { display: none; }
+    .newsline__more { font-size: 0; }
+    .newsline__more::after { font-size: 0.8rem; }
+    .newsline__slide { flex-basis: 94%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .newsline__track { scroll-behavior: auto; }
+  }
+</style>
