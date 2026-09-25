@@ -6,7 +6,8 @@ import SiteFooter from '../../components/SiteFooter.astro';
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
   return pages
-    .filter((entry) => (entry.body ?? '').trim().length > 0)
+    // The 2026 program lives under its event; the former URL redirects there.
+    .filter((entry) => entry.id !== 'timetable' && (entry.body ?? '').trim().length > 0)
     .map((entry) => ({
       params: { slug: entry.id },
       props: { entry },
