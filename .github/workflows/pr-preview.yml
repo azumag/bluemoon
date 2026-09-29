@@ -40,6 +40,7 @@ jobs:
         # pull_request secrets are unavailable to fork and Dependabot PRs.
         if: >-
           github.event.pull_request.head.repo.full_name == github.repository &&
+          github.event.pull_request.user.login != 'dependabot[bot]' &&
           github.actor != 'dependabot[bot]'
         uses: cloudflare/wrangler-action@v3
         with:
