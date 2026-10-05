@@ -1,0 +1,27 @@
+---
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+
+// Keep the content editable in the existing CMS pages collection.
+const entry = await getEntry('pages', 'timetable');
+if (!entry) throw new Error('The 2026 timetable content is missing.');
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | Bluegrass Lockdown Music Festival`}>
+  <header class="event-hero">
+    <div class="container">
+      <p class="event-hero__eyebrow"><a href="/events/2026/">&larr; Vol.7 開催概要に戻る</a></p>
+      <h1>{entry.data.title}</h1>
+    </div>
+  </header>
+
+  <main class="event-body">
+    <div class="container">
+      <Content />
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
