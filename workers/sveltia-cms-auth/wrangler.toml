@@ -3,3 +3,10 @@ main = "src/index.js"
 compatibility_date = "2023-03-24"
 account_id = "b9ab93f1f71640b6965a60c646b2392b"
 workers_dev = true
+
+# 認証エンドポイントを使えるサイトを制限する(未設定だと任意サイトから利用できる)。
+# ダッシュボードの通常変数は keep_vars なしの wrangler deploy で毎回消えるため、
+# ここで管理して配備ごとに必ず設定する。Sveltia CMS は site_id に
+# window.location.hostname(ポートなし)を送る。
+[vars]
+ALLOWED_DOMAINS = "www.bluemoon.works"
