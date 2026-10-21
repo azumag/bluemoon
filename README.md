@@ -80,6 +80,8 @@ npm ci → npm run check → npm run build → wrangler deploy (bluemoon)
                                           → wrangler deploy (sveltia-cms-auth)
 ```
 
+Node.jsのバージョンはリポジトリ直下の`.node-version`、Wranglerのバージョンは`package.json`の`devDependencies`(`package-lock.json`で依存ごと固定)が正本です。全workflow(本番・PRプレビュー・CMS公開・CMS認証Worker)が同じ値を使うため、更新するときはこの2か所だけを変更します。
+
 `sveltia-cms-auth` Workerの初回セットアップ:
 
 1. GitHubの `https://github.com/settings/applications/new` でOAuthアプリを登録。Authorization callback URLは `https://sveltia-cms-auth.tsubasa-azumagakito.workers.dev/callback`
@@ -96,7 +98,9 @@ npm ci → npm run check → npm run build → wrangler deploy (bluemoon)
 npm ci
 npm run check
 npm run build
-wrangler deploy
+npx wrangler deploy
+# CMS認証Worker
+npx wrangler deploy --config workers/sveltia-cms-auth/wrangler.toml
 ```
 
 ### Pull Requestプレビュー
