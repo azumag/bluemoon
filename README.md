@@ -85,12 +85,11 @@ Node.jsのバージョンはリポジトリ直下の`.node-version`、Wrangler�
 `sveltia-cms-auth` Workerの初回セットアップ:
 
 1. GitHubの `https://github.com/settings/applications/new` でOAuthアプリを登録。Authorization callback URLは `https://sveltia-cms-auth.tsubasa-azumagakito.workers.dev/callback`
-2. 発行されたClient ID / SecretをWorkerの**Secret**として登録(ダッシュボードの`sveltia-cms-auth` → Settings → Variables で「Encrypt」、または下記コマンド)
+2. 発行されたClient IDは`workers/sveltia-cms-auth/wrangler.toml`の`[vars]`の`GITHUB_CLIENT_ID`に書く(認可URLに載る公開値のため)。Client SecretだけをWorkerの**Secret**として登録(ダッシュボードの`sveltia-cms-auth` → Settings → Variables で「Encrypt」、または下記コマンド)
    ```bash
-   npx wrangler secret put GITHUB_CLIENT_ID --config workers/sveltia-cms-auth/wrangler.toml
    npx wrangler secret put GITHUB_CLIENT_SECRET --config workers/sveltia-cms-auth/wrangler.toml
    ```
-   - 通常変数(plain text)にはしないこと。`wrangler deploy`は`keep_vars`なしではダッシュボードの通常変数を毎回消すため、mainへのpushごとに消えてCMSログインが`MISCONFIGURED_CLIENT`になる
+   - ダッシュボードの通常変数(plain text)は使わないこと。`wrangler deploy`は`keep_vars`なしではダッシュボードの通常変数を毎回消すため、mainへのpushごとに消えてCMSログインが`MISCONFIGURED_CLIENT`になる
    - `ALLOWED_DOMAINS`(**必須**。認証エンドポイントを使えるサイトの制限)は`workers/sveltia-cms-auth/wrangler.toml`の`[vars]`で管理する。値は`www.bluemoon.works`。Sveltia CMSは`site_id`にポートなしのhostnameを送る(localhostでは`cms.netlify.com`)ため、ローカルの`npm run dev`ではGitHubログインではなくローカルリポジトリ機能を使う
 
 初回だけ、GitHubリポジトリのActions Secretに`CLOUDFLARE_API_TOKEN`を登録してください。Cloudflareダッシュボードで**アカウントレベル(全Workerスクリプト)**のデプロイ権限を許可したAPIトークンを作成します。`bluemoon`と`sveltia-cms-auth`の両方にデプロイするため、特定スクリプト名限定のトークンでは`sveltia-cms-auth`のデプロイが失敗します。値をGitHubのSettings → Secrets and variables → Actionsに保存します。アカウントIDは`wrangler.toml`の`account_id`を使用します。
