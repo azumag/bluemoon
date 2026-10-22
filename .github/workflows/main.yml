@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.x'
+          node-version-file: .node-version
           cache: npm
 
       - name: Install dependencies
@@ -35,7 +35,6 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          wranglerVersion: '4.119.0'
           command: deploy
 
       # CMS(Sveltia CMS)はcms-draftsブランチを読み書きするため、
@@ -61,10 +60,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # サイト配備と同じNode・lockfile固定のWranglerを使う
+      # (setup-nodeなしではrunner既定のNodeになり、wrangler-actionが
+      #  lockfile外のWranglerを追加インストールしていた)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Deploy Sveltia CMS Auth Worker
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          wranglerVersion: '4.119.0'
-          workingDirectory: workers/sveltia-cms-auth
-          command: deploy
+          command: deploy --config workers/sveltia-cms-auth/wrangler.toml
