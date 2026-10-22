@@ -10,3 +10,7 @@ workers_dev = true
 # window.location.hostname(ポートなし)を送る。
 [vars]
 ALLOWED_DOMAINS = "www.bluemoon.works"
+# GitHub OAuth App の Client ID。認可 URL にそのまま載る公開値なので、ALLOWED_DOMAINS と
+# 同じくここで管理し、配備で消えないようにする。Client Secret だけは secret のまま
+# (npx wrangler secret put GITHUB_CLIENT_SECRET --config workers/sveltia-cms-auth/wrangler.toml)。
+GITHUB_CLIENT_ID = "Ov23liMbbkHuB5TZmFwu"
